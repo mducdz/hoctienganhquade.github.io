@@ -1,11 +1,9 @@
-
 <!DOCTYPE html>
 <html lang="vi">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>English Galaxy - Học 3 Thì</title>
+<title>HỌC ENGLISH - 3 Thì Cơ Bản</title>
 
 <style>
 *{
@@ -15,32 +13,19 @@
 }
 
 body{
-    font-family:Arial,Helvetica,sans-serif;
-    min-height:100vh;
+    font-family:Arial,sans-serif;
     color:white;
-
+    min-height:100vh;
     background:
-    linear-gradient(
-        135deg,
-        #6d28d9,
-        #2563eb,
-        #0891b2,
-        #db2777
-    );
-
-    background-size:400% 400%;
-    animation:bg 12s ease infinite;
-}
-
-@keyframes bg{
-    0%{background-position:0% 50%}
-    50%{background-position:100% 50%}
-    100%{background-position:0% 50%}
+        radial-gradient(circle at 10% 20%,#ff00cc55,transparent 30%),
+        radial-gradient(circle at 90% 20%,#00e5ff55,transparent 30%),
+        radial-gradient(circle at 50% 100%,#7c3aed77,transparent 40%),
+        linear-gradient(135deg,#09001f,#101044,#001b36);
 }
 
 header{
     text-align:center;
-    padding:50px 20px 30px;
+    padding:40px 15px 25px;
 }
 
 .logo{
@@ -48,109 +33,104 @@ header{
 }
 
 header h1{
-    font-size:48px;
-    margin:10px 0;
-    text-shadow:0 5px 20px rgba(0,0,0,.3);
+    font-size:42px;
+    margin:8px 0;
+    background:linear-gradient(90deg,#00e5ff,#fff,#ff4ecd);
+    -webkit-background-clip:text;
+    color:transparent;
 }
 
 header p{
-    font-size:18px;
-    opacity:.9;
+    color:#d9e7ff;
 }
 
 .container{
     width:92%;
-    max-width:1100px;
+    max-width:1050px;
     margin:auto;
 }
 
 .glass{
-    background:rgba(255,255,255,.14);
-    border:1px solid rgba(255,255,255,.25);
-    backdrop-filter:blur(15px);
-    -webkit-backdrop-filter:blur(15px);
+    background:#ffffff10;
+    border:1px solid #ffffff25;
+    backdrop-filter:blur(18px);
+    -webkit-backdrop-filter:blur(18px);
     border-radius:25px;
-    box-shadow:0 15px 45px rgba(0,0,0,.2);
+    box-shadow:0 20px 60px #0005;
 }
 
 .tabs{
     display:grid;
     grid-template-columns:repeat(3,1fr);
-    gap:12px;
-    padding:12px;
+    gap:10px;
+    padding:10px;
     margin-bottom:20px;
 }
 
 .tab{
     border:0;
+    padding:16px 10px;
     border-radius:18px;
-    padding:18px 10px;
     color:white;
-    background:rgba(255,255,255,.1);
-    font-size:16px;
-    font-weight:bold;
+    background:#ffffff0d;
     cursor:pointer;
-    transition:.25s;
+    font-weight:bold;
+    font-size:15px;
+    transition:.2s;
 }
 
 .tab:hover{
-    transform:translateY(-3px);
-    background:white;
-    color:#5b21b6;
+    transform:translateY(-2px);
+    background:#ffffff20;
 }
 
 .tab.active{
-    background:white;
-    color:#5b21b6;
+    background:linear-gradient(135deg,#00c6ff,#7c3aed,#ff2fb3);
+    box-shadow:0 8px 25px #7c3aed55;
 }
 
 .lesson{
-    padding:30px;
+    padding:28px;
     margin-bottom:20px;
 }
 
 .lesson h2{
-    font-size:32px;
-    color:#ffe66d;
-    margin-bottom:15px;
+    font-size:27px;
+    margin-bottom:10px;
 }
 
 .lesson h3{
-    color:#8fffff;
-    margin:24px 0 12px;
-}
-
-.lesson p{
-    line-height:1.7;
+    color:#70eaff;
+    margin:23px 0 10px;
 }
 
 .formula{
-    background:rgba(0,0,0,.22);
-    border-left:5px solid #ffe66d;
-    border-radius:12px;
-    padding:17px;
-    margin:10px 0;
-    line-height:1.7;
+    background:#0005;
+    padding:16px;
+    margin:9px 0;
+    border-radius:15px;
+    border-left:4px solid #00e5ff;
+    line-height:1.6;
 }
 
-.cards{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
-    gap:12px;
+.signs{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
 }
 
-.card{
-    padding:17px;
-    background:rgba(255,255,255,.1);
-    border-radius:16px;
-    line-height:1.5;
+.sign{
+    background:linear-gradient(135deg,#ffffff12,#ffffff05);
+    border:1px solid #ffffff20;
+    padding:11px 15px;
+    border-radius:14px;
 }
 
 .example{
-    padding:15px;
+    background:#0005;
+    padding:17px;
     border-radius:15px;
-    background:rgba(255,255,255,.1);
-    margin:10px 0;
+    line-height:1.7;
 }
 
 .start{
@@ -160,128 +140,128 @@ header p{
 }
 
 .start h2{
-    color:#ffe66d;
-    margin-bottom:10px;
+    margin-bottom:8px;
 }
 
-.main-btn{
+.btn{
     border:0;
-    padding:15px 30px;
+    padding:14px 28px;
     margin-top:18px;
-    border-radius:50px;
-    background:#ffe66d;
-    color:#32175f;
-    font-size:17px;
-    font-weight:bold;
+    border-radius:30px;
     cursor:pointer;
-    transition:.25s;
+    font-weight:bold;
+    color:white;
+    background:linear-gradient(135deg,#00c6ff,#7c3aed,#ff2fb3);
+    box-shadow:0 8px 25px #7c3aed55;
+    transition:.2s;
 }
 
-.main-btn:hover{
-    transform:scale(1.06);
-    box-shadow:0 10px 30px rgba(255,230,109,.35);
+.btn:hover{
+    transform:scale(1.04);
 }
 
 #quiz{
     display:none;
-    padding:30px;
-    margin-bottom:20px;
+    padding:28px;
+    margin-bottom:25px;
 }
 
-.quiz-header{
+.quiz-head{
     display:flex;
     justify-content:space-between;
-    gap:15px;
-    flex-wrap:wrap;
+    gap:10px;
+    margin-bottom:15px;
 }
 
 .progress{
     height:10px;
-    margin:18px 0;
-    background:rgba(0,0,0,.25);
+    background:#0006;
     border-radius:20px;
     overflow:hidden;
 }
 
-#progressBar{
-    width:0;
+.progress-bar{
     height:100%;
-    background:#ffe66d;
+    width:0%;
+    background:linear-gradient(90deg,#00e5ff,#ff2fb3);
     transition:.3s;
 }
 
-#questionNumber{
-    opacity:.8;
+.number{
+    margin-top:18px;
+    color:#aeeeff;
+    font-weight:bold;
 }
 
-#question{
+.question{
     font-size:24px;
-    font-weight:bold;
     line-height:1.5;
-    margin:20px 0;
+    font-weight:bold;
+    margin:15px 0 20px;
 }
 
 .answers{
     display:grid;
+    grid-template-columns:1fr 1fr;
     gap:12px;
 }
 
 .answer{
-    width:100%;
-    padding:16px;
-    border-radius:15px;
-    border:1px solid rgba(255,255,255,.25);
-    background:rgba(255,255,255,.1);
+    padding:17px;
+    border:1px solid #ffffff25;
+    border-radius:17px;
+    background:#ffffff0d;
     color:white;
-    font-size:16px;
     text-align:left;
     cursor:pointer;
+    font-size:16px;
     transition:.2s;
 }
 
 .answer:hover{
-    background:rgba(255,255,255,.25);
-    transform:translateX(4px);
+    background:#ffffff20;
+    transform:translateY(-2px);
 }
 
 .answer.correct{
-    background:rgba(22,163,74,.85);
+    background:#16a34acc!important;
+    border-color:#4ade80;
 }
 
 .answer.wrong{
-    background:rgba(220,38,38,.85);
+    background:#dc2626cc!important;
+    border-color:#f87171;
 }
 
 .answer:disabled{
     cursor:default;
 }
 
-#feedback{
+.feedback{
     min-height:28px;
-    margin-top:16px;
+    margin-top:15px;
     font-weight:bold;
 }
 
-#nextBtn{
+.next{
     display:none;
     border:0;
     padding:13px 25px;
-    margin-top:15px;
-    border-radius:50px;
-    background:#ffe66d;
-    color:#32175f;
+    border-radius:25px;
+    background:#fff;
+    color:#351064;
     font-weight:bold;
     cursor:pointer;
 }
 
-#result{
+.result{
     display:none;
     text-align:center;
-    padding:30px 10px;
+    padding:25px 0 5px;
 }
 
-.final-score{
-    font-size:55px;
+.score{
+    font-size:60px;
     font-weight:bold;
     color:#ffe66d;
     margin:15px;
@@ -289,25 +269,28 @@ header p{
 
 footer{
     text-align:center;
-    padding:35px;
-    opacity:.8;
+    padding:30px;
+    color:#aebde0;
 }
 
-@media(max-width:650px){
-
+@media(max-width:700px){
     header h1{
-        font-size:35px;
+        font-size:32px;
     }
 
     .tabs{
         grid-template-columns:1fr;
     }
 
-    .lesson{
+    .answers{
+        grid-template-columns:1fr;
+    }
+
+    .lesson,#quiz{
         padding:20px;
     }
 
-    #question{
+    .question{
         font-size:20px;
     }
 }
@@ -317,916 +300,849 @@ footer{
 <body>
 
 <header>
-    <div class="logo">📚✨🧠</div>
-    <h1>ENGLISH GALAXY</h1>
-    <p>Học tiếng Anh theo cách dễ hiểu, trực quan và vui hơn 🚀</p>
+    <div class="logo">📚✨</div>
+    <h1>HỌC ENGLISH</h1>
+    <p>Học 3 thì cơ bản • 300 câu luyện tập</p>
 </header>
 
 <div class="container">
 
-    <!-- CHỌN THÌ -->
-    <div class="glass tabs">
+<div class="glass tabs">
+    <button class="tab active" onclick="changeTense('past',this)">
+        ⏪ QUÁ KHỨ ĐƠN
+    </button>
 
-        <button
-            class="tab active"
-            onclick="selectTense('past',this)"
-        >
-            ⏪ Quá khứ đơn
-        </button>
+    <button class="tab" onclick="changeTense('present',this)">
+        ☀️ HIỆN TẠI ĐƠN
+    </button>
 
-        <button
-            class="tab"
-            onclick="selectTense('present',this)"
-        >
-            ☀️ Hiện tại đơn
-        </button>
+    <button class="tab" onclick="changeTense('perfect',this)">
+        🚀 HIỆN TẠI HOÀN THÀNH
+    </button>
+</div>
 
-        <button
-            class="tab"
-            onclick="selectTense('perfect',this)"
-        >
-            🚀 Hiện tại hoàn thành
-        </button>
+<div id="lesson" class="glass lesson"></div>
 
+<div id="startBox" class="glass start">
+    <h2>🎮 SẴN SÀNG LUYỆN TẬP?</h2>
+    <p>100 câu hỏi cho thì bạn đang chọn.</p>
+    <button class="btn" onclick="startQuiz()">
+        🚀 BẮT ĐẦU QUIZ
+    </button>
+</div>
+
+<div id="quiz" class="glass">
+
+    <div class="quiz-head">
+        <b id="quizTitle"></b>
+        <span>🏆 Điểm: <b id="score">0</b></span>
     </div>
 
-
-    <!-- BÀI HỌC -->
-    <div
-        id="lesson"
-        class="glass lesson"
-    ></div>
-
-
-    <!-- BẮT ĐẦU -->
-    <div
-        id="startBox"
-        class="glass start"
-    >
-
-        <h2>🎮 LUYỆN TẬP</h2>
-
-        <p>
-            Chọn một thì và bắt đầu làm bài.
-            Mỗi câu có 4 đáp án.
-        </p>
-
-        <button
-            class="main-btn"
-            onclick="startQuiz()"
-        >
-            🚀 BẮT ĐẦU QUIZ
-        </button>
-
+    <div class="progress">
+        <div id="progressBar" class="progress-bar"></div>
     </div>
 
+    <div id="questionNumber" class="number"></div>
 
-    <!-- QUIZ -->
-    <div
-        id="quiz"
-        class="glass"
-    >
+    <div id="question" class="question"></div>
 
-        <div class="quiz-header">
+    <div id="answers" class="answers"></div>
 
-            <b id="quizTitle">
-                QUIZ
-            </b>
+    <div id="feedback" class="feedback"></div>
 
-            <span>
-                Điểm:
-                <b id="score">0</b>
-            </span>
+    <button id="nextBtn" class="next" onclick="nextQuestion()">
+        Câu tiếp theo ➜
+    </button>
 
+    <div id="result" class="result">
+        <h2>🎉 HOÀN THÀNH!</h2>
+
+        <div class="score">
+            <span id="finalScore">0</span>/100
         </div>
 
-        <div class="progress">
-            <div id="progressBar"></div>
-        </div>
+        <p id="resultText"></p>
 
-        <div id="questionNumber">
-            Câu 1
-        </div>
-
-        <div id="question"></div>
-
-        <div
-            id="answers"
-            class="answers"
-        ></div>
-
-        <div id="feedback"></div>
-
-        <button
-            id="nextBtn"
-            onclick="nextQuestion()"
-        >
-            Câu tiếp theo ➜
+        <button class="btn" onclick="startQuiz()">
+            🔄 LÀM LẠI
         </button>
-
-
-        <!-- KẾT QUẢ -->
-
-        <div id="result">
-
-            <h2>🎉 HOÀN THÀNH!</h2>
-
-            <div class="final-score">
-                <span id="finalScore">0</span>/100
-            </div>
-
-            <p id="resultText"></p>
-
-            <button
-                class="main-btn"
-                onclick="startQuiz()"
-            >
-                🔄 Làm lại
-            </button>
-
-        </div>
-
     </div>
 
 </div>
 
+</div>
 
 <footer>
-    📚 ENGLISH GALAXY
-    <br><br>
-    Học • Luyện tập • Tiến bộ 🚀
+    📚 HỌC ENGLISH • Học mỗi ngày để giỏi hơn 🚀
 </footer>
 
 
 <script>
 
-/* =====================================================
-   BÀI HỌC 3 THÌ
-===================================================== */
+/* ==================================================
+   BÀI HỌC
+================================================== */
 
 const lessons = {
-```javascript
+
+past: `
+<h2>⏪ THÌ QUÁ KHỨ ĐƠN</h2>
+
+<p>Dùng để diễn tả hành động đã xảy ra và kết thúc trong quá khứ.</p>
+
+<h3>📌 CÔNG THỨC</h3>
+
+<div class="formula">
+<b>Khẳng định:</b><br>
+S + V2/V-ed + O
+</div>
+
+<div class="formula">
+<b>Phủ định:</b><br>
+S + did not + V nguyên mẫu + O
+</div>
+
+<div class="formula">
+<b>Nghi vấn:</b><br>
+Did + S + V nguyên mẫu + O?
+</div>
+
+<h3>🔎 DẤU HIỆU NHẬN BIẾT</h3>
+
+<div class="signs">
+<div class="sign">yesterday</div>
+<div class="sign">last night</div>
+<div class="sign">last week</div>
+<div class="sign">last month</div>
+<div class="sign">last year</div>
+<div class="sign">... ago</div>
+<div class="sign">in 2020</div>
+<div class="sign">when I was...</div>
+</div>
+
+<h3>💡 VÍ DỤ</h3>
+
+<div class="example">
+I <b>visited</b> my grandmother yesterday.<br>
+→ Tôi đã thăm bà tôi hôm qua.
+</div>
+`,
+
+present: `
+<h2>☀️ THÌ HIỆN TẠI ĐƠN</h2>
+
+<p>Dùng để nói về thói quen, sự thật hiển nhiên và lịch trình.</p>
+
+<h3>📌 CÔNG THỨC</h3>
+
+<div class="formula">
+<b>Khẳng định:</b><br>
+I/You/We/They + V<br>
+He/She/It + V(s/es)
+</div>
+
+<div class="formula">
+<b>Phủ định:</b><br>
+S + do/does not + V nguyên mẫu
+</div>
+
+<div class="formula">
+<b>Nghi vấn:</b><br>
+Do/Does + S + V nguyên mẫu?
+</div>
+
+<h3>🔎 DẤU HIỆU NHẬN BIẾT</h3>
+
+<div class="signs">
+<div class="sign">always</div>
+<div class="sign">usually</div>
+<div class="sign">often</div>
+<div class="sign">sometimes</div>
+<div class="sign">rarely</div>
+<div class="sign">never</div>
+<div class="sign">every day</div>
+<div class="sign">every week</div>
+</div>
+
+<h3>💡 VÍ DỤ</h3>
+
+<div class="example">
+She <b>goes</b> to school every day.<br>
+→ Cô ấy đi học mỗi ngày.
+</div>
+`,
+
+perfect: `
+<h2>🚀 THÌ HIỆN TẠI HOÀN THÀNH</h2>
+
+<p>Dùng để nói về kinh nghiệm, hành động vừa xảy ra hoặc hành động bắt đầu trong quá khứ và còn liên quan đến hiện tại.</p>
+
+<h3>📌 CÔNG THỨC</h3>
+
+<div class="formula">
+<b>Khẳng định:</b><br>
+S + have/has + V3/V-ed
+</div>
+
+<div class="formula">
+<b>Phủ định:</b><br>
+S + have/has not + V3/V-ed
+</div>
+
+<div class="formula">
+<b>Nghi vấn:</b><br>
+Have/Has + S + V3/V-ed?
+</div>
+
+<h3>🔎 DẤU HIỆU NHẬN BIẾT</h3>
+
+<div class="signs">
+<div class="sign">already</div>
+<div class="sign">just</div>
+<div class="sign">ever</div>
+<div class="sign">never</div>
+<div class="sign">yet</div>
+<div class="sign">since</div>
+<div class="sign">for</div>
+<div class="sign">recently</div>
+<div class="sign">so far</div>
+</div>
+
+<h3>💡 VÍ DỤ</h3>
+
+<div class="example">
+I <b>have finished</b> my homework.<br>
+→ Tôi đã hoàn thành bài tập về nhà.
+</div>
+`
+};
+
+
+/* ==================================================
+   300 CÂU HỎI
+================================================== */
+
 const questions = {
 
 past: [
 
-{q:"Yesterday, I ___ to school.",options:["go","went","gone","going"],answer:1},
-{q:"She ___ TV last night.",options:["watch","watched","watches","watching"],answer:1},
-{q:"They ___ football yesterday.",options:["play","played","plays","playing"],answer:1},
-{q:"He ___ breakfast at 7 a.m. yesterday.",options:["eat","ate","eaten","eats"],answer:1},
-{q:"We ___ our grandparents last Sunday.",options:["visit","visited","visits","visiting"],answer:1},
-{q:"Tom ___ a new phone last week.",options:["buy","bought","buys","buying"],answer:1},
-{q:"I ___ my homework yesterday.",options:["finish","finished","finishes","finishing"],answer:1},
-{q:"She ___ to the supermarket yesterday.",options:["go","went","goes","going"],answer:1},
-{q:"They ___ a movie last night.",options:["watch","watched","watches","watching"],answer:1},
-{q:"He ___ his room yesterday.",options:["clean","cleaned","cleans","cleaning"],answer:1},
+["Yesterday, I ___ to school.",["go","went","gone","going"],1],
+["She ___ TV last night.",["watch","watched","watches","watching"],1],
+["They ___ football yesterday.",["play","played","plays","playing"],1],
+["He ___ breakfast yesterday.",["eat","ate","eaten","eats"],1],
+["We ___ our grandparents last Sunday.",["visit","visited","visits","visiting"],1],
+["Tom ___ a new phone last week.",["buy","bought","buys","buying"],1],
+["I ___ my homework yesterday.",["finish","finished","finishes","finishing"],1],
+["She ___ to the supermarket yesterday.",["go","went","goes","going"],1],
+["They ___ a movie last night.",["watch","watched","watches","watching"],1],
+["He ___ his room yesterday.",["clean","cleaned","cleans","cleaning"],1],
 
-{q:"I ___ my friend two days ago.",options:["meet","met","meets","meeting"],answer:1},
-{q:"She ___ a letter last night.",options:["write","wrote","writes","writing"],answer:1},
-{q:"We ___ dinner at 8 p.m. yesterday.",options:["have","had","has","having"],answer:1},
-{q:"He ___ very tired yesterday.",options:["is","was","were","be"],answer:1},
-{q:"They ___ at home last night.",options:["are","was","were","be"],answer:2},
-{q:"I ___ coffee this morning.",options:["drink","drank","drinks","drinking"],answer:1},
-{q:"She ___ a beautiful song yesterday.",options:["sing","sang","sings","singing"],answer:1},
-{q:"He ___ his keys yesterday.",options:["lose","lost","loses","losing"],answer:1},
-{q:"We ___ to the beach last summer.",options:["go","went","goes","going"],answer:1},
-{q:"They ___ many photos on holiday.",options:["take","took","takes","taking"],answer:1},
+["I ___ my friend two days ago.",["meet","met","meets","meeting"],1],
+["She ___ a letter last night.",["write","wrote","writes","writing"],1],
+["We ___ dinner yesterday.",["have","had","has","having"],1],
+["He ___ very tired yesterday.",["is","was","were","be"],1],
+["They ___ at home last night.",["are","was","were","be"],2],
+["I ___ coffee this morning.",["drink","drank","drinks","drinking"],1],
+["She ___ a song yesterday.",["sing","sang","sings","singing"],1],
+["He ___ his keys yesterday.",["lose","lost","loses","losing"],1],
+["We ___ to the beach last summer.",["go","went","goes","going"],1],
+["They ___ many photos.",["take","took","takes","taking"],1],
 
-{q:"I ___ a book last night.",options:["read","reads","reading","readed"],answer:0},
-{q:"She ___ the door yesterday.",options:["open","opened","opens","opening"],answer:1},
-{q:"He ___ his bike last weekend.",options:["ride","rode","rides","riding"],answer:1},
-{q:"We ___ pizza yesterday.",options:["eat","ate","eats","eating"],answer:1},
-{q:"They ___ English last year.",options:["study","studied","studies","studying"],answer:1},
-{q:"I ___ my room last Saturday.",options:["clean","cleaned","cleans","cleaning"],answer:1},
-{q:"She ___ me yesterday.",options:["call","called","calls","calling"],answer:1},
-{q:"He ___ a new computer last month.",options:["get","got","gets","getting"],answer:1},
-{q:"We ___ a great time yesterday.",options:["have","had","has","having"],answer:1},
-{q:"They ___ home late last night.",options:["come","came","comes","coming"],answer:1},
+["I ___ a book last night.",["read","reads","reading","readed"],0],
+["She ___ the door yesterday.",["open","opened","opens","opening"],1],
+["He ___ his bike last weekend.",["ride","rode","rides","riding"],1],
+["We ___ pizza yesterday.",["eat","ate","eats","eating"],1],
+["They ___ English last year.",["study","studied","studies","studying"],1],
+["I ___ my room last Saturday.",["clean","cleaned","cleans","cleaning"],1],
+["She ___ me yesterday.",["call","called","calls","calling"],1],
+["He ___ a new computer last month.",["get","got","gets","getting"],1],
+["We ___ a great time yesterday.",["have","had","has","having"],1],
+["They ___ home late last night.",["come","came","comes","coming"],1],
 
-{q:"I ___ my teacher yesterday.",options:["see","saw","sees","seeing"],answer:1},
-{q:"She ___ her bag at school.",options:["leave","left","leaves","leaving"],answer:1},
-{q:"He ___ the answer yesterday.",options:["know","knew","knows","knowing"],answer:1},
-{q:"We ___ the bus this morning.",options:["catch","caught","catches","catching"],answer:1},
-{q:"They ___ a lot of water.",options:["drink","drank","drinks","drinking"],answer:1},
-{q:"I ___ a letter to my friend.",options:["send","sent","sends","sending"],answer:1},
-{q:"She ___ the window yesterday.",options:["close","closed","closes","closing"],answer:1},
-{q:"He ___ his homework last night.",options:["do","did","does","doing"],answer:1},
-{q:"We ___ the museum last Sunday.",options:["visit","visited","visits","visiting"],answer:1},
-{q:"They ___ football after school.",options:["play","played","plays","playing"],answer:1},
+["I ___ my teacher yesterday.",["see","saw","sees","seeing"],1],
+["She ___ her bag at school.",["leave","left","leaves","leaving"],1],
+["He ___ the answer yesterday.",["know","knew","knows","knowing"],1],
+["We ___ the bus this morning.",["catch","caught","catches","catching"],1],
+["They ___ a lot of water.",["drink","drank","drinks","drinking"],1],
+["I ___ a letter to my friend.",["send","sent","sends","sending"],1],
+["She ___ the window yesterday.",["close","closed","closes","closing"],1],
+["He ___ his homework last night.",["do","did","does","doing"],1],
+["We ___ the museum last Sunday.",["visit","visited","visits","visiting"],1],
+["They ___ football after school.",["play","played","plays","playing"],1],
 
-{q:"I ___ my grandmother last weekend.",options:["visit","visited","visits","visiting"],answer:1},
-{q:"She ___ a cake yesterday.",options:["make","made","makes","making"],answer:1},
-{q:"He ___ the window.",options:["break","broke","breaks","breaking"],answer:1},
-{q:"We ___ a taxi last night.",options:["take","took","takes","taking"],answer:1},
-{q:"They ___ to music yesterday.",options:["listen","listened","listens","listening"],answer:1},
-{q:"I ___ early yesterday morning.",options:["wake","woke","wakes","waking"],answer:1},
-{q:"She ___ her mother yesterday.",options:["help","helped","helps","helping"],answer:1},
-{q:"He ___ his old car last year.",options:["sell","sold","sells","selling"],answer:1},
-{q:"We ___ a lot of food.",options:["buy","bought","buys","buying"],answer:1},
-{q:"They ___ the game yesterday.",options:["win","won","wins","winning"],answer:1},
+["She ___ a cake yesterday.",["make","made","makes","making"],1],
+["He ___ the window.",["break","broke","breaks","breaking"],1],
+["We ___ a taxi last night.",["take","took","takes","taking"],1],
+["They ___ to music yesterday.",["listen","listened","listens","listening"],1],
+["I ___ early yesterday.",["wake","woke","wakes","waking"],1],
+["She ___ her mother yesterday.",["help","helped","helps","helping"],1],
+["He ___ his old car last year.",["sell","sold","sells","selling"],1],
+["We ___ a lot of food.",["buy","bought","buys","buying"],1],
+["They ___ the game yesterday.",["win","won","wins","winning"],1],
+["I ___ home at 6 p.m.",["come","came","comes","coming"],1],
 
-{q:"I ___ home at 6 p.m. yesterday.",options:["come","came","comes","coming"],answer:1},
-{q:"She ___ very happy yesterday.",options:["is","was","were","be"],answer:1},
-{q:"They ___ very busy last week.",options:["are","was","were","be"],answer:2},
-{q:"He ___ at school yesterday.",options:["is","was","were","be"],answer:1},
-{q:"We ___ in Hanoi last year.",options:["live","lived","lives","living"],answer:1},
-{q:"I ___ my wallet yesterday.",options:["find","found","finds","finding"],answer:1},
-{q:"She ___ the truth.",options:["tell","told","tells","telling"],answer:1},
-{q:"He ___ me a gift.",options:["give","gave","gives","giving"],answer:1},
-{q:"We ___ the answer.",options:["understand","understood","understands","understanding"],answer:1},
-{q:"They ___ the problem.",options:["solve","solved","solves","solving"],answer:1},
+["She ___ very happy yesterday.",["is","was","were","be"],1],
+["They ___ very busy last week.",["are","was","were","be"],2],
+["He ___ at school yesterday.",["is","was","were","be"],1],
+["We ___ in Hanoi last year.",["live","lived","lives","living"],1],
+["I ___ my wallet yesterday.",["find","found","finds","finding"],1],
+["She ___ the truth.",["tell","told","tells","telling"],1],
+["He ___ me a gift.",["give","gave","gives","giving"],1],
+["We ___ the answer.",["understand","understood","understands","understanding"],1],
+["They ___ the problem.",["solve","solved","solves","solving"],1],
+["I ___ my friend last Sunday.",["call","called","calls","calling"],1],
 
-{q:"I ___ my friend last Sunday.",options:["call","called","calls","calling"],answer:1},
-{q:"She ___ to music last night.",options:["listen","listened","listens","listening"],answer:1},
-{q:"He ___ football two days ago.",options:["play","played","plays","playing"],answer:1},
-{q:"We ___ lunch at noon yesterday.",options:["eat","ate","eats","eating"],answer:1},
-{q:"They ___ home early.",options:["leave","left","leaves","leaving"],answer:1},
-{q:"I ___ a strange noise.",options:["hear","heard","hears","hearing"],answer:1},
-{q:"She ___ the book yesterday.",options:["read","reads","reading","readed"],answer:0},
-{q:"He ___ his old friend.",options:["meet","met","meets","meeting"],answer:1},
-{q:"We ___ a beautiful picture.",options:["draw","drew","draws","drawing"],answer:1},
-{q:"They ___ the door.",options:["close","closed","closes","closing"],answer:1},
+["She ___ to music last night.",["listen","listened","listens","listening"],1],
+["He ___ football two days ago.",["play","played","plays","playing"],1],
+["We ___ lunch yesterday.",["eat","ate","eats","eating"],1],
+["They ___ home early.",["leave","left","leaves","leaving"],1],
+["I ___ a strange noise.",["hear","heard","hears","hearing"],1],
+["She ___ the book yesterday.",["read","reads","reading","readed"],0],
+["He ___ his old friend.",["meet","met","meets","meeting"],1],
+["We ___ a beautiful picture.",["draw","drew","draws","drawing"],1],
+["They ___ the door.",["close","closed","closes","closing"],1],
+["I ___ my homework last night.",["do","did","does","doing"],1],
 
-{q:"I ___ my homework last night.",options:["do","did","does","doing"],answer:1},
-{q:"She ___ a new dress yesterday.",options:["buy","bought","buys","buying"],answer:1},
-{q:"He ___ breakfast early.",options:["have","had","has","having"],answer:1},
-{q:"We ___ the train yesterday.",options:["take","took","takes","taking"],answer:1},
-{q:"They ___ to the park last Sunday.",options:["go","went","goes","going"],answer:1},
-{q:"I ___ my phone at home.",options:["forget","forgot","forgets","forgetting"],answer:1},
-{q:"She ___ me the answer.",options:["tell","told","tells","telling"],answer:1},
-{q:"He ___ a beautiful picture.",options:["draw","drew","draws","drawing"],answer:1},
-{q:"We ___ a great movie last night.",options:["watch","watched","watches","watching"],answer:1},
-{q:"They ___ basketball yesterday.",options:["play","played","plays","playing"],answer:1},
+["She ___ a new dress yesterday.",["buy","bought","buys","buying"],1],
+["He ___ breakfast early.",["have","had","has","having"],1],
+["We ___ the train yesterday.",["take","took","takes","taking"],1],
+["They ___ to the park last Sunday.",["go","went","goes","going"],1],
+["I ___ my phone at home.",["forget","forgot","forgets","forgetting"],1],
+["She ___ me the answer.",["tell","told","tells","telling"],1],
+["He ___ a picture.",["draw","drew","draws","drawing"],1],
+["We ___ a movie last night.",["watch","watched","watches","watching"],1],
+["They ___ basketball yesterday.",["play","played","plays","playing"],1],
+["I ___ sick last week.",["am","was","were","be"],1],
 
-{q:"I ___ sick last week.",options:["am","was","were","be"],answer:1},
-{q:"She ___ at home yesterday.",options:["is","was","were","be"],answer:1},
-{q:"They ___ at the beach last Sunday.",options:["are","was","were","be"],answer:2},
-{q:"He ___ very hungry yesterday.",options:["is","was","were","be"],answer:1},
-{q:"We ___ tired after the trip.",options:["are","was","were","be"],answer:2},
-{q:"I ___ a lot yesterday.",options:["work","worked","works","working"],answer:1},
-{q:"She ___ hard for the exam.",options:["study","studied","studies","studying"],answer:1},
-{q:"He ___ his car last weekend.",options:["wash","washed","washes","washing"],answer:1},
-{q:"We ___ dinner together.",options:["cook","cooked","cooks","cooking"],answer:1},
-{q:"They ___ the room yesterday.",options:["paint","painted","paints","painting"],answer:1},
-
-{q:"I ___ to the store yesterday.",options:["go","went","goes","going"],answer:1},
-{q:"She ___ a new book last week.",options:["buy","bought","buys","buying"],answer:1},
-{q:"He ___ his friend yesterday.",options:["visit","visited","visits","visiting"],answer:1},
-{q:"We ___ football last Saturday.",options:["play","played","plays","playing"],answer:1},
-{q:"They ___ dinner at 7 p.m.",options:["eat","ate","eats","eating"],answer:1},
-{q:"I ___ my keys this morning.",options:["lose","lost","loses","losing"],answer:1},
-{q:"She ___ her homework yesterday.",options:["finish","finished","finishes","finishing"],answer:1},
-{q:"He ___ to school yesterday.",options:["walk","walked","walks","walking"],answer:1},
-{q:"We ___ our grandparents last month.",options:["visit","visited","visits","visiting"],answer:1},
-{q:"They ___ a lot of photos.",options:["take","took","takes","taking"],answer:1}
+["She ___ at home yesterday.",["is","was","were","be"],1],
+["They ___ at the beach last Sunday.",["are","was","were","be"],2],
+["He ___ very hungry yesterday.",["is","was","were","be"],1],
+["We ___ tired after the trip.",["are","was","were","be"],2],
+["I ___ a lot yesterday.",["work","worked","works","working"],1],
+["She ___ hard for the exam.",["study","studied","studies","studying"],1],
+["He ___ his car last weekend.",["wash","washed","washes","washing"],1],
+["We ___ dinner together.",["cook","cooked","cooks","cooking"],1],
+["They ___ the room yesterday.",["paint","painted","paints","painting"],1],
+["I ___ to the store yesterday.",["go","went","goes","going"],1]
 
 ],
-
 
 present: [
 
-{q:"I ___ to school every day.",options:["go","goes","went","going"],answer:0},
-{q:"She ___ English every morning.",options:["study","studies","studied","studying"],answer:1},
-{q:"They ___ football on Sundays.",options:["play","plays","played","playing"],answer:0},
-{q:"He ___ coffee every morning.",options:["drink","drinks","drank","drinking"],answer:1},
-{q:"We ___ TV after dinner.",options:["watch","watches","watched","watching"],answer:0},
-{q:"My father ___ to work by car.",options:["go","goes","went","going"],answer:1},
-{q:"Anna ___ her homework every evening.",options:["do","does","did","doing"],answer:1},
-{q:"Tom ___ football very well.",options:["play","plays","played","playing"],answer:1},
-{q:"The sun ___ in the east.",options:["rise","rises","rose","rising"],answer:1},
-{q:"Cats ___ milk.",options:["like","likes","liked","liking"],answer:0},
+["I ___ to school every day.",["go","goes","went","going"],0],
+["She ___ English every morning.",["study","studies","studied","studying"],1],
+["They ___ football on Sundays.",["play","plays","played","playing"],0],
+["He ___ coffee every morning.",["drink","drinks","drank","drinking"],1],
+["We ___ TV after dinner.",["watch","watches","watched","watching"],0],
+["My father ___ to work by car.",["go","goes","went","going"],1],
+["Anna ___ her homework every evening.",["do","does","did","doing"],1],
+["Tom ___ football very well.",["play","plays","played","playing"],1],
+["The sun ___ in the east.",["rise","rises","rose","rising"],1],
+["Cats ___ milk.",["like","likes","liked","liking"],0],
 
-{q:"My mother ___ dinner every day.",options:["cook","cooks","cooked","cooking"],answer:1},
-{q:"We ___ English at school.",options:["learn","learns","learned","learning"],answer:0},
-{q:"He ___ his teeth twice a day.",options:["brush","brushes","brushed","brushing"],answer:1},
-{q:"They ___ in Hanoi.",options:["live","lives","lived","living"],answer:0},
-{q:"She ___ music every night.",options:["listen","listens","listened","listening"],answer:1},
-{q:"I ___ breakfast at 7 a.m.",options:["have","has","had","having"],answer:0},
-{q:"Peter ___ basketball after school.",options:["play","plays","played","playing"],answer:1},
-{q:"Birds ___ in the sky.",options:["fly","flies","flew","flying"],answer:0},
-{q:"My sister ___ very fast.",options:["run","runs","ran","running"],answer:1},
-{q:"We ___ our grandparents every week.",options:["visit","visits","visited","visiting"],answer:0},
+["My mother ___ dinner every day.",["cook","cooks","cooked","cooking"],1],
+["We ___ English at school.",["learn","learns","learned","learning"],0],
+["He ___ his teeth twice a day.",["brush","brushes","brushed","brushing"],1],
+["They ___ in Hanoi.",["live","lives","lived","living"],0],
+["She ___ music every night.",["listen","listens","listened","listening"],1],
+["I ___ breakfast at 7 a.m.",["have","has","had","having"],0],
+["Peter ___ basketball after school.",["play","plays","played","playing"],1],
+["Birds ___ in the sky.",["fly","flies","flew","flying"],0],
+["My sister ___ very fast.",["run","runs","ran","running"],1],
+["We ___ our grandparents every week.",["visit","visits","visited","visiting"],0],
 
-{q:"She ___ to school by bus.",options:["go","goes","went","going"],answer:1},
-{q:"I ___ books every night.",options:["read","reads","readed","reading"],answer:0},
-{q:"He ___ TV in the evening.",options:["watch","watches","watched","watching"],answer:1},
-{q:"They ___ lunch at noon.",options:["have","has","had","having"],answer:0},
-{q:"My dog ___ a lot.",options:["bark","barks","barked","barking"],answer:1},
-{q:"The teacher ___ English.",options:["teach","teaches","taught","teaching"],answer:1},
-{q:"John ___ his room every Sunday.",options:["clean","cleans","cleaned","cleaning"],answer:1},
-{q:"We ___ to music in the evening.",options:["listen","listens","listened","listening"],answer:0},
-{q:"She ___ her mother every day.",options:["help","helps","helped","helping"],answer:1},
-{q:"I ___ water every morning.",options:["drink","drinks","drank","drinking"],answer:0},
+["She ___ to school by bus.",["go","goes","went","going"],1],
+["I ___ books every night.",["read","reads","readed","reading"],0],
+["He ___ TV in the evening.",["watch","watches","watched","watching"],1],
+["They ___ lunch at noon.",["have","has","had","having"],0],
+["My dog ___ a lot.",["bark","barks","barked","barking"],1],
+["The teacher ___ English.",["teach","teaches","taught","teaching"],1],
+["John ___ his room every Sunday.",["clean","cleans","cleaned","cleaning"],1],
+["We ___ to music in the evening.",["listen","listens","listened","listening"],0],
+["She ___ her mother every day.",["help","helps","helped","helping"],1],
+["I ___ water every morning.",["drink","drinks","drank","drinking"],0],
 
-{q:"He ___ his homework after dinner.",options:["do","does","did","doing"],answer:1},
-{q:"They ___ English very well.",options:["speak","speaks","spoke","speaking"],answer:0},
-{q:"My brother ___ video games.",options:["play","plays","played","playing"],answer:1},
-{q:"We ___ at 6 a.m. every day.",options:["get up","gets up","got up","getting up"],answer:0},
-{q:"She ___ a shower every morning.",options:["take","takes","took","taking"],answer:1},
-{q:"I ___ my friends at school.",options:["meet","meets","met","meeting"],answer:0},
-{q:"Tom ___ to music on his phone.",options:["listen","listens","listened","listening"],answer:1},
-{q:"The baby ___ a lot at night.",options:["cry","cries","cried","crying"],answer:1},
-{q:"They ___ their parents.",options:["love","loves","loved","loving"],answer:0},
-{q:"My father ___ newspapers every morning.",options:["read","reads","readed","reading"],answer:1},
+["He ___ his homework after dinner.",["do","does","did","doing"],1],
+["They ___ English very well.",["speak","speaks","spoke","speaking"],0],
+["My brother ___ video games.",["play","plays","played","playing"],1],
+["We ___ at 6 a.m. every day.",["get up","gets up","got up","getting up"],0],
+["She ___ a shower every morning.",["take","takes","took","taking"],1],
+["I ___ my friends at school.",["meet","meets","met","meeting"],0],
+["Tom ___ to music on his phone.",["listen","listens","listened","listening"],1],
+["The baby ___ a lot at night.",["cry","cries","cried","crying"],1],
+["They ___ their parents.",["love","loves","loved","loving"],0],
+["My father ___ newspapers every morning.",["read","reads","readed","reading"],1],
 
-{q:"I ___ English every day.",options:["practice","practices","practiced","practicing"],answer:0},
-{q:"She ___ her room on Saturdays.",options:["clean","cleans","cleaned","cleaning"],answer:1},
-{q:"He ___ TV in the evening.",options:["watch","watches","watched","watching"],answer:1},
-{q:"We ___ dinner together.",options:["eat","eats","ate","eating"],answer:0},
-{q:"They ___ to school together.",options:["walk","walks","walked","walking"],answer:0},
-{q:"My sister ___ tea.",options:["drink","drinks","drank","drinking"],answer:1},
-{q:"The shop ___ at 8 a.m.",options:["open","opens","opened","opening"],answer:1},
-{q:"The train ___ at 7 p.m.",options:["leave","leaves","left","leaving"],answer:1},
-{q:"I ___ my homework before bed.",options:["finish","finishes","finished","finishing"],answer:0},
-{q:"She ___ French.",options:["speak","speaks","spoke","speaking"],answer:1},
+["I ___ English every day.",["practice","practices","practiced","practicing"],0],
+["She ___ her room on Saturdays.",["clean","cleans","cleaned","cleaning"],1],
+["He ___ TV in the evening.",["watch","watches","watched","watching"],1],
+["We ___ dinner together.",["eat","eats","ate","eating"],0],
+["They ___ to school together.",["walk","walks","walked","walking"],0],
+["My sister ___ tea.",["drink","drinks","drank","drinking"],1],
+["The shop ___ at 8 a.m.",["open","opens","opened","opening"],1],
+["The train ___ at 7 p.m.",["leave","leaves","left","leaving"],1],
+["I ___ my homework before bed.",["finish","finishes","finished","finishing"],0],
+["She ___ French.",["speak","speaks","spoke","speaking"],1],
 
-{q:"We ___ our teacher.",options:["respect","respects","respected","respecting"],answer:0},
-{q:"He ___ his bike every weekend.",options:["wash","washes","washed","washing"],answer:1},
-{q:"They ___ basketball after class.",options:["play","plays","played","playing"],answer:0},
-{q:"My mother ___ flowers.",options:["like","likes","liked","liking"],answer:1},
-{q:"I ___ early on weekdays.",options:["wake up","wakes up","woke up","waking up"],answer:0},
-{q:"She ___ breakfast at home.",options:["eat","eats","ate","eating"],answer:1},
-{q:"He ___ his grandparents often.",options:["visit","visits","visited","visiting"],answer:1},
-{q:"We ___ movies on Friday nights.",options:["watch","watches","watched","watching"],answer:0},
-{q:"They ___ computer games.",options:["enjoy","enjoys","enjoyed","enjoying"],answer:0},
-{q:"The Earth ___ around the Sun.",options:["move","moves","moved","moving"],answer:1},
+["We ___ our teacher.",["respect","respects","respected","respecting"],0],
+["He ___ his bike every weekend.",["wash","washes","washed","washing"],1],
+["They ___ basketball after class.",["play","plays","played","playing"],0],
+["My mother ___ flowers.",["like","likes","liked","liking"],1],
+["I ___ early on weekdays.",["wake up","wakes up","woke up","waking up"],0],
+["She ___ breakfast at home.",["eat","eats","ate","eating"],1],
+["He ___ his grandparents often.",["visit","visits","visited","visiting"],1],
+["We ___ movies on Friday nights.",["watch","watches","watched","watching"],0],
+["They ___ computer games.",["enjoy","enjoys","enjoyed","enjoying"],0],
+["The Earth ___ around the Sun.",["move","moves","moved","moving"],1],
 
-{q:"I ___ my bed every morning.",options:["make","makes","made","making"],answer:0},
-{q:"She ___ her hair every day.",options:["brush","brushes","brushed","brushing"],answer:1},
-{q:"He ___ to school at 7.",options:["go","goes","went","going"],answer:1},
-{q:"They ___ lunch together.",options:["have","has","had","having"],answer:0},
-{q:"We ___ English on Monday.",options:["study","studies","studied","studying"],answer:0},
-{q:"My friend ___ tennis.",options:["play","plays","played","playing"],answer:1},
-{q:"The teacher ___ the lesson.",options:["start","starts","started","starting"],answer:1},
-{q:"I ___ my parents every night.",options:["call","calls","called","calling"],answer:0},
-{q:"She ___ very hard.",options:["work","works","worked","working"],answer:1},
-{q:"He ___ the piano.",options:["play","plays","played","playing"],answer:1},
+["I ___ my bed every morning.",["make","makes","made","making"],0],
+["She ___ her hair every day.",["brush","brushes","brushed","brushing"],1],
+["He ___ to school at 7.",["go","goes","went","going"],1],
+["They ___ lunch together.",["have","has","had","having"],0],
+["We ___ English on Monday.",["study","studies","studied","studying"],0],
+["My friend ___ tennis.",["play","plays","played","playing"],1],
+["The teacher ___ the lesson.",["start","starts","started","starting"],1],
+["I ___ my parents every night.",["call","calls","called","calling"],0],
+["She ___ very hard.",["work","works","worked","working"],1],
+["He ___ the piano.",["play","plays","played","playing"],1],
 
-{q:"We ___ in a small house.",options:["live","lives","lived","living"],answer:0},
-{q:"They ___ many books.",options:["read","reads","readed","reading"],answer:0},
-{q:"My cat ___ on the sofa.",options:["sleep","sleeps","slept","sleeping"],answer:1},
-{q:"She ___ her friends on weekends.",options:["meet","meets","met","meeting"],answer:1},
-{q:"I ___ my shoes before entering.",options:["remove","removes","removed","removing"],answer:0},
-{q:"He ___ the door every morning.",options:["open","opens","opened","opening"],answer:1},
-{q:"We ___ our lessons carefully.",options:["learn","learns","learned","learning"],answer:0},
-{q:"They ___ in the park.",options:["walk","walks","walked","walking"],answer:0},
-{q:"My father ___ football.",options:["like","likes","liked","liking"],answer:1},
-{q:"She ___ a lot of water.",options:["drink","drinks","drank","drinking"],answer:1},
+["We ___ in a small house.",["live","lives","lived","living"],0],
+["They ___ many books.",["read","reads","readed","reading"],0],
+["My cat ___ on the sofa.",["sleep","sleeps","slept","sleeping"],1],
+["She ___ her friends on weekends.",["meet","meets","met","meeting"],1],
+["I ___ my shoes before entering.",["remove","removes","removed","removing"],0],
+["He ___ the door every morning.",["open","opens","opened","opening"],1],
+["We ___ our lessons carefully.",["learn","learns","learned","learning"],0],
+["They ___ in the park.",["walk","walks","walked","walking"],0],
+["My father ___ football.",["like","likes","liked","liking"],1],
+["She ___ a lot of water.",["drink","drinks","drank","drinking"],1],
 
-{q:"I ___ to music every day.",options:["listen","listens","listened","listening"],answer:0},
-{q:"He ___ his car every Sunday.",options:["wash","washes","washed","washing"],answer:1},
-{q:"She ___ mathematics.",options:["teach","teaches","taught","teaching"],answer:1},
-{q:"They ___ breakfast at home.",options:["eat","eats","ate","eating"],answer:0},
-{q:"We ___ our homework after school.",options:["do","does","did","doing"],answer:0},
-{q:"My brother ___ very fast.",options:["run","runs","ran","running"],answer:1},
-{q:"The dog ___ at strangers.",options:["bark","barks","barked","barking"],answer:1},
-{q:"I ___ my room every week.",options:["clean","cleans","cleaned","cleaning"],answer:0},
-{q:"She ___ to bed early.",options:["go","goes","went","going"],answer:1},
-{q:"He ___ his parents every day.",options:["help","helps","helped","helping"],answer:1},
+["I ___ to music every day.",["listen","listens","listened","listening"],0],
+["He ___ his car every Sunday.",["wash","washes","washed","washing"],1],
+["She ___ mathematics.",["teach","teaches","taught","teaching"],1],
+["They ___ breakfast at home.",["eat","eats","ate","eating"],0],
+["We ___ our homework after school.",["do","does","did","doing"],0],
+["My brother ___ very fast.",["run","runs","ran","running"],1],
+["The dog ___ at strangers.",["bark","barks","barked","barking"],1],
+["I ___ my room every week.",["clean","cleans","cleaned","cleaning"],0],
+["She ___ to bed early.",["go","goes","went","going"],1],
+["He ___ his parents every day.",["help","helps","helped","helping"],1],
 
-{q:"They ___ English together.",options:["practice","practices","practiced","practicing"],answer:0},
-{q:"We ___ football after school.",options:["play","plays","played","playing"],answer:0},
-{q:"My mother ___ delicious food.",options:["cook","cooks","cooked","cooking"],answer:1},
-{q:"I ___ comics at night.",options:["read","reads","readed","reading"],answer:0},
-{q:"She ___ her bag carefully.",options:["check","checks","checked","checking"],answer:1},
-{q:"He ___ his homework every afternoon.",options:["finish","finishes","finished","finishing"],answer:1},
-{q:"They ___ their classroom.",options:["clean","cleans","cleaned","cleaning"],answer:0},
-{q:"We ___ our teacher's instructions.",options:["follow","follows","followed","following"],answer:0},
-{q:"The moon ___ around the Earth.",options:["move","moves","moved","moving"],answer:1},
-{q:"Water ___ at 100°C.",options:["boil","boils","boiled","boiling"],answer:1}
+["They ___ English together.",["practice","practices","practiced","practicing"],0],
+["We ___ football after school.",["play","plays","played","playing"],0],
+["My mother ___ delicious food.",["cook","cooks","cooked","cooking"],1],
+["I ___ comics at night.",["read","reads","readed","reading"],0],
+["She ___ her bag carefully.",["check","checks","checked","checking"],1],
+["He ___ his homework every afternoon.",["finish","finishes","finished","finishing"],1],
+["They ___ their classroom.",["clean","cleans","cleaned","cleaning"],0],
+["We ___ our teacher's instructions.",["follow","follows","followed","following"],0],
+["The moon ___ around the Earth.",["move","moves","moved","moving"],1],
+["Water ___ at 100°C.",["boil","boils","boiled","boiling"],1]
 
 ],
 
-/*
-====================================================
-HIỆN TẠI HOÀN THÀNH SẼ ĐƯỢC THÊM Ở PHẦN 3
-====================================================
-*/
+perfect: [
 
-perfect: []
+["I ___ my homework.",["have finished","has finished","finished","am finishing"],0],
+["She ___ to Japan.",["have been","has been","went","is"],1],
+["They ___ here for five years.",["have lived","has lived","lived","live"],0],
+["He ___ dinner.",["has eaten","have eaten","ate","is eating"],0],
+["We ___ this movie before.",["have seen","has seen","saw","see"],0],
+["Tom ___ never ___ sushi.",["has tried","have tried","tried","is trying"],0],
+["I ___ already ___ the book.",["have read","has read","readed","am reading"],0],
+["She ___ her keys.",["has lost","have lost","lost","loses"],0],
+["They ___ just arrived.",["have","has","did","are"],0],
+["He ___ here since 2020.",["has lived","have lived","lived","lives"],0],
 
-};
-```
+["I ___ three books this month.",["have read","has read","read","am reading"],0],
+["She ___ already eaten.",["has","have","did","is"],0],
+["We ___ never visited London.",["have","has","did","are"],0],
+["He ___ just finished his work.",["has","have","did","is"],0],
+["They ___ lived here since 2021.",["have","has","did","are"],0],
+["Anna ___ lost her phone.",["has","have","did","is"],0],
+["I ___ never seen that film.",["have","has","did","am"],0],
+["She ___ worked here for ten years.",["has","have","did","is"],0],
+["We ___ already finished dinner.",["have","has","did","are"],0],
+["Tom ___ just arrived.",["has","have","did","is"],0],
 
-past: `
+["I ___ visited this museum before.",["have","has","did","am"],0],
+["She ___ never tried sushi.",["has","have","did","is"],0],
+["They ___ known each other for years.",["have","has","did","are"],0],
+["He ___ already done his homework.",["has","have","did","is"],0],
+["We ___ lived here since 2019.",["have","has","did","are"],0],
+["I ___ just cleaned my room.",["have","has","did","am"],0],
+["She ___ already bought a new bag.",["has","have","did","is"],0],
+["They ___ just gone home.",["have","has","did","are"],0],
+["He ___ never been to Korea.",["has","have","did","is"],0],
+["We ___ seen this before.",["have","has","did","are"],0],
 
-<h2>⏪ THÌ QUÁ KHỨ ĐƠN</h2>
+["I ___ finished the project.",["have","has","did","am"],0],
+["She ___ written three emails.",["has","have","did","is"],0],
+["They ___ taken many photos.",["have","has","did","are"],0],
+["He ___ made a cake.",["has","have","did","is"],0],
+["We ___ learned English for years.",["have","has","did","are"],0],
+["I ___ bought a new computer.",["have","has","did","am"],0],
+["She ___ visited Paris twice.",["has","have","did","is"],0],
+["They ___ played this game before.",["have","has","did","are"],0],
+["He ___ read the book.",["has","have","did","is"],0],
+["We ___ watched this movie.",["have","has","did","are"],0],
 
-<p>
-Dùng để diễn tả một hành động đã xảy ra
-và đã kết thúc trong quá khứ.
-</p>
+["I ___ never eaten sushi.",["have","has","did","am"],0],
+["She ___ just called me.",["has","have","did","is"],0],
+["They ___ already left.",["have","has","did","are"],0],
+["He ___ worked here since 2020.",["has","have","did","is"],0],
+["We ___ known him for five years.",["have","has","did","are"],0],
+["I ___ studied English since 2022.",["have","has","did","am"],0],
+["She ___ lived here for ten years.",["has","have","did","is"],0],
+["They ___ never seen snow.",["have","has","did","are"],0],
+["He ___ already finished.",["has","have","did","is"],0],
+["We ___ just arrived.",["have","has","did","are"],0],
 
-<h3>📌 Cấu trúc</h3>
+["I ___ cleaned my room.",["have","has","did","am"],0],
+["She ___ washed the car.",["has","have","did","is"],0],
+["They ___ cooked dinner.",["have","has","did","are"],0],
+["He ___ opened the door.",["has","have","did","is"],0],
+["We ___ closed the window.",["have","has","did","are"],0],
+["I ___ helped my mother.",["have","has","did","am"],0],
+["She ___ finished her homework.",["has","have","did","is"],0],
+["They ___ completed the work.",["have","has","did","are"],0],
+["He ___ started the lesson.",["has","have","did","is"],0],
+["We ___ practiced English.",["have","has","did","are"],0],
 
-<div class="formula">
-<b>Khẳng định:</b><br>
-S + V2/ed + O
-</div>
+["I ___ been to Hanoi.",["have","has","did","am"],0],
+["She ___ been to Da Nang.",["has","have","did","is"],0],
+["They ___ been to Thailand.",["have","has","did","are"],0],
+["He ___ been to Japan.",["has","have","did","is"],0],
+["We ___ been there before.",["have","has","did","are"],0],
+["I ___ never been abroad.",["have","has","did","am"],0],
+["She ___ never been to China.",["has","have","did","is"],0],
+["They ___ never been here.",["have","has","did","are"],0],
+["He ___ never been late.",["has","have","did","is"],0],
+["We ___ never been there.",["have","has","did","are"],0],
 
-<div class="formula">
-<b>Phủ định:</b><br>
-S + did not (didn't) + V nguyên mẫu
-</div>
+["I ___ already seen it.",["have","has","did","am"],0],
+["She ___ already read it.",["has","have","did","is"],0],
+["They ___ already eaten.",["have","has","did","are"],0],
+["He ___ already gone home.",["has","have","did","is"],0],
+["We ___ already finished.",["have","has","did","are"],0],
+["I ___ just eaten lunch.",["have","has","did","am"],0],
+["She ___ just arrived.",["has","have","did","is"],0],
+["They ___ just finished.",["have","has","did","are"],0],
+["He ___ just called.",["has","have","did","is"],0],
+["We ___ just started.",["have","has","did","are"],0],
 
-<div class="formula">
-<b>Nghi vấn:</b><br>
-Did + S + V nguyên mẫu?
-</div>
+["I ___ lived here for five years.",["have","has","did","am"],0],
+["She ___ lived here since 2020.",["has","have","did","is"],0],
+["They ___ worked here for ten years.",["have","has","did","are"],0],
+["He ___ studied English since 2021.",["has","have","did","is"],0],
+["We ___ known her for years.",["have","has","did","are"],0],
+["I ___ worked here since May.",["have","has","did","am"],0],
+["She ___ studied for three hours.",["has","have","did","is"],0],
+["They ___ lived in Hanoi for years.",["have","has","did","are"],0],
+["He ___ played football since childhood.",["has","have","did","is"],0],
+["We ___ waited for an hour.",["have","has","did","are"],0],
 
-<h3>🔎 Dấu hiệu nhận biết</h3>
+["I ___ never tried it.",["have","has","did","am"],0],
+["She ___ never seen this place.",["has","have","did","is"],0],
+["They ___ never played tennis.",["have","has","did","are"],0],
+["He ___ never eaten fish.",["has","have","did","is"],0],
+["We ___ never heard that song.",["have","has","did","are"],0],
+["I ___ never met him.",["have","has","did","am"],0],
+["She ___ never visited London.",["has","have","did","is"],0],
+["They ___ never watched this movie.",["have","has","did","are"],0],
+["He ___ never read this book.",["has","have","did","is"],0],
+["We ___ never seen snow.",["have","has","did","are"],0],
 
-<div class="cards">
+["I ___ completed my homework.",["have","has","did","am"],0],
+["She ___ completed the task.",["has","have","did","is"],0],
+["They ___ completed the project.",["have","has","did","are"],0],
+["He ___ completed the test.",["has","have","did","is"],0],
+["We ___ completed the lesson.",["have","has","did","are"],0],
+["I ___ learned many words.",["have","has","did","am"],0],
+["She ___ learned English for years.",["has","have","did","is"],0],
+["They ___ learned a lot.",["have","has","did","are"],0],
+["He ___ learned the lesson.",["has","have","did","is"],0],
+["We ___ learned this before.",["have","has","did","are"],0]
 
-<div class="card">📅 yesterday</div>
-<div class="card">📅 last night</div>
-<div class="card">📅 last week</div>
-<div class="card">⏱️ ... ago</div>
-<div class="card">📆 in 2020</div>
-
-</div>
-
-<h3>💡 Ví dụ</h3>
-
-<div class="example">
-I <b>visited</b> my grandmother yesterday.
-</div>
-
-<div class="example">
-She <b>went</b> to school last Monday.
-</div>
-
-`,
-
-present: `
-
-<h2>☀️ THÌ HIỆN TẠI ĐƠN</h2>
-
-<p>
-Dùng để diễn tả thói quen, hành động thường xuyên,
-sự thật hiển nhiên và lịch trình cố định.
-</p>
-
-<h3>📌 Cấu trúc</h3>
-
-<div class="formula">
-<b>Khẳng định:</b><br>
-I / You / We / They + V nguyên mẫu<br>
-He / She / It + V(s/es)
-</div>
-
-<div class="formula">
-<b>Phủ định:</b><br>
-I / You / We / They + do not + V<br>
-He / She / It + does not + V
-</div>
-
-<div class="formula">
-<b>Nghi vấn:</b><br>
-Do + I / you / we / they + V?<br>
-Does + he / she / it + V?
-</div>
-
-<h3>🔎 Dấu hiệu nhận biết</h3>
-
-<div class="cards">
-
-<div class="card">⭐ always</div>
-<div class="card">⭐ usually</div>
-<div class="card">⭐ often</div>
-<div class="card">⭐ sometimes</div>
-<div class="card">📅 every day</div>
-<div class="card">📅 every week</div>
-
-</div>
-
-<h3>⚠️ Lưu ý</h3>
-
-<div class="example">
-He <b>plays</b> football.
-</div>
-
-<div class="example">
-She <b>goes</b> to school every day.
-</div>
-
-<div class="example">
-Tom <b>studies</b> English.
-</div>
-
-<h3>💡 Ví dụ</h3>
-
-<div class="example">
-I <b>go</b> to school every day.
-</div>
-
-`,
-
-perfect: `
-
-<h2>🚀 THÌ HIỆN TẠI HOÀN THÀNH</h2>
-
-<p>
-Dùng để diễn tả hành động xảy ra trong quá khứ
-nhưng có liên quan đến hiện tại, kinh nghiệm,
-hoặc hành động bắt đầu trong quá khứ và vẫn tiếp diễn.
-</p>
-
-<h3>📌 Cấu trúc</h3>
-
-<div class="formula">
-<b>Khẳng định:</b><br>
-S + have/has + V3/ed
-</div>
-
-<div class="formula">
-<b>Phủ định:</b><br>
-S + have/has not + V3/ed
-</div>
-
-<div class="formula">
-<b>Nghi vấn:</b><br>
-Have/Has + S + V3/ed?
-</div>
-
-<h3>👤 HAVE hay HAS?</h3>
-
-<div class="cards">
-
-<div class="card">
-<b>I / You / We / They</b><br>
-→ HAVE
-</div>
-
-<div class="card">
-<b>He / She / It</b><br>
-→ HAS
-</div>
-
-</div>
-
-<h3>🔎 Dấu hiệu nhận biết</h3>
-
-<div class="cards">
-
-<div class="card">⭐ already</div>
-<div class="card">⭐ just</div>
-<div class="card">⭐ ever</div>
-<div class="card">⭐ never</div>
-<div class="card">⭐ since</div>
-<div class="card">⭐ for</div>
-<div class="card">⭐ yet</div>
-
-</div>
-
-<h3>💡 Ví dụ</h3>
-
-<div class="example">
-I <b>have finished</b> my homework.
-</div>
-
-<div class="example">
-She <b>has visited</b> Japan.
-</div>
-
-<div class="example">
-They <b>have lived</b> here for five years.
-</div>
-
-`
+]
 
 };
 
 
-/* =====================================================
-   BIẾN QUIZ
-===================================================== */
+/* ==================================================
+   KIỂM TRA SỐ CÂU
+================================================== */
 
-let currentTense = "past";
-
-let currentQuestion = 0;
-
-let score = 0;
-
-let quizQuestions = [];
+console.log("Quá khứ:",questions.past.length);
+console.log("Hiện tại:",questions.present.length);
+console.log("Hoàn thành:",questions.perfect.length);
 
 
-/* =====================================================
-   CHỌN THÌ
-===================================================== */
+/* ==================================================
+   QUIZ ENGINE
+================================================== */
 
-function selectTense(tense,button){
+let currentTense="past";
+let quizQuestions=[];
+let currentQuestion=0;
+let score=0;
 
-    currentTense = tense;
 
-    document
-        .querySelectorAll(".tab")
-        .forEach(function(tab){
-            tab.classList.remove("active");
-        });
+/* HIỂN THỊ BÀI HỌC */
+
+function changeTense(tense,button){
+
+    currentTense=tense;
+
+    document.querySelectorAll(".tab")
+        .forEach(x=>x.classList.remove("active"));
 
     button.classList.add("active");
 
-    document
-        .getElementById("lesson")
-        .innerHTML = lessons[tense];
+    document.getElementById("lesson").innerHTML=
+        lessons[tense];
 
+    document.getElementById("startBox").style.display=
+        "block";
+
+    document.getElementById("quiz").style.display=
+        "none";
 }
 
 
-/* =====================================================
-   BẮT ĐẦU QUIZ
-===================================================== */
+/* BẮT ĐẦU QUIZ */
 
 function startQuiz(){
 
-    quizQuestions =
-        [...questions[currentTense]];
+    quizQuestions=[
+        ...questions[currentTense]
+    ];
 
+    /*
+    Trộn câu hỏi
+    */
     quizQuestions.sort(
-        () => Math.random() - 0.5
+        ()=>Math.random()-0.5
     );
 
-    currentQuestion = 0;
+    currentQuestion=0;
+    score=0;
 
-    score = 0;
+    document.getElementById("startBox")
+        .style.display="none";
 
-    document
-        .getElementById("startBox")
-        .style.display = "none";
+    document.getElementById("lesson")
+        .style.display="none";
 
-    document
-        .getElementById("lesson")
-        .style.display = "none";
+    document.getElementById("quiz")
+        .style.display="block";
 
-    document
-        .getElementById("quiz")
-        .style.display = "block";
+    document.getElementById("result")
+        .style.display="none";
 
-    document
-        .getElementById("result")
-        .style.display = "none";
+    document.getElementById("question")
+        .style.display="block";
 
-    document
-        .getElementById("question")
-        .style.display = "block";
+    document.getElementById("answers")
+        .style.display="grid";
 
-    document
-        .getElementById("questionNumber")
-        .style.display = "block";
+    document.getElementById("questionNumber")
+        .style.display="block";
 
-    document
-        .getElementById("feedback")
-        .style.display = "block";
+    document.getElementById("feedback")
+        .style.display="block";
 
-    document
-        .getElementById("score")
-        .textContent = "0";
+    document.getElementById("score")
+        .textContent="0";
 
     renderQuestion();
-
 }
 
 
-/* =====================================================
-   HIỂN THỊ CÂU HỎI
-===================================================== */
+/* HIỂN THỊ CÂU */
 
 function renderQuestion(){
 
-    const q =
+    const q=
         quizQuestions[currentQuestion];
 
-    document
-        .getElementById("questionNumber")
-        .textContent =
-        "Câu "
-        +
-        (currentQuestion + 1)
-        +
-        " / "
-        +
-        quizQuestions.length;
+    document.getElementById("questionNumber")
+        .textContent=
+        "Câu "+(currentQuestion+1)+
+        " / "+quizQuestions.length;
 
-    document
-        .getElementById("question")
-        .textContent =
-        q.q;
+    document.getElementById("question")
+        .textContent=q[0];
 
-    const answers =
+    const answers=
         document.getElementById("answers");
 
-    answers.innerHTML = "";
+    answers.innerHTML="";
 
-    q.options.forEach(function(option,index){
+    q[1].forEach((option,index)=>{
 
-        const button =
+        const button=
             document.createElement("button");
 
-        button.className = "answer";
+        button.className="answer";
 
-        button.textContent =
-            String.fromCharCode(65 + index)
-            +
-            ". "
-            +
-            option;
+        button.textContent=
+            String.fromCharCode(65+index)
+            +". "
+            +option;
 
-        button.onclick = function(){
-
-            chooseAnswer(
-                index,
-                button
-            );
-
+        button.onclick=()=>{
+            chooseAnswer(index,button);
         };
 
         answers.appendChild(button);
 
     });
 
-    document
-        .getElementById("feedback")
-        .textContent = "";
+    document.getElementById("feedback")
+        .textContent="";
 
-    document
-        .getElementById("nextBtn")
-        .style.display = "none";
+    document.getElementById("nextBtn")
+        .style.display="none";
 
-    document
-        .getElementById("progressBar")
-        .style.width =
+    document.getElementById("progressBar")
+        .style.width=
         (
-            currentQuestion
-            /
-            quizQuestions.length
-            *
+            currentQuestion/
+            quizQuestions.length*
             100
-        )
-        + "%";
-
+        )+"%";
 }
 
 
-/* =====================================================
-   CHỌN ĐÁP ÁN
-===================================================== */
+/* CHỌN ĐÁP ÁN */
 
 function chooseAnswer(selected,button){
 
-    const q =
+    const q=
         quizQuestions[currentQuestion];
 
-    document
-        .querySelectorAll(".answer")
-        .forEach(function(btn){
+    const correct=
+        q[2];
 
-            btn.disabled = true;
-
+    document.querySelectorAll(".answer")
+        .forEach(btn=>{
+            btn.disabled=true;
         });
 
-    if(selected === q.answer){
+    if(selected===correct){
 
         score++;
 
         button.classList.add("correct");
 
-        document
-            .getElementById("feedback")
-            .textContent =
+        document.getElementById("feedback")
+            .textContent=
             "🎉 Chính xác!";
 
     }else{
 
         button.classList.add("wrong");
 
-        document
-            .querySelectorAll(".answer")
-            [q.answer]
+        document.querySelectorAll(".answer")
+            [correct]
             .classList.add("correct");
 
-        document
-            .getElementById("feedback")
-            .textContent =
+        document.getElementById("feedback")
+            .textContent=
             "❌ Chưa đúng!";
-
     }
 
-    document
-        .getElementById("score")
-        .textContent = score;
+    document.getElementById("score")
+        .textContent=score;
 
-    document
-        .getElementById("nextBtn")
-        .style.display = "inline-block";
-
+    document.getElementById("nextBtn")
+        .style.display="inline-block";
 }
 
 
-/* =====================================================
-   CÂU TIẾP THEO
-===================================================== */
+/* CÂU TIẾP */
 
 function nextQuestion(){
 
     currentQuestion++;
 
     if(
-        currentQuestion >=
+        currentQuestion>=
         quizQuestions.length
     ){
 
         finishQuiz();
 
         return;
-
     }
 
     renderQuestion();
-
 }
 
 
-/* =====================================================
-   KẾT QUẢ
-===================================================== */
+/* KẾT QUẢ */
 
 function finishQuiz(){
 
-    document
-        .getElementById("question")
-        .style.display = "none";
+    document.getElementById("question")
+        .style.display="none";
 
-    document
-        .getElementById("questionNumber")
-        .style.display = "none";
+    document.getElementById("questionNumber")
+        .style.display="none";
 
-    document
-        .getElementById("answers")
-        .innerHTML = "";
+    document.getElementById("answers")
+        .style.display="none";
 
-    document
-        .getElementById("feedback")
-        .style.display = "none";
+    document.getElementById("feedback")
+        .style.display="none";
 
-    document
-        .getElementById("nextBtn")
-        .style.display = "none";
+    document.getElementById("nextBtn")
+        .style.display="none";
 
-    document
-        .getElementById("progressBar")
-        .style.width = "100%";
+    document.getElementById("progressBar")
+        .style.width="100%";
 
-    document
-        .getElementById("result")
-        .style.display = "block";
+    document.getElementById("result")
+        .style.display="block";
 
-    document
-        .getElementById("finalScore")
-        .textContent = score;
+    document.getElementById("finalScore")
+        .textContent=score;
 
-    let text;
+    let message="";
 
-    if(score >= 90){
-
-        text =
-            "🏆 Xuất sắc! Bạn nắm kiến thức rất tốt!";
-
-    }else if(score >= 70){
-
-        text =
-            "🔥 Rất tốt! Hãy luyện thêm để đạt điểm cao hơn.";
-
-    }else if(score >= 50){
-
-        text =
-            "💪 Khá ổn! Hãy xem lại phần cấu trúc.";
-
-    }else{
-
-        text =
-            "📚 Hãy ôn lại bài học và thử lại nhé!";
-
+    if(score>=90){
+        message=
+        "🏆 Xuất sắc! Bạn nắm rất chắc thì này!";
+    }
+    else if(score>=80){
+        message=
+        "🔥 Rất tốt! Chỉ cần luyện thêm một chút!";
+    }
+    else if(score>=60){
+        message=
+        "👍 Khá ổn! Hãy ôn lại các câu sai.";
+    }
+    else if(score>=40){
+        message=
+        "💪 Cố lên! Bạn nên xem lại công thức.";
+    }
+    else{
+        message=
+        "📚 Hãy học lại phần lý thuyết rồi thử lại nhé!";
     }
 
-    document
-        .getElementById("resultText")
-        .textContent = text;
-
+    document.getElementById("resultText")
+        .textContent=message;
 }
 
 
-/* =====================================================
-   KHỞI TẠO
-===================================================== */
+/* LOAD MẶC ĐỊNH */
 
-document
-    .getElementById("lesson")
-    .innerHTML =
-    lessons.past;
+document.getElementById("lesson")
+    .innerHTML=lessons.past;
 
 </script>
 
 </body>
 </html>
-

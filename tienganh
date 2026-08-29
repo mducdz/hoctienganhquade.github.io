@@ -1,0 +1,449 @@
+```html
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Simple Past - Học thì quá khứ đơn</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #6a11cb, #2575fc, #00c6ff);
+    background-size: 400% 400%;
+    animation: bg 12s ease infinite;
+    color: white;
+    min-height: 100vh;
+}
+
+@keyframes bg {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* HEADER */
+header {
+    text-align: center;
+    padding: 55px 20px;
+}
+
+header h1 {
+    font-size: 55px;
+    text-shadow: 0 5px 15px rgba(0,0,0,.3);
+}
+
+header p {
+    margin-top: 12px;
+    font-size: 20px;
+}
+
+/* MENU */
+nav {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+    padding: 15px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    background: rgba(255,255,255,.18);
+    padding: 12px 22px;
+    border-radius: 30px;
+    backdrop-filter: blur(10px);
+    transition: .3s;
+}
+
+nav a:hover {
+    background: white;
+    color: #2575fc;
+    transform: translateY(-4px);
+}
+
+/* CONTAINER */
+.container {
+    width: 90%;
+    max-width: 1100px;
+    margin: auto;
+}
+
+/* CARD */
+.card {
+    background: rgba(255,255,255,.15);
+    border: 1px solid rgba(255,255,255,.25);
+    backdrop-filter: blur(15px);
+    border-radius: 25px;
+    padding: 30px;
+    margin: 25px 0;
+    box-shadow: 0 15px 40px rgba(0,0,0,.2);
+    transition: .3s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card h2 {
+    color: #ffe66d;
+    margin-bottom: 18px;
+    font-size: 30px;
+}
+
+.card h3 {
+    margin-top: 20px;
+    color: #8effff;
+}
+
+.formula {
+    background: rgba(0,0,0,.25);
+    padding: 18px;
+    border-radius: 15px;
+    margin: 15px 0;
+    font-size: 19px;
+    border-left: 5px solid #ffe66d;
+}
+
+.example {
+    background: rgba(255,255,255,.12);
+    padding: 15px;
+    border-radius: 12px;
+    margin: 10px 0;
+}
+
+.highlight {
+    color: #ffe66d;
+    font-weight: bold;
+}
+
+/* GRID */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+/* BUTTON */
+button {
+    border: none;
+    padding: 14px 25px;
+    border-radius: 30px;
+    background: #ffe66d;
+    color: #333;
+    font-size: 17px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: .3s;
+}
+
+button:hover {
+    transform: scale(1.08);
+    box-shadow: 0 5px 20px rgba(255,230,109,.5);
+}
+
+/* QUIZ */
+.question {
+    font-size: 20px;
+    margin-bottom: 15px;
+}
+
+input {
+    padding: 12px;
+    border: none;
+    border-radius: 10px;
+    outline: none;
+    margin-right: 10px;
+    font-size: 16px;
+}
+
+#result {
+    margin-top: 15px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+/* FOOTER */
+footer {
+    text-align: center;
+    padding: 40px;
+    margin-top: 30px;
+    background: rgba(0,0,0,.2);
+}
+
+/* EMOJI */
+.emoji {
+    font-size: 45px;
+    margin-bottom: 10px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="emoji">⏰📚✨</div>
+    <h1>THE SIMPLE PAST</h1>
+    <p>Học thì Quá khứ đơn theo cách dễ hiểu và đầy màu sắc!</p>
+</header>
+
+<nav>
+    <a href="#definition">Khái niệm</a>
+    <a href="#formula">Công thức</a>
+    <a href="#usage">Cách dùng</a>
+    <a href="#examples">Ví dụ</a>
+    <a href="#quiz">Quiz</a>
+</nav>
+
+<div class="container">
+
+    <!-- KHÁI NIỆM -->
+    <section class="card" id="definition">
+        <h2>🌈 1. Thì Quá khứ đơn là gì?</h2>
+
+        <p>
+            <b>Simple Past</b> dùng để diễn tả một hành động,
+            sự việc đã xảy ra và <span class="highlight">kết thúc trong quá khứ</span>.
+        </p>
+
+        <div class="example">
+            👉 I <span class="highlight">visited</span> my grandmother yesterday.
+            <br>
+            → Tôi đã thăm bà tôi ngày hôm qua.
+        </div>
+
+        <div class="example">
+            👉 She <span class="highlight">watched</span> TV last night.
+            <br>
+            → Cô ấy đã xem TV tối qua.
+        </div>
+    </section>
+
+    <!-- CÔNG THỨC -->
+    <section class="card" id="formula">
+        <h2>🧠 2. Công thức</h2>
+
+        <div class="grid">
+
+            <div class="card">
+                <h3>✅ Khẳng định</h3>
+
+                <div class="formula">
+                    S + V2/ed + O
+                </div>
+
+                <p>
+                    I <b>played</b> football yesterday.
+                </p>
+
+                <p>
+                    She <b>went</b> to school.
+                </p>
+            </div>
+
+            <div class="card">
+                <h3>❌ Phủ định</h3>
+
+                <div class="formula">
+                    S + did not + V nguyên mẫu
+                </div>
+
+                <p>
+                    I <b>didn't play</b> football.
+                </p>
+
+                <p>
+                    She <b>didn't go</b> to school.
+                </p>
+            </div>
+
+            <div class="card">
+                <h3>❓ Nghi vấn</h3>
+
+                <div class="formula">
+                    Did + S + V nguyên mẫu?
+                </div>
+
+                <p>
+                    <b>Did</b> you <b>watch</b> TV?
+                </p>
+
+                <p>
+                    <b>Did</b> she <b>go</b> home?
+                </p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- CÁCH DÙNG -->
+    <section class="card" id="usage">
+        <h2>🎯 3. Cách sử dụng</h2>
+
+        <h3>⏳ Hành động đã xảy ra và kết thúc</h3>
+
+        <div class="example">
+            I <span class="highlight">visited</span> Hanoi last year.
+        </div>
+
+        <h3>📅 Một hành động xảy ra tại thời điểm cụ thể trong quá khứ</h3>
+
+        <div class="example">
+            We <span class="highlight">met</span> in 2024.
+        </div>
+
+        <h3>🔗 Các hành động xảy ra liên tiếp</h3>
+
+        <div class="example">
+            I <span class="highlight">woke up</span>,
+            <span class="highlight">brushed</span> my teeth and
+            <span class="highlight">went</span> to school.
+        </div>
+    </section>
+
+    <!-- DẤU HIỆU -->
+    <section class="card">
+        <h2>🔎 4. Dấu hiệu nhận biết</h2>
+
+        <div class="grid">
+
+            <div class="example">
+                🗓️ <b>Yesterday</b>
+            </div>
+
+            <div class="example">
+                ⏪ <b>Last week / last month / last year</b>
+            </div>
+
+            <div class="example">
+                📅 <b>... ago</b>
+            </div>
+
+            <div class="example">
+                🕰️ <b>In + năm trong quá khứ</b>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ĐỘNG TỪ -->
+    <section class="card">
+        <h2>⚡ 5. Động từ thường & bất quy tắc</h2>
+
+        <div class="grid">
+
+            <div class="example">
+                <b>PLAY → PLAYED</b>
+                <br>
+                I played football.
+            </div>
+
+            <div class="example">
+                <b>WATCH → WATCHED</b>
+                <br>
+                She watched TV.
+            </div>
+
+            <div class="example">
+                <b>GO → WENT</b>
+                <br>
+                They went home.
+            </div>
+
+            <div class="example">
+                <b>EAT → ATE</b>
+                <br>
+                He ate breakfast.
+            </div>
+
+        </div>
+    </section>
+
+    <!-- VÍ DỤ -->
+    <section class="card" id="examples">
+        <h2>💡 6. Ví dụ dễ nhớ</h2>
+
+        <div class="example">
+            ⭐ I <span class="highlight">visited</span> my friend yesterday.
+        </div>
+
+        <div class="example">
+            ⭐ They <span class="highlight">played</span> football last Sunday.
+        </div>
+
+        <div class="example">
+            ⭐ She <span class="highlight">went</span> to the cinema last night.
+        </div>
+
+        <div class="example">
+            ⭐ We <span class="highlight">didn't watch</span> TV.
+        </div>
+
+        <div class="example">
+            ⭐ <span class="highlight">Did</span> you <span class="highlight">finish</span> your homework?
+        </div>
+    </section>
+
+    <!-- QUIZ -->
+    <section class="card" id="quiz">
+        <h2>🎮 7. Mini Quiz</h2>
+
+        <div class="question">
+            1️⃣ Yesterday, I ___ to school.
+        </div>
+
+        <input id="answer1" type="text" placeholder="Nhập đáp án...">
+
+        <button onclick="checkAnswer()">Kiểm tra</button>
+
+        <div id="result"></div>
+    </section>
+
+</div>
+
+<footer>
+    <p>📚 SIMPLE PAST • Learn English • Have Fun! 🌟</p>
+</footer>
+
+<script>
+
+function checkAnswer() {
+
+    let answer = document
+        .getElementById("answer1")
+        .value
+        .trim()
+        .toLowerCase();
+
+    let result = document.getElementById("result");
+
+    if (answer === "went") {
+
+        result.innerHTML =
+        "🎉 Chính xác! Đáp án là <b>WENT</b>.";
+
+    } else if (answer === "") {
+
+        result.innerHTML =
+        "⚠️ Hãy nhập đáp án trước nhé!";
+
+    } else {
+
+        result.innerHTML =
+        "❌ Chưa đúng! Đáp án đúng là <b>WENT</b>.";
+    }
+}
+
+</script>
+
+</body>
+</html>
+```

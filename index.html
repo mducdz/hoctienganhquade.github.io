@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="vi">
 <head>
@@ -14,25 +15,27 @@ body{
     color:#fff;
 }
 button,input{font:inherit}
+
 .app{display:flex;min-height:100vh}
 
 .sidebar{
-    width:225px;
+    width:235px;
     position:fixed;
     left:0;top:0;bottom:0;
     overflow:auto;
-    padding:14px 10px;
+    padding:16px 12px;
     background:#0d1328;
     border-right:1px solid #263252;
 }
+
 .logo{
     padding:10px;
-    margin-bottom:10px;
+    margin-bottom:12px;
     border-bottom:1px solid #263252;
 }
 .logo h1{
     margin:0;
-    font-size:21px;
+    font-size:23px;
     background:linear-gradient(90deg,#20dcff,#8c5cff,#ff4db8);
     -webkit-background-clip:text;
     color:transparent;
@@ -43,15 +46,16 @@ button,input{font:inherit}
     color:#667394;
     font-size:10px;
     font-weight:bold;
-    margin:14px 8px 5px;
+    margin:15px 8px 6px;
 }
+
 .nav{
     width:100%;
     border:0;
     background:transparent;
     color:#aeb9d1;
-    padding:9px;
-    border-radius:8px;
+    padding:10px;
+    border-radius:9px;
     text-align:left;
     margin:2px 0;
     cursor:pointer;
@@ -59,54 +63,59 @@ button,input{font:inherit}
 .nav:hover{background:#ffffff0a;color:white}
 .nav.active{
     color:white;
-    background:#20dcff15;
+    background:linear-gradient(90deg,#20dcff20,#875cff20);
     border-left:3px solid #20dcff;
 }
 
 .main{
-    margin-left:225px;
-    width:calc(100% - 225px);
-    padding:20px;
+    margin-left:235px;
+    width:calc(100% - 235px);
+    padding:25px;
 }
+
 .top{
-    max-width:1080px;
-    margin:auto auto 15px;
+    max-width:1050px;
+    margin:auto auto 18px;
     display:flex;
     justify-content:space-between;
     align-items:center;
 }
-.top h2{margin:0;font-size:22px}
+.top h2{margin:0;font-size:24px}
+
 .score{
     background:#111a32;
     border:1px solid #263252;
-    padding:7px 13px;
+    padding:8px 14px;
     border-radius:20px;
 }
 
-.page{max-width:1080px;margin:auto}
+.page{max-width:1050px;margin:auto}
 
 .card{
     background:#10172d;
     border:1px solid #263252;
-    border-radius:13px;
-    padding:17px;
-    margin-bottom:12px;
+    border-radius:15px;
+    padding:20px;
+    margin-bottom:13px;
 }
 
-.hero{text-align:center;padding:35px 20px}
-.hero .emoji{font-size:50px}
-.hero h1{font-size:28px}
+.hero{
+    text-align:center;
+    padding:40px 20px;
+}
+.hero .emoji{font-size:55px}
+.hero h1{font-size:30px}
 .hero p{color:#9ca9c7;line-height:1.6}
 
 .primary,.secondary{
-    border-radius:9px;
-    padding:9px 14px;
+    border:0;
+    border-radius:20px;
+    padding:10px 17px;
     cursor:pointer;
     margin:3px;
 }
 .primary{
     color:white;
-    border:0;
     background:linear-gradient(135deg,#17d8ff,#765bff,#ff3fae);
 }
 .secondary{
@@ -118,12 +127,17 @@ button,input{font:inherit}
 .formula{
     background:#080d1d;
     border:1px solid #202c49;
-    border-radius:8px;
-    padding:10px;
-    margin:5px 0;
+    border-radius:9px;
+    padding:11px;
+    margin:6px 0;
     color:#dce4f5;
 }
-.lesson h3{color:#20dcff;font-size:14px}
+
+.lesson h3{
+    color:#20dcff;
+    font-size:14px;
+    margin-top:18px;
+}
 .lesson p{color:#bdc8df;line-height:1.6}
 
 .tags{
@@ -133,16 +147,17 @@ button,input{font:inherit}
 }
 .tag{
     background:#ffffff0b;
-    padding:6px 9px;
-    border-radius:7px;
+    padding:7px 10px;
+    border-radius:8px;
     font-size:12px;
     color:#cbd5e9;
 }
 
 .exercise-tabs{
     display:flex;
-    gap:6px;
+    gap:7px;
     flex-wrap:wrap;
+    margin-bottom:12px;
 }
 
 .progress{
@@ -150,7 +165,7 @@ button,input{font:inherit}
     background:#050915;
     border-radius:20px;
     overflow:hidden;
-    margin:8px 0 17px;
+    margin:9px 0 18px;
 }
 .progress div{
     height:100%;
@@ -158,23 +173,23 @@ button,input{font:inherit}
 }
 
 .question{
-    font-size:18px;
+    font-size:19px;
     font-weight:bold;
     line-height:1.5;
-    margin-bottom:14px;
+    margin-bottom:15px;
 }
 
 .answers{
     display:grid;
     grid-template-columns:1fr 1fr;
-    gap:7px;
+    gap:8px;
 }
 .answer{
     border:1px solid #293654;
     background:#ffffff07;
     color:white;
-    padding:12px;
-    border-radius:9px;
+    padding:13px;
+    border-radius:10px;
     cursor:pointer;
     text-align:left;
 }
@@ -184,32 +199,51 @@ button,input{font:inherit}
 
 .feedback{
     min-height:22px;
-    margin:10px 0;
+    margin:12px 0;
     font-weight:bold;
 }
 
 .input{
     width:100%;
-    padding:11px;
+    padding:12px;
     background:#070c1b;
     color:white;
     border:1px solid #293654;
-    border-radius:8px;
+    border-radius:9px;
     outline:none;
 }
-
 .input:focus{border-color:#20dcff}
+
+.vocab-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:9px;
+}
+
+.vocab-card{
+    padding:15px;
+    background:#ffffff06;
+    border:1px solid #263252;
+    border-radius:12px;
+    cursor:pointer;
+}
+.vocab-card:hover{border-color:#20dcff}
+.vocab-card .icon{font-size:35px}
+.vocab-card h3{font-size:14px;margin:7px 0}
+.vocab-card p{font-size:11px;color:#8794b5}
 
 .level-grid{
     display:grid;
     grid-template-columns:repeat(4,1fr);
     gap:10px;
+    margin-top:15px;
 }
+
 .level-card{
+    padding:18px;
     border:1px solid #293654;
+    border-radius:13px;
     background:#ffffff06;
-    border-radius:12px;
-    padding:15px;
     cursor:pointer;
     transition:.15s;
 }
@@ -217,133 +251,92 @@ button,input{font:inherit}
     transform:translateY(-2px);
     border-color:#20dcff;
 }
-.level-card .big{font-size:30px}
-.level-card h3{margin:8px 0 5px}
+.level-card h3{margin:5px 0}
 .level-card p{
-    color:#8794b5;
-    font-size:11px;
-    margin:0;
-}
-
-.topic-grid{
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:8px;
-}
-.topic{
-    border:1px solid #263252;
-    background:#ffffff06;
-    border-radius:10px;
-    padding:12px;
-    cursor:pointer;
-}
-.topic:hover{border-color:#20dcff}
-.topic-icon{font-size:28px}
-.topic h3{font-size:13px;margin:6px 0}
-.topic p{font-size:11px;color:#8794b5;margin:0}
-
-.vocab-grid{
-    display:grid;
-    grid-template-columns:repeat(5,1fr);
-    gap:8px;
-}
-.vocab-card{
-    padding:11px;
-    background:#ffffff06;
-    border:1px solid #263252;
-    border-radius:10px;
-    text-align:center;
-}
-.vocab-card img{
-    width:65px;
-    height:65px;
-    object-fit:contain;
-}
-.vocab-card .emoji{
-    font-size:48px;
-    height:65px;
-}
-.vocab-card h3{
-    font-size:13px;
-    margin:5px 0;
-}
-.vocab-card p{
-    font-size:11px;
-    color:#8794b5;
-    margin:0;
+    color:#8d9ab8;
+    font-size:12px;
 }
 
 .vocab-image{
-    height:210px;
+    height:230px;
     background:#080d1d;
-    border-radius:12px;
+    border-radius:13px;
     display:flex;
     align-items:center;
     justify-content:center;
     overflow:hidden;
-    margin-bottom:13px;
+    margin-bottom:14px;
 }
 .vocab-image img{
-    width:175px;
-    height:175px;
+    width:190px;
+    height:190px;
     object-fit:contain;
-}
-.vocab-image .fallback{font-size:90px}
-
-.info-word{
-    text-align:center;
-    margin-bottom:12px;
-}
-.info-word strong{font-size:23px}
-.info-word span{
-    display:block;
-    color:#9ca9c7;
-    margin-top:4px;
 }
 
 .match-grid{
     display:grid;
     grid-template-columns:1fr 1fr;
-    gap:14px;
+    gap:15px;
 }
 .match-item{
     border:1px solid #293654;
     background:#ffffff06;
-    border-radius:9px;
-    padding:8px;
-    margin-bottom:6px;
+    border-radius:10px;
+    padding:10px;
+    margin-bottom:7px;
     cursor:pointer;
 }
 .match-item.selected{
     border-color:#20dcff;
     background:#20dcff15;
 }
+
 .match-img{
-    width:48px;
-    height:48px;
+    width:55px;
+    height:55px;
     object-fit:contain;
     vertical-align:middle;
 }
 
 .result{
     text-align:center;
-    padding:32px;
+    padding:35px;
 }
 .result-score{
-    font-size:48px;
+    font-size:55px;
     color:#ffe66d;
     font-weight:bold;
     margin:10px;
 }
 
+.user-box{
+    margin-top:15px;
+    padding:12px;
+    border:1px solid #263252;
+    border-radius:10px;
+    background:#ffffff05;
+}
+
+.auth{
+    max-width:430px;
+    margin:50px auto;
+}
+
+.auth h1{text-align:center}
+
+.auth input{
+    margin-bottom:9px;
+}
+
+.auth-error{
+    color:#ff6678;
+    min-height:20px;
+    font-size:13px;
+}
+
 .mobile{display:none}
 
-@media(max-width:900px){
-    .level-grid{grid-template-columns:1fr 1fr}
-    .topic-grid{grid-template-columns:1fr 1fr}
-    .vocab-grid{grid-template-columns:repeat(3,1fr)}
-}
-@media(max-width:700px){
+@media(max-width:800px){
     .sidebar{
         transform:translateX(-100%);
         transition:.2s;
@@ -353,7 +346,7 @@ button,input{font:inherit}
     .main{
         margin-left:0;
         width:100%;
-        padding:12px;
+        padding:15px;
     }
     .mobile{
         display:block;
@@ -361,552 +354,719 @@ button,input{font:inherit}
         border:1px solid #293654;
         color:white;
         border-radius:8px;
-        padding:6px 9px;
+        padding:7px 10px;
     }
     .answers{grid-template-columns:1fr}
     .vocab-grid{grid-template-columns:1fr 1fr}
-    .match-grid{grid-template-columns:1fr}
+    .level-grid{grid-template-columns:1fr 1fr}
 }
 </style>
 </head>
 
 <body>
 
-<div class="app">
-
-<aside class="sidebar" id="sidebar">
-
-<div class="logo">
-<h1>📚 HOC ENGLISH</h1>
-<small>English Learning Website</small>
-</div>
-
-<div class="title">TRANG CHỦ</div>
-<button class="nav active" onclick="home(this)">🏠 Trang chủ</button>
-
-<div class="title">NGỮ PHÁP</div>
-<button class="nav" onclick="grammar('past',this)">⏪ Quá khứ đơn</button>
-<button class="nav" onclick="grammar('present',this)">☀️ Hiện tại đơn</button>
-<button class="nav" onclick="grammar('continuous',this)">🔄 Hiện tại tiếp diễn</button>
-<button class="nav" onclick="grammar('perfect',this)">🚀 Hiện tại hoàn thành</button>
-<button class="nav" onclick="grammar('future',this)">🔮 Tương lai đơn</button>
-
-<div class="title">TỪ VỰNG</div>
-<button class="nav" onclick="vocabList(this)">🧠 Từ vựng</button>
-
-</aside>
-
-<main class="main">
-
-<div class="top">
-<button class="mobile" onclick="toggleMenu()">☰</button>
-<h2 id="pageTitle">Trang chủ</h2>
-<div class="score">⭐ <b id="globalScore">0</b></div>
-</div>
-
-<div class="page" id="page"></div>
-
-</main>
-</div>
+<div id="app"></div>
 
 <script>
 
-/* =========================================================
-   NGỮ PHÁP
-========================================================= */
+/* =====================================================
+   TÀI KHOẢN
+===================================================== */
+
+const USERS_KEY="hocenglish_users";
+const LOGIN_KEY="hocenglish_current";
+
+function getUsers(){
+    return JSON.parse(localStorage.getItem(USERS_KEY)||"[]");
+}
+
+function saveUsers(users){
+    localStorage.setItem(USERS_KEY,JSON.stringify(users));
+}
+
+function currentUser(){
+    return localStorage.getItem(LOGIN_KEY);
+}
+
+function register(){
+    const username=document.getElementById("regUser").value.trim();
+    const password=document.getElementById("regPass").value;
+
+    if(username.length<3){
+        document.getElementById("authError").textContent=
+        "Tên tài khoản phải có ít nhất 3 ký tự.";
+        return;
+    }
+
+    if(password.length<4){
+        document.getElementById("authError").textContent=
+        "Mật khẩu phải có ít nhất 4 ký tự.";
+        return;
+    }
+
+    let users=getUsers();
+
+    if(users.some(x=>x.username.toLowerCase()===username.toLowerCase())){
+        document.getElementById("authError").textContent=
+        "Tài khoản đã tồn tại.";
+        return;
+    }
+
+    users.push({
+        username:username,
+        password:password,
+        score:0
+    });
+
+    saveUsers(users);
+
+    localStorage.setItem(LOGIN_KEY,username);
+
+    renderApp();
+}
+
+function login(){
+    const username=document.getElementById("loginUser").value.trim();
+    const password=document.getElementById("loginPass").value;
+
+    const user=getUsers().find(x=>
+        x.username.toLowerCase()===username.toLowerCase() &&
+        x.password===password
+    );
+
+    if(!user){
+        document.getElementById("authError").textContent=
+        "Sai tài khoản hoặc mật khẩu.";
+        return;
+    }
+
+    localStorage.setItem(LOGIN_KEY,user.username);
+    renderApp();
+}
+
+function logout(){
+    localStorage.removeItem(LOGIN_KEY);
+    renderAuth();
+}
+
+function renderAuth(){
+
+    document.getElementById("app").innerHTML=`
+
+    <div class="main" style="margin-left:0;width:100%">
+
+        <div class="card auth">
+
+            <div style="text-align:center;font-size:50px">
+                📚
+            </div>
+
+            <h1>HOC ENGLISH</h1>
+
+            <p style="text-align:center;color:#8f9bb7">
+                Đăng nhập hoặc tạo tài khoản
+            </p>
+
+            <div class="exercise-tabs">
+                <button id="loginTab"
+                class="primary"
+                onclick="showLogin()">
+                🔐 Đăng nhập
+                </button>
+
+                <button id="registerTab"
+                class="secondary"
+                onclick="showRegister()">
+                📝 Đăng ký
+                </button>
+            </div>
+
+            <div id="authForm"></div>
+
+        </div>
+
+    </div>
+    `;
+
+    showLogin();
+}
+
+function showLogin(){
+
+    document.getElementById("authForm").innerHTML=`
+
+        <input id="loginUser"
+        class="input"
+        placeholder="Tên tài khoản">
+
+        <input id="loginPass"
+        class="input"
+        type="password"
+        placeholder="Mật khẩu">
+
+        <div id="authError" class="auth-error"></div>
+
+        <button class="primary"
+        style="width:100%"
+        onclick="login()">
+        🔐 Đăng nhập
+        </button>
+    `;
+}
+
+function showRegister(){
+
+    document.getElementById("authForm").innerHTML=`
+
+        <input id="regUser"
+        class="input"
+        placeholder="Tên tài khoản">
+
+        <input id="regPass"
+        class="input"
+        type="password"
+        placeholder="Mật khẩu">
+
+        <div id="authError" class="auth-error"></div>
+
+        <button class="primary"
+        style="width:100%"
+        onclick="register()">
+        📝 Tạo tài khoản
+        </button>
+    `;
+}
+
+
+/* =====================================================
+   APP
+===================================================== */
+
+function renderApp(){
+
+    document.getElementById("app").innerHTML=`
+
+    <div class="app">
+
+        <aside class="sidebar" id="sidebar">
+
+            <div class="logo">
+                <h1>📚 HOC ENGLISH</h1>
+                <small>English Learning Website</small>
+            </div>
+
+            <div class="title">TRANG CHỦ</div>
+
+            <button class="nav active"
+            onclick="home(this)">
+            🏠 Trang chủ
+            </button>
+
+            <div class="title">NGỮ PHÁP</div>
+
+            <button class="nav"
+            onclick="grammar('past',this)">
+            ⏪ Quá khứ đơn
+            </button>
+
+            <button class="nav"
+            onclick="grammar('present',this)">
+            ☀️ Hiện tại đơn
+            </button>
+
+            <button class="nav"
+            onclick="grammar('continuous',this)">
+            🔄 Hiện tại tiếp diễn
+            </button>
+
+            <button class="nav"
+            onclick="grammar('perfect',this)">
+            🚀 Hiện tại hoàn thành
+            </button>
+
+            <button class="nav"
+            onclick="grammar('future',this)">
+            🔮 Tương lai đơn
+            </button>
+
+            <div class="title">TỪ VỰNG</div>
+
+            <button class="nav"
+            onclick="vocabList(this)">
+            🧠 Từ vựng
+            </button>
+
+            <div class="title">TÀI KHOẢN</div>
+
+            <button class="nav"
+            onclick="accountPage()">
+            👤 Tài khoản
+            </button>
+
+            <button class="nav"
+            onclick="logout()">
+            🚪 Đăng xuất
+            </button>
+
+        </aside>
+
+        <main class="main">
+
+            <div class="top">
+
+                <button class="mobile"
+                onclick="toggleMenu()">
+                ☰
+                </button>
+
+                <h2 id="pageTitle">Trang chủ</h2>
+
+                <div class="score">
+                    ⭐ <b id="globalScore">0</b>
+                </div>
+
+            </div>
+
+            <div class="page" id="page"></div>
+
+        </main>
+
+    </div>
+    `;
+
+    loadUserScore();
+    home(document.querySelector(".nav"));
+}
+
+
+/* =====================================================
+   DỮ LIỆU NGỮ PHÁP
+===================================================== */
 
 const lessons={
+
 past:{
-name:"Quá khứ đơn",icon:"⏪",
+name:"Quá khứ đơn",
+icon:"⏪",
 desc:"Diễn tả hành động đã xảy ra và kết thúc trong quá khứ.",
 formula:[
 "S + V2/V-ed + O",
 "S + did not + V nguyên mẫu",
 "Did + S + V nguyên mẫu?"
 ],
-signs:["yesterday","last night","last week","last year","ago","in 2020"],
+signs:[
+"yesterday","last night","last week",
+"last year","ago","in 2020"
+],
 example:"I visited my grandmother yesterday."
 },
 
 present:{
-name:"Hiện tại đơn",icon:"☀️",
-desc:"Dùng cho thói quen, sự thật và những việc thường xuyên xảy ra.",
+name:"Hiện tại đơn",
+icon:"☀️",
+desc:"Diễn tả thói quen, sự thật, lịch trình.",
 formula:[
-"I/You/We/They + V nguyên mẫu",
+"I/You/We/They + V",
 "He/She/It + V-s/es",
 "S + do/does not + V",
 "Do/Does + S + V?"
 ],
-signs:["always","usually","often","sometimes","never","every day"],
+signs:[
+"always","usually","often",
+"sometimes","never","every day"
+],
 example:"She goes to school every day."
 },
 
 continuous:{
-name:"Hiện tại tiếp diễn",icon:"🔄",
+name:"Hiện tại tiếp diễn",
+icon:"🔄",
 desc:"Diễn tả hành động đang xảy ra tại thời điểm nói.",
 formula:[
 "S + am/is/are + V-ing",
 "S + am/is/are + not + V-ing",
 "Am/Is/Are + S + V-ing?"
 ],
-signs:["now","right now","at the moment","at present","Look!","Listen!"],
+signs:[
+"now","right now","at the moment",
+"at present","Look!","Listen!"
+],
 example:"They are playing football now."
 },
 
 perfect:{
-name:"Hiện tại hoàn thành",icon:"🚀",
-desc:"Diễn tả hành động đã xảy ra và có liên quan đến hiện tại.",
+name:"Hiện tại hoàn thành",
+icon:"🚀",
+desc:"Diễn tả hành động có liên hệ với hiện tại hoặc kinh nghiệm.",
 formula:[
 "S + have/has + V3",
 "S + have/has not + V3",
 "Have/Has + S + V3?"
 ],
-signs:["already","just","ever","never","yet","since","for","so far"],
+signs:[
+"already","just","ever","never",
+"yet","since","for","so far"
+],
 example:"I have finished my homework."
 },
 
 future:{
-name:"Tương lai đơn",icon:"🔮",
-desc:"Dùng cho dự đoán hoặc hành động sẽ xảy ra trong tương lai.",
+name:"Tương lai đơn",
+icon:"🔮",
+desc:"Diễn tả hành động sẽ xảy ra trong tương lai.",
 formula:[
 "S + will + V",
 "S + will not + V",
 "Will + S + V?"
 ],
-signs:["tomorrow","next week","next year","soon","in the future"],
+signs:[
+"tomorrow","next week",
+"next year","soon","in the future"
+],
 example:"I will visit you tomorrow."
 }
+
 };
 
 
-/* =========================================================
-   QUIZ
-========================================================= */
+/* =====================================================
+   40 TỪ / CHỦ ĐỀ
+   4 CẤP ĐỘ
+===================================================== */
 
-const quiz={
-past:[
-["Yesterday, I ___ to school.","went",["go","went","gone","going"]],
-["She ___ a cake last night.","made",["make","makes","made","making"]],
-["They ___ football yesterday.","played",["play","played","plays","playing"]],
-["He ___ his homework last night.","did",["do","does","did","done"]],
-["I ___ my friend two days ago.","met",["meet","met","meets","meeting"]],
-["We ___ dinner yesterday.","ate",["eat","eats","ate","eating"]],
-["She ___ a new phone last week.","bought",["buy","buys","bought","buying"]],
-["He ___ home late yesterday.","came",["come","comes","came","coming"]],
-["I ___ a movie last night.","watched",["watch","watches","watched","watching"]],
-["They ___ Hanoi last summer.","visited",["visit","visits","visited","visiting"]]
-],
+const vocab={
 
-present:[
-["She ___ to school every day.","goes",["go","goes","went","going"]],
-["He ___ football every Sunday.","plays",["play","plays","played","playing"]],
-["I ___ English every day.","study",["study","studies","studied","studying"]],
-["She ___ TV every evening.","watches",["watch","watches","watched","watching"]],
-["He ___ coffee every morning.","drinks",["drink","drinks","drank","drinking"]],
-["They ___ in Vietnam.","live",["live","lives","lived","living"]],
-["My father ___ every day.","works",["work","works","worked","working"]],
-["She ___ books every night.","reads",["read","reads","reading","readed"]],
-["We ___ football on Sundays.","play",["play","plays","played","playing"]],
-["He ___ English well.","speaks",["speak","speaks","spoke","speaking"]]
-],
-
-continuous:[
-["She ___ English now.","is studying",["study","studies","is studying","studied"]],
-["They ___ football now.","are playing",["play","played","are playing","plays"]],
-["I ___ TV right now.","am watching",["watch","watched","am watching","watches"]],
-["He ___ dinner now.","is cooking",["cooks","cooked","is cooking","cook"]],
-["We ___ for the bus.","are waiting",["wait","waited","are waiting","waits"]],
-["She ___ a book now.","is reading",["reads","read","is reading","reading"]],
-["I ___ my homework now.","am doing",["do","did","am doing","does"]],
-["They ___ English now.","are learning",["learn","learned","are learning","learns"]],
-["He ___ to music now.","is listening",["listens","listened","is listening","listen"]],
-["Look! The baby ___.","is sleeping",["sleep","slept","is sleeping","sleeps"]]
-],
-
-perfect:[
-["I ___ my homework already.","have finished",["finish","finished","have finished","finishing"]],
-["She ___ this movie before.","has seen",["see","saw","has seen","seeing"]],
-["They ___ here for five years.","have lived",["live","lived","have lived","living"]],
-["He ___ his keys.","has lost",["lose","lost","has lost","losing"]],
-["We ___ this book before.","have read",["read","reads","have read","reading"]],
-["I ___ sushi before.","have eaten",["eat","ate","have eaten","eating"]],
-["He ___ English since 2020.","has studied",["study","studied","has studied","studying"]],
-["They ___ already.","have finished",["finish","finished","have finished","finishing"]],
-["She ___ three emails today.","has written",["write","wrote","has written","writing"]],
-["We ___ this place before.","have visited",["visit","visited","have visited","visiting"]]
-],
-
-future:[
-["I ___ you tomorrow.","will call",["call","called","will call","calling"]],
-["She ___ next week.","will travel",["travels","travelled","will travel","travelling"]],
-["They ___ football tomorrow.","will play",["play","played","will play","playing"]],
-["He ___ a new car next year.","will buy",["buys","bought","will buy","buying"]],
-["We ___ you soon.","will visit",["visit","visited","will visit","visiting"]],
-["I think it ___.","will rain",["rains","rained","will rain","raining"]],
-["She ___ English next year.","will study",["studies","studied","will study","studying"]],
-["He ___ home tonight.","will come",["comes","came","will come","coming"]],
-["They ___ the project soon.","will finish",["finish","finished","will finish","finishing"]],
-["I ___ you later.","will help",["help","helped","will help","helping"]]
-]
-};
-
-
-/* =========================================================
-   CHIA ĐỘNG TỪ
-========================================================= */
-
-const verbs={
-
-past:[
-["Yesterday, she ___ to school. (go)","went"],
-["He ___ football last Sunday. (play)","played"],
-["I ___ a movie last night. (watch)","watched"],
-["They ___ dinner yesterday. (eat)","ate"],
-["She ___ her friend yesterday. (meet)","met"],
-["We ___ Hanoi last summer. (visit)","visited"],
-["He ___ a new phone last week. (buy)","bought"],
-["I ___ home late yesterday. (come)","came"],
-["She ___ her homework last night. (do)","did"],
-["They ___ a cake yesterday. (make)","made"]
-],
-
-present:[
-["She ___ to school every day. (go)","goes"],
-["He ___ football every Sunday. (play)","plays"],
-["I ___ English every day. (study)","study"],
-["She ___ TV every evening. (watch)","watches"],
-["He ___ coffee every morning. (drink)","drinks"],
-["They ___ in Vietnam. (live)","live"],
-["My father ___ every day. (work)","works"],
-["She ___ books every night. (read)","reads"],
-["We ___ football on Sundays. (play)","play"],
-["He ___ English well. (speak)","speaks"]
-],
-
-continuous:[
-["She ___ English now. (study)","is studying"],
-["They ___ football now. (play)","are playing"],
-["I ___ TV now. (watch)","am watching"],
-["He ___ dinner now. (cook)","is cooking"],
-["We ___ for the bus. (wait)","are waiting"],
-["She ___ a book now. (read)","is reading"],
-["I ___ my homework now. (do)","am doing"],
-["They ___ English now. (learn)","are learning"],
-["He ___ to music now. (listen)","is listening"],
-["The baby ___ now. (sleep)","is sleeping"]
-],
-
-perfect:[
-["I ___ my homework already. (finish)","have finished"],
-["She ___ this movie before. (see)","has seen"],
-["They ___ here for five years. (live)","have lived"],
-["He ___ his keys. (lose)","has lost"],
-["We ___ this book before. (read)","have read"],
-["I ___ sushi before. (eat)","have eaten"],
-["He ___ English since 2020. (study)","has studied"],
-["They ___ already. (finish)","have finished"],
-["She ___ three emails today. (write)","has written"],
-["We ___ this place before. (visit)","have visited"]
-],
-
-future:[
-["I ___ you tomorrow. (call)","will call"],
-["She ___ next week. (travel)","will travel"],
-["They ___ football tomorrow. (play)","will play"],
-["He ___ a car next year. (buy)","will buy"],
-["We ___ you soon. (visit)","will visit"],
-["It ___ tomorrow. (rain)","will rain"],
-["She ___ English next year. (study)","will study"],
-["He ___ home tonight. (come)","will come"],
-["They ___ the project soon. (finish)","will finish"],
-["I ___ you later. (help)","will help"]
-]
-};
-
-
-/* =========================================================
-   NỐI CÂU
-========================================================= */
-
-const joins={
-
-past:[
-"I / went / to school / yesterday",
-"She / watched / a movie / last night",
-"They / played / football / yesterday",
-"He / did / his homework / last night",
-"I / met / my friend / yesterday",
-"We / ate / dinner / yesterday",
-"She / bought / a new phone / last week",
-"He / came / home / late",
-"I / visited / Hanoi / last summer",
-"They / made / a cake / yesterday"
-],
-
-present:[
-"She / goes / to school / every day",
-"He / plays / football / every Sunday",
-"I / study / English / every day",
-"She / watches / TV / every evening",
-"He / drinks / coffee / every morning",
-"They / live / in Vietnam",
-"My father / works / every day",
-"She / reads / books / every night",
-"We / play / football / on Sundays",
-"He / speaks / English / well"
-],
-
-continuous:[
-"She / is studying / English / now",
-"They / are playing / football / now",
-"I / am watching / TV / now",
-"He / is cooking / dinner / now",
-"We / are waiting / for the bus",
-"She / is reading / a book / now",
-"I / am doing / my homework / now",
-"They / are learning / English / now",
-"He / is listening / to music / now",
-"The baby / is sleeping / now"
-],
-
-perfect:[
-"I / have finished / my homework / already",
-"She / has seen / this movie / before",
-"They / have lived / here / for five years",
-"He / has lost / his keys",
-"We / have read / this book / before",
-"I / have eaten / sushi / before",
-"He / has studied / English / since 2020",
-"They / have finished / already",
-"She / has written / three emails / today",
-"We / have visited / this place / before"
-],
-
-future:[
-"I / will call / you / tomorrow",
-"She / will travel / next week",
-"They / will play / football / tomorrow",
-"He / will buy / a car / next year",
-"We / will visit / you / soon",
-"It / will rain / tomorrow",
-"She / will study / English / next year",
-"He / will come / home / tonight",
-"They / will finish / the project / soon",
-"I / will help / you / later"
-]
-};
-
-
-/* =========================================================
-   TỪ VỰNG 4 CẤP ĐỘ
-   MỖI CẤP = 40 TỪ
-========================================================= */
-
-const vocabLevels={
-
-easy:{
-name:"Dễ",
-icon:"🟢",
-desc:"Từ cơ bản, quen thuộc",
-topics:{
 clothes:{
-name:"Quần áo",icon:"👕",
-items:[
-["shirt","áo sơ mi","👔"],["T-shirt","áo phông","👕"],
-["pants","quần dài","👖"],["dress","váy liền","👗"],
-["shoes","giày","👟"],["hat","mũ","🧢"],
-["jacket","áo khoác","🧥"],["socks","tất","🧦"],
-["tie","cà vạt","👔"],["skirt","chân váy","👗"]
-]},
-animals:{
-name:"Động vật",icon:"🐶",
-items:[
-["dog","chó","🐶"],["cat","mèo","🐱"],
-["bird","chim","🐦"],["fish","cá","🐟"],
-["horse","ngựa","🐴"],["lion","sư tử","🦁"],
-["tiger","hổ","🐯"],["elephant","voi","🐘"],
-["monkey","khỉ","🐒"],["rabbit","thỏ","🐰"]
-]},
-food:{
-name:"Đồ ăn",icon:"🍎",
-items:[
-["apple","quả táo","🍎"],["banana","quả chuối","🍌"],
-["bread","bánh mì","🍞"],["rice","cơm","🍚"],
-["cake","bánh ngọt","🍰"],["egg","trứng","🥚"],
-["pizza","pizza","🍕"],["cheese","phô mai","🧀"],
-["noodles","mì","🍜"],["hamburger","hamburger","🍔"]
-]},
-objects:{
-name:"Đồ vật",icon:"🏠",
-items:[
-["book","sách","📖"],["pen","bút","🖊️"],
-["phone","điện thoại","📱"],["computer","máy tính","💻"],
-["table","cái bàn","🪑"],["chair","cái ghế","🪑"],
-["door","cánh cửa","🚪"],["clock","đồng hồ","⏰"],
-["bag","cái túi","🎒"],["window","cửa sổ","🪟"]
-]}
+name:"Quần áo",
+icon:"👕",
+
+levels:{
+
+easy:[
+["T-shirt","Áo phông","👕"],
+["shirt","Áo sơ mi","👔"],
+["pants","Quần dài","👖"],
+["dress","Váy liền","👗"],
+["shoes","Giày","👟"],
+["hat","Mũ","🧢"],
+["jacket","Áo khoác","🧥"],
+["socks","Tất","🧦"],
+["tie","Cà vạt","👔"],
+["skirt","Chân váy","👗"]
+],
+
+medium:[
+["coat","Áo khoác dài","🧥"],
+["shorts","Quần short","🩳"],
+["sweater","Áo len","🧶"],
+["hoodie","Áo hoodie","👕"],
+["scarf","Khăn quàng","🧣"],
+["gloves","Găng tay","🧤"],
+["belt","Thắt lưng","〰️"],
+["boots","Ủng","🥾"],
+["sandals","Dép sandal","👡"],
+["uniform","Đồng phục","👕"]
+],
+
+hard:[
+["blouse","Áo kiểu nữ","👚"],
+["cardigan","Áo cardigan","🧥"],
+["suit","Bộ vest","🤵"],
+["waistcoat","Áo ghi-lê","🦺"],
+["raincoat","Áo mưa","🧥"],
+["tracksuit","Bộ đồ thể thao","🏃"],
+["underwear","Đồ lót","🩲"],
+["sunglasses","Kính râm","🕶️"],
+["necklace","Dây chuyền","📿"],
+["bracelet","Vòng tay","📿"]
+],
+
+expert:[
+["suspenders","Dây đeo quần","〰️"],
+["turtleneck","Áo cổ lọ","👕"],
+["windbreaker","Áo gió","🧥"],
+["overalls","Quần yếm","👖"],
+["leggings","Quần legging","👖"],
+["trench coat","Áo măng tô","🧥"],
+["pajamas","Đồ ngủ","😴"],
+["flip-flops","Dép xỏ ngón","🩴"],
+["earrings","Hoa tai","💎"],
+["brooch","Trâm cài áo","💎"]
+]
+
 },
 
-medium:{
-name:"Trung bình",
-icon:"🟡",
-desc:"Từ thường gặp trong giao tiếp",
-topics:{
 jobs:{
-name:"Nghề nghiệp",icon:"💼",
-items:[
-["teacher","giáo viên","👨‍🏫"],["doctor","bác sĩ","👨‍⚕️"],
-["nurse","y tá","👩‍⚕️"],["chef","đầu bếp","👨‍🍳"],
-["farmer","nông dân","👨‍🌾"],["driver","tài xế","🚕"],
-["pilot","phi công","✈️"],["engineer","kỹ sư","👷"],
-["artist","họa sĩ","🎨"],["journalist","nhà báo","📰"]
-]},
-school:{
-name:"Trường học",icon:"🏫",
-items:[
-["classroom","phòng học","🏫"],["student","học sinh","🧑‍🎓"],
-["teacher","giáo viên","👨‍🏫"],["pencil","bút chì","✏️"],
-["ruler","thước","📏"],["eraser","cục tẩy","🧽"],
-["backpack","ba lô","🎒"],["library","thư viện","📚"],
-["lesson","bài học","📖"],["homework","bài tập về nhà","📝"]
-]},
-vehicles:{
-name:"Phương tiện",icon:"🚗",
-items:[
-["car","ô tô","🚗"],["bus","xe buýt","🚌"],
-["bicycle","xe đạp","🚲"],["motorbike","xe máy","🏍️"],
-["train","tàu hỏa","🚆"],["plane","máy bay","✈️"],
-["boat","thuyền","🚤"],["ship","tàu thủy","🚢"],
-["taxi","taxi","🚕"],["truck","xe tải","🚚"]
-]},
-family:{
-name:"Gia đình",icon:"👨‍👩‍👧",
-items:[
-["father","bố","👨"],["mother","mẹ","👩"],
-["brother","anh/em trai","👦"],["sister","chị/em gái","👧"],
-["grandfather","ông","👴"],["grandmother","bà","👵"],
-["uncle","chú/cậu/bác trai","👨"],["aunt","cô/dì/bác gái","👩"],
-["cousin","anh/chị/em họ","🧑"],["parents","bố mẹ","👨‍👩‍👧"]
-]}
+name:"Nghề nghiệp",
+icon:"👨‍💼",
+
+levels:{
+
+easy:[
+["teacher","Giáo viên","👨‍🏫"],
+["doctor","Bác sĩ","👨‍⚕️"],
+["nurse","Y tá","👩‍⚕️"],
+["chef","Đầu bếp","👨‍🍳"],
+["farmer","Nông dân","👨‍🌾"],
+["driver","Tài xế","🚕"],
+["pilot","Phi công","👨‍✈️"],
+["artist","Họa sĩ","🎨"],
+["singer","Ca sĩ","🎤"],
+["student","Học sinh","🧑‍🎓"]
+],
+
+medium:[
+["engineer","Kỹ sư","👷"],
+["lawyer","Luật sư","⚖️"],
+["journalist","Nhà báo","📰"],
+["dentist","Nha sĩ","🦷"],
+["architect","Kiến trúc sư","🏢"],
+["photographer","Nhiếp ảnh gia","📷"],
+["mechanic","Thợ máy","🔧"],
+["cashier","Thu ngân","💳"],
+["waiter","Phục vụ nam","🍽️"],
+["manager","Quản lý","💼"]
+],
+
+hard:[
+["accountant","Kế toán","🧮"],
+["electrician","Thợ điện","⚡"],
+["plumber","Thợ sửa ống nước","🔧"],
+["translator","Biên dịch viên","🌐"],
+["scientist","Nhà khoa học","🔬"],
+["designer","Nhà thiết kế","🎨"],
+["programmer","Lập trình viên","💻"],
+["pharmacist","Dược sĩ","💊"],
+["architect","Kiến trúc sư","🏢"],
+["detective","Thám tử","🕵️"]
+],
+
+expert:[
+["entrepreneur","Doanh nhân","💼"],
+["economist","Nhà kinh tế học","📈"],
+["veterinarian","Bác sĩ thú y","🐶"],
+["psychologist","Nhà tâm lý học","🧠"],
+["journalist","Phóng viên","📰"],
+["researcher","Nhà nghiên cứu","🔬"],
+["account executive","Chuyên viên tài khoản","💼"],
+["consultant","Cố vấn","📊"],
+["surgeon","Bác sĩ phẫu thuật","🏥"],
+["astronomer","Nhà thiên văn học","🔭"]
+]
+
 },
 
-hard:{
-name:"Khó",
-icon:"🟠",
-desc:"Từ nâng cao hơn",
-topics:{
-nature:{
-name:"Thiên nhiên",icon:"🌳",
-items:[
-["mountain","núi","⛰️"],["waterfall","thác nước","💦"],
-["forest","rừng","🌲"],["valley","thung lũng","🏞️"],
-["island","hòn đảo","🏝️"],["desert","sa mạc","🏜️"],
-["volcano","núi lửa","🌋"],["ocean","đại dương","🌊"],
-["riverbank","bờ sông","🏞️"],["rainforest","rừng mưa","🌳"]
-]},
-technology:{
-name:"Công nghệ",icon:"💻",
-items:[
-["keyboard","bàn phím","⌨️"],["software","phần mềm","💿"],
-["hardware","phần cứng","🖥️"],["website","trang web","🌐"],
-["password","mật khẩu","🔑"],["database","cơ sở dữ liệu","🗄️"],
-["network","mạng","🌐"],["browser","trình duyệt","🌐"],
-["download","tải xuống","⬇️"],["upload","tải lên","⬆️"]
-]},
-health:{
-name:"Sức khỏe",icon:"🏥",
-items:[
-["medicine","thuốc","💊"],["hospital","bệnh viện","🏥"],
-["patient","bệnh nhân","🧑‍⚕️"],["symptom","triệu chứng","🩺"],
-["treatment","điều trị","🏥"],["exercise","bài tập","🏃"],
-["healthy","khỏe mạnh","💪"],["disease","bệnh","🦠"],
-["injury","chấn thương","🩹"],["temperature","nhiệt độ","🌡️"]
-]},
-travel:{
-name:"Du lịch",icon:"✈️",
-items:[
-["destination","điểm đến","📍"],["passport","hộ chiếu","📕"],
-["luggage","hành lý","🧳"],["departure","sự khởi hành","🛫"],
-["arrival","sự đến nơi","🛬"],["reservation","đặt chỗ","📋"],
-["souvenir","quà lưu niệm","🎁"],["tourist","khách du lịch","🧳"],
-["guide","hướng dẫn viên","🧑‍🏫"],["adventure","cuộc phiêu lưu","🗺️"]
-]}
+objects:{
+name:"Đồ vật",
+icon:"🏠",
+
+levels:{
+
+easy:[
+["table","Cái bàn","🪑"],
+["chair","Cái ghế","🪑"],
+["book","Quyển sách","📖"],
+["phone","Điện thoại","📱"],
+["computer","Máy tính","💻"],
+["clock","Đồng hồ","⏰"],
+["door","Cánh cửa","🚪"],
+["window","Cửa sổ","🪟"],
+["bag","Cái túi","🎒"],
+["pen","Cây bút","🖊️"]
+],
+
+medium:[
+["keyboard","Bàn phím","⌨️"],
+["mouse","Chuột máy tính","🖱️"],
+["mirror","Gương","🪞"],
+["lamp","Đèn","💡"],
+["drawer","Ngăn kéo","🗄️"],
+["shelf","Kệ","📚"],
+["pillow","Gối","🛏️"],
+["blanket","Chăn","🛌"],
+["bottle","Chai","🍾"],
+["umbrella","Ô","☂️"]
+],
+
+hard:[
+["calculator","Máy tính cầm tay","🧮"],
+["headphones","Tai nghe","🎧"],
+["printer","Máy in","🖨️"],
+["scissors","Kéo","✂️"],
+["stapler","Dập ghim","📎"],
+["flashlight","Đèn pin","🔦"],
+["thermometer","Nhiệt kế","🌡️"],
+["backpack","Ba lô","🎒"],
+["suitcase","Va li","🧳"],
+["binoculars","Ống nhòm","🔭"]
+],
+
+expert:[
+["microscope","Kính hiển vi","🔬"],
+["telescope","Kính thiên văn","🔭"],
+["compass","La bàn","🧭"],
+["hourglass","Đồng hồ cát","⌛"],
+["typewriter","Máy đánh chữ","⌨️"],
+["sewing machine","Máy may","🧵"],
+["magnifying glass","Kính lúp","🔍"],
+["tripod","Chân máy","📷"],
+["projector","Máy chiếu","📽️"],
+["thermos","Bình giữ nhiệt","🫗"]
+]
+
 },
 
-expert:{
-name:"Siêu khó",
-icon:"🔴",
-desc:"Từ nâng cao và học thuật",
-topics:{
-advanced:{
-name:"Từ nâng cao",icon:"🧠",
-items:[
-["perspective","góc nhìn","👁️"],["significant","đáng kể","⭐"],
-["consequence","hậu quả","⚠️"],["environment","môi trường","🌍"],
-["achievement","thành tựu","🏆"],["opportunity","cơ hội","🚪"],
-["responsibility","trách nhiệm","📋"],["requirement","yêu cầu","📝"],
-["independent","độc lập","🧍"],["efficient","hiệu quả","⚡"]
-]},
-education:{
-name:"Học thuật",icon:"🎓",
-items:[
-["academic","học thuật","🎓"],["research","nghiên cứu","🔬"],
-["knowledge","kiến thức","📚"],["theory","lý thuyết","💡"],
-["analysis","phân tích","📊"],["evidence","bằng chứng","🔎"],
-["argument","lập luận","💬"],["conclusion","kết luận","✅"],
-["hypothesis","giả thuyết","🧪"],["experiment","thí nghiệm","🧬"]
-]},
-society:{
-name:"Xã hội",icon:"🌍",
-items:[
-["community","cộng đồng","👥"],["government","chính phủ","🏛️"],
-["economy","nền kinh tế","📈"],["culture","văn hóa","🎭"],
-["tradition","truyền thống","🏮"],["population","dân số","👥"],
-["society","xã hội","🌍"],["citizen","công dân","🧑"],
-["law","luật pháp","⚖️"],["equality","bình đẳng","⚖️"]
-]},
-emotions:{
-name:"Cảm xúc nâng cao",icon:"❤️",
-items:[
-["confident","tự tin","😎"],["anxious","lo lắng","😰"],
-["grateful","biết ơn","🙏"],["curious","tò mò","🤔"],
-["disappointed","thất vọng","😞"],["enthusiastic","nhiệt tình","🤩"],
-["embarrassed","xấu hổ","😳"],["frustrated","bực bội","😤"],
-["determined","quyết tâm","💪"],["satisfied","hài lòng","😊"]
-]}
-}
+food:{
+name:"Đồ ăn",
+icon:"🍔",
+
+levels:{
+
+easy:[
+["bread","Bánh mì","🍞"],
+["rice","Cơm","🍚"],
+["apple","Táo","🍎"],
+["banana","Chuối","🍌"],
+["pizza","Pizza","🍕"],
+["cake","Bánh ngọt","🍰"],
+["egg","Trứng","🥚"],
+["cheese","Phô mai","🧀"],
+["noodles","Mì","🍜"],
+["milk","Sữa","🥛"]
+],
+
+medium:[
+["sandwich","Bánh sandwich","🥪"],
+["chicken","Thịt gà","🍗"],
+["beef","Thịt bò","🥩"],
+["pork","Thịt lợn","🥓"],
+["soup","Súp","🍲"],
+["salad","Salad","🥗"],
+["sausage","Xúc xích","🌭"],
+["yogurt","Sữa chua","🥛"],
+["butter","Bơ","🧈"],
+["honey","Mật ong","🍯"]
+],
+
+hard:[
+["mushroom","Nấm","🍄"],
+["spinach","Rau bina","🥬"],
+["avocado","Quả bơ","🥑"],
+["broccoli","Bông cải xanh","🥦"],
+["strawberry","Dâu tây","🍓"],
+["blueberry","Việt quất","🫐"],
+["pineapple","Dứa","🍍"],
+["watermelon","Dưa hấu","🍉"],
+["seafood","Hải sản","🦐"],
+["cuisine","Ẩm thực","🍽️"]
+],
+
+expert:[
+["ingredient","Nguyên liệu","🧂"],
+["appetizer","Món khai vị","🍽️"],
+["dessert","Món tráng miệng","🍰"],
+["beverage","Đồ uống","🥤"],
+["seasoning","Gia vị","🧂"],
+["nutrient","Chất dinh dưỡng","🥗"],
+["vegetarian","Đồ chay","🥬"],
+["delicacy","Đặc sản","🍽️"],
+["recipe","Công thức nấu ăn","📖"],
+["organic food","Thực phẩm hữu cơ","🌱"]
+]
+
+},
+
+animals:{
+name:"Động vật",
+icon:"🐶",
+
+levels:{
+
+easy:[
+["dog","Chó","🐶"],
+["cat","Mèo","🐱"],
+["bird","Chim","🐦"],
+["fish","Cá","🐟"],
+["horse","Ngựa","🐴"],
+["tiger","Hổ","🐯"],
+["lion","Sư tử","🦁"],
+["elephant","Voi","🐘"],
+["monkey","Khỉ","🐒"],
+["rabbit","Thỏ","🐰"]
+],
+
+medium:[
+["giraffe","Hươu cao cổ","🦒"],
+["zebra","Ngựa vằn","🦓"],
+["bear","Gấu","🐻"],
+["wolf","Sói","🐺"],
+["fox","Cáo","🦊"],
+["deer","Hươu","🦌"],
+["panda","Gấu trúc","🐼"],
+["kangaroo","Kangaroo","🦘"],
+["penguin","Chim cánh cụt","🐧"],
+["dolphin","Cá heo","🐬"]
+],
+
+hard:[
+["crocodile","Cá sấu","🐊"],
+["rhinoceros","Tê giác","🦏"],
+["hippopotamus","Hà mã","🦛"],
+["gorilla","Khỉ đột","🦍"],
+["cheetah","Báo gê-pa","🐆"],
+["leopard","Báo hoa mai","🐆"],
+["eagle","Đại bàng","🦅"],
+["owl","Cú","🦉"],
+["shark","Cá mập","🦈"],
+["octopus","Bạch tuộc","🐙"]
+],
+
+expert:[
+["amphibian","Động vật lưỡng cư","🐸"],
+["reptile","Bò sát","🦎"],
+["mammal","Động vật có vú","🐘"],
+["predator","Động vật săn mồi","🐅"],
+["herbivore","Động vật ăn cỏ","🐄"],
+["carnivore","Động vật ăn thịt","🦁"],
+["nocturnal","Động vật hoạt động ban đêm","🦉"],
+["endangered species","Loài có nguy cơ tuyệt chủng","🐼"],
+["habitat","Môi trường sống","🌳"],
+["ecosystem","Hệ sinh thái","🌍"]
+]
 
 }
+
 };
 
 
-/* =========================================================
+/* =====================================================
    BIẾN
-========================================================= */
-
-let currentTense="past";
-let currentExercise="quiz";
-let questions=[];
-let questionIndex=0;
-let exerciseScore=0;
-
-let currentLevel="";
-let currentTopic="";
-let vocabRound=1;
-let vocabIndex=0;
-let vocabScore=0;
-let selectedImage=null;
-let selectedWord=null;
+===================================================== */
 
 let globalScore=0;
 
+let vocabTopic="";
+let vocabLevel="";
+let vocabData=[];
 
-/* =========================================================
-   HÀM CHUNG
-========================================================= */
+let vocabIndex=0;
+let vocabRound=1;
+let vocabScore=0;
 
-function shuffle(a){
-    return [...a].sort(()=>Math.random()-.5);
+let selectedImage=null;
+let selectedWord=null;
+
+
+/* =====================================================
+   CHUNG
+===================================================== */
+
+function shuffle(arr){
+    return [...arr].sort(()=>Math.random()-.5);
+}
+
+function toggleMenu(){
+    document.getElementById("sidebar").classList.toggle("open");
 }
 
 function activeNone(){
@@ -914,83 +1074,141 @@ function activeNone(){
     .forEach(x=>x.classList.remove("active"));
 }
 
-function toggleMenu(){
-    document.getElementById("sidebar").classList.toggle("open");
-}
-
 function setTitle(x){
     document.getElementById("pageTitle").textContent=x;
 }
 
 function addGlobal(n){
+
     globalScore+=n;
-    document.getElementById("globalScore").textContent=globalScore;
+
+    document.getElementById("globalScore").textContent=
+    globalScore;
+
+    saveUserScore();
 }
 
-function safe(x){
-    return x.replace(/'/g,"\\'");
+function loadUserScore(){
+
+    const name=currentUser();
+    const user=getUsers().find(x=>x.username===name);
+
+    globalScore=user?.score||0;
+
+    document.getElementById("globalScore").textContent=
+    globalScore;
+}
+
+function saveUserScore(){
+
+    const name=currentUser();
+
+    if(!name)return;
+
+    let users=getUsers();
+
+    let user=users.find(x=>x.username===name);
+
+    if(user){
+        user.score=globalScore;
+        saveUsers(users);
+    }
 }
 
 
-/* =========================================================
-   TRANG CHỦ
-========================================================= */
+/* =====================================================
+   HOME
+===================================================== */
 
 function home(btn){
 
     activeNone();
+
     if(btn)btn.classList.add("active");
 
     setTitle("Trang chủ");
 
+    const name=currentUser();
+
     document.getElementById("page").innerHTML=`
 
     <div class="card hero">
+
         <div class="emoji">📚✨</div>
+
         <h1>HOC ENGLISH</h1>
+
         <p>
-        Học ngữ pháp, làm bài tập và luyện từ vựng
-        theo 4 cấp độ từ Dễ đến Siêu khó.
+        Xin chào <b>${name}</b>!<br>
+        Học ngữ pháp và từ vựng theo cấp độ.
         </p>
-        <button class="primary" onclick="grammar('past',null)">
-        🚀 Bắt đầu học
+
+        <button class="primary"
+        onclick="vocabList(null)">
+        🧠 Học từ vựng
         </button>
+
     </div>
 
     <div class="card">
-        <h3>📖 Ngữ pháp</h3>
-        <p style="color:#9ca9c7;line-height:1.8">
-        ⏪ Quá khứ đơn<br>
-        ☀️ Hiện tại đơn<br>
-        🔄 Hiện tại tiếp diễn<br>
-        🚀 Hiện tại hoàn thành<br>
-        🔮 Tương lai đơn
-        </p>
+
+        <h2>📊 Hệ thống cấp độ</h2>
+
+        <div class="level-grid">
+
+            <div class="level-card">
+                <div style="font-size:30px">🟢</div>
+                <h3>Dễ</h3>
+                <p>Từ cơ bản, quen thuộc.</p>
+            </div>
+
+            <div class="level-card">
+                <div style="font-size:30px">🔵</div>
+                <h3>Trung bình</h3>
+                <p>Từ vựng phổ biến nâng cao.</p>
+            </div>
+
+            <div class="level-card">
+                <div style="font-size:30px">🟠</div>
+                <h3>Khó</h3>
+                <p>Từ ít gặp và khó hơn.</p>
+            </div>
+
+            <div class="level-card">
+                <div style="font-size:30px">🔴</div>
+                <h3>Siêu khó</h3>
+                <p>Từ nâng cao và học thuật.</p>
+            </div>
+
+        </div>
+
     </div>
 
     <div class="card">
-        <h3>🧠 Từ vựng</h3>
+
+        <h2>🧠 Từ vựng</h2>
+
         <p style="color:#9ca9c7">
-        4 cấp độ • 40 từ mỗi cấp • tổng cộng 160 từ.
-        Mỗi chủ đề học bằng hình ảnh rồi ôn bằng Ghi từ và Nối từ.
+        Mỗi chủ đề có <b>40 từ</b>: 10 từ Dễ,
+        10 từ Trung bình, 10 từ Khó và 10 từ Siêu khó.
         </p>
+
     </div>
     `;
 }
 
 
-/* =========================================================
+/* =====================================================
    NGỮ PHÁP
-========================================================= */
+===================================================== */
 
 function grammar(type,btn){
 
-    currentTense=type;
-
     activeNone();
+
     if(btn)btn.classList.add("active");
 
-    let l=lessons[type];
+    const l=lessons[type];
 
     setTitle(l.icon+" "+l.name);
 
@@ -1004,383 +1222,38 @@ function grammar(type,btn){
 
         <h3>📌 Công thức</h3>
 
-        ${l.formula.map(x=>`
-            <div class="formula">${x}</div>
-        `).join("")}
+        ${l.formula.map(x=>
+        `<div class="formula">${x}</div>`
+        ).join("")}
 
         <h3>🔎 Dấu hiệu nhận biết</h3>
 
         <div class="tags">
-        ${l.signs.map(x=>`
-            <span class="tag">${x}</span>
-        `).join("")}
+        ${l.signs.map(x=>
+        `<span class="tag">${x}</span>`
+        ).join("")}
         </div>
 
         <h3>💡 Ví dụ</h3>
-        <div class="formula">${l.example}</div>
 
-    </div>
-
-    <div class="card">
-
-        <h3>🎯 Bài tập ${l.name}</h3>
-
-        <div class="exercise-tabs">
-
-            <button class="primary"
-            onclick="startExercise('quiz')">
-            🎯 Quiz
-            </button>
-
-            <button class="secondary"
-            onclick="startExercise('verb')">
-            ✏️ Chia động từ
-            </button>
-
-            <button class="secondary"
-            onclick="startExercise('join')">
-            🔗 Nối câu
-            </button>
-
+        <div class="formula">
+            ${l.example}
         </div>
 
     </div>
+
     `;
 }
 
 
-/* =========================================================
-   EXERCISE
-========================================================= */
-
-function startExercise(type){
-
-    currentExercise=type;
-    questionIndex=0;
-    exerciseScore=0;
-
-    if(type==="quiz")questions=shuffle(quiz[currentTense]);
-    if(type==="verb")questions=shuffle(verbs[currentTense]);
-    if(type==="join")questions=shuffle(joins[currentTense]);
-
-    renderExercise();
-}
-
-function renderExercise(){
-
-    let total=questions.length;
-
-    setTitle(
-        currentExercise==="quiz"?"🎯 Quiz":
-        currentExercise==="verb"?"✏️ Chia động từ":
-        "🔗 Nối câu"
-    );
-
-    document.getElementById("page").innerHTML=`
-
-    <div class="card">
-
-        <div style="display:flex;justify-content:space-between;color:#9ca9c7;font-size:12px">
-            <span>Câu ${questionIndex+1}/${total}</span>
-            <span>⭐ ${exerciseScore}</span>
-        </div>
-
-        <div class="progress">
-            <div style="width:${questionIndex/total*100}%"></div>
-        </div>
-
-        <div id="exercise"></div>
-
-    </div>
-    `;
-
-    if(currentExercise==="quiz")renderQuiz();
-    if(currentExercise==="verb")renderVerb();
-    if(currentExercise==="join")renderJoin();
-}
-
-
-/* =========================================================
-   QUIZ
-========================================================= */
-
-function renderQuiz(){
-
-    let q=questions[questionIndex];
-
-    document.getElementById("exercise").innerHTML=`
-
-    <div class="question">${q[0]}</div>
-
-    <div class="answers">
-
-    ${shuffle(q[2]).map(x=>`
-        <button class="answer"
-        onclick="quizAnswer(this,'${safe(x)}')">
-        ${x}
-        </button>
-    `).join("")}
-
-    </div>
-
-    <div id="feedback" class="feedback"></div>
-
-    <button id="next" class="primary" style="display:none"
-    onclick="nextExercise()">
-    Câu tiếp theo →
-    </button>
-    `;
-}
-
-function quizAnswer(btn,value){
-
-    let q=questions[questionIndex];
-
-    document.querySelectorAll(".answer")
-    .forEach(x=>x.disabled=true);
-
-    if(value===q[1]){
-
-        btn.classList.add("correct");
-        exerciseScore++;
-        addGlobal(10);
-
-        document.getElementById("feedback").innerHTML=
-        "🎉 Chính xác! +10 điểm";
-
-    }else{
-
-        btn.classList.add("wrong");
-
-        document.getElementById("feedback").innerHTML=
-        "❌ Sai! Đáp án đúng: <b>"+q[1]+"</b>";
-
-        document.querySelectorAll(".answer").forEach(x=>{
-            if(x.textContent.trim()===q[1])
-                x.classList.add("correct");
-        });
-    }
-
-    document.getElementById("next").style.display="inline-block";
-}
-
-
-/* =========================================================
-   CHIA ĐỘNG TỪ
-========================================================= */
-
-function renderVerb(){
-
-    let q=questions[questionIndex];
-
-    document.getElementById("exercise").innerHTML=`
-
-    <div class="question">${q[0]}</div>
-
-    <input id="verbInput"
-    class="input"
-    placeholder="Nhập đáp án..."
-    autocomplete="off">
-
-    <div id="feedback" class="feedback"></div>
-
-    <button id="check" class="primary"
-    onclick="checkVerb()">
-    ✓ Kiểm tra
-    </button>
-
-    <button id="next" class="primary"
-    style="display:none"
-    onclick="nextExercise()">
-    Câu tiếp theo →
-    </button>
-    `;
-}
-
-function checkVerb(){
-
-    let input=document.getElementById("verbInput");
-    let value=input.value.trim().toLowerCase();
-    let answer=questions[questionIndex][1].toLowerCase();
-
-    input.disabled=true;
-    document.getElementById("check").disabled=true;
-
-    if(value===answer){
-
-        exerciseScore++;
-        addGlobal(10);
-
-        document.getElementById("feedback").innerHTML=
-        "🎉 Chính xác! +10 điểm";
-
-    }else{
-
-        document.getElementById("feedback").innerHTML=
-        "❌ Đáp án đúng: <b>"+questions[questionIndex][1]+"</b>";
-    }
-
-    document.getElementById("next").style.display="inline-block";
-}
-
-
-/* =========================================================
-   NỐI CÂU
-========================================================= */
-
-function renderJoin(){
-
-    let correct=questions[questionIndex];
-    let words=shuffle(correct.split(" / "));
-
-    document.getElementById("exercise").innerHTML=`
-
-    <div class="question">
-    🔗 Bấm các từ theo đúng thứ tự.
-    </div>
-
-    <div id="wordBox" class="word-box"></div>
-
-    <div id="answerArea"
-    style="min-height:55px;padding:9px;border:1px dashed #20dcff66;border-radius:9px;display:flex;flex-wrap:wrap;gap:5px">
-    </div>
-
-    <div id="feedback" class="feedback"></div>
-
-    <button class="primary" onclick="checkJoin()">
-    ✓ Kiểm tra
-    </button>
-
-    <button id="next" class="primary"
-    style="display:none"
-    onclick="nextExercise()">
-    Câu tiếp theo →
-    </button>
-    `;
-
-    let box=document.getElementById("wordBox");
-
-    words.forEach(word=>{
-
-        let b=document.createElement("button");
-        b.className="word";
-        b.textContent=word;
-
-        b.onclick=function(){
-
-            if(b.classList.contains("used"))return;
-
-            b.classList.add("used");
-
-            let clone=document.createElement("button");
-            clone.className="word";
-            clone.textContent=word;
-
-            clone.onclick=function(){
-                clone.remove();
-                b.classList.remove("used");
-            };
-
-            document.getElementById("answerArea").appendChild(clone);
-        };
-
-        box.appendChild(b);
-    });
-}
-
-function checkJoin(){
-
-    let correct=questions[questionIndex]
-    .replaceAll(" / "," ")
-    .trim()
-    .toLowerCase();
-
-    let chosen=[...
-        document.getElementById("answerArea").children
-    ].map(x=>x.textContent)
-    .join(" ")
-    .trim()
-    .toLowerCase();
-
-    if(chosen===correct){
-
-        exerciseScore++;
-        addGlobal(10);
-
-        document.getElementById("feedback").innerHTML=
-        "🎉 Chính xác! +10 điểm";
-
-    }else{
-
-        document.getElementById("feedback").innerHTML=
-        "❌ Chưa đúng! Đáp án: <b>"+correct+"</b>";
-    }
-
-    document.getElementById("next").style.display="inline-block";
-}
-
-
-/* =========================================================
-   NEXT EXERCISE
-========================================================= */
-
-function nextExercise(){
-
-    questionIndex++;
-
-    if(questionIndex>=questions.length){
-        showExerciseResult();
-        return;
-    }
-
-    renderExercise();
-}
-
-function showExerciseResult(){
-
-    let total=questions.length;
-    let percent=Math.round(exerciseScore/total*100);
-
-    setTitle("🏆 Kết quả");
-
-    document.getElementById("page").innerHTML=`
-
-    <div class="card result">
-
-        <div style="font-size:50px">🏆</div>
-
-        <h2>Hoàn thành!</h2>
-
-        <div class="result-score">
-        ${exerciseScore}/${total}
-        </div>
-
-        <p style="color:#9ca9c7">
-        Độ chính xác: ${percent}%
-        </p>
-
-        <button class="primary"
-        onclick="startExercise('${currentExercise}')">
-        🔄 Làm lại
-        </button>
-
-        <button class="secondary"
-        onclick="grammar('${currentTense}',null)">
-        📖 Quay lại bài học
-        </button>
-
-    </div>
-    `;
-}
-
-
-/* =========================================================
-   TỪ VỰNG - CHỌN CẤP ĐỘ
-========================================================= */
+/* =====================================================
+   TỪ VỰNG - CHỌN CHỦ ĐỀ
+===================================================== */
 
 function vocabList(btn){
 
     activeNone();
+
     if(btn)btn.classList.add("active");
 
     setTitle("🧠 Từ vựng");
@@ -1389,23 +1262,26 @@ function vocabList(btn){
 
     <div class="card">
 
-        <h2>🧠 Chọn cấp độ</h2>
+        <h2>🧠 Chọn chủ đề</h2>
 
         <p style="color:#9ca9c7">
-        Mỗi cấp độ có 40 từ. Tổng cộng 160 từ.
+        Mỗi chủ đề có 40 từ và chia thành 4 cấp độ.
         </p>
 
-        <div class="level-grid">
+        <div class="vocab-grid">
 
-        ${Object.entries(vocabLevels).map(([key,l])=>`
+        ${Object.entries(vocab).map(([key,v])=>`
 
-            <div class="level-card"
-            onclick="selectLevel('${key}')">
+            <div class="vocab-card"
+            onclick="chooseLevel('${key}')">
 
-                <div class="big">${l.icon}</div>
-                <h3>${l.name}</h3>
-                <p>40 từ • 4 chủ đề</p>
-                <p>${l.desc}</p>
+                <div class="icon">${v.icon}</div>
+
+                <h3>${v.name}</h3>
+
+                <p>
+                40 từ • 4 cấp độ
+                </p>
 
             </div>
 
@@ -1418,15 +1294,15 @@ function vocabList(btn){
 }
 
 
-/* =========================================================
-   CHỌN CHỦ ĐỀ
-========================================================= */
+/* =====================================================
+   CHỌN CẤP ĐỘ
+===================================================== */
 
-function selectLevel(level){
+function chooseLevel(topic){
 
-    currentLevel=level;
+    vocabTopic=topic;
 
-    let data=vocabLevels[level];
+    const data=vocab[topic];
 
     setTitle(data.icon+" "+data.name);
 
@@ -1434,120 +1310,158 @@ function selectLevel(level){
 
     <div class="card">
 
-        <h2>${data.icon} Cấp độ ${data.name}</h2>
+        <h2>
+        ${data.icon} ${data.name}
+        </h2>
 
         <p style="color:#9ca9c7">
-        Chọn một chủ đề để học. Mỗi chủ đề có 10 từ.
+        Chọn cấp độ muốn học.
         </p>
 
-        <div class="topic-grid">
+        <div class="level-grid">
 
-        ${Object.entries(data.topics).map(([key,t])=>`
+            <div class="level-card"
+            onclick="startVocab('${topic}','easy')">
 
-            <div class="topic"
-            onclick="startVocab('${key}')">
+                <div style="font-size:35px">🟢</div>
 
-                <div class="topic-icon">${t.icon}</div>
-                <h3>${t.name}</h3>
-                <p>10 từ • 2 lượt</p>
+                <h3>Dễ</h3>
+
+                <p>10 từ cơ bản</p>
 
             </div>
 
-        `).join("")}
+            <div class="level-card"
+            onclick="startVocab('${topic}','medium')">
+
+                <div style="font-size:35px">🔵</div>
+
+                <h3>Trung bình</h3>
+
+                <p>10 từ</p>
+
+            </div>
+
+            <div class="level-card"
+            onclick="startVocab('${topic}','hard')">
+
+                <div style="font-size:35px">🟠</div>
+
+                <h3>Khó</h3>
+
+                <p>10 từ nâng cao</p>
+
+            </div>
+
+            <div class="level-card"
+            onclick="startVocab('${topic}','expert')">
+
+                <div style="font-size:35px">🔴</div>
+
+                <h3>Siêu khó</h3>
+
+                <p>10 từ học thuật</p>
+
+            </div>
 
         </div>
-
-        <br>
-
-        <button class="secondary"
-        onclick="vocabList(null)">
-        ← Đổi cấp độ
-        </button>
 
     </div>
     `;
 }
 
 
-/* =========================================================
-   LẤY TOPIC HIỆN TẠI
-========================================================= */
-
-function getVocabData(){
-    return vocabLevels[currentLevel].topics[currentTopic];
-}
-
-
-/* =========================================================
-   ẢNH EMOJI
-========================================================= */
+/* =====================================================
+   EMOJI IMAGE
+===================================================== */
 
 function codePoints(str){
+
     return [...str]
     .map(c=>c.codePointAt(0).toString(16))
     .join("-");
 }
 
 function emojiImage(emoji){
+
     return "https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/72x72/"
     +codePoints(emoji)+".png";
 }
 
 
-/* =========================================================
-   BẮT ĐẦU VOCAB
-========================================================= */
+/* =====================================================
+   BẮT ĐẦU TỪ VỰNG
+===================================================== */
 
-function startVocab(topic){
+function startVocab(topic,level){
 
-    currentTopic=topic;
-    vocabRound=1;
+    vocabTopic=topic;
+    vocabLevel=level;
+
+    vocabData=vocab[topic].levels[level];
+
     vocabIndex=0;
+    vocabRound=1;
     vocabScore=0;
 
     showVocabLearn();
 }
 
 
-/* =========================================================
+/* =====================================================
    HỌC 10 TỪ
-========================================================= */
+===================================================== */
 
 function showVocabLearn(){
 
-    let data=getVocabData();
+    const data=vocab[vocabTopic];
 
-    setTitle("📖 "+data.name);
+    const levelNames={
+        easy:"🟢 Dễ",
+        medium:"🔵 Trung bình",
+        hard:"🟠 Khó",
+        expert:"🔴 Siêu khó"
+    };
+
+    setTitle(
+        data.icon+" "+
+        data.name+" - "+
+        levelNames[vocabLevel]
+    );
 
     document.getElementById("page").innerHTML=`
 
     <div class="card">
 
-        <h2>📖 ${data.name}</h2>
+        <h2>📖 Học từ vựng</h2>
 
         <p style="color:#9ca9c7">
-        ${currentLevel==="easy"?"🟢":
-          currentLevel==="medium"?"🟡":
-          currentLevel==="hard"?"🟠":"🔴"}
-        Cấp độ ${vocabLevels[currentLevel].name}
-        • 10 từ
+        ${levelNames[vocabLevel]} • 10 từ
         </p>
 
         <div class="vocab-grid">
 
-        ${data.items.map(item=>`
+        ${vocabData.map(item=>`
 
             <div class="vocab-card">
 
-                <img
-                src="${emojiImage(item[2])}"
-                onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+                <div style="
+                height:80px;
+                display:flex;
+                justify-content:center">
 
-                <div class="emoji" style="display:none">
-                ${item[2]}
+                    <img
+                    src="${emojiImage(item[2])}"
+                    style="
+                    width:75px;
+                    height:75px;
+                    object-fit:contain"
+                    onerror="this.style.display='none'">
+
                 </div>
 
                 <h3>${item[0]}</h3>
+
                 <p>${item[1]}</p>
 
             </div>
@@ -1560,12 +1474,9 @@ function showVocabLearn(){
 
         <button class="primary"
         onclick="startVocabRound1()">
-        📝 Lượt 1 — Ghi từ
-        </button>
 
-        <button class="secondary"
-        onclick="selectLevel('${currentLevel}')">
-        ← Chủ đề khác
+        📝 Lượt 1 — Ghi từ
+
         </button>
 
     </div>
@@ -1573,14 +1484,14 @@ function showVocabLearn(){
 }
 
 
-/* =========================================================
+/* =====================================================
    LƯỢT 1
-========================================================= */
+===================================================== */
 
 function startVocabRound1(){
 
-    vocabRound=1;
     vocabIndex=0;
+    vocabRound=1;
     vocabScore=0;
 
     renderVocabWrite();
@@ -1588,8 +1499,7 @@ function startVocabRound1(){
 
 function renderVocabWrite(){
 
-    let data=getVocabData();
-    let item=data.items[vocabIndex];
+    const item=vocabData[vocabIndex];
 
     setTitle("📝 Ghi từ");
 
@@ -1597,50 +1507,83 @@ function renderVocabWrite(){
 
     <div class="card">
 
-        <div style="display:flex;justify-content:space-between;color:#9ca9c7;font-size:12px">
-            <span>Lượt 1 — Ghi từ</span>
-            <span>${vocabIndex+1}/10</span>
+        <div style="
+        display:flex;
+        justify-content:space-between;
+        color:#9ca9c7">
+
+            <span>
+            📝 Lượt 1 — Ghi từ
+            </span>
+
+            <span>
+            ${vocabIndex+1}/10
+            </span>
+
         </div>
 
         <div class="progress">
-            <div style="width:${vocabIndex/10*100}%"></div>
+
+            <div style="
+            width:${vocabIndex/10*100}%">
+            </div>
+
         </div>
 
         <div class="vocab-image">
 
             <img
             src="${emojiImage(item[2])}"
-            onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+            onerror="this.style.display='none'">
 
-            <span class="fallback" style="display:none">
-            ${item[2]}
+        </div>
+
+        <div style="
+        text-align:center;
+        margin-bottom:15px">
+
+            <strong style="font-size:22px">
+            ?
+            </strong>
+
+            <span style="
+            display:block;
+            color:#9ca9c7;
+            margin-top:5px">
+
+            ${item[1]}
+
             </span>
 
         </div>
 
-        <div class="info-word">
-            <strong>?</strong>
-            <span>${item[1]}</span>
-        </div>
-
-        <input id="vocabInput"
+        <input
+        id="vocabInput"
         class="input"
         placeholder="Nhập từ tiếng Anh..."
         autocomplete="off">
 
-        <div id="feedback" class="feedback"></div>
+        <div id="feedback"
+        class="feedback">
+        </div>
 
-        <button id="check"
+        <button
+        id="check"
         class="primary"
         onclick="checkVocabWrite()">
+
         ✓ Kiểm tra
+
         </button>
 
-        <button id="next"
+        <button
+        id="next"
         class="primary"
         style="display:none"
         onclick="nextVocabWrite()">
+
         Tiếp theo →
+
         </button>
 
     </div>
@@ -1649,17 +1592,22 @@ function renderVocabWrite(){
 
 function checkVocabWrite(){
 
-    let item=getVocabData().items[vocabIndex];
+    const item=vocabData[vocabIndex];
 
-    let input=document.getElementById("vocabInput");
-    let value=input.value.trim().toLowerCase();
+    const input=document.getElementById("vocabInput");
+
+    const value=input.value
+    .trim()
+    .toLowerCase();
 
     input.disabled=true;
+
     document.getElementById("check").disabled=true;
 
     if(value===item[0].toLowerCase()){
 
         vocabScore+=10;
+
         addGlobal(10);
 
         document.getElementById("feedback").innerHTML=
@@ -1669,9 +1617,11 @@ function checkVocabWrite(){
 
         document.getElementById("feedback").innerHTML=
         "❌ Đáp án đúng: <b>"+item[0]+"</b>";
+
     }
 
-    document.getElementById("next").style.display="inline-block";
+    document.getElementById("next").style.display=
+    "inline-block";
 }
 
 function nextVocabWrite(){
@@ -1680,10 +1630,8 @@ function nextVocabWrite(){
 
     if(vocabIndex>=10){
 
-        vocabRound=2;
-        vocabIndex=0;
-
         showRound2Intro();
+
         return;
     }
 
@@ -1691,9 +1639,9 @@ function nextVocabWrite(){
 }
 
 
-/* =========================================================
+/* =====================================================
    LƯỢT 2
-========================================================= */
+===================================================== */
 
 function showRound2Intro(){
 
@@ -1703,40 +1651,38 @@ function showRound2Intro(){
 
     <div class="card result">
 
-        <div style="font-size:55px">🧠</div>
+        <div style="font-size:60px">
+        🧠
+        </div>
 
-        <h2>Hoàn thành lượt 1!</h2>
+        <h2>
+        Hoàn thành lượt 1!
+        </h2>
 
         <div class="result-score">
         ${vocabScore}/100
         </div>
 
         <p style="color:#9ca9c7">
-        Bây giờ hãy nối hình ảnh với từ tiếng Anh.
+        Lượt 2: nối hình ảnh với từ tiếng Anh.
         </p>
 
-        <button class="primary"
+        <button
+        class="primary"
         onclick="startMatching()">
-        🔗 Bắt đầu nối từ
+
+        🔗 Bắt đầu
+
         </button>
 
     </div>
     `;
 }
 
-
-/* =========================================================
-   MATCHING
-========================================================= */
-
 function startMatching(){
 
-    vocabRound=2;
-
-    let data=getVocabData();
-
-    let images=shuffle(data.items);
-    let words=shuffle(data.items);
+    const images=shuffle(vocabData);
+    const words=shuffle(vocabData);
 
     selectedImage=null;
     selectedWord=null;
@@ -1747,63 +1693,61 @@ function startMatching(){
 
     <div class="card">
 
-        <div style="display:flex;justify-content:space-between">
-            <span>🔗 Lượt 2 — Nối từ</span>
-            <span>10 cặp</span>
-        </div>
-
-        <p style="color:#9ca9c7">
-        Bấm một hình ảnh, sau đó bấm từ tiếng Anh tương ứng.
-        </p>
-
         <div class="match-grid">
 
             <div>
+
                 <h3>🖼️ Hình ảnh</h3>
 
                 <div id="imageList">
 
                 ${images.map(item=>`
 
-                    <div class="match-item"
-                    data-id="${safe(item[0])}"
-                    onclick="selectImage(this,'${safe(item[0])}')">
+                    <div
+                    class="match-item"
+                    data-id="${item[0]}"
+                    onclick="selectImage(this,'${item[0]}')">
 
                         <img
                         class="match-img"
-                        src="${emojiImage(item[2])}"
-                        onerror="this.style.display='none'">
+                        src="${emojiImage(item[2])}">
 
                     </div>
 
                 `).join("")}
 
                 </div>
+
             </div>
 
             <div>
+
                 <h3>🇬🇧 Từ tiếng Anh</h3>
 
                 <div id="wordList">
 
                 ${words.map(item=>`
 
-                    <div class="match-item"
-                    data-id="${safe(item[0])}"
-                    onclick="selectWord(this,'${safe(item[0])}')">
+                    <div
+                    class="match-item"
+                    data-id="${item[0]}"
+                    onclick="selectWord(this,'${item[0]}')">
 
-                        ${item[0]}
+                    ${item[0]}
 
                     </div>
 
                 `).join("")}
 
                 </div>
+
             </div>
 
         </div>
 
-        <div id="matchFeedback" class="feedback"></div>
+        <div id="matchFeedback"
+        class="feedback">
+        </div>
 
     </div>
     `;
@@ -1816,7 +1760,10 @@ function selectImage(el,id){
 
     el.classList.add("selected");
 
-    selectedImage={el,id};
+    selectedImage={
+        el:el,
+        id:id
+    };
 
     tryMatch();
 }
@@ -1828,7 +1775,10 @@ function selectWord(el,id){
 
     el.classList.add("selected");
 
-    selectedWord={el,id};
+    selectedWord={
+        el:el,
+        id:id
+    };
 
     tryMatch();
 }
@@ -1840,9 +1790,11 @@ function tryMatch(){
     if(selectedImage.id===selectedWord.id){
 
         selectedImage.el.style.display="none";
+
         selectedWord.el.style.display="none";
 
         vocabScore+=10;
+
         addGlobal(10);
 
         document.getElementById("matchFeedback").innerHTML=
@@ -1851,7 +1803,7 @@ function tryMatch(){
     }else{
 
         document.getElementById("matchFeedback").innerHTML=
-        "❌ Chưa khớp, hãy thử lại.";
+        "❌ Chưa đúng.";
 
     }
 
@@ -1866,37 +1818,52 @@ function tryMatch(){
 
 function checkMatchingFinished(){
 
-    let remaining=[...
-        document.querySelectorAll("#imageList .match-item")
+    const remaining=[
+        ...document.querySelectorAll("#imageList .match-item")
     ].filter(x=>x.style.display!=="none");
 
     if(remaining.length===0){
+
         setTimeout(showVocabResult,500);
+
     }
 }
 
 
-/* =========================================================
-   KẾT QUẢ VOCAB
-========================================================= */
+/* =====================================================
+   KẾT QUẢ
+===================================================== */
 
 function showVocabResult(){
 
-    let percent=Math.round(vocabScore/200*100);
+    const percent=
+    Math.round(vocabScore/200*100);
 
-    setTitle("🏆 Kết quả từ vựng");
+    const levelNames={
+        easy:"🟢 Dễ",
+        medium:"🔵 Trung bình",
+        hard:"🟠 Khó",
+        expert:"🔴 Siêu khó"
+    };
+
+    setTitle("🏆 Kết quả");
 
     document.getElementById("page").innerHTML=`
 
     <div class="card result">
 
-        <div style="font-size:55px">🏆</div>
+        <div style="font-size:60px">
+        🏆
+        </div>
 
-        <h2>Hoàn thành 2 lượt!</h2>
+        <h2>
+        Hoàn thành!
+        </h2>
 
-        <p style="color:#9ca9c7">
-        Cấp độ: ${vocabLevels[currentLevel].icon}
-        ${vocabLevels[currentLevel].name}
+        <p>
+        ${vocab[vocabTopic].name}
+        -
+        ${levelNames[vocabLevel]}
         </p>
 
         <div class="result-score">
@@ -1907,19 +1874,20 @@ function showVocabResult(){
         Độ chính xác: ${percent}%
         </p>
 
-        <button class="primary"
-        onclick="startVocab('${currentTopic}')">
-        🔄 Học lại
+        <button
+        class="primary"
+        onclick="startVocab('${vocabTopic}','${vocabLevel}')">
+
+        🔄 Làm lại
+
         </button>
 
-        <button class="secondary"
-        onclick="selectLevel('${currentLevel}')">
-        📚 Chủ đề khác
-        </button>
+        <button
+        class="secondary"
+        onclick="chooseLevel('${vocabTopic}')">
 
-        <button class="secondary"
-        onclick="vocabList(null)">
-        🧠 Đổi cấp độ
+        📊 Đổi cấp độ
+
         </button>
 
     </div>
@@ -1927,13 +1895,84 @@ function showVocabResult(){
 }
 
 
-/* =========================================================
-   KHỞI ĐỘNG
-========================================================= */
+/* =====================================================
+   TÀI KHOẢN
+===================================================== */
 
-home(document.querySelector(".nav"));
+function accountPage(){
+
+    activeNone();
+
+    setTitle("👤 Tài khoản");
+
+    const name=currentUser();
+
+    const user=getUsers().find(x=>x.username===name);
+
+    document.getElementById("page").innerHTML=`
+
+    <div class="card">
+
+        <h2>👤 Tài khoản</h2>
+
+        <div class="user-box">
+
+            <p>
+            👤 Tên tài khoản:
+            <b>${name}</b>
+            </p>
+
+            <p>
+            ⭐ Tổng điểm:
+            <b>${user?.score||0}</b>
+            </p>
+
+        </div>
+
+        <br>
+
+        <button
+        class="primary"
+        onclick="logout()">
+
+        🚪 Đăng xuất
+
+        </button>
+
+    </div>
+
+    <div class="card">
+
+        <h3>💾 Dữ liệu tài khoản</h3>
+
+        <p style="color:#9ca9c7;line-height:1.7">
+
+        Tài khoản và điểm được lưu trên trình duyệt
+        bằng <b>localStorage</b>.<br>
+
+        Khi đăng xuất, tài khoản vẫn được giữ lại.
+        Bạn có thể đăng nhập lại bằng tài khoản và mật khẩu
+        đã đăng ký.
+
+        </p>
+
+    </div>
+    `;
+}
+
+
+/* =====================================================
+   KHỞI ĐỘNG
+===================================================== */
+
+if(currentUser()){
+    renderApp();
+}else{
+    renderAuth();
+}
 
 </script>
 
 </body>
 </html>
+

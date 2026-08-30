@@ -1,21 +1,18 @@
+
 <!DOCTYPE html>
 <html lang="vi">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-
 <title>HOC ENGLISH</title>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <style>
-*{
-    box-sizing:border-box;
-}
+*{box-sizing:border-box}
 
 html,body{
     margin:0;
-    padding:0;
     min-height:100%;
 }
 
@@ -25,51 +22,49 @@ body{
     color:#fff;
 }
 
-button,input{
-    font:inherit;
+button,input{font:inherit}
+button{cursor:pointer}
+
+.hidden{display:none!important}
+
+button:disabled{
+    opacity:.5;
+    cursor:not-allowed;
 }
 
-button{
-    cursor:pointer;
-}
-
-.hidden{
-    display:none!important;
-}
-
-/* =========================
-   AUTH
-========================= */
+/* AUTH */
 
 #authScreen{
     min-height:100vh;
     display:flex;
-    align-items:center;
     justify-content:center;
+    align-items:center;
     padding:20px;
     background:
-        radial-gradient(circle at top,#18244a 0,#070b18 45%);
+    radial-gradient(circle at 20% 10%,#203b75 0,transparent 35%),
+    radial-gradient(circle at 80% 20%,#5b2168 0,transparent 30%),
+    #070b18;
 }
 
 .auth-card{
     width:100%;
     max-width:430px;
-    padding:30px;
+    padding:32px;
     border:1px solid #293657;
-    border-radius:22px;
+    border-radius:24px;
     background:#10172d;
-    box-shadow:0 20px 70px #0008;
+    box-shadow:0 25px 80px #000b;
 }
 
 .auth-logo{
     text-align:center;
-    font-size:55px;
+    font-size:60px;
 }
 
 .auth-title{
     text-align:center;
-    margin:10px 0 5px;
-    font-size:28px;
+    margin:8px 0;
+    font-size:30px;
     background:linear-gradient(90deg,#20dcff,#8c5cff,#ff4db8);
     -webkit-background-clip:text;
     color:transparent;
@@ -78,18 +73,18 @@ button{
 .auth-sub{
     text-align:center;
     color:#8794b5;
-    margin-bottom:22px;
+    margin-bottom:25px;
 }
 
 .input{
     width:100%;
     padding:13px 14px;
     margin-bottom:10px;
-    border-radius:10px;
     border:1px solid #293654;
+    border-radius:11px;
     outline:none;
     background:#080d1d;
-    color:#fff;
+    color:white;
 }
 
 .input:focus{
@@ -98,43 +93,35 @@ button{
 
 .auth-error{
     min-height:22px;
+    margin:5px 0 10px;
     color:#ff6678;
     font-size:13px;
-    margin:5px 0;
 }
 
-/* =========================
-   BUTTON
-========================= */
+/* BUTTON */
 
 .primary{
     border:0;
-    color:#fff;
     border-radius:12px;
     padding:11px 17px;
+    color:#fff;
     background:linear-gradient(135deg,#17d8ff,#765bff,#ff3fae);
 }
 
 .secondary{
-    color:#fff;
     border:1px solid #34405e;
-    background:#ffffff0b;
     border-radius:12px;
     padding:11px 17px;
+    color:#fff;
+    background:#ffffff0b;
 }
 
 .primary:hover,
 .secondary:hover{
-    filter:brightness(1.12);
+    filter:brightness(1.15);
 }
 
-.full{
-    width:100%;
-}
-
-/* =========================
-   APP
-========================= */
+/* APP */
 
 .app{
     min-height:100vh;
@@ -142,6 +129,7 @@ button{
 
 .sidebar{
     position:fixed;
+    z-index:20;
     left:0;
     top:0;
     bottom:0;
@@ -150,7 +138,6 @@ button{
     overflow-y:auto;
     background:#0d1328;
     border-right:1px solid #263252;
-    z-index:20;
 }
 
 .logo{
@@ -172,31 +159,31 @@ button{
 }
 
 .title{
+    margin:16px 8px 7px;
     color:#667394;
     font-size:10px;
     font-weight:bold;
-    margin:16px 8px 7px;
 }
 
 .nav{
     width:100%;
     border:0;
-    background:transparent;
-    color:#aeb9d1;
-    padding:11px;
     border-radius:9px;
-    text-align:left;
+    padding:11px;
     margin:2px 0;
+    text-align:left;
+    color:#aeb9d1;
+    background:transparent;
 }
 
 .nav:hover{
+    color:#fff;
     background:#ffffff0a;
-    color:white;
 }
 
 .nav.active{
     color:#fff;
-    background:linear-gradient(90deg,#20dcff20,#875cff20);
+    background:#20dcff12;
     border-left:3px solid #20dcff;
 }
 
@@ -215,15 +202,13 @@ button{
     gap:10px;
 }
 
-.top h2{
-    margin:0;
-}
+.top h2{margin:0}
 
 .score{
     padding:9px 15px;
     border:1px solid #263252;
-    background:#111a32;
     border-radius:20px;
+    background:#111a32;
 }
 
 .page{
@@ -233,28 +218,26 @@ button{
 
 .mobile{
     display:none;
+    padding:8px 11px;
     border:1px solid #293654;
+    border-radius:8px;
     background:#ffffff08;
     color:#fff;
-    border-radius:8px;
-    padding:8px 11px;
 }
 
-/* =========================
-   CARD
-========================= */
+/* CARDS */
 
 .card{
-    background:#10172d;
-    border:1px solid #263252;
-    border-radius:16px;
+    margin-bottom:15px;
     padding:20px;
-    margin-bottom:14px;
+    border:1px solid #263252;
+    border-radius:17px;
+    background:#10172d;
 }
 
 .hero{
-    text-align:center;
     padding:45px 20px;
+    text-align:center;
 }
 
 .hero-icon{
@@ -270,9 +253,7 @@ button{
     line-height:1.6;
 }
 
-/* =========================
-   GRID
-========================= */
+/* GRID */
 
 .grid{
     display:grid;
@@ -281,50 +262,54 @@ button{
 }
 
 .topic-card,
-.level-card{
-    padding:18px;
+.level-card,
+.vocab-card{
+    padding:17px;
     border:1px solid #293654;
-    background:#ffffff06;
     border-radius:13px;
+    background:#ffffff06;
+}
+
+.topic-card,
+.level-card{
+    cursor:pointer;
     transition:.15s;
 }
 
-.topic-card{
-    cursor:pointer;
-}
-
 .topic-card:hover,
-.level-card:hover{
+.level-card:hover,
+.vocab-card:hover{
     transform:translateY(-2px);
     border-color:#20dcff;
 }
 
-.topic-icon{
+.topic-icon,
+.vocab-icon{
     font-size:38px;
 }
 
 .topic-card h3,
-.level-card h3{
+.level-card h3,
+.vocab-card h3{
     margin:7px 0;
 }
 
 .topic-card p,
-.level-card p{
+.level-card p,
+.vocab-card p{
     margin:0;
     color:#8794b5;
     font-size:12px;
 }
 
-/* =========================
-   GRAMMAR
-========================= */
+/* LESSON */
 
 .formula{
-    background:#080d1d;
+    margin:7px 0;
+    padding:12px;
     border:1px solid #202c49;
     border-radius:9px;
-    padding:12px;
-    margin:7px 0;
+    background:#080d1d;
     color:#dce4f5;
 }
 
@@ -342,15 +327,13 @@ button{
 
 .tag{
     padding:7px 10px;
-    background:#ffffff0b;
     border-radius:8px;
+    background:#ffffff0b;
     color:#cbd5e9;
     font-size:12px;
 }
 
-/* =========================
-   VOCAB
-========================= */
+/* VOCAB */
 
 .vocab-grid{
     display:grid;
@@ -358,39 +341,14 @@ button{
     gap:9px;
 }
 
-.vocab-card{
-    padding:15px;
-    border:1px solid #263252;
-    border-radius:12px;
-    background:#ffffff06;
-}
-
-.vocab-card:hover{
-    border-color:#20dcff;
-}
-
-.vocab-card .icon{
-    font-size:35px;
-}
-
-.vocab-card h3{
-    font-size:14px;
-    margin:8px 0;
-}
-
-.vocab-card p{
-    font-size:12px;
-    color:#8794b5;
-}
-
 .vocab-image{
     height:230px;
     display:flex;
-    align-items:center;
     justify-content:center;
+    align-items:center;
+    margin:15px 0;
     border-radius:13px;
     background:#080d1d;
-    margin:15px 0;
 }
 
 .vocab-image img{
@@ -399,16 +357,14 @@ button{
     object-fit:contain;
 }
 
-/* =========================
-   QUIZ
-========================= */
+/* QUIZ */
 
 .progress{
     height:6px;
-    background:#050915;
-    border-radius:20px;
-    overflow:hidden;
     margin:10px 0 18px;
+    overflow:hidden;
+    border-radius:20px;
+    background:#050915;
 }
 
 .progress div{
@@ -417,9 +373,9 @@ button{
 }
 
 .question{
+    margin-bottom:15px;
     font-size:19px;
     font-weight:bold;
-    margin-bottom:15px;
 }
 
 .feedback{
@@ -435,10 +391,10 @@ button{
 }
 
 .match-item{
-    padding:10px;
     margin-bottom:7px;
-    border-radius:10px;
+    padding:10px;
     border:1px solid #293654;
+    border-radius:10px;
     background:#ffffff06;
     cursor:pointer;
 }
@@ -460,20 +416,18 @@ button{
 }
 
 .result{
-    text-align:center;
     padding:40px;
+    text-align:center;
 }
 
 .result-score{
-    font-size:55px;
-    color:#ffe66d;
-    font-weight:bold;
     margin:10px;
+    color:#ffe66d;
+    font-size:55px;
+    font-weight:bold;
 }
 
-/* =========================
-   ADMIN
-========================= */
+/* ADMIN */
 
 .admin-table-wrap{
     overflow-x:auto;
@@ -514,9 +468,30 @@ button{
     flex-wrap:wrap;
 }
 
-/* =========================
-   MOBILE
-========================= */
+/* TOAST */
+
+#toast{
+    position:fixed;
+    z-index:100;
+    right:20px;
+    bottom:20px;
+    max-width:350px;
+    padding:14px 17px;
+    border:1px solid #293654;
+    border-radius:12px;
+    background:#111a32;
+    box-shadow:0 15px 40px #0008;
+    transform:translateY(120px);
+    opacity:0;
+    transition:.25s;
+}
+
+#toast.show{
+    transform:translateY(0);
+    opacity:1;
+}
+
+/* MOBILE */
 
 @media(max-width:850px){
 
@@ -568,35 +543,17 @@ button{
 
 <body>
 
-<!-- =====================================================
-     AUTH SCREEN
-===================================================== -->
-
 <div id="authScreen">
-
     <div class="auth-card">
-
         <div class="auth-logo">📚</div>
-
         <h1 class="auth-title">HOC ENGLISH</h1>
-
-        <div class="auth-sub">
-            Học tiếng Anh thông minh
-        </div>
-
+        <div class="auth-sub">Học tiếng Anh thông minh</div>
         <div id="authForm"></div>
-
     </div>
-
 </div>
 
-
-<!-- =====================================================
-     APP
-===================================================== -->
-
 <div id="app" class="hidden"></div>
-
+<div id="toast"></div>
 
 <script>
 
@@ -622,7 +579,6 @@ window.supabase.createClient(
 ===================================================== */
 
 let currentProfile = null;
-
 let globalScore = 0;
 
 let vocabTopic = "";
@@ -659,11 +615,24 @@ function shuffle(array){
     );
 }
 
+function toast(message){
+    const box = $("toast");
+
+    box.textContent = message;
+    box.classList.add("show");
+
+    clearTimeout(window.toastTimer);
+
+    window.toastTimer =
+        setTimeout(
+            () => box.classList.remove("show"),
+            2800
+        );
+}
+
 function codePoints(str){
     return [...str]
-        .map(c =>
-            c.codePointAt(0).toString(16)
-        )
+        .map(c => c.codePointAt(0).toString(16))
         .join("-");
 }
 
@@ -675,20 +644,14 @@ function emojiImage(emoji){
     );
 }
 
-function showError(message){
-    console.error(message);
-    alert(message);
-}
-
 
 /* =====================================================
-   AUTH UI
+   AUTH
 ===================================================== */
 
 function renderLogin(){
 
     $("authForm").innerHTML = `
-
         <input
             id="loginEmail"
             class="input"
@@ -701,12 +664,10 @@ function renderLogin(){
             type="password"
             placeholder="Mật khẩu">
 
-        <div
-            id="authError"
-            class="auth-error">
-        </div>
+        <div id="authError" class="auth-error"></div>
 
         <button
+            id="loginBtn"
             class="primary full"
             onclick="login()">
             🔐 Đăng nhập
@@ -722,10 +683,10 @@ function renderLogin(){
     `;
 }
 
+
 function renderRegister(){
 
     $("authForm").innerHTML = `
-
         <input
             id="registerUsername"
             class="input"
@@ -743,12 +704,10 @@ function renderRegister(){
             type="password"
             placeholder="Mật khẩu">
 
-        <div
-            id="authError"
-            class="auth-error">
-        </div>
+        <div id="authError" class="auth-error"></div>
 
         <button
+            id="registerBtn"
             class="primary full"
             onclick="register()">
             📝 Đăng ký
@@ -803,13 +762,23 @@ async function register(){
         return;
     }
 
+    $("registerBtn").disabled = true;
+
     const {
         data,
         error: signError
-    } = await supabaseClient.auth.signUp({
-        email,
-        password
+    } =
+    await supabaseClient.auth.signUp({
+        email:email,
+        password:password,
+        options:{
+            data:{
+                username:username
+            }
+        }
     });
+
+    $("registerBtn").disabled = false;
 
     if(signError){
         error.textContent =
@@ -823,27 +792,10 @@ async function register(){
         return;
     }
 
-    const {
-        error: profileError
-    } = await supabaseClient
-        .from("profiles")
-        .insert({
-            id:data.user.id,
-            username:username,
-            role:"user",
-            score:0
-        });
-
-    if(profileError){
-
-        console.error(profileError);
-
-        error.textContent =
-            "Tài khoản Auth đã tạo nhưng profile lỗi: "
-            + profileError.message;
-
-        return;
-    }
+    /*
+       Profile được tạo bởi trigger Supabase.
+       Không insert profile trực tiếp nữa.
+    */
 
     if(data.session){
 
@@ -852,7 +804,7 @@ async function register(){
     }else{
 
         error.textContent =
-            "Đăng ký thành công. Nếu Supabase yêu cầu xác nhận email, hãy xác nhận email rồi đăng nhập.";
+            "Đăng ký thành công! Hãy xác nhận email rồi đăng nhập.";
     }
 }
 
@@ -874,18 +826,27 @@ async function login(){
 
     error.textContent = "";
 
+    if(!email || !password){
+        error.textContent =
+            "Hãy nhập email và mật khẩu.";
+        return;
+    }
+
+    $("loginBtn").disabled = true;
+
     const {
-        error: loginError
-    } = await supabaseClient.auth.signInWithPassword({
-        email,
-        password
+        error:loginError
+    } =
+    await supabaseClient.auth.signInWithPassword({
+        email:email,
+        password:password
     });
 
-    if(loginError){
+    $("loginBtn").disabled = false;
 
+    if(loginError){
         error.textContent =
             loginError.message;
-
         return;
     }
 
@@ -902,7 +863,6 @@ async function logout(){
     await supabaseClient.auth.signOut();
 
     currentProfile = null;
-
     globalScore = 0;
 
     $("app").classList.add("hidden");
@@ -922,7 +882,8 @@ async function loadProfile(){
         data:{
             user
         }
-    } = await supabaseClient.auth.getUser();
+    } =
+    await supabaseClient.auth.getUser();
 
     if(!user){
         renderLogin();
@@ -932,7 +893,8 @@ async function loadProfile(){
     const {
         data,
         error
-    } = await supabaseClient
+    } =
+    await supabaseClient
         .from("profiles")
         .select("*")
         .eq("id",user.id)
@@ -942,19 +904,17 @@ async function loadProfile(){
 
         console.error(error);
 
-        alert(
-            "Đăng nhập được nhưng không đọc được profiles.\n\n"
-            + error.message
-        );
+        $("authError").textContent =
+            "Không đọc được profile: "
+            + error.message;
 
         return;
     }
 
     if(!data){
 
-        alert(
-            "Tài khoản chưa có profile trong bảng profiles."
-        );
+        $("authError").textContent =
+            "Profile chưa được tạo. Hãy đăng xuất rồi đăng ký lại.";
 
         return;
     }
@@ -981,65 +941,50 @@ function renderApp(){
 
         <div class="app">
 
-            <aside
-                id="sidebar"
-                class="sidebar">
+            <aside id="sidebar" class="sidebar">
 
                 <div class="logo">
                     <h1>📚 HOC ENGLISH</h1>
                     <small>English Learning</small>
                 </div>
 
-                <div class="title">
-                    TRANG CHỦ
-                </div>
+                <div class="title">TRANG CHỦ</div>
 
-                <button
-                    class="nav active"
+                <button class="nav active"
                     onclick="home(this)">
                     🏠 Trang chủ
                 </button>
 
-                <div class="title">
-                    NGỮ PHÁP
-                </div>
+                <div class="title">NGỮ PHÁP</div>
 
-                <button
-                    class="nav"
+                <button class="nav"
                     onclick="grammar('past',this)">
                     ⏪ Quá khứ đơn
                 </button>
 
-                <button
-                    class="nav"
+                <button class="nav"
                     onclick="grammar('present',this)">
                     ☀️ Hiện tại đơn
                 </button>
 
-                <button
-                    class="nav"
+                <button class="nav"
                     onclick="grammar('continuous',this)">
                     🔄 Hiện tại tiếp diễn
                 </button>
 
-                <button
-                    class="nav"
+                <button class="nav"
                     onclick="grammar('perfect',this)">
                     🚀 Hiện tại hoàn thành
                 </button>
 
-                <button
-                    class="nav"
+                <button class="nav"
                     onclick="grammar('future',this)">
                     🔮 Tương lai đơn
                 </button>
 
-                <div class="title">
-                    TỪ VỰNG
-                </div>
+                <div class="title">TỪ VỰNG</div>
 
-                <button
-                    class="nav"
+                <button class="nav"
                     onclick="vocabList(this)">
                     🧠 Từ vựng
                 </button>
@@ -1047,12 +992,9 @@ function renderApp(){
                 ${
                     currentProfile.role === "admin"
                     ? `
-                    <div class="title">
-                        QUẢN TRỊ
-                    </div>
+                    <div class="title">QUẢN TRỊ</div>
 
-                    <button
-                        class="nav"
+                    <button class="nav"
                         onclick="adminPage(this)">
                         🛡️ Quản lý người dùng
                     </button>
@@ -1060,18 +1002,14 @@ function renderApp(){
                     : ""
                 }
 
-                <div class="title">
-                    TÀI KHOẢN
-                </div>
+                <div class="title">TÀI KHOẢN</div>
 
-                <button
-                    class="nav"
+                <button class="nav"
                     onclick="accountPage(this)">
                     👤 Tài khoản
                 </button>
 
-                <button
-                    class="nav"
+                <button class="nav"
                     onclick="logout()">
                     🚪 Đăng xuất
                 </button>
@@ -1082,8 +1020,7 @@ function renderApp(){
 
                 <div class="top">
 
-                    <button
-                        class="mobile"
+                    <button class="mobile"
                         onclick="toggleMenu()">
                         ☰
                     </button>
@@ -1101,10 +1038,7 @@ function renderApp(){
 
                 </div>
 
-                <div
-                    id="page"
-                    class="page">
-                </div>
+                <div id="page" class="page"></div>
 
             </main>
 
@@ -1159,7 +1093,8 @@ async function addGlobal(points){
 
     const {
         error
-    } = await supabaseClient
+    } =
+    await supabaseClient
         .from("profiles")
         .update({
             score:globalScore
@@ -1168,6 +1103,7 @@ async function addGlobal(points){
 
     if(error){
         console.error(error);
+        toast("Không lưu được điểm.");
     }
 }
 
@@ -1194,22 +1130,17 @@ function home(btn){
                 📚✨
             </div>
 
-            <h1>
-                HOC ENGLISH
-            </h1>
+            <h1>HOC ENGLISH</h1>
 
             <p class="muted">
                 Xin chào
-                <b>
-                    ${escapeHTML(currentProfile.username)}
-                </b>!
+                <b>${escapeHTML(currentProfile.username)}</b>!
                 <br>
                 Học ngữ pháp và từ vựng
                 theo cấp độ.
             </p>
 
-            <button
-                class="primary"
+            <button class="primary"
                 onclick="vocabList(null)">
                 🧠 Học từ vựng
             </button>
@@ -1218,54 +1149,35 @@ function home(btn){
 
         <div class="card">
 
-            <h2>
-                📊 Cấp độ
-            </h2>
+            <h2>📊 Cấp độ</h2>
 
             <div class="grid">
 
                 <div class="level-card">
-                    <div style="font-size:30px">
-                        🟢
-                    </div>
+                    <div style="font-size:30px">🟢</div>
                     <h3>Dễ</h3>
-                    <p>
-                        Từ cơ bản.
-                    </p>
+                    <p>Từ cơ bản.</p>
                 </div>
 
                 <div class="level-card">
-                    <div style="font-size:30px">
-                        🔵
-                    </div>
+                    <div style="font-size:30px">🔵</div>
                     <h3>Trung bình</h3>
-                    <p>
-                        Từ phổ biến nâng cao.
-                    </p>
+                    <p>Từ phổ biến.</p>
                 </div>
 
                 <div class="level-card">
-                    <div style="font-size:30px">
-                        🟠
-                    </div>
+                    <div style="font-size:30px">🟠</div>
                     <h3>Khó</h3>
-                    <p>
-                        Từ ít gặp.
-                    </p>
+                    <p>Từ nâng cao.</p>
                 </div>
 
                 <div class="level-card">
-                    <div style="font-size:30px">
-                        🔴
-                    </div>
+                    <div style="font-size:30px">🔴</div>
                     <h3>Siêu khó</h3>
-                    <p>
-                        Từ nâng cao.
-                    </p>
+                    <p>Từ học thuật.</p>
                 </div>
 
             </div>
-
         </div>
 
         <div class="card">
@@ -1304,15 +1216,10 @@ formula:[
 "Did + S + V nguyên mẫu?"
 ],
 signs:[
-"yesterday",
-"last night",
-"last week",
-"last year",
-"ago",
-"in 2020"
+"yesterday","last night","last week",
+"last year","ago","in 2020"
 ],
-example:
-"I visited my grandmother yesterday."
+example:"I visited my grandmother yesterday."
 },
 
 present:{
@@ -1326,15 +1233,10 @@ formula:[
 "Do/Does + S + V?"
 ],
 signs:[
-"always",
-"usually",
-"often",
-"sometimes",
-"never",
-"every day"
+"always","usually","often",
+"sometimes","never","every day"
 ],
-example:
-"She goes to school every day."
+example:"She goes to school every day."
 },
 
 continuous:{
@@ -1347,15 +1249,10 @@ formula:[
 "Am/Is/Are + S + V-ing?"
 ],
 signs:[
-"now",
-"right now",
-"at the moment",
-"at present",
-"Look!",
-"Listen!"
+"now","right now","at the moment",
+"at present","Look!","Listen!"
 ],
-example:
-"They are playing football now."
+example:"They are playing football now."
 },
 
 perfect:{
@@ -1368,17 +1265,10 @@ formula:[
 "Have/Has + S + V3?"
 ],
 signs:[
-"already",
-"just",
-"ever",
-"never",
-"yet",
-"since",
-"for",
-"so far"
+"already","just","ever","never",
+"yet","since","for","so far"
 ],
-example:
-"I have finished my homework."
+example:"I have finished my homework."
 },
 
 future:{
@@ -1391,17 +1281,14 @@ formula:[
 "Will + S + V?"
 ],
 signs:[
-"tomorrow",
-"next week",
-"next year",
-"soon",
-"in the future"
+"tomorrow","next week",
+"next year","soon","in the future"
 ],
-example:
-"I will visit you tomorrow."
+example:"I will visit you tomorrow."
 }
 
 };
+
 
 function grammar(type,btn){
 
@@ -1415,8 +1302,7 @@ function grammar(type,btn){
         lessons[type];
 
     setTitle(
-        lesson.icon + " " +
-        lesson.name
+        lesson.icon + " " + lesson.name
     );
 
     $("page").innerHTML = `
@@ -1432,44 +1318,32 @@ function grammar(type,btn){
                 ${lesson.desc}
             </p>
 
-            <h3>
-                📌 Công thức
-            </h3>
+            <h3>📌 Công thức</h3>
 
-            ${lesson.formula
-                .map(
-                    x =>
-                    `<div class="formula">
-                        ${x}
-                    </div>`
-                )
-                .join("")
-            }
+            ${lesson.formula.map(
+                x => `
+                    <div class="formula">
+                        ${escapeHTML(x)}
+                    </div>
+                `
+            ).join("")}
 
-            <h3>
-                🔎 Dấu hiệu
-            </h3>
+            <h3>🔎 Dấu hiệu</h3>
 
             <div class="tags">
-
-                ${lesson.signs
-                    .map(
-                        x =>
-                        `<span class="tag">
-                            ${x}
-                        </span>`
-                    )
-                    .join("")
-                }
-
+                ${lesson.signs.map(
+                    x => `
+                        <span class="tag">
+                            ${escapeHTML(x)}
+                        </span>
+                    `
+                ).join("")}
             </div>
 
-            <h3>
-                💡 Ví dụ
-            </h3>
+            <h3>💡 Ví dụ</h3>
 
             <div class="formula">
-                ${lesson.example}
+                ${escapeHTML(lesson.example)}
             </div>
 
         </div>
@@ -1478,7 +1352,7 @@ function grammar(type,btn){
 
 
 /* =====================================================
-   VOCAB DATA
+   VOCABULARY
 ===================================================== */
 
 const vocab = {
@@ -1536,7 +1410,6 @@ expert:[
 ["brooch","Trâm cài áo","💎"]
 ]
 }
-
 },
 
 jobs:{
@@ -1584,15 +1457,14 @@ expert:[
 ["economist","Nhà kinh tế học","📈"],
 ["veterinarian","Bác sĩ thú y","🐶"],
 ["psychologist","Nhà tâm lý học","🧠"],
-["journalist","Phóng viên","📰"],
-["researcher","Nhà nghiên cứu","🔬"],
 ["consultant","Cố vấn","📊"],
 ["surgeon","Bác sĩ phẫu thuật","🏥"],
 ["astronomer","Nhà thiên văn học","🔭"],
-["account executive","Chuyên viên tài khoản","💼"]
+["account executive","Chuyên viên tài khoản","💼"],
+["geologist","Nhà địa chất học","🌍"],
+["architect","Kiến trúc sư","🏢"]
 ]
 }
-
 },
 
 objects:{
@@ -1648,7 +1520,6 @@ expert:[
 ["thermos","Bình giữ nhiệt","🫗"]
 ]
 }
-
 },
 
 food:{
@@ -1704,7 +1575,6 @@ expert:[
 ["organic food","Thực phẩm hữu cơ","🌱"]
 ]
 }
-
 },
 
 animals:{
@@ -1760,7 +1630,6 @@ expert:[
 ["ecosystem","Hệ sinh thái","🌍"]
 ]
 }
-
 }
 
 };
@@ -1784,9 +1653,7 @@ function vocabList(btn){
 
         <div class="card">
 
-            <h2>
-                🧠 Chọn chủ đề
-            </h2>
+            <h2>🧠 Chọn chủ đề</h2>
 
             <p class="muted">
                 Mỗi chủ đề có 40 từ,
@@ -1799,24 +1666,23 @@ function vocabList(btn){
                     Object.entries(vocab)
                     .map(
                         ([key,item]) => `
+                            <div
+                                class="vocab-card"
+                                onclick="chooseLevel('${key}')">
 
-                        <div
-                            class="vocab-card"
-                            onclick="chooseLevel('${key}')">
+                                <div class="vocab-icon">
+                                    ${item.icon}
+                                </div>
 
-                            <div class="icon">
-                                ${item.icon}
+                                <h3>
+                                    ${item.name}
+                                </h3>
+
+                                <p>
+                                    40 từ • 4 cấp độ
+                                </p>
+
                             </div>
-
-                            <h3>
-                                ${item.name}
-                            </h3>
-
-                            <p>
-                                40 từ • 4 cấp độ
-                            </p>
-
-                        </div>
                         `
                     )
                     .join("")
@@ -1830,7 +1696,7 @@ function vocabList(btn){
 
 
 /* =====================================================
-   CHOOSE LEVEL
+   LEVEL
 ===================================================== */
 
 function chooseLevel(topic){
@@ -1841,8 +1707,7 @@ function chooseLevel(topic){
         vocab[topic];
 
     setTitle(
-        data.icon + " " +
-        data.name
+        data.icon + " " + data.name
     );
 
     $("page").innerHTML = `
@@ -1860,76 +1725,32 @@ function chooseLevel(topic){
 
             <div class="grid">
 
-                <div
-                    class="level-card"
+                <div class="level-card"
                     onclick="startVocab('${topic}','easy')">
-
-                    <div style="font-size:35px">
-                        🟢
-                    </div>
-
-                    <h3>
-                        Dễ
-                    </h3>
-
-                    <p>
-                        10 từ cơ bản
-                    </p>
-
+                    <div style="font-size:35px">🟢</div>
+                    <h3>Dễ</h3>
+                    <p>10 từ cơ bản</p>
                 </div>
 
-                <div
-                    class="level-card"
+                <div class="level-card"
                     onclick="startVocab('${topic}','medium')">
-
-                    <div style="font-size:35px">
-                        🔵
-                    </div>
-
-                    <h3>
-                        Trung bình
-                    </h3>
-
-                    <p>
-                        10 từ
-                    </p>
-
+                    <div style="font-size:35px">🔵</div>
+                    <h3>Trung bình</h3>
+                    <p>10 từ</p>
                 </div>
 
-                <div
-                    class="level-card"
+                <div class="level-card"
                     onclick="startVocab('${topic}','hard')">
-
-                    <div style="font-size:35px">
-                        🟠
-                    </div>
-
-                    <h3>
-                        Khó
-                    </h3>
-
-                    <p>
-                        10 từ nâng cao
-                    </p>
-
+                    <div style="font-size:35px">🟠</div>
+                    <h3>Khó</h3>
+                    <p>10 từ nâng cao</p>
                 </div>
 
-                <div
-                    class="level-card"
+                <div class="level-card"
                     onclick="startVocab('${topic}','expert')">
-
-                    <div style="font-size:35px">
-                        🔴
-                    </div>
-
-                    <h3>
-                        Siêu khó
-                    </h3>
-
-                    <p>
-                        10 từ học thuật
-                    </p>
-
+                    <div style="font-size:35px">🔴</div>
+                    <h3>Siêu khó</h3>
+                    <p>10 từ học thuật</p>
                 </div>
 
             </div>
@@ -1949,8 +1770,7 @@ function startVocab(topic,level){
     vocabLevel = level;
 
     vocabData =
-        vocab[topic]
-        .levels[level];
+        vocab[topic].levels[level];
 
     vocabIndex = 0;
     vocabScore = 0;
@@ -1960,7 +1780,7 @@ function startVocab(topic,level){
 
 
 /* =====================================================
-   VOCAB LEARN
+   LEARN
 ===================================================== */
 
 function showVocabLearn(){
@@ -1985,56 +1805,50 @@ function showVocabLearn(){
 
         <div class="card">
 
-            <h2>
-                📖 Học từ vựng
-            </h2>
+            <h2>📖 Học từ vựng</h2>
 
             <p class="muted">
-                ${names[vocabLevel]}
-                • 10 từ
+                ${names[vocabLevel]} • 10 từ
             </p>
 
             <div class="vocab-grid">
 
                 ${
-                    vocabData
-                    .map(
+                    vocabData.map(
                         item => `
+                            <div class="vocab-card">
 
-                        <div class="vocab-card">
+                                <div style="
+                                    height:80px;
+                                    display:flex;
+                                    align-items:center;
+                                    justify-content:center;
+                                ">
 
-                            <div style="
-                                height:80px;
-                                display:flex;
-                                align-items:center;
-                                justify-content:center;
-                            ">
+                                    <img
+                                        src="${emojiImage(item[2])}"
+                                        style="
+                                            width:75px;
+                                            height:75px;
+                                            object-fit:contain;
+                                        "
+                                        onerror="
+                                            this.style.display='none'
+                                        ">
 
-                                <img
-                                    src="${emojiImage(item[2])}"
-                                    style="
-                                        width:75px;
-                                        height:75px;
-                                        object-fit:contain;
-                                    "
-                                    onerror="
-                                        this.style.display='none'
-                                    ">
+                                </div>
+
+                                <h3>
+                                    ${escapeHTML(item[0])}
+                                </h3>
+
+                                <p>
+                                    ${escapeHTML(item[1])}
+                                </p>
 
                             </div>
-
-                            <h3>
-                                ${item[0]}
-                            </h3>
-
-                            <p>
-                                ${item[1]}
-                            </p>
-
-                        </div>
                         `
-                    )
-                    .join("")
+                    ).join("")
                 }
 
             </div>
@@ -2064,6 +1878,7 @@ function startVocabRound1(){
     renderVocabWrite();
 }
 
+
 function renderVocabWrite(){
 
     const item =
@@ -2080,23 +1895,14 @@ function renderVocabWrite(){
                 justify-content:space-between;
                 color:#9ca9c7;
             ">
-
-                <span>
-                    📝 Lượt 1 — Ghi từ
-                </span>
-
-                <span>
-                    ${vocabIndex + 1}/10
-                </span>
-
+                <span>📝 Lượt 1 — Ghi từ</span>
+                <span>${vocabIndex + 1}/10</span>
             </div>
 
             <div class="progress">
-
                 <div style="
                     width:${vocabIndex / 10 * 100}%;
                 "></div>
-
             </div>
 
             <div class="vocab-image">
@@ -2123,7 +1929,7 @@ function renderVocabWrite(){
                     color:#9ca9c7;
                     margin-top:5px;
                 ">
-                    ${item[1]}
+                    ${escapeHTML(item[1])}
                 </span>
 
             </div>
@@ -2134,10 +1940,7 @@ function renderVocabWrite(){
                 placeholder="Nhập từ tiếng Anh..."
                 autocomplete="off">
 
-            <div
-                id="feedback"
-                class="feedback">
-            </div>
+            <div id="feedback" class="feedback"></div>
 
             <button
                 id="checkButton"
@@ -2158,6 +1961,7 @@ function renderVocabWrite(){
     `;
 }
 
+
 async function checkVocabWrite(){
 
     const item =
@@ -2167,18 +1971,12 @@ async function checkVocabWrite(){
         $("vocabInput");
 
     const value =
-        input.value
-        .trim()
-        .toLowerCase();
+        input.value.trim().toLowerCase();
 
     input.disabled = true;
-
     $("checkButton").disabled = true;
 
-    if(
-        value ===
-        item[0].toLowerCase()
-    ){
+    if(value === item[0].toLowerCase()){
 
         vocabScore += 10;
 
@@ -2199,14 +1997,13 @@ async function checkVocabWrite(){
         "inline-block";
 }
 
+
 function nextVocabWrite(){
 
     vocabIndex++;
 
     if(vocabIndex >= 10){
-
         showRound2Intro();
-
         return;
     }
 
@@ -2226,13 +2023,9 @@ function showRound2Intro(){
 
         <div class="card result">
 
-            <div style="font-size:60px">
-                🧠
-            </div>
+            <div style="font-size:60px">🧠</div>
 
-            <h2>
-                Hoàn thành lượt 1!
-            </h2>
+            <h2>Hoàn thành lượt 1!</h2>
 
             <div class="result-score">
                 ${vocabScore}/100
@@ -2279,35 +2072,27 @@ function startMatching(){
 
                 <div>
 
-                    <h3>
-                        🖼️ Hình ảnh
-                    </h3>
+                    <h3>🖼️ Hình ảnh</h3>
 
                     <div id="imageList">
 
                         ${
-                            images
-                            .map(
+                            images.map(
                                 item => `
+                                    <div
+                                        class="match-item"
+                                        data-id="${escapeHTML(item[0])}"
+                                        onclick="selectImage(this,${JSON.stringify(item[0])})">
 
-                                <div
-                                    class="match-item"
-                                    data-id="${escapeHTML(item[0])}"
-                                    onclick="
-                                        selectImage(
-                                            this,
-                                            '${item[0].replaceAll("'","\\'")}'
-                                        )
-                                    ">
-
-                                    <img
-                                        class="match-img"
-                                        src="${emojiImage(item[2])}">
-
-                                </div>
+                                        <img
+                                            class="match-img"
+                                            src="${emojiImage(item[2])}"
+                                            onerror="
+                                                this.style.display='none'
+                                            ">
+                                    </div>
                                 `
-                            )
-                            .join("")
+                            ).join("")
                         }
 
                     </div>
@@ -2316,33 +2101,23 @@ function startMatching(){
 
                 <div>
 
-                    <h3>
-                        🇬🇧 Từ tiếng Anh
-                    </h3>
+                    <h3>🇬🇧 Từ tiếng Anh</h3>
 
                     <div id="wordList">
 
                         ${
-                            words
-                            .map(
+                            words.map(
                                 item => `
+                                    <div
+                                        class="match-item"
+                                        data-id="${escapeHTML(item[0])}"
+                                        onclick="selectWord(this,${JSON.stringify(item[0])})">
 
-                                <div
-                                    class="match-item"
-                                    data-id="${escapeHTML(item[0])}"
-                                    onclick="
-                                        selectWord(
-                                            this,
-                                            '${item[0].replaceAll("'","\\'")}'
-                                        )
-                                    ">
+                                        ${escapeHTML(item[0])}
 
-                                    ${escapeHTML(item[0])}
-
-                                </div>
+                                    </div>
                                 `
-                            )
-                            .join("")
+                            ).join("")
                         }
 
                     </div>
@@ -2359,6 +2134,7 @@ function startMatching(){
         </div>
     `;
 }
+
 
 function selectImage(el,id){
 
@@ -2380,6 +2156,7 @@ function selectImage(el,id){
     tryMatch();
 }
 
+
 function selectWord(el,id){
 
     document
@@ -2399,6 +2176,7 @@ function selectWord(el,id){
 
     tryMatch();
 }
+
 
 async function tryMatch(){
 
@@ -2439,19 +2217,18 @@ async function tryMatch(){
     document
         .querySelectorAll(".match-item")
         .forEach(
-            x =>
-            x.classList.remove("selected")
+            x => x.classList.remove("selected")
         );
 
     checkMatchingFinished();
 }
 
+
 function checkMatchingFinished(){
 
     const remaining =
         [
-            ...document
-            .querySelectorAll(
+            ...document.querySelectorAll(
                 "#imageList .match-item"
             )
         ]
@@ -2494,13 +2271,9 @@ function showVocabResult(){
 
         <div class="card result">
 
-            <div style="font-size:60px">
-                🏆
-            </div>
+            <div style="font-size:60px">🏆</div>
 
-            <h2>
-                Hoàn thành!
-            </h2>
+            <h2>Hoàn thành!</h2>
 
             <p>
                 ${vocab[vocabTopic].name}
@@ -2561,9 +2334,7 @@ function accountPage(btn){
 
         <div class="card">
 
-            <h2>
-                👤 Tài khoản
-            </h2>
+            <h2>👤 Tài khoản</h2>
 
             <div class="formula">
 
@@ -2609,11 +2380,7 @@ async function adminPage(btn){
         !currentProfile ||
         currentProfile.role !== "admin"
     ){
-
-        alert(
-            "Bạn không có quyền admin."
-        );
-
+        toast("Bạn không có quyền Admin.");
         return;
     }
 
@@ -2626,52 +2393,37 @@ async function adminPage(btn){
     setTitle("🛡️ Quản lý người dùng");
 
     $("page").innerHTML = `
-
         <div class="card">
-
-            <h2>
-                🛡️ Quản lý người dùng
-            </h2>
-
-            <p class="muted">
-                Đang tải danh sách...
-            </p>
-
+            <h2>🛡️ Quản lý người dùng</h2>
+            <p class="muted">Đang tải...</p>
         </div>
     `;
 
     const {
         data,
         error
-    } = await supabaseClient
-        .from("profiles")
-        .select("*")
-        .order("created_at",{ascending:false});
+    } =
+    await supabaseClient.rpc(
+        "admin_get_profiles"
+    );
 
     if(error){
 
         $("page").innerHTML = `
-
             <div class="card">
-
-                <h2>
-                    ❌ Không tải được
-                </h2>
-
+                <h2>❌ Không tải được</h2>
                 <p class="muted">
                     ${escapeHTML(error.message)}
                 </p>
-
             </div>
         `;
-
-        console.error(error);
 
         return;
     }
 
     renderAdminUsers(data || []);
 }
+
 
 function renderAdminUsers(users){
 
@@ -2688,15 +2440,15 @@ function renderAdminUsers(users){
             ">
 
                 <div>
-                    <h2>
-                        👥 Người dùng
-                    </h2>
+
+                    <h2>👥 Người dùng</h2>
 
                     <p class="muted">
                         Tổng:
                         <b>${users.length}</b>
                         tài khoản
                     </p>
+
                 </div>
 
                 <button
@@ -2714,27 +2466,11 @@ function renderAdminUsers(users){
                     <thead>
 
                         <tr>
-
-                            <th>
-                                Username
-                            </th>
-
-                            <th>
-                                Role
-                            </th>
-
-                            <th>
-                                Điểm
-                            </th>
-
-                            <th>
-                                Ngày tạo
-                            </th>
-
-                            <th>
-                                Thao tác
-                            </th>
-
+                            <th>Username</th>
+                            <th>Role</th>
+                            <th>Điểm</th>
+                            <th>Ngày tạo</th>
+                            <th>Thao tác</th>
                         </tr>
 
                     </thead>
@@ -2742,98 +2478,95 @@ function renderAdminUsers(users){
                     <tbody>
 
                         ${
-                            users
-                            .map(
+                            users.map(
                                 user => `
 
-                                <tr>
+                                    <tr>
 
-                                    <td>
-                                        <b>
-                                            ${escapeHTML(user.username)}
-                                        </b>
-                                    </td>
+                                        <td>
+                                            <b>
+                                                ${escapeHTML(user.username)}
+                                            </b>
+                                        </td>
 
-                                    <td>
+                                        <td>
 
-                                        <span
-                                            class="role ${
-                                                user.role === "admin"
-                                                ? "admin"
-                                                : ""
-                                            }">
+                                            <span class="
+                                                role
+                                                ${
+                                                    user.role === "admin"
+                                                    ? "admin"
+                                                    : ""
+                                                }
+                                            ">
+                                                ${escapeHTML(user.role)}
+                                            </span>
 
-                                            ${escapeHTML(user.role)}
+                                        </td>
 
-                                        </span>
+                                        <td>
+                                            ⭐ ${Number(user.score || 0)}
+                                        </td>
 
-                                    </td>
-
-                                    <td>
-                                        ⭐ ${user.score || 0}
-                                    </td>
-
-                                    <td>
-                                        ${
-                                            user.created_at
-                                            ? new Date(
-                                                user.created_at
-                                            ).toLocaleDateString("vi-VN")
-                                            : "-"
-                                        }
-                                    </td>
-
-                                    <td>
-
-                                        <div
-                                            class="admin-actions">
-
+                                        <td>
                                             ${
-                                                user.role === "admin"
-                                                ? `
+                                                user.created_at
+                                                ? new Date(
+                                                    user.created_at
+                                                ).toLocaleDateString("vi-VN")
+                                                : "-"
+                                            }
+                                        </td>
+
+                                        <td>
+
+                                            <div class="admin-actions">
+
+                                                ${
+                                                    user.role === "admin"
+                                                    ? `
+                                                        <button
+                                                            class="secondary"
+                                                            onclick="
+                                                                changeRole(
+                                                                    '${user.id}',
+                                                                    'user'
+                                                                )
+                                                            ">
+                                                            Hạ user
+                                                        </button>
+                                                    `
+                                                    : `
+                                                        <button
+                                                            class="primary"
+                                                            onclick="
+                                                                changeRole(
+                                                                    '${user.id}',
+                                                                    'admin'
+                                                                )
+                                                            ">
+                                                            Cấp admin
+                                                        </button>
+                                                    `
+                                                }
+
                                                 <button
                                                     class="secondary"
                                                     onclick="
-                                                        changeRole(
-                                                            '${user.id}',
-                                                            'user'
+                                                        resetScore(
+                                                            '${user.id}'
                                                         )
                                                     ">
-                                                    Hạ user
+                                                    Reset điểm
                                                 </button>
-                                                `
-                                                : `
-                                                <button
-                                                    class="primary"
-                                                    onclick="
-                                                        changeRole(
-                                                            '${user.id}',
-                                                            'admin'
-                                                        )
-                                                    ">
-                                                    Cấp admin
-                                                </button>
-                                                `
-                                            }
 
-                                            <button
-                                                class="secondary"
-                                                onclick="
-                                                    resetScore(
-                                                        '${user.id}'
-                                                    )
-                                                ">
-                                                Reset điểm
-                                            </button>
+                                            </div>
 
-                                        </div>
+                                        </td>
 
-                                    </td>
-
-                                </tr>
+                                    </tr>
                                 `
-                            )
-                            .join("")
+                            ).join("")
                         }
 
                     </tbody>
@@ -2857,60 +2590,47 @@ async function changeRole(userId,newRole){
         !currentProfile ||
         currentProfile.role !== "admin"
     ){
-        alert(
-            "Không có quyền."
-        );
+        toast("Không có quyền.");
         return;
     }
 
     if(
-        userId ===
-        currentProfile.id &&
+        userId === currentProfile.id &&
         newRole !== "admin"
     ){
-
-        alert(
-            "Không nên tự hạ quyền admin của chính mình."
-        );
-
+        toast("Không thể tự hạ quyền Admin.");
         return;
     }
 
-    const ok =
-        confirm(
-            "Bạn có chắc muốn đổi role thành "
+    if(
+        !confirm(
+            "Đổi quyền tài khoản này thành "
             + newRole
             + "?"
-        );
-
-    if(!ok){
+        )
+    ){
         return;
     }
 
     const {
         error
-    } = await supabaseClient
-        .from("profiles")
-        .update({
-            role:newRole
-        })
-        .eq("id",userId);
+    } =
+    await supabaseClient.rpc(
+        "admin_change_role",
+        {
+            target_id:userId,
+            new_role:newRole
+        }
+    );
 
     if(error){
-
-        alert(
-            "Lỗi: "
-            + error.message
-        );
-
+        toast("Lỗi: " + error.message);
         return;
     }
 
-    alert(
-        "Đã cập nhật role."
-    );
+    toast("Đã cập nhật role.");
 
-    adminPage();
+    await adminPage();
 }
 
 
@@ -2927,49 +2647,41 @@ async function resetScore(userId){
         return;
     }
 
-    const ok =
-        confirm(
+    if(
+        !confirm(
             "Reset điểm tài khoản này về 0?"
-        );
-
-    if(!ok){
+        )
+    ){
         return;
     }
 
     const {
         error
-    } = await supabaseClient
-        .from("profiles")
-        .update({
-            score:0
-        })
-        .eq("id",userId);
+    } =
+    await supabaseClient.rpc(
+        "admin_reset_score",
+        {
+            target_id:userId
+        }
+    );
 
     if(error){
-
-        alert(
-            "Lỗi: "
-            + error.message
-        );
-
+        toast("Lỗi: " + error.message);
         return;
     }
 
-    if(
-        userId ===
-        currentProfile.id
-    ){
+    if(userId === currentProfile.id){
 
         globalScore = 0;
 
-        $("globalScore").textContent = 0;
+        currentProfile.score = 0;
+
+        $("globalScore").textContent = "0";
     }
 
-    alert(
-        "Đã reset điểm."
-    );
+    toast("Đã reset điểm.");
 
-    adminPage();
+    await adminPage();
 }
 
 
@@ -2979,9 +2691,9 @@ async function resetScore(userId){
 
 async function startup(){
 
-    try{
+    renderLogin();
 
-        renderLogin();
+    try{
 
         const {
             data:{
@@ -2991,52 +2703,44 @@ async function startup(){
         await supabaseClient.auth.getSession();
 
         if(session){
-
             await loadProfile();
-
         }
 
     }catch(error){
 
-        console.error(
-            "STARTUP ERROR:",
-            error
-        );
+        console.error(error);
 
-        document.body.innerHTML = `
-
-            <div style="
-                min-height:100vh;
-                display:flex;
-                align-items:center;
-                justify-content:center;
-                padding:30px;
-                background:#070b18;
-                color:white;
-                font-family:Arial;
-            ">
-
-                <div style="
-                    max-width:600px;
-                    padding:25px;
-                    border:1px solid #293654;
-                    border-radius:15px;
-                    background:#10172d;
-                ">
-
-                    <h2>
-                        ❌ Lỗi khởi động
-                    </h2>
-
-                    <p>
-                        ${escapeHTML(error.message)}
-                    </p>
-
-                </div>
-
+        $("authForm").innerHTML = `
+            <div class="auth-error">
+                Không thể kết nối Supabase.<br><br>
+                ${escapeHTML(error.message)}
             </div>
+
+            <button
+                class="secondary full"
+                onclick="location.reload()">
+                🔄 Thử lại
+            </button>
         `;
     }
+
+    supabaseClient.auth.onAuthStateChange(
+        async(event,session) => {
+
+            if(
+                event === "SIGNED_OUT"
+            ){
+                return;
+            }
+
+            if(
+                event === "SIGNED_IN" &&
+                session
+            ){
+                await loadProfile();
+            }
+        }
+    );
 }
 
 startup();

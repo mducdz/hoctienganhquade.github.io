@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="vi">
 <head>
@@ -6,731 +5,557 @@
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>HOC ENGLISH</title>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
 <style>
 *{box-sizing:border-box}
-:root{
-  --bg:#070b16;
-  --panel:#10182b;
-  --panel2:#0c1324;
-  --line:#263452;
-  --text:#f5f7ff;
-  --muted:#8d9ab7;
-  --cyan:#20dcff;
-  --purple:#765bff;
-  --pink:#ff3fae;
-  --green:#39e58c;
-  --red:#ff5268;
-}
 body{
-  margin:0;
-  font-family:Arial,sans-serif;
-  background:
-    radial-gradient(circle at 80% 10%,#24327c22,transparent 30%),
-    var(--bg);
-  color:var(--text);
+    margin:0;
+    font-family:Arial,sans-serif;
+    background:#070b18;
+    color:#fff;
 }
 button,input{font:inherit}
+
 button{cursor:pointer}
 
-#app{min-height:100vh}
-
-.auth-page{
-  min-height:100vh;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  padding:20px;
-}
-.auth-box{
-  width:100%;
-  max-width:430px;
-  background:linear-gradient(180deg,#121c33,#0c1324);
-  border:1px solid var(--line);
-  border-radius:24px;
-  padding:30px;
-  box-shadow:0 25px 80px #0008;
-}
-.logo-big{
-  text-align:center;
-  font-size:45px;
-}
-.auth-box h1{
-  text-align:center;
-  margin:8px 0;
-  background:linear-gradient(90deg,var(--cyan),var(--purple),var(--pink));
-  -webkit-background-clip:text;
-  color:transparent;
-}
-.muted{color:var(--muted)}
-.center{text-align:center}
-
-.input{
-  width:100%;
-  background:#070d1b;
-  color:white;
-  border:1px solid var(--line);
-  border-radius:11px;
-  padding:13px;
-  outline:none;
-  margin:5px 0;
-}
-.input:focus{border-color:var(--cyan)}
-
-.primary,.secondary,.danger{
-  border:0;
-  border-radius:11px;
-  padding:11px 16px;
-  color:white;
-  margin:4px;
-}
-.primary{
-  background:linear-gradient(135deg,var(--cyan),var(--purple),var(--pink));
-}
-.secondary{
-  background:#ffffff0a;
-  border:1px solid var(--line);
-}
-.danger{
-  background:#ff526822;
-  border:1px solid #ff526855;
-}
-
-.error{color:#ff7182;min-height:22px;margin:7px 0}
-.success{color:var(--green);min-height:22px;margin:7px 0}
-
-.layout{display:flex;min-height:100vh}
+.app{display:flex;min-height:100vh}
 
 .sidebar{
-  width:245px;
-  position:fixed;
-  top:0;
-  bottom:0;
-  overflow:auto;
-  background:#0b1224ee;
-  backdrop-filter:blur(15px);
-  border-right:1px solid var(--line);
-  padding:15px;
-  z-index:20;
+    width:240px;
+    position:fixed;
+    left:0;top:0;bottom:0;
+    overflow:auto;
+    padding:18px 13px;
+    background:#0d1328;
+    border-right:1px solid #263252;
+    z-index:20;
 }
-.brand{
-  padding:12px;
-  border-bottom:1px solid var(--line);
-  margin-bottom:12px;
-}
-.brand b{
-  font-size:21px;
-  background:linear-gradient(90deg,var(--cyan),var(--purple),var(--pink));
-  -webkit-background-clip:text;
-  color:transparent;
-}
-.brand small{display:block;color:var(--muted);margin-top:4px}
 
-.section{
-  color:#64718f;
-  font-size:10px;
-  font-weight:bold;
-  margin:17px 8px 6px;
+.logo{
+    padding:10px;
+    margin-bottom:15px;
+    border-bottom:1px solid #263252;
 }
+
+.logo h1{
+    margin:0;
+    font-size:22px;
+    background:linear-gradient(90deg,#20dcff,#8c5cff,#ff4db8);
+    -webkit-background-clip:text;
+    color:transparent;
+}
+
+.logo small{color:#8794b5}
+
+.title{
+    color:#667394;
+    font-size:10px;
+    font-weight:bold;
+    margin:16px 8px 6px;
+}
+
 .nav{
-  width:100%;
-  border:0;
-  background:transparent;
-  color:#aeb9d1;
-  padding:11px;
-  border-radius:10px;
-  text-align:left;
-  margin:2px 0;
+    width:100%;
+    border:0;
+    background:transparent;
+    color:#aeb9d1;
+    padding:11px;
+    border-radius:9px;
+    text-align:left;
+    margin:2px 0;
 }
-.nav:hover{background:#ffffff09;color:white}
+
+.nav:hover{
+    background:#ffffff0a;
+    color:white;
+}
+
 .nav.active{
-  color:white;
-  background:linear-gradient(90deg,#20dcff18,#765bff18);
-  border-left:3px solid var(--cyan);
+    color:white;
+    background:linear-gradient(90deg,#20dcff20,#875cff20);
+    border-left:3px solid #20dcff;
 }
 
 .main{
-  margin-left:245px;
-  width:calc(100% - 245px);
-  padding:22px;
+    margin-left:240px;
+    width:calc(100% - 240px);
+    padding:25px;
 }
+
 .top{
-  max-width:1100px;
-  margin:auto auto 18px;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap:10px;
+    max-width:1100px;
+    margin:auto auto 18px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:10px;
 }
-.top h2{margin:0}
+
+.top h2{
+    margin:0;
+    font-size:24px;
+}
+
 .score{
-  background:#111b31;
-  border:1px solid var(--line);
-  padding:9px 15px;
-  border-radius:20px;
+    background:#111a32;
+    border:1px solid #263252;
+    padding:9px 15px;
+    border-radius:20px;
 }
-.page{max-width:1100px;margin:auto}
+
+.page{
+    max-width:1100px;
+    margin:auto;
+}
 
 .card{
-  background:linear-gradient(180deg,#111a30,#0d1527);
-  border:1px solid var(--line);
-  border-radius:17px;
-  padding:20px;
-  margin-bottom:14px;
+    background:#10172d;
+    border:1px solid #263252;
+    border-radius:16px;
+    padding:20px;
+    margin-bottom:14px;
+    box-shadow:0 10px 30px #0003;
 }
+
 .hero{
-  text-align:center;
-  padding:55px 20px;
-}
-.hero-icon{font-size:65px}
-.hero h1{font-size:34px}
-
-.grid{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:10px;
-}
-.topic{
-  border:1px solid var(--line);
-  background:#ffffff05;
-  border-radius:13px;
-  padding:17px;
-  cursor:pointer;
-}
-.topic:hover{border-color:var(--cyan);transform:translateY(-2px)}
-.topic .icon{font-size:36px}
-.topic h3{margin:8px 0}
-.topic p{font-size:12px;color:var(--muted)}
-
-.level{
-  border:1px solid var(--line);
-  border-radius:14px;
-  padding:20px;
-  background:#ffffff05;
-  cursor:pointer;
-}
-.level:hover{border-color:var(--cyan)}
-.level .icon{font-size:35px}
-.level h3{margin:7px 0}
-.level p{color:var(--muted);font-size:12px}
-
-.words{
-  display:grid;
-  grid-template-columns:repeat(5,1fr);
-  gap:9px;
-}
-.word{
-  border:1px solid var(--line);
-  background:#ffffff05;
-  border-radius:12px;
-  padding:13px;
-}
-.word-img{
-  height:65px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-}
-.word-img img{
-  width:60px;
-  height:60px;
-  object-fit:contain;
-}
-.word h3{font-size:14px;margin:7px 0}
-.word p{font-size:11px;color:var(--muted)}
-
-.progress{
-  height:7px;
-  background:#050916;
-  border-radius:20px;
-  overflow:hidden;
-  margin:12px 0 20px;
-}
-.progress div{
-  height:100%;
-  background:linear-gradient(90deg,var(--cyan),var(--purple),var(--pink));
+    text-align:center;
+    padding:45px 20px;
 }
 
-.vocab-image{
-  height:250px;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  background:#080e1d;
-  border:1px solid var(--line);
-  border-radius:14px;
-  margin-bottom:15px;
-}
-.vocab-image img{
-  width:190px;
-  height:190px;
-  object-fit:contain;
+.hero .emoji{font-size:60px}
+
+.hero h1{
+    font-size:32px;
+    margin:12px 0;
 }
 
-.question{
-  font-size:21px;
-  font-weight:bold;
-  margin:15px 0;
-}
-.feedback{
-  min-height:25px;
-  margin:10px 0;
-  font-weight:bold;
+.hero p{
+    color:#9ca9c7;
+    line-height:1.7;
 }
 
-.match{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:18px;
+.primary,.secondary{
+    border-radius:10px;
+    padding:11px 17px;
+    margin:3px;
 }
-.match-item{
-  padding:12px;
-  border:1px solid var(--line);
-  background:#ffffff05;
-  border-radius:10px;
-  margin-bottom:7px;
-  cursor:pointer;
+
+.primary{
+    border:0;
+    color:white;
+    background:linear-gradient(135deg,#17d8ff,#765bff,#ff3fae);
 }
-.match-item.selected{
-  border-color:var(--cyan);
-  background:#20dcff15;
+
+.secondary{
+    color:white;
+    background:#ffffff0b;
+    border:1px solid #34405e;
 }
-.match-item.done{
-  display:none;
+
+.primary:hover{
+    filter:brightness(1.12);
 }
-.match-img{
-  width:55px;
-  height:55px;
-  object-fit:contain;
+
+.secondary:hover{
+    background:#ffffff14;
 }
 
 .formula{
-  background:#080e1d;
-  border:1px solid var(--line);
-  border-radius:9px;
-  padding:11px;
-  margin:7px 0;
-}
-.tags{display:flex;flex-wrap:wrap;gap:6px}
-.tag{
-  padding:7px 10px;
-  background:#ffffff08;
-  border:1px solid var(--line);
-  border-radius:8px;
-  font-size:12px;
+    background:#080d1d;
+    border:1px solid #202c49;
+    border-radius:9px;
+    padding:11px;
+    margin:7px 0;
+    color:#dce4f5;
 }
 
-.admin-table{
-  width:100%;
-  border-collapse:collapse;
+.lesson h3{
+    color:#20dcff;
+    font-size:14px;
+    margin-top:20px;
 }
-.admin-table th,
-.admin-table td{
-  padding:11px;
-  border-bottom:1px solid var(--line);
-  text-align:left;
+
+.lesson p{
+    color:#bdc8df;
+    line-height:1.6;
 }
-.badge{
-  padding:5px 9px;
-  border-radius:20px;
-  background:#20dcff18;
-  color:var(--cyan);
-  font-size:11px;
+
+.tags{
+    display:flex;
+    flex-wrap:wrap;
+    gap:6px;
 }
-.badge.admin{
-  background:#ff3fae18;
-  color:#ff73c4;
+
+.tag{
+    background:#ffffff0b;
+    padding:7px 10px;
+    border-radius:8px;
+    font-size:12px;
+    color:#cbd5e9;
+}
+
+.progress{
+    height:7px;
+    background:#050915;
+    border-radius:20px;
+    overflow:hidden;
+    margin:10px 0 18px;
+}
+
+.progress div{
+    height:100%;
+    background:linear-gradient(90deg,#20dcff,#765bff,#ff3fae);
+}
+
+.question{
+    font-size:19px;
+    font-weight:bold;
+    line-height:1.5;
+    margin-bottom:15px;
+}
+
+.answers{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:8px;
+}
+
+.answer{
+    border:1px solid #293654;
+    background:#ffffff07;
+    color:white;
+    padding:13px;
+    border-radius:10px;
+    text-align:left;
+}
+
+.answer:hover{
+    background:#ffffff12;
+}
+
+.correct{
+    border-color:#39e58c!important;
+    background:#39e58c18!important;
+}
+
+.wrong{
+    border-color:#ff5268!important;
+    background:#ff526818!important;
+}
+
+.feedback{
+    min-height:24px;
+    margin:12px 0;
+    font-weight:bold;
+}
+
+.input{
+    width:100%;
+    padding:13px;
+    background:#070c1b;
+    color:white;
+    border:1px solid #293654;
+    border-radius:9px;
+    outline:none;
+    margin-bottom:10px;
+}
+
+.input:focus{
+    border-color:#20dcff;
+}
+
+.vocab-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:10px;
+}
+
+.vocab-card{
+    padding:15px;
+    background:#ffffff06;
+    border:1px solid #263252;
+    border-radius:12px;
+    transition:.15s;
+}
+
+.vocab-card:hover{
+    border-color:#20dcff;
+    transform:translateY(-2px);
+}
+
+.vocab-card .icon{
+    font-size:35px;
+}
+
+.vocab-card h3{
+    font-size:14px;
+    margin:7px 0;
+}
+
+.vocab-card p{
+    font-size:11px;
+    color:#8794b5;
+}
+
+.level-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:10px;
+}
+
+.level-card{
+    padding:20px;
+    border:1px solid #293654;
+    border-radius:13px;
+    background:#ffffff06;
+    transition:.15s;
+}
+
+.level-card:hover{
+    transform:translateY(-2px);
+    border-color:#20dcff;
+}
+
+.level-card h3{
+    margin:8px 0;
+}
+
+.level-card p{
+    color:#8d9ab8;
+    font-size:12px;
+}
+
+.vocab-image{
+    height:230px;
+    background:#080d1d;
+    border-radius:13px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    overflow:hidden;
+    margin-bottom:14px;
+}
+
+.vocab-image img{
+    width:180px;
+    height:180px;
+    object-fit:contain;
+}
+
+.match-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:15px;
+}
+
+.match-item{
+    border:1px solid #293654;
+    background:#ffffff06;
+    border-radius:10px;
+    padding:10px;
+    margin-bottom:7px;
+    min-height:50px;
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.match-item.selected{
+    border-color:#20dcff;
+    background:#20dcff15;
+}
+
+.match-img{
+    width:50px;
+    height:50px;
+    object-fit:contain;
+}
+
+.result{
+    text-align:center;
+    padding:35px;
+}
+
+.result-score{
+    font-size:55px;
+    color:#ffe66d;
+    font-weight:bold;
+    margin:10px;
+}
+
+.user-box{
+    margin-top:15px;
+    padding:15px;
+    border:1px solid #263252;
+    border-radius:10px;
+    background:#ffffff05;
+}
+
+.auth-wrap{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:20px;
+}
+
+.auth{
+    width:100%;
+    max-width:430px;
+}
+
+.auth h1{text-align:center}
+
+.auth input{
+    margin-bottom:9px;
+}
+
+.auth-error{
+    color:#ff6678;
+    min-height:22px;
+    font-size:13px;
+}
+
+.auth-success{
+    color:#39e58c;
+    min-height:22px;
+    font-size:13px;
 }
 
 .mobile{
-  display:none;
+    display:none;
+    background:#ffffff08;
+    border:1px solid #293654;
+    color:white;
+    border-radius:8px;
+    padding:8px 11px;
 }
 
-@media(max-width:900px){
-  .grid{grid-template-columns:repeat(2,1fr)}
-  .words{grid-template-columns:repeat(2,1fr)}
+.admin-user{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:10px;
+    padding:12px;
+    margin:7px 0;
+    border:1px solid #293654;
+    border-radius:10px;
+    background:#ffffff05;
 }
-@media(max-width:700px){
-  .sidebar{
-    transform:translateX(-100%);
-    transition:.2s;
-  }
-  .sidebar.open{transform:translateX(0)}
-  .main{
-    margin-left:0;
-    width:100%;
-    padding:14px;
-  }
-  .mobile{display:block}
-  .match{grid-template-columns:1fr}
+
+.badge{
+    display:inline-block;
+    padding:4px 8px;
+    border-radius:20px;
+    font-size:11px;
+    background:#20dcff18;
+    color:#20dcff;
+}
+
+.badge.admin{
+    color:#ffcf5c;
+    background:#ffcf5c18;
+}
+
+@media(max-width:850px){
+
+    .sidebar{
+        transform:translateX(-100%);
+        transition:.2s;
+    }
+
+    .sidebar.open{
+        transform:translateX(0);
+    }
+
+    .main{
+        margin-left:0;
+        width:100%;
+        padding:15px;
+    }
+
+    .mobile{
+        display:block;
+    }
+
+    .answers{
+        grid-template-columns:1fr;
+    }
+
+    .vocab-grid{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .level-grid{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .match-grid{
+        grid-template-columns:1fr;
+    }
+}
+
+@media(max-width:480px){
+
+    .vocab-grid,
+    .level-grid{
+        grid-template-columns:1fr;
+    }
+
+    .top h2{
+        font-size:19px;
+    }
 }
 </style>
 </head>
 
 <body>
+
 <div id="app"></div>
 
-<script type="module">
+<script>
 
 /* =========================================================
-   SUPABASE CONFIG
-   ========================================================= */
+   SUPABASE
+========================================================= */
 
-const SUPABASE_URL="https://bfrdyblmhxftenhipeft.supabase.co";
-const SUPABASE_KEY="DAN_PUBLISHABLE_KEY_CUA_BAN";
+const SUPABASE_URL =
+"https://bfrdyblmhxftenhipeft.supabase.co";
 
+const SUPABASE_KEY =
+"sb_publishable_u704DIAbYElFlahcAcHLzQ_JTt4KTEX";
 
-/* =========================================================
-   SUPABASE CLIENT
-   ========================================================= */
-
-let sb=null;
-
-async function loadSupabase(){
-
-  if(sb)return sb;
-
-  try{
-
-    const mod=await import(
-      "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm"
-    );
-
-    sb=mod.createClient(
-      SUPABASE_URL,
-      SUPABASE_KEY
-    );
-
-    return sb;
-
-  }catch(err){
-
-    console.error(err);
-
-    document.getElementById("app").innerHTML=`
-      <div class="auth-page">
-        <div class="auth-box">
-          <div class="logo-big">⚠️</div>
-          <h1>Không tải được Supabase</h1>
-          <p class="muted center">
-            Kiểm tra Project URL và Publishable Key.
-          </p>
-        </div>
-      </div>
-    `;
-
-    throw err;
-  }
-}
+const supabaseClient =
+window.supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_KEY
+);
 
 
 /* =========================================================
-   STATE
-   ========================================================= */
+   BIẾN
+========================================================= */
 
-let user=null;
 let profile=null;
 
 let vocabTopic="";
 let vocabLevel="";
 let vocabData=[];
+
 let vocabIndex=0;
 let vocabScore=0;
 
 let selectedImage=null;
 let selectedWord=null;
 
-let globalScore=0;
-
 
 /* =========================================================
-   DATA
-   4 LEVELS × 10 WORDS
-   ========================================================= */
+   TIỆN ÍCH
+========================================================= */
 
-const vocab={
-
-clothes:{
-name:"Quần áo",
-icon:"👕",
-levels:{
-easy:[
-["T-shirt","Áo phông","👕"],
-["shirt","Áo sơ mi","👔"],
-["pants","Quần dài","👖"],
-["dress","Váy liền","👗"],
-["shoes","Giày","👟"],
-["hat","Mũ","🧢"],
-["jacket","Áo khoác","🧥"],
-["socks","Tất","🧦"],
-["tie","Cà vạt","👔"],
-["skirt","Chân váy","👗"]
-],
-medium:[
-["coat","Áo khoác dài","🧥"],
-["shorts","Quần short","🩳"],
-["sweater","Áo len","🧶"],
-["hoodie","Áo hoodie","👕"],
-["scarf","Khăn quàng","🧣"],
-["gloves","Găng tay","🧤"],
-["belt","Thắt lưng","〰️"],
-["boots","Ủng","🥾"],
-["sandals","Dép sandal","👡"],
-["uniform","Đồng phục","👕"]
-],
-hard:[
-["blouse","Áo kiểu nữ","👚"],
-["cardigan","Áo cardigan","🧥"],
-["suit","Bộ vest","🤵"],
-["waistcoat","Áo ghi-lê","🦺"],
-["raincoat","Áo mưa","🧥"],
-["tracksuit","Bộ đồ thể thao","🏃"],
-["underwear","Đồ lót","🩲"],
-["sunglasses","Kính râm","🕶️"],
-["necklace","Dây chuyền","📿"],
-["bracelet","Vòng tay","📿"]
-],
-expert:[
-["suspenders","Dây đeo quần","〰️"],
-["turtleneck","Áo cổ lọ","👕"],
-["windbreaker","Áo gió","🧥"],
-["overalls","Quần yếm","👖"],
-["leggings","Quần legging","👖"],
-["trench coat","Áo măng tô","🧥"],
-["pajamas","Đồ ngủ","😴"],
-["flip-flops","Dép xỏ ngón","🩴"],
-["earrings","Hoa tai","💎"],
-["brooch","Trâm cài áo","💎"]
-]
-},
-
-jobs:{
-name:"Nghề nghiệp",
-icon:"👨‍💼",
-levels:{
-easy:[
-["teacher","Giáo viên","👨‍🏫"],
-["doctor","Bác sĩ","👨‍⚕️"],
-["nurse","Y tá","👩‍⚕️"],
-["chef","Đầu bếp","👨‍🍳"],
-["farmer","Nông dân","👨‍🌾"],
-["driver","Tài xế","🚕"],
-["pilot","Phi công","👨‍✈️"],
-["artist","Họa sĩ","🎨"],
-["singer","Ca sĩ","🎤"],
-["student","Học sinh","🧑‍🎓"]
-],
-medium:[
-["engineer","Kỹ sư","👷"],
-["lawyer","Luật sư","⚖️"],
-["journalist","Nhà báo","📰"],
-["dentist","Nha sĩ","🦷"],
-["architect","Kiến trúc sư","🏢"],
-["photographer","Nhiếp ảnh gia","📷"],
-["mechanic","Thợ máy","🔧"],
-["cashier","Thu ngân","💳"],
-["waiter","Phục vụ nam","🍽️"],
-["manager","Quản lý","💼"]
-],
-hard:[
-["accountant","Kế toán","🧮"],
-["electrician","Thợ điện","⚡"],
-["plumber","Thợ sửa ống nước","🔧"],
-["translator","Biên dịch viên","🌐"],
-["scientist","Nhà khoa học","🔬"],
-["designer","Nhà thiết kế","🎨"],
-["programmer","Lập trình viên","💻"],
-["pharmacist","Dược sĩ","💊"],
-["detective","Thám tử","🕵️"],
-["editor","Biên tập viên","📝"]
-],
-expert:[
-["entrepreneur","Doanh nhân","💼"],
-["economist","Nhà kinh tế học","📈"],
-["veterinarian","Bác sĩ thú y","🐶"],
-["psychologist","Nhà tâm lý học","🧠"],
-["researcher","Nhà nghiên cứu","🔬"],
-["consultant","Cố vấn","📊"],
-["surgeon","Bác sĩ phẫu thuật","🏥"],
-["astronomer","Nhà thiên văn học","🔭"],
-["geologist","Nhà địa chất học","🌋"],
-["biologist","Nhà sinh vật học","🧬"]
-]
-},
-
-objects:{
-name:"Đồ vật",
-icon:"🏠",
-levels:{
-easy:[
-["table","Cái bàn","🪑"],
-["chair","Cái ghế","🪑"],
-["book","Quyển sách","📖"],
-["phone","Điện thoại","📱"],
-["computer","Máy tính","💻"],
-["clock","Đồng hồ","⏰"],
-["door","Cánh cửa","🚪"],
-["window","Cửa sổ","🪟"],
-["bag","Cái túi","🎒"],
-["pen","Cây bút","🖊️"]
-],
-medium:[
-["keyboard","Bàn phím","⌨️"],
-["mouse","Chuột máy tính","🖱️"],
-["mirror","Gương","🪞"],
-["lamp","Đèn","💡"],
-["drawer","Ngăn kéo","🗄️"],
-["shelf","Kệ","📚"],
-["pillow","Gối","🛏️"],
-["blanket","Chăn","🛌"],
-["bottle","Chai","🍾"],
-["umbrella","Ô","☂️"]
-],
-hard:[
-["calculator","Máy tính cầm tay","🧮"],
-["headphones","Tai nghe","🎧"],
-["printer","Máy in","🖨️"],
-["scissors","Kéo","✂️"],
-["stapler","Dập ghim","📎"],
-["flashlight","Đèn pin","🔦"],
-["thermometer","Nhiệt kế","🌡️"],
-["backpack","Ba lô","🎒"],
-["suitcase","Va li","🧳"],
-["binoculars","Ống nhòm","🔭"]
-],
-expert:[
-["microscope","Kính hiển vi","🔬"],
-["telescope","Kính thiên văn","🔭"],
-["compass","La bàn","🧭"],
-["hourglass","Đồng hồ cát","⌛"],
-["typewriter","Máy đánh chữ","⌨️"],
-["sewing machine","Máy may","🧵"],
-["magnifying glass","Kính lúp","🔍"],
-["tripod","Chân máy","📷"],
-["projector","Máy chiếu","📽️"],
-["thermos","Bình giữ nhiệt","🫗"]
-]
-},
-
-food:{
-name:"Đồ ăn",
-icon:"🍔",
-levels:{
-easy:[
-["bread","Bánh mì","🍞"],
-["rice","Cơm","🍚"],
-["apple","Táo","🍎"],
-["banana","Chuối","🍌"],
-["pizza","Pizza","🍕"],
-["cake","Bánh ngọt","🍰"],
-["egg","Trứng","🥚"],
-["cheese","Phô mai","🧀"],
-["noodles","Mì","🍜"],
-["milk","Sữa","🥛"]
-],
-medium:[
-["sandwich","Bánh sandwich","🥪"],
-["chicken","Thịt gà","🍗"],
-["beef","Thịt bò","🥩"],
-["pork","Thịt lợn","🥓"],
-["soup","Súp","🍲"],
-["salad","Salad","🥗"],
-["sausage","Xúc xích","🌭"],
-["yogurt","Sữa chua","🥛"],
-["butter","Bơ","🧈"],
-["honey","Mật ong","🍯"]
-],
-hard:[
-["mushroom","Nấm","🍄"],
-["spinach","Rau bina","🥬"],
-["avocado","Quả bơ","🥑"],
-["broccoli","Bông cải xanh","🥦"],
-["strawberry","Dâu tây","🍓"],
-["blueberry","Việt quất","🫐"],
-["pineapple","Dứa","🍍"],
-["watermelon","Dưa hấu","🍉"],
-["seafood","Hải sản","🦐"],
-["cuisine","Ẩm thực","🍽️"]
-],
-expert:[
-["ingredient","Nguyên liệu","🧂"],
-["appetizer","Món khai vị","🍽️"],
-["dessert","Món tráng miệng","🍰"],
-["beverage","Đồ uống","🥤"],
-["seasoning","Gia vị","🧂"],
-["nutrient","Chất dinh dưỡng","🥗"],
-["vegetarian","Đồ chay","🥬"],
-["delicacy","Đặc sản","🍽️"],
-["recipe","Công thức nấu ăn","📖"],
-["organic food","Thực phẩm hữu cơ","🌱"]
-]
-},
-
-animals:{
-name:"Động vật",
-icon:"🐶",
-levels:{
-easy:[
-["dog","Chó","🐶"],
-["cat","Mèo","🐱"],
-["bird","Chim","🐦"],
-["fish","Cá","🐟"],
-["horse","Ngựa","🐴"],
-["tiger","Hổ","🐯"],
-["lion","Sư tử","🦁"],
-["elephant","Voi","🐘"],
-["monkey","Khỉ","🐒"],
-["rabbit","Thỏ","🐰"]
-],
-medium:[
-["giraffe","Hươu cao cổ","🦒"],
-["zebra","Ngựa vằn","🦓"],
-["bear","Gấu","🐻"],
-["wolf","Sói","🐺"],
-["fox","Cáo","🦊"],
-["deer","Hươu","🦌"],
-["panda","Gấu trúc","🐼"],
-["kangaroo","Kangaroo","🦘"],
-["penguin","Chim cánh cụt","🐧"],
-["dolphin","Cá heo","🐬"]
-],
-hard:[
-["crocodile","Cá sấu","🐊"],
-["rhinoceros","Tê giác","🦏"],
-["hippopotamus","Hà mã","🦛"],
-["gorilla","Khỉ đột","🦍"],
-["cheetah","Báo gê-pa","🐆"],
-["leopard","Báo hoa mai","🐆"],
-["eagle","Đại bàng","🦅"],
-["owl","Cú","🦉"],
-["shark","Cá mập","🦈"],
-["octopus","Bạch tuộc","🐙"]
-],
-expert:[
-["amphibian","Động vật lưỡng cư","🐸"],
-["reptile","Bò sát","🦎"],
-["mammal","Động vật có vú","🐘"],
-["predator","Động vật săn mồi","🐅"],
-["herbivore","Động vật ăn cỏ","🐄"],
-["carnivore","Động vật ăn thịt","🦁"],
-["nocturnal","Động vật hoạt động ban đêm","🦉"],
-["endangered species","Loài có nguy cơ tuyệt chủng","🐼"],
-["habitat","Môi trường sống","🌳"],
-["ecosystem","Hệ sinh thái","🌍"]
-]
-}
-};
-
-
-/* =========================================================
-   UTILS
-   ========================================================= */
-
-function $(id){
-  return document.getElementById(id);
-}
-
-function escapeHTML(value){
-  return String(value??"")
+function esc(value){
+    return String(value ?? "")
     .replaceAll("&","&amp;")
     .replaceAll("<","&lt;")
     .replaceAll(">","&gt;")
@@ -738,530 +563,45 @@ function escapeHTML(value){
     .replaceAll("'","&#039;");
 }
 
+function shuffle(arr){
+    return [...arr].sort(()=>Math.random()-.5);
+}
+
 function codePoints(str){
-  return [...str]
+    return [...str]
     .map(c=>c.codePointAt(0).toString(16))
     .join("-");
 }
 
 function emojiImage(emoji){
-  return "https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/72x72/"
+    return "https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/72x72/"
     +codePoints(emoji)+".png";
 }
 
-function shuffle(arr){
-  return [...arr].sort(()=>Math.random()-.5);
-}
-
-function setPageTitle(text){
-  const el=$("pageTitle");
-  if(el)el.textContent=text;
-}
-
-function closeMobile(){
-  const s=$("sidebar");
-  if(s)s.classList.remove("open");
-}
-
 function toggleMenu(){
-  const s=$("sidebar");
-  if(s)s.classList.toggle("open");
+    const s=document.getElementById("sidebar");
+    if(s)s.classList.toggle("open");
 }
 
-function setActive(btn){
-  document.querySelectorAll(".nav")
+function closeMenu(){
+    const s=document.getElementById("sidebar");
+    if(s)s.classList.remove("open");
+}
+
+function setTitle(title){
+    const x=document.getElementById("pageTitle");
+    if(x)x.textContent=title;
+}
+
+function activeNone(){
+    document.querySelectorAll(".nav")
     .forEach(x=>x.classList.remove("active"));
-  if(btn)btn.classList.add("active");
 }
 
 
 /* =========================================================
-   AUTH
-   ========================================================= */
-
-async function register(){
-
-  const email=$("registerEmail")?.value.trim();
-  const password=$("registerPassword")?.value;
-
-  $("authError").textContent="";
-
-  if(!email || !email.includes("@")){
-    $("authError").textContent="Nhập email hợp lệ.";
-    return;
-  }
-
-  if(password.length<6){
-    $("authError").textContent="Mật khẩu phải có ít nhất 6 ký tự.";
-    return;
-  }
-
-  const client=await loadSupabase();
-
-  const {data,error}=await client.auth.signUp({
-    email,
-    password
-  });
-
-  if(error){
-    $("authError").textContent=error.message;
-    return;
-  }
-
-  if(data.user){
-
-    await client.from("profiles").upsert({
-      id:data.user.id,
-      email:data.user.email,
-      role:"user",
-      score:0
-    });
-
-    if(data.session){
-      await boot();
-    }else{
-      $("authError").textContent=
-        "Đăng ký thành công. Hãy xác nhận email rồi đăng nhập.";
-    }
-  }
-}
-
-async function login(){
-
-  const email=$("loginEmail")?.value.trim();
-  const password=$("loginPassword")?.value;
-
-  $("authError").textContent="";
-
-  const client=await loadSupabase();
-
-  const {data,error}=await client.auth.signInWithPassword({
-    email,
-    password
-  });
-
-  if(error){
-    $("authError").textContent=error.message;
-    return;
-  }
-
-  user=data.user;
-  await boot();
-}
-
-async function logout(){
-
-  const client=await loadSupabase();
-
-  await client.auth.signOut();
-
-  user=null;
-  profile=null;
-  globalScore=0;
-
-  renderAuth();
-}
-
-
-/* =========================================================
-   AUTH UI
-   ========================================================= */
-
-function renderAuth(mode="login"){
-
-  $("app").innerHTML=`
-
-  <div class="auth-page">
-
-    <div class="auth-box">
-
-      <div class="logo-big">📚</div>
-
-      <h1>HOC ENGLISH</h1>
-
-      <p class="muted center">
-        Học tiếng Anh theo cấp độ
-      </p>
-
-      <div style="display:flex;gap:5px;margin:18px 0">
-
-        <button
-          class="${mode==="login"?"primary":"secondary"}"
-          style="flex:1"
-          onclick="renderAuth('login')">
-          🔐 Đăng nhập
-        </button>
-
-        <button
-          class="${mode==="register"?"primary":"secondary"}"
-          style="flex:1"
-          onclick="renderAuth('register')">
-          📝 Đăng ký
-        </button>
-
-      </div>
-
-      <div id="authError" class="error"></div>
-
-      ${
-        mode==="login"
-        ?`
-
-        <input
-          id="loginEmail"
-          class="input"
-          type="email"
-          placeholder="Email">
-
-        <input
-          id="loginPassword"
-          class="input"
-          type="password"
-          placeholder="Mật khẩu">
-
-        <button
-          class="primary"
-          style="width:100%;margin:8px 0"
-          onclick="login()">
-          🔐 Đăng nhập
-        </button>
-
-        `
-        :`
-
-        <input
-          id="registerEmail"
-          class="input"
-          type="email"
-          placeholder="Email">
-
-        <input
-          id="registerPassword"
-          class="input"
-          type="password"
-          placeholder="Mật khẩu">
-
-        <button
-          class="primary"
-          style="width:100%;margin:8px 0"
-          onclick="register()">
-          📝 Tạo tài khoản
-        </button>
-
-        `
-      }
-
-      <p class="muted center" style="font-size:12px">
-        Tài khoản được xác thực bằng Supabase.
-      </p>
-
-    </div>
-
-  </div>
-  `;
-}
-
-
-/* =========================================================
-   PROFILE
-   ========================================================= */
-
-async function loadProfile(){
-
-  const client=await loadSupabase();
-
-  const {data,error}=await client
-    .from("profiles")
-    .select("*")
-    .eq("id",user.id)
-    .maybeSingle();
-
-  if(error){
-    console.error(error);
-  }
-
-  if(!data){
-
-    const {data:newProfile,error:createError}=await client
-      .from("profiles")
-      .insert({
-        id:user.id,
-        email:user.email,
-        role:"user",
-        score:0
-      })
-      .select()
-      .single();
-
-    if(createError){
-      console.error(createError);
-      profile={
-        id:user.id,
-        email:user.email,
-        role:"user",
-        score:0
-      };
-    }else{
-      profile=newProfile;
-    }
-
-  }else{
-    profile=data;
-  }
-
-  globalScore=Number(profile?.score||0);
-}
-
-
-/* =========================================================
-   SAVE SCORE
-   ========================================================= */
-
-async function saveScore(){
-
-  if(!user)return;
-
-  globalScore=Math.max(0,globalScore);
-
-  const client=await loadSupabase();
-
-  const {error}=await client
-    .from("profiles")
-    .update({score:globalScore})
-    .eq("id",user.id);
-
-  if(error)console.error(error);
-
-  if(profile)profile.score=globalScore;
-
-  const scoreEl=$("globalScore");
-  if(scoreEl)scoreEl.textContent=globalScore;
-}
-
-async function addScore(points){
-
-  globalScore+=points;
-
-  const scoreEl=$("globalScore");
-  if(scoreEl)scoreEl.textContent=globalScore;
-
-  await saveScore();
-}
-
-
-/* =========================================================
-   APP
-   ========================================================= */
-
-async function boot(){
-
-  try{
-
-    await loadProfile();
-
-    renderApp();
-
-  }catch(err){
-
-    console.error(err);
-
-    $("app").innerHTML=`
-      <div class="auth-page">
-        <div class="auth-box">
-          <div class="logo-big">⚠️</div>
-          <h1>Có lỗi</h1>
-          <p class="muted">
-            Không thể tải dữ liệu tài khoản.
-          </p>
-          <p class="error">
-            ${escapeHTML(err.message||err)}
-          </p>
-          <button class="primary" onclick="location.reload()">
-            🔄 Tải lại
-          </button>
-        </div>
-      </div>
-    `;
-  }
-}
-
-function renderApp(){
-
-  $("app").innerHTML=`
-
-  <div class="layout">
-
-    <aside class="sidebar" id="sidebar">
-
-      <div class="brand">
-        <b>📚 HOC ENGLISH</b>
-        <small>English Learning</small>
-      </div>
-
-      <div class="section">HỌC TẬP</div>
-
-      <button class="nav active" onclick="home(this)">
-        🏠 Trang chủ
-      </button>
-
-      <button class="nav" onclick="vocabList(this)">
-        🧠 Từ vựng
-      </button>
-
-      <div class="section">NGỮ PHÁP</div>
-
-      <button class="nav" onclick="grammar('past',this)">
-        ⏪ Quá khứ đơn
-      </button>
-
-      <button class="nav" onclick="grammar('present',this)">
-        ☀️ Hiện tại đơn
-      </button>
-
-      <button class="nav" onclick="grammar('continuous',this)">
-        🔄 Hiện tại tiếp diễn
-      </button>
-
-      <button class="nav" onclick="grammar('perfect',this)">
-        🚀 Hiện tại hoàn thành
-      </button>
-
-      <button class="nav" onclick="grammar('future',this)">
-        🔮 Tương lai đơn
-      </button>
-
-      <div class="section">TÀI KHOẢN</div>
-
-      <button class="nav" onclick="accountPage(this)">
-        👤 Tài khoản
-      </button>
-
-      ${
-        profile?.role==="admin"
-        ?`
-        <button class="nav" onclick="adminPage(this)">
-          👑 Admin Panel
-        </button>
-        `
-        :""
-      }
-
-      <button class="nav" onclick="logout()">
-        🚪 Đăng xuất
-      </button>
-
-    </aside>
-
-    <main class="main">
-
-      <div class="top">
-
-        <button class="secondary mobile" onclick="toggleMenu()">
-          ☰
-        </button>
-
-        <h2 id="pageTitle">Trang chủ</h2>
-
-        <div class="score">
-          ⭐ <b id="globalScore">${globalScore}</b>
-        </div>
-
-      </div>
-
-      <div class="page" id="page"></div>
-
-    </main>
-
-  </div>
-  `;
-
-  home(document.querySelector(".nav"));
-}
-
-
-/* =========================================================
-   HOME
-   ========================================================= */
-
-function home(btn){
-
-  setActive(btn);
-  closeMobile();
-  setPageTitle("Trang chủ");
-
-  $("page").innerHTML=`
-
-  <div class="card hero">
-
-    <div class="hero-icon">📚✨</div>
-
-    <h1>HOC ENGLISH</h1>
-
-    <p class="muted">
-      Xin chào <b>${escapeHTML(user?.email||"bạn")}</b>!
-    </p>
-
-    <p class="muted">
-      Học từ vựng, ngữ pháp và luyện quiz
-      theo 4 cấp độ.
-    </p>
-
-    <button class="primary" onclick="vocabList(null)">
-      🧠 Bắt đầu học
-    </button>
-
-  </div>
-
-  <div class="card">
-
-    <h2>🎯 4 cấp độ</h2>
-
-    <div class="grid">
-
-      <div class="level">
-        <div class="icon">🟢</div>
-        <h3>Dễ</h3>
-        <p>Từ vựng cơ bản.</p>
-      </div>
-
-      <div class="level">
-        <div class="icon">🔵</div>
-        <h3>Trung bình</h3>
-        <p>Từ vựng phổ biến nâng cao.</p>
-      </div>
-
-      <div class="level">
-        <div class="icon">🟠</div>
-        <h3>Khó</h3>
-        <p>Từ vựng ít gặp.</p>
-      </div>
-
-      <div class="level">
-        <div class="icon">🔴</div>
-        <h3>Siêu khó</h3>
-        <p>Từ vựng học thuật.</p>
-      </div>
-
-    </div>
-
-  </div>
-
-  <div class="card">
-
-    <h2>📊 Điểm của bạn</h2>
-
-    <div style="font-size:38px;color:#ffe66d">
-      ⭐ ${globalScore}
-    </div>
-
-  </div>
-  `;
-}
-
-
-/* =========================================================
-   GRAMMAR
-   ========================================================= */
+   DỮ LIỆU NGỮ PHÁP
+========================================================= */
 
 const lessons={
 
@@ -1271,50 +611,62 @@ icon:"⏪",
 desc:"Diễn tả hành động đã xảy ra và kết thúc trong quá khứ.",
 formula:[
 "S + V2/V-ed + O",
-"S + did not + V",
-"Did + S + V?"
+"S + did not + V nguyên mẫu",
+"Did + S + V nguyên mẫu?"
 ],
-signs:["yesterday","last night","last week","ago","in 2020"],
+signs:[
+"yesterday","last night","last week",
+"last year","ago","in 2020"
+],
 example:"I visited my grandmother yesterday."
 },
 
 present:{
 name:"Hiện tại đơn",
 icon:"☀️",
-desc:"Diễn tả thói quen, sự thật hoặc lịch trình.",
+desc:"Diễn tả thói quen, sự thật và lịch trình.",
 formula:[
 "I/You/We/They + V",
 "He/She/It + V-s/es",
 "S + do/does not + V",
 "Do/Does + S + V?"
 ],
-signs:["always","usually","often","sometimes","never","every day"],
+signs:[
+"always","usually","often",
+"sometimes","never","every day"
+],
 example:"She goes to school every day."
 },
 
 continuous:{
 name:"Hiện tại tiếp diễn",
 icon:"🔄",
-desc:"Diễn tả hành động đang xảy ra.",
+desc:"Diễn tả hành động đang xảy ra tại thời điểm nói.",
 formula:[
 "S + am/is/are + V-ing",
-"S + am/is/are not + V-ing",
+"S + am/is/are + not + V-ing",
 "Am/Is/Are + S + V-ing?"
 ],
-signs:["now","right now","at the moment","at present","Look!","Listen!"],
+signs:[
+"now","right now","at the moment",
+"at present","Look!","Listen!"
+],
 example:"They are playing football now."
 },
 
 perfect:{
 name:"Hiện tại hoàn thành",
 icon:"🚀",
-desc:"Diễn tả hành động có liên hệ với hiện tại.",
+desc:"Diễn tả hành động có liên hệ với hiện tại hoặc kinh nghiệm.",
 formula:[
 "S + have/has + V3",
 "S + have/has not + V3",
 "Have/Has + S + V3?"
 ],
-signs:["already","just","ever","never","yet","since","for"],
+signs:[
+"already","just","ever","never",
+"yet","since","for","so far"
+],
 example:"I have finished my homework."
 },
 
@@ -1327,871 +679,1882 @@ formula:[
 "S + will not + V",
 "Will + S + V?"
 ],
-signs:["tomorrow","next week","next year","soon","in the future"],
+signs:[
+"tomorrow","next week",
+"next year","soon","in the future"
+],
 example:"I will visit you tomorrow."
 }
 
 };
 
-function grammar(type,btn){
 
-  setActive(btn);
-  closeMobile();
+/* =========================================================
+   40 TỪ / CHỦ ĐỀ
+========================================================= */
 
-  const l=lessons[type];
+const vocab={
 
-  setPageTitle(l.icon+" "+l.name);
+clothes:{
+name:"Quần áo",
+icon:"👕",
+levels:{
 
-  $("page").innerHTML=`
+easy:[
+["T-shirt","Áo phông","👕"],
+["shirt","Áo sơ mi","👔"],
+["pants","Quần dài","👖"],
+["dress","Váy liền","👗"],
+["shoes","Giày","👟"],
+["hat","Mũ","🧢"],
+["jacket","Áo khoác","🧥"],
+["socks","Tất","🧦"],
+["tie","Cà vạt","👔"],
+["skirt","Chân váy","👗"]
+],
 
-  <div class="card">
+medium:[
+["coat","Áo khoác dài","🧥"],
+["shorts","Quần short","🩳"],
+["sweater","Áo len","🧶"],
+["hoodie","Áo hoodie","👕"],
+["scarf","Khăn quàng","🧣"],
+["gloves","Găng tay","🧤"],
+["belt","Thắt lưng","〰️"],
+["boots","Ủng","🥾"],
+["sandals","Dép sandal","👡"],
+["uniform","Đồng phục","👕"]
+],
 
-    <h2>${l.icon} ${l.name}</h2>
+hard:[
+["blouse","Áo kiểu nữ","👚"],
+["cardigan","Áo cardigan","🧥"],
+["suit","Bộ vest","🤵"],
+["waistcoat","Áo ghi-lê","🦺"],
+["raincoat","Áo mưa","🧥"],
+["tracksuit","Bộ đồ thể thao","🏃"],
+["underwear","Đồ lót","🩲"],
+["sunglasses","Kính râm","🕶️"],
+["necklace","Dây chuyền","📿"],
+["bracelet","Vòng tay","📿"]
+],
 
-    <p class="muted">${l.desc}</p>
+expert:[
+["suspenders","Dây đeo quần","〰️"],
+["turtleneck","Áo cổ lọ","👕"],
+["windbreaker","Áo gió","🧥"],
+["overalls","Quần yếm","👖"],
+["leggings","Quần legging","👖"],
+["trench coat","Áo măng tô","🧥"],
+["pajamas","Đồ ngủ","😴"],
+["flip-flops","Dép xỏ ngón","🩴"],
+["earrings","Hoa tai","💎"],
+["brooch","Trâm cài áo","💎"]
+]
 
-    <h3>📌 Công thức</h3>
+},
 
-    ${l.formula.map(x=>`
-      <div class="formula">${x}</div>
-    `).join("")}
+jobs:{
+name:"Nghề nghiệp",
+icon:"👨‍💼",
+levels:{
 
-    <h3>🔎 Dấu hiệu nhận biết</h3>
+easy:[
+["teacher","Giáo viên","👨‍🏫"],
+["doctor","Bác sĩ","👨‍⚕️"],
+["nurse","Y tá","👩‍⚕️"],
+["chef","Đầu bếp","👨‍🍳"],
+["farmer","Nông dân","👨‍🌾"],
+["driver","Tài xế","🚕"],
+["pilot","Phi công","👨‍✈️"],
+["artist","Họa sĩ","🎨"],
+["singer","Ca sĩ","🎤"],
+["student","Học sinh","🧑‍🎓"]
+],
 
-    <div class="tags">
-      ${l.signs.map(x=>`
-        <span class="tag">${x}</span>
-      `).join("")}
+medium:[
+["engineer","Kỹ sư","👷"],
+["lawyer","Luật sư","⚖️"],
+["journalist","Nhà báo","📰"],
+["dentist","Nha sĩ","🦷"],
+["architect","Kiến trúc sư","🏢"],
+["photographer","Nhiếp ảnh gia","📷"],
+["mechanic","Thợ máy","🔧"],
+["cashier","Thu ngân","💳"],
+["waiter","Phục vụ nam","🍽️"],
+["manager","Quản lý","💼"]
+],
+
+hard:[
+["accountant","Kế toán","🧮"],
+["electrician","Thợ điện","⚡"],
+["plumber","Thợ sửa ống nước","🔧"],
+["translator","Biên dịch viên","🌐"],
+["scientist","Nhà khoa học","🔬"],
+["designer","Nhà thiết kế","🎨"],
+["programmer","Lập trình viên","💻"],
+["pharmacist","Dược sĩ","💊"],
+["detective","Thám tử","🕵️"],
+["editor","Biên tập viên","📝"]
+],
+
+expert:[
+["entrepreneur","Doanh nhân","💼"],
+["economist","Nhà kinh tế học","📈"],
+["veterinarian","Bác sĩ thú y","🐶"],
+["psychologist","Nhà tâm lý học","🧠"],
+["researcher","Nhà nghiên cứu","🔬"],
+["consultant","Cố vấn","📊"],
+["surgeon","Bác sĩ phẫu thuật","🏥"],
+["astronomer","Nhà thiên văn học","🔭"],
+["architectural designer","Nhà thiết kế kiến trúc","🏢"],
+["executive","Giám đốc điều hành","💼"]
+]
+
+},
+
+objects:{
+name:"Đồ vật",
+icon:"🏠",
+levels:{
+
+easy:[
+["table","Cái bàn","🪑"],
+["chair","Cái ghế","🪑"],
+["book","Quyển sách","📖"],
+["phone","Điện thoại","📱"],
+["computer","Máy tính","💻"],
+["clock","Đồng hồ","⏰"],
+["door","Cánh cửa","🚪"],
+["window","Cửa sổ","🪟"],
+["bag","Cái túi","🎒"],
+["pen","Cây bút","🖊️"]
+],
+
+medium:[
+["keyboard","Bàn phím","⌨️"],
+["mouse","Chuột máy tính","🖱️"],
+["mirror","Gương","🪞"],
+["lamp","Đèn","💡"],
+["drawer","Ngăn kéo","🗄️"],
+["shelf","Kệ","📚"],
+["pillow","Gối","🛏️"],
+["blanket","Chăn","🛌"],
+["bottle","Chai","🍾"],
+["umbrella","Ô","☂️"]
+],
+
+hard:[
+["calculator","Máy tính cầm tay","🧮"],
+["headphones","Tai nghe","🎧"],
+["printer","Máy in","🖨️"],
+["scissors","Kéo","✂️"],
+["stapler","Dập ghim","📎"],
+["flashlight","Đèn pin","🔦"],
+["thermometer","Nhiệt kế","🌡️"],
+["backpack","Ba lô","🎒"],
+["suitcase","Va li","🧳"],
+["binoculars","Ống nhòm","🔭"]
+],
+
+expert:[
+["microscope","Kính hiển vi","🔬"],
+["telescope","Kính thiên văn","🔭"],
+["compass","La bàn","🧭"],
+["hourglass","Đồng hồ cát","⌛"],
+["typewriter","Máy đánh chữ","⌨️"],
+["sewing machine","Máy may","🧵"],
+["magnifying glass","Kính lúp","🔍"],
+["tripod","Chân máy","📷"],
+["projector","Máy chiếu","📽️"],
+["thermos","Bình giữ nhiệt","🫗"]
+]
+
+},
+
+food:{
+name:"Đồ ăn",
+icon:"🍔",
+levels:{
+
+easy:[
+["bread","Bánh mì","🍞"],
+["rice","Cơm","🍚"],
+["apple","Táo","🍎"],
+["banana","Chuối","🍌"],
+["pizza","Pizza","🍕"],
+["cake","Bánh ngọt","🍰"],
+["egg","Trứng","🥚"],
+["cheese","Phô mai","🧀"],
+["noodles","Mì","🍜"],
+["milk","Sữa","🥛"]
+],
+
+medium:[
+["sandwich","Bánh sandwich","🥪"],
+["chicken","Thịt gà","🍗"],
+["beef","Thịt bò","🥩"],
+["pork","Thịt lợn","🥓"],
+["soup","Súp","🍲"],
+["salad","Salad","🥗"],
+["sausage","Xúc xích","🌭"],
+["yogurt","Sữa chua","🥛"],
+["butter","Bơ","🧈"],
+["honey","Mật ong","🍯"]
+],
+
+hard:[
+["mushroom","Nấm","🍄"],
+["spinach","Rau bina","🥬"],
+["avocado","Quả bơ","🥑"],
+["broccoli","Bông cải xanh","🥦"],
+["strawberry","Dâu tây","🍓"],
+["blueberry","Việt quất","🫐"],
+["pineapple","Dứa","🍍"],
+["watermelon","Dưa hấu","🍉"],
+["seafood","Hải sản","🦐"],
+["cuisine","Ẩm thực","🍽️"]
+],
+
+expert:[
+["ingredient","Nguyên liệu","🧂"],
+["appetizer","Món khai vị","🍽️"],
+["dessert","Món tráng miệng","🍰"],
+["beverage","Đồ uống","🥤"],
+["seasoning","Gia vị","🧂"],
+["nutrient","Chất dinh dưỡng","🥗"],
+["vegetarian","Đồ chay","🥬"],
+["delicacy","Đặc sản","🍽️"],
+["recipe","Công thức nấu ăn","📖"],
+["organic food","Thực phẩm hữu cơ","🌱"]
+]
+
+},
+
+animals:{
+name:"Động vật",
+icon:"🐶",
+levels:{
+
+easy:[
+["dog","Chó","🐶"],
+["cat","Mèo","🐱"],
+["bird","Chim","🐦"],
+["fish","Cá","🐟"],
+["horse","Ngựa","🐴"],
+["tiger","Hổ","🐯"],
+["lion","Sư tử","🦁"],
+["elephant","Voi","🐘"],
+["monkey","Khỉ","🐒"],
+["rabbit","Thỏ","🐰"]
+],
+
+medium:[
+["giraffe","Hươu cao cổ","🦒"],
+["zebra","Ngựa vằn","🦓"],
+["bear","Gấu","🐻"],
+["wolf","Sói","🐺"],
+["fox","Cáo","🦊"],
+["deer","Hươu","🦌"],
+["panda","Gấu trúc","🐼"],
+["kangaroo","Kangaroo","🦘"],
+["penguin","Chim cánh cụt","🐧"],
+["dolphin","Cá heo","🐬"]
+],
+
+hard:[
+["crocodile","Cá sấu","🐊"],
+["rhinoceros","Tê giác","🦏"],
+["hippopotamus","Hà mã","🦛"],
+["gorilla","Khỉ đột","🦍"],
+["cheetah","Báo gê-pa","🐆"],
+["leopard","Báo hoa mai","🐆"],
+["eagle","Đại bàng","🦅"],
+["owl","Cú","🦉"],
+["shark","Cá mập","🦈"],
+["octopus","Bạch tuộc","🐙"]
+],
+
+expert:[
+["amphibian","Động vật lưỡng cư","🐸"],
+["reptile","Bò sát","🦎"],
+["mammal","Động vật có vú","🐘"],
+["predator","Động vật săn mồi","🐅"],
+["herbivore","Động vật ăn cỏ","🐄"],
+["carnivore","Động vật ăn thịt","🦁"],
+["nocturnal","Động vật hoạt động ban đêm","🦉"],
+["endangered species","Loài có nguy cơ tuyệt chủng","🐼"],
+["habitat","Môi trường sống","🌳"],
+["ecosystem","Hệ sinh thái","🌍"]
+]
+
+}
+
+};
+
+
+/* =========================================================
+   AUTH
+========================================================= */
+
+async function getSession(){
+
+    const {data,error} =
+        await supabaseClient.auth.getSession();
+
+    if(error){
+        console.error(error);
+        return null;
+    }
+
+    return data.session;
+}
+
+
+async function register(){
+
+    const username =
+        document.getElementById("regUser").value.trim();
+
+    const password =
+        document.getElementById("regPass").value;
+
+    const errorBox =
+        document.getElementById("authError");
+
+    const successBox =
+        document.getElementById("authSuccess");
+
+    errorBox.textContent="";
+    successBox.textContent="";
+
+    if(username.length<3){
+        errorBox.textContent=
+        "Tên tài khoản phải có ít nhất 3 ký tự.";
+        return;
+    }
+
+    if(password.length<6){
+        errorBox.textContent=
+        "Mật khẩu phải có ít nhất 6 ký tự.";
+        return;
+    }
+
+    const email =
+        username.toLowerCase().replace(/[^a-z0-9]/g,"")
+        +"@hocenglish.local";
+
+    const {data,error} =
+        await supabaseClient.auth.signUp({
+            email:email,
+            password:password,
+            options:{
+                data:{
+                    username:username
+                }
+            }
+        });
+
+    if(error){
+        errorBox.textContent=error.message;
+        return;
+    }
+
+    if(data.user){
+
+        await createProfile(
+            data.user.id,
+            username
+        );
+    }
+
+    successBox.textContent=
+    "Đăng ký thành công. Đang đăng nhập...";
+
+    if(data.session){
+        await loadProfile();
+    }else{
+        errorBox.textContent=
+        "Tài khoản đã tạo. Nếu Supabase yêu cầu xác nhận email, hãy tắt Email Confirmation trong Authentication → Providers → Email để đăng nhập ngay.";
+    }
+}
+
+
+async function login(){
+
+    const username =
+        document.getElementById("loginUser").value.trim();
+
+    const password =
+        document.getElementById("loginPass").value;
+
+    const errorBox =
+        document.getElementById("authError");
+
+    errorBox.textContent="";
+
+    if(!username || !password){
+        errorBox.textContent=
+        "Vui lòng nhập đầy đủ tài khoản và mật khẩu.";
+        return;
+    }
+
+    const email =
+        username.toLowerCase().replace(/[^a-z0-9]/g,"")
+        +"@hocenglish.local";
+
+    const {data,error} =
+        await supabaseClient.auth.signInWithPassword({
+            email:email,
+            password:password
+        });
+
+    if(error){
+        errorBox.textContent=
+        "Đăng nhập thất bại: "+error.message;
+        return;
+    }
+
+    if(data.session){
+        await loadProfile();
+    }
+}
+
+
+async function logout(){
+
+    await supabaseClient.auth.signOut();
+
+    profile=null;
+
+    renderAuth();
+}
+
+
+async function createProfile(id,username){
+
+    const {error} =
+        await supabaseClient
+        .from("profiles")
+        .upsert({
+            id:id,
+            username:username,
+            role:"user",
+            score:0
+        });
+
+    if(error){
+        console.error("PROFILE ERROR:",error);
+    }
+}
+
+
+async function loadProfile(){
+
+    const session=await getSession();
+
+    if(!session){
+        renderAuth();
+        return;
+    }
+
+    let {data,error} =
+        await supabaseClient
+        .from("profiles")
+        .select("id,username,role,score")
+        .eq("id",session.user.id)
+        .maybeSingle();
+
+    if(error){
+        console.error(error);
+
+        /*
+           Nếu profile chưa tồn tại thì tạo.
+        */
+
+        await createProfile(
+            session.user.id,
+            session.user.user_metadata?.username ||
+            session.user.email.split("@")[0]
+        );
+
+        const result =
+            await supabaseClient
+            .from("profiles")
+            .select("id,username,role,score")
+            .eq("id",session.user.id)
+            .maybeSingle();
+
+        data=result.data;
+    }
+
+    if(!data){
+
+        await createProfile(
+            session.user.id,
+            session.user.user_metadata?.username ||
+            "User"
+        );
+
+        const result =
+            await supabaseClient
+            .from("profiles")
+            .select("id,username,role,score")
+            .eq("id",session.user.id)
+            .maybeSingle();
+
+        data=result.data;
+    }
+
+    profile=data;
+
+    renderApp();
+}
+
+
+/* =========================================================
+   AUTH UI
+========================================================= */
+
+function renderAuth(){
+
+    document.getElementById("app").innerHTML=`
+
+    <div class="auth-wrap">
+
+        <div class="card auth">
+
+            <div style="
+                text-align:center;
+                font-size:55px;
+                margin-bottom:5px">
+                📚
+            </div>
+
+            <h1>HOC ENGLISH</h1>
+
+            <p style="
+                text-align:center;
+                color:#8f9bb7">
+                Học tiếng Anh • Từ vựng • Ngữ pháp
+            </p>
+
+            <div class="exercise-tabs"
+                 style="display:flex;gap:7px">
+
+                <button id="loginTab"
+                    class="primary"
+                    style="flex:1"
+                    onclick="showLogin()">
+                    🔐 Đăng nhập
+                </button>
+
+                <button id="registerTab"
+                    class="secondary"
+                    style="flex:1"
+                    onclick="showRegister()">
+                    📝 Đăng ký
+                </button>
+
+            </div>
+
+            <div id="authForm"></div>
+
+        </div>
+
+    </div>
+    `;
+
+    showLogin();
+}
+
+
+function showLogin(){
+
+    document.getElementById("authForm").innerHTML=`
+
+        <input id="loginUser"
+            class="input"
+            placeholder="Tên tài khoản"
+            autocomplete="username">
+
+        <input id="loginPass"
+            class="input"
+            type="password"
+            placeholder="Mật khẩu"
+            autocomplete="current-password">
+
+        <div id="authError"
+            class="auth-error"></div>
+
+        <button class="primary"
+            style="width:100%"
+            onclick="login()">
+            🔐 Đăng nhập
+        </button>
+
+    `;
+}
+
+
+function showRegister(){
+
+    document.getElementById("authForm").innerHTML=`
+
+        <input id="regUser"
+            class="input"
+            placeholder="Tên tài khoản"
+            autocomplete="username">
+
+        <input id="regPass"
+            class="input"
+            type="password"
+            placeholder="Mật khẩu — ít nhất 6 ký tự"
+            autocomplete="new-password">
+
+        <div id="authError"
+            class="auth-error"></div>
+
+        <div id="authSuccess"
+            class="auth-success"></div>
+
+        <button class="primary"
+            style="width:100%"
+            onclick="register()">
+            📝 Tạo tài khoản
+        </button>
+
+    `;
+}
+
+
+/* =========================================================
+   APP
+========================================================= */
+
+function renderApp(){
+
+    document.getElementById("app").innerHTML=`
+
+    <div class="app">
+
+        <aside class="sidebar" id="sidebar">
+
+            <div class="logo">
+                <h1>📚 HOC ENGLISH</h1>
+                <small>English Learning Website</small>
+            </div>
+
+            <div class="title">TRANG CHỦ</div>
+
+            <button class="nav active"
+                onclick="home(this)">
+                🏠 Trang chủ
+            </button>
+
+            <div class="title">NGỮ PHÁP</div>
+
+            <button class="nav"
+                onclick="grammar('past',this)">
+                ⏪ Quá khứ đơn
+            </button>
+
+            <button class="nav"
+                onclick="grammar('present',this)">
+                ☀️ Hiện tại đơn
+            </button>
+
+            <button class="nav"
+                onclick="grammar('continuous',this)">
+                🔄 Hiện tại tiếp diễn
+            </button>
+
+            <button class="nav"
+                onclick="grammar('perfect',this)">
+                🚀 Hiện tại hoàn thành
+            </button>
+
+            <button class="nav"
+                onclick="grammar('future',this)">
+                🔮 Tương lai đơn
+            </button>
+
+            <div class="title">TỪ VỰNG</div>
+
+            <button class="nav"
+                onclick="vocabList(this)">
+                🧠 Từ vựng
+            </button>
+
+            ${profile?.role==="admin" ? `
+
+            <div class="title">QUẢN TRỊ</div>
+
+            <button class="nav"
+                onclick="adminPage(this)">
+                🛡️ Quản lý tài khoản
+            </button>
+
+            `:""}
+
+            <div class="title">TÀI KHOẢN</div>
+
+            <button class="nav"
+                onclick="accountPage()">
+                👤 Tài khoản
+            </button>
+
+            <button class="nav"
+                onclick="logout()">
+                🚪 Đăng xuất
+            </button>
+
+        </aside>
+
+        <main class="main">
+
+            <div class="top">
+
+                <button class="mobile"
+                    onclick="toggleMenu()">
+                    ☰
+                </button>
+
+                <h2 id="pageTitle">
+                    Trang chủ
+                </h2>
+
+                <div class="score">
+                    ⭐ <b id="globalScore">
+                    ${profile?.score||0}
+                    </b>
+                </div>
+
+            </div>
+
+            <div class="page"
+                id="page"></div>
+
+        </main>
+
+    </div>
+    `;
+
+    home(document.querySelector(".nav"));
+}
+
+
+/* =========================================================
+   ĐIỂM
+========================================================= */
+
+async function addGlobal(points){
+
+    if(!profile)return;
+
+    profile.score=(profile.score||0)+points;
+
+    const scoreBox=
+        document.getElementById("globalScore");
+
+    if(scoreBox)
+        scoreBox.textContent=profile.score;
+
+    const {error} =
+        await supabaseClient
+        .from("profiles")
+        .update({
+            score:profile.score
+        })
+        .eq("id",profile.id);
+
+    if(error){
+        console.error("SAVE SCORE ERROR:",error);
+    }
+}
+
+
+/* =========================================================
+   HOME
+========================================================= */
+
+function home(btn){
+
+    activeNone();
+
+    if(btn)btn.classList.add("active");
+
+    closeMenu();
+
+    setTitle("Trang chủ");
+
+    document.getElementById("page").innerHTML=`
+
+    <div class="card hero">
+
+        <div class="emoji">📚✨</div>
+
+        <h1>HOC ENGLISH</h1>
+
+        <p>
+        Xin chào <b>${esc(profile?.username)}</b>!<br>
+        Học ngữ pháp và từ vựng theo 4 cấp độ.
+        </p>
+
+        <button class="primary"
+            onclick="vocabList(null)">
+            🧠 Học từ vựng
+        </button>
+
     </div>
 
-    <h3>💡 Ví dụ</h3>
+    <div class="card">
 
-    <div class="formula">${l.example}</div>
+        <h2>📊 Hệ thống cấp độ</h2>
 
-  </div>
-  `;
+        <div class="level-grid">
+
+            <div class="level-card">
+                <div style="font-size:30px">🟢</div>
+                <h3>Dễ</h3>
+                <p>Từ cơ bản, quen thuộc.</p>
+            </div>
+
+            <div class="level-card">
+                <div style="font-size:30px">🔵</div>
+                <h3>Trung bình</h3>
+                <p>Từ vựng phổ biến nâng cao.</p>
+            </div>
+
+            <div class="level-card">
+                <div style="font-size:30px">🟠</div>
+                <h3>Khó</h3>
+                <p>Từ ít gặp và khó hơn.</p>
+            </div>
+
+            <div class="level-card">
+                <div style="font-size:30px">🔴</div>
+                <h3>Siêu khó</h3>
+                <p>Từ nâng cao và học thuật.</p>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="card">
+
+        <h2>🧠 Từ vựng</h2>
+
+        <p style="color:#9ca9c7;line-height:1.7">
+        Mỗi chủ đề có <b>40 từ</b>:
+        10 Dễ + 10 Trung bình + 10 Khó + 10 Siêu khó.
+        </p>
+
+    </div>
+    `;
+}
+
+
+/* =========================================================
+   GRAMMAR
+========================================================= */
+
+function grammar(type,btn){
+
+    activeNone();
+
+    if(btn)btn.classList.add("active");
+
+    closeMenu();
+
+    const l=lessons[type];
+
+    setTitle(l.icon+" "+l.name);
+
+    document.getElementById("page").innerHTML=`
+
+    <div class="card lesson">
+
+        <h2>${l.icon} ${l.name}</h2>
+
+        <p>${l.desc}</p>
+
+        <h3>📌 Công thức</h3>
+
+        ${l.formula.map(x=>
+            `<div class="formula">${esc(x)}</div>`
+        ).join("")}
+
+        <h3>🔎 Dấu hiệu nhận biết</h3>
+
+        <div class="tags">
+
+        ${l.signs.map(x=>
+            `<span class="tag">${esc(x)}</span>`
+        ).join("")}
+
+        </div>
+
+        <h3>💡 Ví dụ</h3>
+
+        <div class="formula">
+            ${esc(l.example)}
+        </div>
+
+    </div>
+    `;
 }
 
 
 /* =========================================================
    VOCAB LIST
-   ========================================================= */
+========================================================= */
 
 function vocabList(btn){
 
-  setActive(btn);
-  closeMobile();
-  setPageTitle("🧠 Từ vựng");
+    activeNone();
 
-  $("page").innerHTML=`
+    if(btn)btn.classList.add("active");
 
-  <div class="card">
+    closeMenu();
 
-    <h2>🧠 Chọn chủ đề</h2>
+    setTitle("🧠 Từ vựng");
 
-    <p class="muted">
-      Mỗi chủ đề có 40 từ: 4 cấp độ × 10 từ.
-    </p>
+    document.getElementById("page").innerHTML=`
 
-    <div class="grid">
+    <div class="card">
 
-      ${Object.entries(vocab).map(([key,v])=>`
+        <h2>🧠 Chọn chủ đề</h2>
 
-        <div class="topic"
-          onclick="chooseLevel('${key}')">
+        <p style="color:#9ca9c7">
+        Mỗi chủ đề có 40 từ và 4 cấp độ.
+        </p>
 
-          <div class="icon">${v.icon}</div>
+        <div class="vocab-grid">
 
-          <h3>${v.name}</h3>
+        ${Object.entries(vocab).map(([key,v])=>`
 
-          <p>40 từ • 4 cấp độ</p>
+            <div class="vocab-card"
+                onclick="chooseLevel('${key}')">
+
+                <div class="icon">
+                    ${v.icon}
+                </div>
+
+                <h3>${v.name}</h3>
+
+                <p>
+                    40 từ • 4 cấp độ
+                </p>
+
+            </div>
+
+        `).join("")}
 
         </div>
 
-      `).join("")}
-
     </div>
-
-  </div>
-  `;
+    `;
 }
 
 
 /* =========================================================
-   CHOOSE LEVEL
-   ========================================================= */
+   LEVEL
+========================================================= */
 
 function chooseLevel(topic){
 
-  const v=vocab[topic];
+    vocabTopic=topic;
 
-  setPageTitle(v.icon+" "+v.name);
+    const data=vocab[topic];
 
-  $("page").innerHTML=`
+    setTitle(data.icon+" "+data.name);
 
-  <div class="card">
+    document.getElementById("page").innerHTML=`
 
-    <button class="secondary"
-      onclick="vocabList(null)">
-      ← Chủ đề
-    </button>
+    <div class="card">
 
-    <h2>${v.icon} ${v.name}</h2>
+        <h2>${data.icon} ${data.name}</h2>
 
-    <p class="muted">Chọn cấp độ.</p>
+        <p style="color:#9ca9c7">
+        Chọn cấp độ muốn học.
+        </p>
 
-    <div class="grid">
+        <div class="level-grid">
 
-      <div class="level"
-        onclick="startVocab('${topic}','easy')">
-        <div class="icon">🟢</div>
-        <h3>Dễ</h3>
-        <p>10 từ cơ bản</p>
-      </div>
+            <div class="level-card"
+                onclick="startVocab('${topic}','easy')">
 
-      <div class="level"
-        onclick="startVocab('${topic}','medium')">
-        <div class="icon">🔵</div>
-        <h3>Trung bình</h3>
-        <p>10 từ</p>
-      </div>
+                <div style="font-size:35px">🟢</div>
 
-      <div class="level"
-        onclick="startVocab('${topic}','hard')">
-        <div class="icon">🟠</div>
-        <h3>Khó</h3>
-        <p>10 từ nâng cao</p>
-      </div>
+                <h3>Dễ</h3>
 
-      <div class="level"
-        onclick="startVocab('${topic}','expert')">
-        <div class="icon">🔴</div>
-        <h3>Siêu khó</h3>
-        <p>10 từ học thuật</p>
-      </div>
+                <p>10 từ cơ bản</p>
+
+            </div>
+
+            <div class="level-card"
+                onclick="startVocab('${topic}','medium')">
+
+                <div style="font-size:35px">🔵</div>
+
+                <h3>Trung bình</h3>
+
+                <p>10 từ</p>
+
+            </div>
+
+            <div class="level-card"
+                onclick="startVocab('${topic}','hard')">
+
+                <div style="font-size:35px">🟠</div>
+
+                <h3>Khó</h3>
+
+                <p>10 từ nâng cao</p>
+
+            </div>
+
+            <div class="level-card"
+                onclick="startVocab('${topic}','expert')">
+
+                <div style="font-size:35px">🔴</div>
+
+                <h3>Siêu khó</h3>
+
+                <p>10 từ học thuật</p>
+
+            </div>
+
+        </div>
 
     </div>
-
-  </div>
-  `;
+    `;
 }
 
 
 /* =========================================================
    START VOCAB
-   ========================================================= */
+========================================================= */
 
 function startVocab(topic,level){
 
-  vocabTopic=topic;
-  vocabLevel=level;
+    vocabTopic=topic;
+    vocabLevel=level;
 
-  vocabData=vocab[topic].levels[level];
+    vocabData=
+        vocab[topic].levels[level];
 
-  vocabIndex=0;
-  vocabScore=0;
+    vocabIndex=0;
+    vocabScore=0;
 
-  showVocabLearn();
+    showVocabLearn();
 }
 
 
 /* =========================================================
-   LEARN WORDS
-   ========================================================= */
+   LEARN
+========================================================= */
 
 function showVocabLearn(){
 
-  const v=vocab[vocabTopic];
+    const data=vocab[vocabTopic];
 
-  const names={
-    easy:"🟢 Dễ",
-    medium:"🔵 Trung bình",
-    hard:"🟠 Khó",
-    expert:"🔴 Siêu khó"
-  };
+    const levelNames={
+        easy:"🟢 Dễ",
+        medium:"🔵 Trung bình",
+        hard:"🟠 Khó",
+        expert:"🔴 Siêu khó"
+    };
 
-  setPageTitle(v.icon+" "+names[vocabLevel]);
+    setTitle(
+        data.icon+" "+
+        data.name+" - "+
+        levelNames[vocabLevel]
+    );
 
-  $("page").innerHTML=`
+    document.getElementById("page").innerHTML=`
 
-  <div class="card">
+    <div class="card">
 
-    <button class="secondary"
-      onclick="chooseLevel('${vocabTopic}')">
-      ← Cấp độ
-    </button>
+        <h2>📖 Học từ vựng</h2>
 
-    <h2>📖 ${v.name}</h2>
+        <p style="color:#9ca9c7">
+        ${levelNames[vocabLevel]} • 10 từ
+        </p>
 
-    <p class="muted">
-      ${names[vocabLevel]} • 10 từ
-    </p>
+        <div class="vocab-grid">
 
-    <div class="words">
+        ${vocabData.map(item=>`
 
-      ${vocabData.map(item=>`
+            <div class="vocab-card">
 
-        <div class="word">
+                <div style="
+                    height:80px;
+                    display:flex;
+                    justify-content:center">
 
-          <div class="word-img">
-            <img src="${emojiImage(item[2])}"
-              onerror="this.style.display='none'">
-          </div>
+                    <img
+                        src="${emojiImage(item[2])}"
+                        style="
+                        width:75px;
+                        height:75px;
+                        object-fit:contain"
+                        onerror="this.style.display='none'">
 
-          <h3>${escapeHTML(item[0])}</h3>
-          <p>${escapeHTML(item[1])}</p>
+                </div>
+
+                <h3>${esc(item[0])}</h3>
+
+                <p>${esc(item[1])}</p>
+
+            </div>
+
+        `).join("")}
 
         </div>
 
-      `).join("")}
+        <br>
+
+        <button class="primary"
+            onclick="startVocabRound1()">
+
+            📝 Lượt 1 — Ghi từ
+
+        </button>
 
     </div>
-
-    <br>
-
-    <button class="primary"
-      onclick="startVocabRound1()">
-      📝 Lượt 1 — Ghi từ
-    </button>
-
-  </div>
-  `;
+    `;
 }
 
 
 /* =========================================================
    ROUND 1
-   ========================================================= */
+========================================================= */
 
 function startVocabRound1(){
 
-  vocabIndex=0;
-  vocabScore=0;
+    vocabIndex=0;
+    vocabScore=0;
 
-  renderVocabWrite();
+    renderVocabWrite();
 }
+
 
 function renderVocabWrite(){
 
-  const item=vocabData[vocabIndex];
+    const item=vocabData[vocabIndex];
 
-  setPageTitle("📝 Ghi từ");
+    setTitle("📝 Ghi từ");
 
-  $("page").innerHTML=`
+    document.getElementById("page").innerHTML=`
 
-  <div class="card">
+    <div class="card">
 
-    <div style="display:flex;justify-content:space-between"
-      class="muted">
+        <div style="
+            display:flex;
+            justify-content:space-between;
+            color:#9ca9c7">
 
-      <span>📝 Lượt 1 — Ghi từ</span>
-      <span>${vocabIndex+1}/10</span>
+            <span>
+                📝 Lượt 1 — Ghi từ
+            </span>
+
+            <span>
+                ${vocabIndex+1}/10
+            </span>
+
+        </div>
+
+        <div class="progress">
+
+            <div style="
+                width:${(vocabIndex/10)*100}%">
+            </div>
+
+        </div>
+
+        <div class="vocab-image">
+
+            <img
+                src="${emojiImage(item[2])}"
+                onerror="this.style.display='none'">
+
+        </div>
+
+        <div style="
+            text-align:center;
+            margin-bottom:15px">
+
+            <strong style="font-size:22px">
+                ?
+            </strong>
+
+            <span style="
+                display:block;
+                color:#9ca9c7;
+                margin-top:5px">
+
+                ${esc(item[1])}
+
+            </span>
+
+        </div>
+
+        <input
+            id="vocabInput"
+            class="input"
+            placeholder="Nhập từ tiếng Anh..."
+            autocomplete="off">
+
+        <div id="feedback"
+            class="feedback">
+        </div>
+
+        <button
+            id="check"
+            class="primary"
+            onclick="checkVocabWrite()">
+
+            ✓ Kiểm tra
+
+        </button>
+
+        <button
+            id="next"
+            class="primary"
+            style="display:none"
+            onclick="nextVocabWrite()">
+
+            Tiếp theo →
+
+        </button>
 
     </div>
-
-    <div class="progress">
-      <div style="width:${vocabIndex/10*100}%"></div>
-    </div>
-
-    <div class="vocab-image">
-
-      <img src="${emojiImage(item[2])}"
-        onerror="this.style.display='none'">
-
-    </div>
-
-    <div class="center">
-
-      <div style="font-size:22px">?</div>
-
-      <div class="muted">${escapeHTML(item[1])}</div>
-
-    </div>
-
-    <br>
-
-    <input
-      id="vocabInput"
-      class="input"
-      autocomplete="off"
-      placeholder="Nhập từ tiếng Anh..."
-      onkeydown="if(event.key==='Enter')checkVocabWrite()">
-
-    <div id="feedback" class="feedback"></div>
-
-    <button id="checkBtn"
-      class="primary"
-      onclick="checkVocabWrite()">
-      ✓ Kiểm tra
-    </button>
-
-    <button id="nextBtn"
-      class="primary"
-      style="display:none"
-      onclick="nextVocabWrite()">
-      Tiếp theo →
-    </button>
-
-  </div>
-  `;
+    `;
 }
+
 
 async function checkVocabWrite(){
 
-  const item=vocabData[vocabIndex];
+    const item=vocabData[vocabIndex];
 
-  const input=$("vocabInput");
+    const input=
+        document.getElementById("vocabInput");
 
-  if(!input)return;
+    const value=
+        input.value.trim().toLowerCase();
 
-  const value=input.value.trim().toLowerCase();
+    input.disabled=true;
 
-  if(!value){
-    $("feedback").innerHTML=
-      `<span class="error">Hãy nhập đáp án.</span>`;
-    return;
-  }
+    document.getElementById("check").disabled=true;
 
-  input.disabled=true;
-  $("checkBtn").disabled=true;
+    if(value===item[0].toLowerCase()){
 
-  if(value===item[0].toLowerCase()){
+        vocabScore+=10;
 
-    vocabScore+=10;
+        await addGlobal(10);
 
-    await addScore(10);
+        document.getElementById("feedback").innerHTML=
+        "🎉 Chính xác! +10 điểm";
 
-    $("feedback").innerHTML=
-      `<span class="success">🎉 Chính xác! +10 điểm</span>`;
+    }else{
 
-  }else{
+        document.getElementById("feedback").innerHTML=
+        "❌ Đáp án đúng: <b>"+esc(item[0])+"</b>";
 
-    $("feedback").innerHTML=
-      `❌ Đáp án đúng: <b>${escapeHTML(item[0])}</b>`;
+    }
 
-  }
-
-  $("nextBtn").style.display="inline-block";
+    document.getElementById("next").style.display=
+        "inline-block";
 }
+
 
 function nextVocabWrite(){
 
-  vocabIndex++;
+    vocabIndex++;
 
-  if(vocabIndex>=10){
+    if(vocabIndex>=10){
 
-    showRound2Intro();
-    return;
+        showRound2Intro();
 
-  }
+        return;
+    }
 
-  renderVocabWrite();
+    renderVocabWrite();
 }
 
 
 /* =========================================================
    ROUND 2
-   ========================================================= */
+========================================================= */
 
 function showRound2Intro(){
 
-  setPageTitle("🔗 Lượt 2");
+    setTitle("🔗 Lượt 2");
 
-  $("page").innerHTML=`
+    document.getElementById("page").innerHTML=`
 
-  <div class="card center">
+    <div class="card result">
 
-    <div style="font-size:60px">🧠</div>
+        <div style="font-size:60px">
+            🧠
+        </div>
 
-    <h2>Hoàn thành lượt 1!</h2>
+        <h2>
+            Hoàn thành lượt 1!
+        </h2>
 
-    <div style="
-      font-size:50px;
-      color:#ffe66d;
-      font-weight:bold">
-      ${vocabScore}/100
+        <div class="result-score">
+            ${vocabScore}/100
+        </div>
+
+        <p style="color:#9ca9c7">
+            Lượt 2: nối hình ảnh với từ tiếng Anh.
+        </p>
+
+        <button class="primary"
+            onclick="startMatching()">
+
+            🔗 Bắt đầu
+
+        </button>
+
     </div>
-
-    <p class="muted">
-      Lượt 2: nối hình ảnh với từ tiếng Anh.
-    </p>
-
-    <button class="primary"
-      onclick="startMatching()">
-      🔗 Bắt đầu
-    </button>
-
-  </div>
-  `;
+    `;
 }
+
+
+/* =========================================================
+   MATCHING
+========================================================= */
 
 function startMatching(){
 
-  const images=shuffle(vocabData);
-  const words=shuffle(vocabData);
+    const images=shuffle(vocabData);
+    const words=shuffle(vocabData);
 
-  selectedImage=null;
-  selectedWord=null;
+    selectedImage=null;
+    selectedWord=null;
 
-  setPageTitle("🔗 Nối từ");
+    setTitle("🔗 Nối ảnh với từ");
 
-  $("page").innerHTML=`
+    document.getElementById("page").innerHTML=`
 
-  <div class="card">
+    <div class="card">
 
-    <div class="match">
+        <div style="
+            display:flex;
+            justify-content:space-between;
+            margin-bottom:15px">
 
-      <div>
+            <h2>🔗 Nối từ</h2>
 
-        <h3>🖼️ Hình ảnh</h3>
-
-        <div id="imageList">
-
-          ${images.map(item=>`
-
-            <div class="match-item"
-              data-id="${escapeHTML(item[0])}"
-              onclick="selectImage(this,'${escapeHTML(item[0])}')">
-
-              <img class="match-img"
-                src="${emojiImage(item[2])}"
-                onerror="this.style.display='none'">
-
-            </div>
-
-          `).join("")}
+            <span style="color:#9ca9c7">
+                ${vocabScore}/200 điểm
+            </span>
 
         </div>
 
-      </div>
+        <div class="match-grid">
 
-      <div>
+            <div>
 
-        <h3>🇬🇧 Từ tiếng Anh</h3>
+                <h3>🖼️ Hình ảnh</h3>
 
-        <div id="wordList">
+                <div id="imageList">
 
-          ${words.map(item=>`
+                ${images.map(item=>`
 
-            <div class="match-item"
-              data-id="${escapeHTML(item[0])}"
-              onclick="selectWord(this,'${escapeHTML(item[0])}')">
+                    <div
+                        class="match-item"
+                        data-id="${esc(item[0])}"
+                        onclick="selectImage(this,'${item[0].replaceAll("'","\\'")}')">
 
-              ${escapeHTML(item[0])}
+                        <img
+                            class="match-img"
+                            src="${emojiImage(item[2])}"
+                            onerror="this.style.display='none'">
+
+                    </div>
+
+                `).join("")}
+
+                </div>
 
             </div>
 
-          `).join("")}
+            <div>
+
+                <h3>🇬🇧 Từ tiếng Anh</h3>
+
+                <div id="wordList">
+
+                ${words.map(item=>`
+
+                    <div
+                        class="match-item"
+                        data-id="${esc(item[0])}"
+                        onclick="selectWord(this,'${item[0].replaceAll("'","\\'")}')">
+
+                        ${esc(item[0])}
+
+                    </div>
+
+                `).join("")}
+
+                </div>
+
+            </div>
 
         </div>
 
-      </div>
+        <div id="matchFeedback"
+            class="feedback">
+        </div>
 
     </div>
-
-    <div id="matchFeedback" class="feedback"></div>
-
-  </div>
-  `;
+    `;
 }
+
 
 function selectImage(el,id){
 
-  document.querySelectorAll("#imageList .match-item")
-    .forEach(x=>x.classList.remove("selected"));
+    document.querySelectorAll(
+        "#imageList .match-item"
+    ).forEach(x=>
+        x.classList.remove("selected")
+    );
 
-  el.classList.add("selected");
+    el.classList.add("selected");
 
-  selectedImage={el,id};
+    selectedImage={
+        el:el,
+        id:id
+    };
 
-  tryMatch();
+    tryMatch();
 }
+
 
 function selectWord(el,id){
 
-  document.querySelectorAll("#wordList .match-item")
-    .forEach(x=>x.classList.remove("selected"));
+    document.querySelectorAll(
+        "#wordList .match-item"
+    ).forEach(x=>
+        x.classList.remove("selected")
+    );
 
-  el.classList.add("selected");
+    el.classList.add("selected");
 
-  selectedWord={el,id};
+    selectedWord={
+        el:el,
+        id:id
+    };
 
-  tryMatch();
+    tryMatch();
 }
+
 
 async function tryMatch(){
 
-  if(!selectedImage || !selectedWord)return;
+    if(!selectedImage || !selectedWord)
+        return;
 
-  const feedback=$("matchFeedback");
+    if(selectedImage.id===selectedWord.id){
 
-  if(selectedImage.id===selectedWord.id){
+        selectedImage.el.style.display="none";
 
-    selectedImage.el.classList.add("done");
-    selectedWord.el.classList.add("done");
+        selectedWord.el.style.display="none";
 
-    vocabScore+=10;
+        vocabScore+=10;
 
-    await addScore(10);
+        await addGlobal(10);
 
-    feedback.innerHTML=
-      `<span class="success">🎉 Chính xác! +10 điểm</span>`;
+        document.getElementById(
+            "matchFeedback"
+        ).innerHTML=
+        "🎉 Đúng! +10 điểm";
 
-  }else{
+    }else{
 
-    feedback.innerHTML=
-      `<span class="error">❌ Chưa đúng.</span>`;
+        document.getElementById(
+            "matchFeedback"
+        ).innerHTML=
+        "❌ Chưa đúng, hãy thử lại.";
 
-  }
+    }
 
-  selectedImage=null;
-  selectedWord=null;
+    selectedImage=null;
+    selectedWord=null;
 
-  document.querySelectorAll(".match-item")
-    .forEach(x=>x.classList.remove("selected"));
+    document.querySelectorAll(".match-item")
+    .forEach(x=>
+        x.classList.remove("selected")
+    );
 
-  const remaining=[
-    ...document.querySelectorAll("#imageList .match-item")
-  ].filter(x=>!x.classList.contains("done"));
+    checkMatchingFinished();
+}
 
-  if(remaining.length===0){
 
-    setTimeout(showVocabResult,600);
+function checkMatchingFinished(){
 
-  }
+    const remaining=[
+        ...document.querySelectorAll(
+            "#imageList .match-item"
+        )
+    ].filter(
+        x=>x.style.display!=="none"
+    );
+
+    if(remaining.length===0){
+
+        setTimeout(showVocabResult,500);
+
+    }
 }
 
 
 /* =========================================================
    RESULT
-   ========================================================= */
+========================================================= */
 
 function showVocabResult(){
 
-  const accuracy=Math.round(vocabScore/200*100);
+    const percent=
+        Math.round(vocabScore/200*100);
 
-  const names={
-    easy:"🟢 Dễ",
-    medium:"🔵 Trung bình",
-    hard:"🟠 Khó",
-    expert:"🔴 Siêu khó"
-  };
+    const levelNames={
+        easy:"🟢 Dễ",
+        medium:"🔵 Trung bình",
+        hard:"🟠 Khó",
+        expert:"🔴 Siêu khó"
+    };
 
-  setPageTitle("🏆 Kết quả");
+    setTitle("🏆 Kết quả");
 
-  $("page").innerHTML=`
+    document.getElementById("page").innerHTML=`
 
-  <div class="card center">
+    <div class="card result">
 
-    <div style="font-size:65px">🏆</div>
+        <div style="font-size:60px">
+            🏆
+        </div>
 
-    <h2>Hoàn thành!</h2>
+        <h2>Hoàn thành!</h2>
 
-    <p>
-      ${vocab[vocabTopic].name}
-      •
-      ${names[vocabLevel]}
-    </p>
+        <p>
+            ${esc(vocab[vocabTopic].name)}
+            -
+            ${levelNames[vocabLevel]}
+        </p>
 
-    <div style="
-      font-size:55px;
-      color:#ffe66d;
-      font-weight:bold">
-      ${vocabScore}/200
+        <div class="result-score">
+            ${vocabScore}/200
+        </div>
+
+        <p style="color:#9ca9c7">
+            Độ chính xác: ${percent}%
+        </p>
+
+        <button
+            class="primary"
+            onclick="startVocab('${vocabTopic}','${vocabLevel}')">
+
+            🔄 Làm lại
+
+        </button>
+
+        <button
+            class="secondary"
+            onclick="chooseLevel('${vocabTopic}')">
+
+            📊 Đổi cấp độ
+
+        </button>
+
     </div>
-
-    <p class="muted">
-      Độ chính xác: ${accuracy}%
-    </p>
-
-    <button class="primary"
-      onclick="startVocab('${vocabTopic}','${vocabLevel}')">
-      🔄 Làm lại
-    </button>
-
-    <button class="secondary"
-      onclick="chooseLevel('${vocabTopic}')">
-      📊 Đổi cấp độ
-    </button>
-
-  </div>
-  `;
+    `;
 }
 
 
 /* =========================================================
    ACCOUNT
-   ========================================================= */
+========================================================= */
 
-function accountPage(btn){
+function accountPage(){
 
-  setActive(btn);
-  closeMobile();
-  setPageTitle("👤 Tài khoản");
+    activeNone();
 
-  $("page").innerHTML=`
+    closeMenu();
 
-  <div class="card">
+    setTitle("👤 Tài khoản");
 
-    <h2>👤 Tài khoản</h2>
+    document.getElementById("page").innerHTML=`
 
-    <div class="formula">
-      📧 Email:
-      <b>${escapeHTML(user?.email||"")}</b>
+    <div class="card">
+
+        <h2>👤 Tài khoản</h2>
+
+        <div class="user-box">
+
+            <p>
+                👤 Tên tài khoản:
+                <b>${esc(profile?.username)}</b>
+            </p>
+
+            <p>
+                ⭐ Tổng điểm:
+                <b>${profile?.score||0}</b>
+            </p>
+
+            <p>
+                🛡️ Quyền:
+                <span class="badge
+                    ${profile?.role==="admin"?"admin":""}">
+                    ${profile?.role==="admin"
+                        ?"ADMIN"
+                        :"USER"}
+                </span>
+            </p>
+
+        </div>
+
+        <br>
+
+        <button
+            class="primary"
+            onclick="logout()">
+
+            🚪 Đăng xuất
+
+        </button>
+
     </div>
 
-    <div class="formula">
-      ⭐ Tổng điểm:
-      <b>${globalScore}</b>
+    <div class="card">
+
+        <h3>☁️ Dữ liệu</h3>
+
+        <p style="
+            color:#9ca9c7;
+            line-height:1.7">
+
+            Tài khoản và điểm hiện được lưu
+            trên Supabase thay vì localStorage.
+            Bạn có thể đăng xuất và đăng nhập lại
+            mà dữ liệu vẫn còn.
+
+        </p>
+
     </div>
-
-    <div class="formula">
-      🔑 Role:
-      <span class="badge ${profile?.role==="admin"?"admin":""}">
-        ${escapeHTML(profile?.role||"user")}
-      </span>
-    </div>
-
-    <button class="danger"
-      onclick="logout()">
-      🚪 Đăng xuất
-    </button>
-
-  </div>
-  `;
+    `;
 }
 
 
 /* =========================================================
-   ADMIN PANEL
-   ========================================================= */
+   ADMIN
+========================================================= */
 
 async function adminPage(btn){
 
-  if(profile?.role!=="admin"){
-    alert("Bạn không có quyền admin.");
-    return;
-  }
+    if(profile?.role!=="admin"){
+        alert("Bạn không có quyền admin.");
+        return;
+    }
 
-  setActive(btn);
-  closeMobile();
-  setPageTitle("👑 Admin Panel");
+    activeNone();
 
-  $("page").innerHTML=`
+    if(btn)btn.classList.add("active");
 
-  <div class="card">
+    closeMenu();
 
-    <h2>👑 Quản lý tài khoản</h2>
+    setTitle("🛡️ Quản lý tài khoản");
 
-    <p class="muted">
-      Chỉ tài khoản có role <b>admin</b> mới xem được trang này.
-    </p>
+    document.getElementById("page").innerHTML=`
 
-    <div id="adminContent">
-      Đang tải...
+    <div class="card">
+
+        <h2>🛡️ Quản lý tài khoản</h2>
+
+        <p style="color:#9ca9c7">
+            Danh sách tài khoản trong hệ thống.
+        </p>
+
+        <div id="adminUsers">
+            Đang tải...
+        </div>
+
     </div>
+    `;
 
-  </div>
-  `;
-
-  await loadAdminUsers();
+    await loadAdminUsers();
 }
+
 
 async function loadAdminUsers(){
 
-  if(profile?.role!=="admin")return;
+    const box=
+        document.getElementById("adminUsers");
 
-  const client=await loadSupabase();
+    if(!box)return;
 
-  const {data,error}=await client
-    .from("profiles")
-    .select("id,email,role,score,created_at")
-    .order("created_at",{ascending:false});
+    const {data,error} =
+        await supabaseClient
+        .from("profiles")
+        .select("id,username,role,score")
+        .order("score",{ascending:false});
 
-  if(error){
+    if(error){
 
-    $("adminContent").innerHTML=`
-      <div class="error">
-        ${escapeHTML(error.message)}
-      </div>
-    `;
+        box.innerHTML=`
+            <div class="auth-error">
+                Không thể tải danh sách:
+                ${esc(error.message)}
+            </div>
+        `;
 
-    return;
-  }
+        console.error(error);
 
-  if(!data?.length){
+        return;
+    }
 
-    $("adminContent").innerHTML=
-      `<p class="muted">Chưa có tài khoản.</p>`;
+    if(!data || data.length===0){
 
-    return;
-  }
+        box.innerHTML=
+        `<p style="color:#8794b5">
+            Chưa có tài khoản.
+        </p>`;
 
-  $("adminContent").innerHTML=`
+        return;
+    }
 
-  <div style="overflow:auto">
+    box.innerHTML=data.map(user=>`
 
-    <table class="admin-table">
+        <div class="admin-user">
 
-      <thead>
-        <tr>
-          <th>Email</th>
-          <th>Role</th>
-          <th>Điểm</th>
-          <th>Ngày tạo</th>
-          <th>Thao tác</th>
-        </tr>
-      </thead>
+            <div>
 
-      <tbody>
+                <b>👤 ${esc(user.username)}</b>
 
-        ${data.map(x=>`
+                <div style="
+                    color:#8794b5;
+                    font-size:12px;
+                    margin-top:5px">
 
-          <tr>
+                    ⭐ ${user.score||0} điểm
 
-            <td>${escapeHTML(x.email||"")}</td>
+                </div>
 
-            <td>
-              <span class="badge ${x.role==="admin"?"admin":""}">
-                ${escapeHTML(x.role||"user")}
-              </span>
-            </td>
+            </div>
 
-            <td>⭐ ${Number(x.score||0)}</td>
+            <div>
 
-            <td>
-              ${x.created_at
-                ?new Date(x.created_at).toLocaleDateString("vi-VN")
-                :"—"}
-            </td>
+                <span class="badge
+                    ${user.role==="admin"?"admin":""}">
+                    ${user.role==="admin"
+                        ?"ADMIN"
+                        :"USER"}
+                </span>
 
-            <td>
+                ${user.id!==profile.id ? `
 
-              ${
-                x.id!==user.id
-                ?`
-                <button class="secondary"
-                  onclick="changeRole('${x.id}','${x.role==="admin"?"user":"admin"}')">
-                  ${x.role==="admin"
-                    ?"⬇️ Hạ quyền"
-                    :"⬆️ Cấp admin"}
+                <button
+                    class="secondary"
+                    style="margin-left:5px"
+                    onclick="toggleUserRole(
+                        '${user.id}',
+                        '${user.role}'
+                    )">
+
+                    ${user.role==="admin"
+                        ?"Hạ quyền"
+                        :"Cấp admin"}
+
                 </button>
-                `
-                :`
-                <span class="muted">Tài khoản hiện tại</span>
-                `
-              }
 
-            </td>
+                `:""}
 
-          </tr>
+            </div>
 
-        `).join("")}
+        </div>
 
-      </tbody>
-
-    </table>
-
-  </div>
-  `;
+    `).join("");
 }
 
-async function changeRole(id,newRole){
 
-  if(profile?.role!=="admin"){
-    alert("Không có quyền.");
-    return;
-  }
+async function toggleUserRole(id,currentRole){
 
-  if(id===user.id){
-    alert("Không tự thay đổi role của chính mình.");
-    return;
-  }
+    if(profile?.role!=="admin"){
+        alert("Không có quyền.");
+        return;
+    }
 
-  const ok=confirm(
-    "Đổi role tài khoản này thành "+newRole+"?"
-  );
+    const newRole=
+        currentRole==="admin"
+        ?"user"
+        :"admin";
 
-  if(!ok)return;
+    const ok=confirm(
+        newRole==="admin"
+        ?"Cấp quyền ADMIN cho tài khoản này?"
+        :"Hạ tài khoản này xuống USER?"
+    );
 
-  const client=await loadSupabase();
+    if(!ok)return;
 
-  const {error}=await client
-    .from("profiles")
-    .update({role:newRole})
-    .eq("id",id);
+    const {error} =
+        await supabaseClient
+        .from("profiles")
+        .update({
+            role:newRole
+        })
+        .eq("id",id);
 
-  if(error){
+    if(error){
 
-    alert(error.message);
-    return;
+        alert(
+            "Không thể thay đổi role: "+
+            error.message
+        );
 
-  }
+        return;
+    }
 
-  await loadAdminUsers();
+    await loadAdminUsers();
 }
 
 
 /* =========================================================
-   SESSION INIT
-   ========================================================= */
+   KHỞI ĐỘNG
+========================================================= */
 
-async function init(){
+async function boot(){
 
-  try{
+    const session=await getSession();
 
-    const client=await loadSupabase();
-
-    const {data,error}=await client.auth.getSession();
-
-    if(error){
-      console.error(error);
-      renderAuth();
-      return;
-    }
-
-    if(data.session){
-
-      user=data.session.user;
-
-      await boot();
-
+    if(session){
+        await loadProfile();
     }else{
-
-      renderAuth();
-
+        renderAuth();
     }
 
-    client.auth.onAuthStateChange(
-      async(event,session)=>{
+    supabaseClient.auth.onAuthStateChange(
+        async (event,session)=>{
 
-        if(session && !user){
-
-          user=session.user;
-
-          await boot();
+            if(event==="SIGNED_OUT"){
+                profile=null;
+                renderAuth();
+            }
 
         }
-
-        if(!session){
-
-          user=null;
-          profile=null;
-        }
-
-      }
     );
-
-  }catch(err){
-
-    console.error(err);
-
-  }
 }
 
-init();
+boot();
 
 </script>
+
 </body>
 </html>
-```

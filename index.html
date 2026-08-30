@@ -1,310 +1,409 @@
+
 <!DOCTYPE html>
 <html lang="vi">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>HỌC ENGLISH</title>
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>HocEnglish</title>
 
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
 
 body{
-font-family:Arial,sans-serif;
-min-height:100vh;
-color:#fff;
-background:
-radial-gradient(circle at 10% 10%,#ff00cc55,transparent 30%),
-radial-gradient(circle at 90% 10%,#00e5ff55,transparent 30%),
-radial-gradient(circle at 50% 100%,#7c3aed66,transparent 40%),
-linear-gradient(135deg,#080019,#101044,#001d3d);
+  font-family:Arial,Helvetica,sans-serif;
+  min-height:100vh;
+  color:#fff;
+  background:
+    radial-gradient(circle at 15% 15%,#ff00cc44,transparent 28%),
+    radial-gradient(circle at 85% 15%,#00e5ff44,transparent 28%),
+    radial-gradient(circle at 50% 100%,#703cff55,transparent 38%),
+    #080b1c;
 }
 
-header{text-align:center;padding:35px 15px}
-
-.logo{font-size:50px}
-
-h1{
-font-size:42px;
-background:linear-gradient(90deg,#00e5ff,#fff,#ff3dcc);
--webkit-background-clip:text;
-color:transparent;
+button,input{
+  font:inherit;
 }
 
-header p{color:#cbd8f5;margin-top:8px}
-
-.container{width:92%;max-width:1050px;margin:auto}
-
-.glass{
-background:#ffffff0d;
-border:1px solid #ffffff20;
-backdrop-filter:blur(18px);
-border-radius:24px;
-box-shadow:0 20px 60px #0005;
+button{
+  cursor:pointer;
 }
 
-.menu{
-display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:10px;
-padding:10px;
-margin-bottom:20px;
+header{
+  text-align:center;
+  padding:28px 15px 20px;
 }
 
-.menu button{
-border:0;
-padding:16px 10px;
-border-radius:17px;
-background:#ffffff0b;
-color:#fff;
-font-weight:bold;
-cursor:pointer;
-transition:.2s;
+.logo{
+  font-size:36px;
 }
 
-.menu button:hover{transform:translateY(-2px)}
+header h1{
+  font-size:34px;
+  margin-top:4px;
+  background:linear-gradient(90deg,#00e5ff,#fff,#ff35c8);
+  -webkit-background-clip:text;
+  color:transparent;
+}
 
-.menu button.active{
-background:linear-gradient(135deg,#00c6ff,#7c3aed,#ff2fb3);
+header p{
+  color:#9eacd0;
+  font-size:13px;
+  margin-top:6px;
+}
+
+.container{
+  width:94%;
+  max-width:950px;
+  margin:auto;
+}
+
+.card{
+  background:#ffffff09;
+  border:1px solid #ffffff17;
+  border-radius:18px;
+  backdrop-filter:blur(18px);
+  box-shadow:0 15px 50px #0005;
+}
+
+/* MENU */
+
+.main-menu{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:7px;
+  padding:7px;
+  margin-bottom:10px;
+}
+
+.main-menu button{
+  border:0;
+  background:transparent;
+  color:#aebbd8;
+  padding:12px 5px;
+  border-radius:12px;
+  font-size:13px;
+  font-weight:bold;
+}
+
+.main-menu button.active{
+  color:white;
+  background:linear-gradient(135deg,#00bfff,#7040e8,#ed2cae);
+}
+
+/* GRAMMAR */
+
+.grammar{
+  padding:10px;
+  margin-bottom:10px;
+}
+
+.grammar-tabs{
+  display:grid;
+  grid-template-columns:repeat(5,1fr);
+  gap:6px;
+}
+
+.grammar-tabs button{
+  border:1px solid #ffffff12;
+  background:#ffffff07;
+  color:#b9c6e1;
+  padding:9px 4px;
+  border-radius:10px;
+  font-size:11px;
+  font-weight:bold;
+}
+
+.grammar-tabs button.active{
+  color:white;
+  border-color:#00d9ff88;
+  background:#00cfff20;
 }
 
 .lesson{
-padding:28px;
-margin-bottom:20px;
+  padding:15px;
+  margin-top:8px;
+  display:none;
 }
 
-.lesson h2{margin-bottom:12px}
+.lesson.show{
+  display:block;
+}
+
+.lesson h2{
+  font-size:19px;
+  margin-bottom:7px;
+}
+
+.lesson p{
+  color:#c0cbe1;
+  font-size:13px;
+  line-height:1.5;
+}
 
 .lesson h3{
-color:#6feaff;
-margin:22px 0 10px;
+  color:#69eaff;
+  font-size:13px;
+  margin:13px 0 6px;
 }
 
 .formula{
-background:#0005;
-padding:14px;
-border-radius:14px;
-margin:8px 0;
-line-height:1.7;
+  background:#0004;
+  border-radius:9px;
+  padding:8px 10px;
+  margin:5px 0;
+  font-size:13px;
+  line-height:1.5;
 }
 
 .signs{
-display:flex;
-flex-wrap:wrap;
-gap:9px;
+  display:flex;
+  flex-wrap:wrap;
+  gap:5px;
 }
 
 .sign{
-padding:10px 14px;
-border-radius:14px;
-background:#ffffff0d;
-border:1px solid #ffffff18;
+  padding:5px 8px;
+  background:#ffffff09;
+  border-radius:8px;
+  color:#cbd7ed;
+  font-size:11px;
 }
+
+/* START */
 
 .start{
-padding:30px;
-text-align:center;
-margin-bottom:20px;
+  padding:25px 15px;
+  text-align:center;
 }
 
-.btn{
-border:0;
-padding:14px 27px;
-border-radius:30px;
-margin-top:17px;
-font-weight:bold;
-cursor:pointer;
-color:#fff;
-background:linear-gradient(135deg,#00c6ff,#7c3aed,#ff2fb3);
+.start h2{
+  font-size:20px;
 }
+
+.start p{
+  color:#aab8d5;
+  font-size:13px;
+  margin-top:6px;
+}
+
+.primary{
+  border:0;
+  color:white;
+  font-weight:bold;
+  padding:11px 23px;
+  margin-top:15px;
+  border-radius:22px;
+  background:linear-gradient(135deg,#00bfff,#7040e8,#ed2cae);
+}
+
+/* QUIZ */
 
 .quiz{
-display:none;
-padding:28px;
-margin-bottom:25px;
+  display:none;
+  padding:17px;
+  margin-bottom:20px;
 }
 
-.top{
-display:flex;
-justify-content:space-between;
-margin-bottom:15px;
+.quiz-top{
+  display:flex;
+  justify-content:space-between;
+  color:#cbd7ed;
+  font-size:12px;
 }
 
 .progress{
-height:9px;
-background:#0006;
-border-radius:20px;
-overflow:hidden;
+  height:6px;
+  margin-top:9px;
+  background:#0006;
+  border-radius:20px;
+  overflow:hidden;
 }
 
-.bar{
-height:100%;
-width:0;
-background:linear-gradient(90deg,#00e5ff,#ff3dcc);
-transition:.3s;
+.progress-bar{
+  height:100%;
+  width:0%;
+  background:linear-gradient(90deg,#00e5ff,#ff36c9);
+  transition:.25s;
 }
 
-.qnum{
-margin-top:18px;
-color:#91eaff;
-font-weight:bold;
+.question-number{
+  color:#67eaff;
+  font-size:12px;
+  font-weight:bold;
+  margin-top:13px;
 }
 
 .question{
-font-size:23px;
-font-weight:bold;
-line-height:1.5;
-margin:15px 0 20px;
+  font-size:18px;
+  font-weight:bold;
+  line-height:1.5;
+  margin:9px 0 14px;
 }
 
 .answers{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:12px;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:7px;
 }
 
 .answer{
-padding:16px;
-border-radius:16px;
-border:1px solid #ffffff20;
-background:#ffffff0b;
-color:white;
-cursor:pointer;
-text-align:left;
-font-size:16px;
+  border:1px solid #ffffff16;
+  background:#ffffff08;
+  color:white;
+  padding:12px;
+  border-radius:11px;
+  text-align:left;
+  font-size:13px;
+}
+
+.answer:hover{
+  background:#ffffff13;
 }
 
 .answer.correct{
-background:#16a34acc;
-border-color:#4ade80;
+  background:#16a34acc;
+  border-color:#4ade80;
 }
 
 .answer.wrong{
-background:#dc2626cc;
-border-color:#f87171;
+  background:#dc2626cc;
+  border-color:#fb7185;
 }
 
-.answer:disabled{cursor:default}
-
 .feedback{
-min-height:28px;
-margin:15px 0;
-font-weight:bold;
+  min-height:22px;
+  margin:10px 0;
+  font-size:13px;
+  font-weight:bold;
 }
 
 .next{
-display:none;
-padding:12px 22px;
-border:0;
-border-radius:25px;
-cursor:pointer;
-font-weight:bold;
+  display:none;
+  border:0;
+  padding:9px 17px;
+  border-radius:18px;
+  font-weight:bold;
 }
 
-.result{
-display:none;
-text-align:center;
-padding-top:15px;
+/* INPUT */
+
+.input{
+  width:100%;
+  border:1px solid #ffffff20;
+  outline:none;
+  padding:12px;
+  border-radius:11px;
+  background:#0005;
+  color:white;
+  font-size:14px;
 }
 
-.bigscore{
-font-size:60px;
-font-weight:bold;
-color:#ffe66d;
-margin:15px;
-}
-
-/* INPUT QUIZ */
-
-.inputBox{
-width:100%;
-padding:16px;
-border-radius:15px;
-border:2px solid #ffffff25;
-background:#0005;
-color:white;
-font-size:18px;
-outline:none;
-}
-
-.inputBox:focus{
-border-color:#00e5ff;
+.input:focus{
+  border-color:#00d9ff;
 }
 
 .check{
-border:0;
-padding:13px 25px;
-border-radius:25px;
-background:#00c6ff;
-color:white;
-font-weight:bold;
-cursor:pointer;
-margin-top:12px;
+  border:0;
+  margin-top:9px;
+  padding:9px 17px;
+  border-radius:18px;
+  color:white;
+  background:#009ed4;
+  font-weight:bold;
 }
 
-.hint{
-margin-top:12px;
-color:#aebee0;
+/* DRAG */
+
+.drag-title{
+  color:#aebbd7;
+  font-size:12px;
+  margin-bottom:7px;
 }
 
-/* DRAG QUIZ */
+.word-area,
+.drop-area{
+  display:flex;
+  flex-wrap:wrap;
+  gap:6px;
+  min-height:55px;
+  padding:9px;
+  border-radius:11px;
+  margin-bottom:8px;
+}
 
-.drag-area{
-display:flex;
-flex-wrap:wrap;
-gap:10px;
-padding:18px;
-min-height:75px;
-border:2px dashed #ffffff35;
-border-radius:18px;
-margin-bottom:15px;
+.word-area{
+  background:#0004;
+  border:1px dashed #ffffff20;
+}
+
+.drop-area{
+  border:1px dashed #00e5ff77;
+  background:#00e5ff08;
 }
 
 .word{
-padding:12px 17px;
-border-radius:14px;
-background:linear-gradient(135deg,#7c3aed,#ff2fb3);
-cursor:grab;
-font-weight:bold;
-user-select:none;
+  padding:8px 10px;
+  border-radius:8px;
+  background:linear-gradient(135deg,#7040e8,#e82eae);
+  font-size:12px;
+  font-weight:bold;
+  cursor:grab;
+  user-select:none;
 }
 
-.drop{
-min-height:75px;
-padding:15px;
-border:2px dashed #00e5ff77;
-border-radius:18px;
-display:flex;
-flex-wrap:wrap;
-gap:9px;
-margin-bottom:15px;
+/* RESULT */
+
+.result{
+  display:none;
+  text-align:center;
+  padding:15px 0 5px;
 }
 
-.drop .word{cursor:grab}
+.result-score{
+  font-size:48px;
+  font-weight:bold;
+  color:#ffe66d;
+  margin:8px;
+}
+
+/* FOOTER */
 
 footer{
-text-align:center;
-padding:30px;
-color:#9eadd0;
+  text-align:center;
+  padding:25px;
+  color:#667596;
+  font-size:11px;
 }
 
-@media(max-width:700px){
-h1{font-size:31px}
+@media(max-width:650px){
 
-.menu{
-grid-template-columns:1fr;
-}
+  header h1{
+    font-size:28px;
+  }
 
-.answers{
-grid-template-columns:1fr;
-}
+  .main-menu{
+    grid-template-columns:repeat(3,1fr);
+  }
 
-.lesson,.quiz{
-padding:20px;
-}
+  .main-menu button{
+    font-size:10px;
+  }
 
-.question{
-font-size:20px;
-}
+  .grammar-tabs{
+    grid-template-columns:repeat(3,1fr);
+  }
+
+  .answers{
+    grid-template-columns:1fr;
+  }
+
+  .question{
+    font-size:16px;
+  }
 }
 </style>
 </head>
@@ -312,46 +411,74 @@ font-size:20px;
 <body>
 
 <header>
-<div class="logo">📚✨</div>
-<h1>HỌC ENGLISH</h1>
-<p>Ngữ pháp • Quiz • Luyện tập</p>
+  <div class="logo">📚✨</div>
+  <h1>HOC ENGLISH</h1>
+  <p>Học ngữ pháp • Luyện tập • Kiểm tra</p>
 </header>
 
 <div class="container">
 
-<!-- MENU -->
+<!-- MAIN MENU -->
 
-<div class="glass menu">
+<div class="card main-menu">
 
-<button id="m1" class="active" onclick="showMode('mc')">
-🎯 TRẮC NGHIỆM
+<button class="active" onclick="setMode('quiz',this)">
+🎯 Quiz
 </button>
 
-<button id="m2" onclick="showMode('verb')">
-✏️ CHIA ĐỘNG TỪ
+<button onclick="setMode('verb',this)">
+✏️ Chia động từ
 </button>
 
-<button id="m3" onclick="showMode('join')">
-🔗 NỐI CÂU
+<button onclick="setMode('join',this)">
+🔗 Nối câu
 </button>
 
 </div>
 
-<!-- LESSON -->
+<!-- GRAMMAR -->
 
-<div id="lesson" class="glass lesson"></div>
+<div class="card grammar">
+
+<div class="grammar-tabs">
+
+<button class="active" onclick="setTense('past',this)">
+QKĐ
+</button>
+
+<button onclick="setTense('present',this)">
+HTĐ
+</button>
+
+<button onclick="setTense('continuous',this)">
+HTTD
+</button>
+
+<button onclick="setTense('perfect',this)">
+HTHT
+</button>
+
+<button onclick="setTense('future',this)">
+TLĐ
+</button>
+
+</div>
+
+<div id="lesson" class="lesson"></div>
+
+</div>
 
 <!-- START -->
 
-<div id="start" class="glass start">
+<div id="start" class="card start">
 
-<h2 id="startTitle">🎯 QUIZ TRẮC NGHIỆM</h2>
+<h2 id="startTitle">🎯 Trắc nghiệm</h2>
 
-<p id="startText">
-Chọn đáp án đúng trong 100 câu của thì đang học.
+<p id="startDescription">
+Chọn đáp án đúng để kiểm tra kiến thức.
 </p>
 
-<button class="btn" onclick="startGame()">
+<button class="primary" onclick="startGame()">
 🚀 BẮT ĐẦU
 </button>
 
@@ -359,18 +486,18 @@ Chọn đáp án đúng trong 100 câu của thì đang học.
 
 <!-- QUIZ -->
 
-<div id="quiz" class="glass quiz">
+<div id="quiz" class="card quiz">
 
-<div class="top">
-<b id="quizTitle"></b>
-<span>🏆 <b id="score">0</b></span>
+<div class="quiz-top">
+<span id="gameName">Quiz</span>
+<span>⭐ <b id="score">0</b></span>
 </div>
 
 <div class="progress">
-<div id="bar" class="bar"></div>
+<div id="progressBar" class="progress-bar"></div>
 </div>
 
-<div id="qnum" class="qnum"></div>
+<div id="questionNumber" class="question-number"></div>
 
 <div id="question" class="question"></div>
 
@@ -384,15 +511,13 @@ Chọn đáp án đúng trong 100 câu của thì đang học.
 
 <input
 id="verbInput"
-class="inputBox"
+class="input"
 placeholder="Nhập đáp án..."
 autocomplete="off"
 >
 
-<br>
-
 <button class="check" onclick="checkVerb()">
-✅ KIỂM TRA
+✓ Kiểm tra
 </button>
 
 </div>
@@ -401,38 +526,38 @@ autocomplete="off"
 
 <div id="joinBox" style="display:none">
 
-<p style="margin-bottom:10px">
-👉 Kéo các từ xuống ô bên dưới theo đúng thứ tự:
-</p>
+<div class="drag-title">
+Kéo hoặc bấm từng từ để đưa xuống ô trả lời:
+</div>
 
-<div id="words" class="drag-area"></div>
+<div id="wordArea" class="word-area"></div>
 
-<div id="drop" class="drop"></div>
+<div id="dropArea" class="drop-area"></div>
 
 <button class="check" onclick="checkJoin()">
-✅ KIỂM TRA
+✓ Kiểm tra
 </button>
 
 </div>
 
 <div id="feedback" class="feedback"></div>
 
-<button id="next" class="next" onclick="nextGame()">
-Câu tiếp theo ➜
+<button id="nextButton" class="next" onclick="nextQuestion()">
+Câu tiếp theo →
 </button>
 
 <div id="result" class="result">
 
-<h2>🎉 HOÀN THÀNH!</h2>
+<h2>🎉 Hoàn thành!</h2>
 
-<div class="bigscore">
-<span id="final">0</span>
+<div class="result-score">
+<span id="finalScore">0</span>
 </div>
 
 <p id="resultText"></p>
 
-<button class="btn" onclick="startGame()">
-🔄 LÀM LẠI
+<button class="primary" onclick="startGame()">
+🔄 Làm lại
 </button>
 
 </div>
@@ -442,45 +567,44 @@ Câu tiếp theo ➜
 </div>
 
 <footer>
-📚 HỌC ENGLISH • Luyện tập mỗi ngày 🚀
+HOC ENGLISH © 2026
 </footer>
 
 
 <script>
 
 /* =====================================================
-   BÀI HỌC
+   NGỮ PHÁP
 ===================================================== */
 
 const lessons={
 
 past:`
-<h2>⏪ QUÁ KHỨ ĐƠN</h2>
+<h2>⏪ Quá khứ đơn</h2>
 
 <p>Dùng cho hành động đã xảy ra và kết thúc trong quá khứ.</p>
 
-<h3>📌 CÔNG THỨC</h3>
+<h3>📌 Công thức</h3>
 
 <div class="formula">
-<b>Khẳng định:</b> S + V2/V-ed + O
+<b>+</b> S + V2/V-ed + O
 </div>
 
 <div class="formula">
-<b>Phủ định:</b> S + did not + V nguyên mẫu
+<b>-</b> S + did not + V nguyên mẫu
 </div>
 
 <div class="formula">
-<b>Nghi vấn:</b> Did + S + V nguyên mẫu?
+<b>?</b> Did + S + V nguyên mẫu?
 </div>
 
-<h3>🔎 DẤU HIỆU</h3>
+<h3>🔎 Dấu hiệu</h3>
 
 <div class="signs">
 <span class="sign">yesterday</span>
-<span class="sign">last night</span>
 <span class="sign">last week</span>
 <span class="sign">last year</span>
-<span class="sign">... ago</span>
+<span class="sign">ago</span>
 <span class="sign">in 2020</span>
 </div>
 
@@ -492,26 +616,29 @@ I <b>visited</b> my grandmother yesterday.
 `,
 
 present:`
-<h2>☀️ HIỆN TẠI ĐƠN</h2>
+<h2>☀️ Hiện tại đơn</h2>
 
 <p>Dùng cho thói quen, sự thật và lịch trình.</p>
 
-<h3>📌 CÔNG THỨC</h3>
+<h3>📌 Công thức</h3>
 
 <div class="formula">
-<b>Khẳng định:</b> I/You/We/They + V<br>
+<b>+</b> I/You/We/They + V
+</div>
+
+<div class="formula">
 He/She/It + V-s/es
 </div>
 
 <div class="formula">
-<b>Phủ định:</b> S + do/does not + V
+<b>-</b> S + do/does not + V
 </div>
 
 <div class="formula">
-<b>Nghi vấn:</b> Do/Does + S + V?
+<b>?</b> Do/Does + S + V?
 </div>
 
-<h3>🔎 DẤU HIỆU</h3>
+<h3>🔎 Dấu hiệu</h3>
 
 <div class="signs">
 <span class="sign">always</span>
@@ -529,26 +656,63 @@ She <b>goes</b> to school every day.
 </div>
 `,
 
+continuous:`
+<h2>🔄 Hiện tại tiếp diễn</h2>
+
+<p>Dùng cho hành động đang xảy ra tại thời điểm nói.</p>
+
+<h3>📌 Công thức</h3>
+
+<div class="formula">
+<b>+</b> S + am/is/are + V-ing
+</div>
+
+<div class="formula">
+<b>-</b> S + am/is/are + not + V-ing
+</div>
+
+<div class="formula">
+<b>?</b> Am/Is/Are + S + V-ing?
+</div>
+
+<h3>🔎 Dấu hiệu</h3>
+
+<div class="signs">
+<span class="sign">now</span>
+<span class="sign">right now</span>
+<span class="sign">at the moment</span>
+<span class="sign">at present</span>
+<span class="sign">Look!</span>
+<span class="sign">Listen!</span>
+</div>
+
+<h3>💡 Ví dụ</h3>
+
+<div class="formula">
+She <b>is studying</b> English now.
+</div>
+`,
+
 perfect:`
-<h2>🚀 HIỆN TẠI HOÀN THÀNH</h2>
+<h2>🚀 Hiện tại hoàn thành</h2>
 
 <p>Dùng cho kinh nghiệm hoặc hành động có liên hệ với hiện tại.</p>
 
-<h3>📌 CÔNG THỨC</h3>
+<h3>📌 Công thức</h3>
 
 <div class="formula">
-<b>Khẳng định:</b> S + have/has + V3/V-ed
+<b>+</b> S + have/has + V3
 </div>
 
 <div class="formula">
-<b>Phủ định:</b> S + have/has not + V3/V-ed
+<b>-</b> S + have/has not + V3
 </div>
 
 <div class="formula">
-<b>Nghi vấn:</b> Have/Has + S + V3?
+<b>?</b> Have/Has + S + V3?
 </div>
 
-<h3>🔎 DẤU HIỆU</h3>
+<h3>🔎 Dấu hiệu</h3>
 
 <div class="signs">
 <span class="sign">already</span>
@@ -566,405 +730,371 @@ perfect:`
 <div class="formula">
 I <b>have finished</b> my homework.
 </div>
+`,
+
+future:`
+<h2>🔮 Tương lai đơn</h2>
+
+<p>Dùng cho dự đoán, quyết định hoặc hành động trong tương lai.</p>
+
+<h3>📌 Công thức</h3>
+
+<div class="formula">
+<b>+</b> S + will + V nguyên mẫu
+</div>
+
+<div class="formula">
+<b>-</b> S + will not + V nguyên mẫu
+</div>
+
+<div class="formula">
+<b>?</b> Will + S + V nguyên mẫu?
+</div>
+
+<h3>🔎 Dấu hiệu</h3>
+
+<div class="signs">
+<span class="sign">tomorrow</span>
+<span class="sign">next week</span>
+<span class="sign">next year</span>
+<span class="sign">soon</span>
+<span class="sign">in the future</span>
+</div>
+
+<h3>💡 Ví dụ</h3>
+
+<div class="formula">
+I <b>will visit</b> you tomorrow.
+</div>
 `
 };
 
 
 /* =====================================================
-   300 CÂU TRẮC NGHIỆM
+   100 CÂU TRẮC NGHIỆM
 ===================================================== */
 
-/*
-Mỗi câu:
-[
- câu hỏi,
- [A,B,C,D],
- đáp án đúng
+const questionBanks={
+
+past:[
+["Yesterday, I ___ to school.","went",["go","went","gone","going"]],
+["She ___ a cake last night.","made",["make","makes","made","making"]],
+["They ___ football yesterday.","played",["play","played","plays","playing"]],
+["He ___ his homework last night.","did",["do","does","did","done"]],
+["I ___ my friend two days ago.","met",["meet","met","meets","meeting"]],
+["We ___ dinner at 7 p.m. yesterday.","ate",["eat","eats","ate","eating"]],
+["She ___ a new phone last week.","bought",["buy","buys","bought","buying"]],
+["He ___ home late yesterday.","came",["come","comes","came","coming"]],
+["I ___ a movie last night.","watched",["watch","watches","watched","watching"]],
+["They ___ Hanoi last summer.","visited",["visit","visits","visited","visiting"]]
+],
+
+present:[
+["She ___ to school every day.","goes",["go","goes","went","going"]],
+["He ___ football every Sunday.","plays",["play","plays","played","playing"]],
+["I ___ English every day.","study",["study","studies","studied","studying"]],
+["She ___ TV every evening.","watches",["watch","watches","watched","watching"]],
+["He ___ coffee every morning.","drinks",["drink","drinks","drank","drinking"]],
+["They ___ in Vietnam.","live",["live","lives","lived","living"]],
+["My father ___ every day.","works",["work","works","worked","working"]],
+["She ___ books every night.","reads",["read","reads","reading","readed"]],
+["We ___ football on Sundays.","play",["play","plays","played","playing"]],
+["He ___ English very well.","speaks",["speak","speaks","spoke","speaking"]]
+],
+
+continuous:[
+["She ___ English now.","is studying",["study","studies","is studying","studied"]],
+["They ___ football at the moment.","are playing",["play","played","are playing","plays"]],
+["I ___ TV right now.","am watching",["watch","watched","am watching","watches"]],
+["He ___ dinner now.","is cooking",["cooks","cooked","is cooking","cook"]],
+["We ___ for the bus.","are waiting",["wait","waited","are waiting","waits"]],
+["She ___ a book at present.","is reading",["reads","read","is reading","reading"]],
+["I ___ my homework now.","am doing",["do","did","am doing","does"]],
+["They ___ English now.","are learning",["learn","learned","are learning","learns"]],
+["He ___ to music right now.","is listening",["listens","listened","is listening","listen"]],
+["Look! The baby ___.","is sleeping",["sleep","slept","is sleeping","sleeps"]]
+],
+
+perfect:[
+["I ___ my homework already.","have finished",["finish","finished","have finished","finishing"]],
+["She ___ this movie before.","has seen",["see","saw","has seen","seeing"]],
+["They ___ here for five years.","have lived",["live","lived","have lived","living"]],
+["He ___ his keys.","has lost",["lose","lost","has lost","losing"]],
+["We ___ this book before.","have read",["read","reads","have read","reading"]],
+["She ___ just ___ home.","has arrived",["arrive","arrived","has arrived","arriving"]],
+["I ___ never ___ sushi.","have eaten",["eat","ate","have eaten","eating"]],
+["He ___ English since 2020.","has studied",["study","studied","has studied","studying"]],
+["They ___ already ___ the work.","have completed",["complete","completed","have completed","completing"]],
+["She ___ three emails today.","has written",["write","wrote","has written","writing"]]
+],
+
+future:[
+["I ___ you tomorrow.","will call",["call","called","will call","calling"]],
+["She ___ next week.","will travel",["travels","travelled","will travel","travelling"]],
+["They ___ football tomorrow.","will play",["play","played","will play","playing"]],
+["He ___ a new car next year.","will buy",["buys","bought","will buy","buying"]],
+["We ___ you soon.","will visit",["visit","visited","will visit","visiting"]],
+["I think it ___ tomorrow.","will rain",["rains","rained","will rain","raining"]],
+["She ___ English next year.","will study",["studies","studied","will study","studying"]],
+["He ___ home tonight.","will come",["comes","came","will come","coming"]],
+["They ___ the project soon.","will finish",["finish","finished","will finish","finishing"]],
+["I ___ you later.","will help",["help","helped","will help","helping"]]
 ]
-*/
-
-const mc={
-
-past:[],
-
-present:[],
-
-perfect:[]
 
 };
 
 
 /* =====================================================
-   TẠO CÂU TRẮC NGHIỆM
-   Sinh thêm các câu luyện tập để đủ 100 câu / thì
+   TẠO 100 CÂU MỖI THÌ
 ===================================================== */
 
-const pastData=[
-["go","went","Yesterday, I ___ to school."],
-["eat","ate","Yesterday, I ___ breakfast."],
-["see","saw","Yesterday, I ___ my teacher."],
-["buy","bought","Last week, I ___ a book."],
-["take","took","Yesterday, I ___ a bus."],
-["write","wrote","Last night, I ___ a letter."],
-["make","made","Yesterday, she ___ a cake."],
-["come","came","He ___ home late yesterday."],
-["have","had","We ___ dinner last night."],
-["do","did","I ___ my homework yesterday."]
-];
+function buildMC(tense){
 
-const presentData=[
-["go","goes","She ___ to school every day."],
-["play","plays","He ___ football every Sunday."],
-["watch","watches","She ___ TV every evening."],
-["study","studies","He ___ English every day."],
-["read","reads","My sister ___ books every night."],
-["drink","drinks","He ___ coffee every morning."],
-["eat","eats","She ___ breakfast at 7."],
-["work","works","My father ___ every day."],
-["live","lives","She ___ in Hanoi."],
-["like","likes","He ___ music."]
-];
+  const base=questionBanks[tense];
 
-const perfectData=[
-["have finished","has finished","She ___ her homework."],
-["have visited","has visited","He ___ Hanoi before."],
-["have eaten","has eaten","She ___ lunch already."],
-["have seen","has seen","He ___ this movie before."],
-["have read","has read","She ___ the book."],
-["have written","has written","He ___ three emails."],
-["have bought","has bought","She ___ a new phone."],
-["have lost","has lost","He ___ his keys."],
-["have completed","has completed","She ___ the task."],
-["have learned","has learned","He ___ English for years."]
-];
+  let result=[];
 
-function makeMC(data,type){
+  for(let i=0;i<100;i++){
 
-let arr=[];
+    const item=base[i%base.length];
 
-for(let i=0;i<100;i++){
+    let options=[...item[2]];
 
-let item=data[i%data.length];
+    options.sort(()=>Math.random()-0.5);
 
-let correct=item[1];
+    result.push({
+      question:item[0],
+      answer:item[1],
+      options:options
+    });
+  }
 
-let options=[];
-
-if(type==="past"){
-options=[
-correct,
-item[0],
-correct+"ing",
-"will "+item[0]
-];
+  return result;
 }
-
-else if(type==="present"){
-options=[
-item[0],
-correct,
-item[0]+"ed",
-"will "+item[0]
-];
-}
-
-else{
-options=[
-item[0],
-correct,
-item[0].replace("have ","")+"ed",
-"had "+item[0].replace("have ","")
-];
-}
-
-let shuffled=[...options];
-
-shuffled.sort(()=>Math.random()-.5);
-
-let answer=shuffled.indexOf(correct);
-
-arr.push([
-item[2],
-shuffled,
-answer
-]);
-
-}
-
-return arr;
-}
-
-mc.past=makeMC(pastData,"past");
-mc.present=makeMC(presentData,"present");
-mc.perfect=makeMC(perfectData,"perfect");
 
 
 /* =====================================================
-   50 CÂU CHIA ĐỘNG TỪ
+   50 CHIA ĐỘNG TỪ
 ===================================================== */
 
 const verbQuestions=[
-["She ___ to school every day.","goes"],
-["I ___ TV yesterday.","watched"],
-["They ___ football last Sunday.","played"],
-["He ___ his homework every evening.","does"],
-["We ___ this movie before.","have seen"],
-["She ___ her homework already.","has finished"],
-["I ___ my friend yesterday.","met"],
-["He ___ coffee every morning.","drinks"],
-["They ___ here for five years.","have lived"],
-["She ___ to the market last week.","went"],
-
-["I ___ breakfast every day.","have"],
-["He ___ a new phone last month.","bought"],
-["She ___ English every day.","studies"],
-["We ___ dinner yesterday.","had"],
-["They ___ never ___ sushi.","have eaten"],
-["Tom ___ football every Sunday.","plays"],
-["I ___ my room yesterday.","cleaned"],
-["She ___ just ___ home.","has arrived"],
-["He ___ his teacher yesterday.","saw"],
-["We ___ English at school.","study"],
-
-["They ___ a movie last night.","watched"],
-["She ___ to music every day.","listens"],
-["I ___ my homework already.","have finished"],
-["He ___ his keys yesterday.","lost"],
-["We ___ in Hanoi since 2020.","have lived"],
-["She ___ breakfast at 7.","eats"],
-["They ___ home late last night.","came"],
-["I ___ never ___ there.","have been"],
-["He ___ his car every Sunday.","washes"],
-["She ___ a letter yesterday.","wrote"],
-
-["We ___ football every weekend.","play"],
-["I ___ that book before.","have read"],
-["He ___ dinner yesterday.","cooked"],
-["They ___ English every morning.","practice"],
-["She ___ a new dress last week.","bought"],
-["I ___ my friend two days ago.","called"],
-["He ___ never ___ sushi.","has tried"],
-["We ___ to school every day.","go"],
-["She ___ her room yesterday.","cleaned"],
-["They ___ here since 2021.","have worked"],
-
-["I ___ coffee every morning.","drink"],
-["He ___ a movie last night.","watched"],
-["She ___ already ___ the work.","has completed"],
-["We ___ our teacher yesterday.","visited"],
-["They ___ football on Sundays.","play"],
-["I ___ never ___ this song.","have heard"],
-["He ___ his homework yesterday.","did"],
-["She ___ English for three years.","has studied"],
-["We ___ dinner last night.","ate"],
-["They ___ to Japan before.","have been"]
+["She ___ to school every day. (go)","goes"],
+["I ___ TV yesterday. (watch)","watched"],
+["They ___ football now. (play)","are playing"],
+["He ___ his homework already. (finish)","has finished"],
+["We ___ to the park tomorrow. (go)","will go"],
+["She ___ breakfast every morning. (eat)","eats"],
+["I ___ my friend last week. (meet)","met"],
+["They ___ English at the moment. (study)","are studying"],
+["He ___ this movie before. (see)","has seen"],
+["We ___ dinner yesterday. (have)","had"],
+["She ___ a book now. (read)","is reading"],
+["I ___ here since 2020. (live)","have lived"],
+["He ___ football every Sunday. (play)","plays"],
+["They ___ home last night. (come)","came"],
+["I ___ you tomorrow. (call)","will call"],
+["She ___ her room every week. (clean)","cleans"],
+["He ___ a new phone last month. (buy)","bought"],
+["We ___ for the bus now. (wait)","are waiting"],
+["They ___ already ___ lunch. (eat)","have eaten"],
+["I ___ English next year. (study)","will study"],
+["She ___ music every day. (listen)","listens"],
+["He ___ a letter yesterday. (write)","wrote"],
+["They ___ TV right now. (watch)","are watching"],
+["We ___ this place before. (visit)","have visited"],
+["I ___ home tonight. (come)","will come"],
+["She ___ coffee every morning. (drink)","drinks"],
+["He ___ his homework last night. (do)","did"],
+["They ___ dinner at the moment. (cook)","are cooking"],
+["I ___ never ___ sushi. (try)","have tried"],
+["We ___ football tomorrow. (play)","will play"],
+["She ___ books every night. (read)","reads"],
+["He ___ me yesterday. (call)","called"],
+["They ___ English now. (learn)","are learning"],
+["I ___ this book already. (read)","have read"],
+["She ___ next week. (travel)","will travel"],
+["We ___ to school every day. (go)","go"],
+["He ___ a cake yesterday. (make)","made"],
+["They ___ at present. (work)","are working"],
+["I ___ my work. (finish)","have finished"],
+["She ___ you later. (help)","will help"],
+["He ___ tennis every weekend. (play)","plays"],
+["We ___ a movie last night. (watch)","watched"],
+["They ___ dinner now. (eat)","are eating"],
+["I ___ here for three years. (work)","have worked"],
+["She ___ home tomorrow. (go)","will go"],
+["He ___ English every day. (study)","studies"],
+["We ___ our teacher yesterday. (see)","saw"],
+["They ___ right now. (run)","are running"],
+["I ___ this song before. (hear)","have heard"],
+["She ___ a new computer next month. (buy)","will buy"]
 ];
 
 
 /* =====================================================
-   50 CÂU NỐI / SẮP XẾP CÂU
+   50 NỐI / SẮP XẾP CÂU
 ===================================================== */
 
 const joinQuestions=[
-
-["I / go / to school / every day","I go to school every day"],
-["She / likes / English","She likes English"],
-["He / played / football / yesterday","He played football yesterday"],
-["They / visited / Hanoi / last week","They visited Hanoi last week"],
-["We / have finished / our homework","We have finished our homework"],
-["She / goes / to work / every morning","She goes to work every morning"],
-["I / watched / TV / last night","I watched TV last night"],
-["He / has eaten / breakfast","He has eaten breakfast"],
-["They / play / football / on Sundays","They play football on Sundays"],
-["We / went / to the park / yesterday","We went to the park yesterday"],
-
-["She / has lived / here / for five years","She has lived here for five years"],
-["I / studied / English / yesterday","I studied English yesterday"],
-["He / drinks / coffee / every morning","He drinks coffee every morning"],
-["They / have seen / this movie / before","They have seen this movie before"],
-["We / cleaned / the room / yesterday","We cleaned the room yesterday"],
-["She / reads / books / every night","She reads books every night"],
-["I / have visited / Hanoi / twice","I have visited Hanoi twice"],
-["He / bought / a new phone / last week","He bought a new phone last week"],
-["They / live / in Vietnam","They live in Vietnam"],
-["We / watched / a movie / yesterday","We watched a movie yesterday"],
-
-["She / has finished / her homework","She has finished her homework"],
-["I / go / home / at five","I go home at five"],
-["He / went / to school / yesterday","He went to school yesterday"],
-["They / study / English / every day","They study English every day"],
-["We / have learned / many words","We have learned many words"],
-["She / cooked / dinner / last night","She cooked dinner last night"],
-["I / drink / water / every morning","I drink water every morning"],
-["He / has lost / his keys","He has lost his keys"],
-["They / played / basketball / yesterday","They played basketball yesterday"],
-["We / visit / our grandparents / every week","We visit our grandparents every week"],
-
-["She / went / shopping / yesterday","She went shopping yesterday"],
-["I / have read / this book / before","I have read this book before"],
-["He / works / every day","He works every day"],
-["They / ate / pizza / last night","They ate pizza last night"],
-["We / have seen / that place","We have seen that place"],
-["She / studies / English / every morning","She studies English every morning"],
-["I / met / my friend / yesterday","I met my friend yesterday"],
-["He / has finished / the project","He has finished the project"],
-["They / go / to school / by bus","They go to school by bus"],
-["We / bought / a computer / last month","We bought a computer last month"],
-
-["She / has never visited / London","She has never visited London"],
-["I / watched / TV / yesterday","I watched TV yesterday"],
-["He / plays / tennis / every weekend","He plays tennis every weekend"],
-["They / have lived / here / since 2020","They have lived here since 2020"],
-["We / went / home / early","We went home early"],
-["She / reads / English books","She reads English books"],
-["I / have finished / my work","I have finished my work"],
-["He / called / me / yesterday","He called me yesterday"],
-["They / practice / English / every day","They practice English every day"],
-["We / have visited / this museum / before","We have visited this museum before"]
-
+"I / go / to school / every day",
+"She / goes / to school / every morning",
+"He / played / football / yesterday",
+"They / are playing / football / now",
+"I / have finished / my homework",
+"She / will visit / Hanoi / tomorrow",
+"We / watched / a movie / last night",
+"He / is reading / a book / now",
+"They / have lived / here / for five years",
+"I / will call / you / tomorrow",
+"She / studies / English / every day",
+"He / bought / a phone / last week",
+"We / are waiting / for the bus",
+"They / have seen / this movie / before",
+"I / will help / you / later",
+"She / drinks / coffee / every morning",
+"He / went / home / yesterday",
+"We / are learning / English / now",
+"They / have finished / the work",
+"I / will travel / next week",
+"She / reads / books / every night",
+"I / met / my friend / yesterday",
+"He / is cooking / dinner / now",
+"We / have visited / Hanoi / twice",
+"They / will play / football / tomorrow",
+"I / study / English / every day",
+"She / made / a cake / last night",
+"He / is watching / TV / now",
+"They / have eaten / lunch",
+"We / will go / home / soon",
+"She / works / every day",
+"I / saw / him / yesterday",
+"They / are studying / now",
+"He / has lost / his keys",
+"We / will finish / soon",
+"I / drink / water / every morning",
+"She / visited / her grandmother / last week",
+"They / are waiting / outside",
+"He / has written / three emails",
+"I / will see / you / tomorrow",
+"We / play / football / on Sundays",
+"She / cooked / dinner / yesterday",
+"He / is listening / to music",
+"They / have learned / many words",
+"I / will buy / a new book",
+"She / likes / English",
+"We / went / to the park / yesterday",
+"He / is studying / at the moment",
+"They / have completed / the project"
 ];
 
 
 /* =====================================================
-   BIẾN GAME
+   BIẾN
 ===================================================== */
 
-let mode="mc";
+let mode="quiz";
 let tense="past";
 
-let data=[];
-let index=0;
-let points=0;
+let gameData=[];
+let current=0;
+let score=0;
 
-let dragged=null;
+let draggedWord=null;
 
 
 /* =====================================================
-   MENU
+   CHỌN MODE
 ===================================================== */
 
-function showMode(newMode){
+function setMode(newMode,button){
 
-mode=newMode;
+  mode=newMode;
 
-document.querySelectorAll(".menu button")
-.forEach(x=>x.classList.remove("active"));
+  document
+    .querySelectorAll(".main-menu button")
+    .forEach(b=>b.classList.remove("active"));
 
-if(newMode==="mc"){
-document.getElementById("m1").classList.add("active");
-}
+  button.classList.add("active");
 
-if(newMode==="verb"){
-document.getElementById("m2").classList.add("active");
-}
+  document.getElementById("start").style.display="block";
+  document.getElementById("quiz").style.display="none";
 
-if(newMode==="join"){
-document.getElementById("m3").classList.add("active");
-}
+  if(mode==="quiz"){
+    document.getElementById("startTitle").textContent="🎯 Trắc nghiệm";
+    document.getElementById("startDescription").textContent=
+      "100 câu trắc nghiệm theo thì đang chọn.";
+  }
 
-document.getElementById("quiz").style.display="none";
-document.getElementById("start").style.display="block";
+  if(mode==="verb"){
+    document.getElementById("startTitle").textContent="✏️ Chia động từ";
+    document.getElementById("startDescription").textContent=
+      "50 câu — tự nhập dạng đúng của động từ.";
+  }
 
-if(mode==="mc"){
-
-document.getElementById("lesson").style.display="block";
-
-document.getElementById("startTitle")
-.textContent="🎯 QUIZ TRẮC NGHIỆM";
-
-document.getElementById("startText")
-.textContent="Chọn đáp án đúng trong 100 câu.";
-
-}
-
-if(mode==="verb"){
-
-document.getElementById("lesson").style.display="block";
-
-document.getElementById("startTitle")
-.textContent="✏️ CHIA ĐỘNG TỪ";
-
-document.getElementById("startText")
-.textContent="Tự nhập dạng đúng của động từ. 50 câu.";
-
-}
-
-if(mode==="join"){
-
-document.getElementById("lesson").style.display="none";
-
-document.getElementById("startTitle")
-.textContent="🔗 NỐI / SẮP XẾP CÂU";
-
-document.getElementById("startText")
-.textContent="Kéo các từ vào đúng thứ tự. 50 câu.";
-
-}
-
+  if(mode==="join"){
+    document.getElementById("startTitle").textContent="🔗 Nối câu";
+    document.getElementById("startDescription").textContent=
+      "50 câu — kéo thả hoặc bấm các từ để sắp xếp.";
+  }
 }
 
 
 /* =====================================================
-   ĐỔI THÌ
+   CHỌN THÌ
 ===================================================== */
 
-function changeTense(){
+function setTense(newTense,button){
 
-if(mode!=="mc")return;
+  tense=newTense;
+
+  document
+    .querySelectorAll(".grammar-tabs button")
+    .forEach(b=>b.classList.remove("active"));
+
+  button.classList.add("active");
+
+  document.getElementById("lesson").innerHTML=
+    lessons[tense];
+
+  document.getElementById("lesson")
+    .classList.add("show");
 
 }
 
 
 /* =====================================================
-   START
+   START GAME
 ===================================================== */
 
 function startGame(){
 
-index=0;
-points=0;
+  current=0;
+  score=0;
 
-if(mode==="mc"){
+  if(mode==="quiz"){
+    gameData=buildMC(tense);
+  }
 
-data=[...mc[tense]];
+  if(mode==="verb"){
+    gameData=[...verbQuestions];
+  }
 
-document.getElementById("quizTitle")
-.textContent="🎯 Trắc nghiệm";
+  if(mode==="join"){
+    gameData=[...joinQuestions];
+  }
 
-}
+  document.getElementById("start").style.display="none";
+  document.getElementById("quiz").style.display="block";
 
-if(mode==="verb"){
+  document.getElementById("score").textContent="0";
 
-data=[...verbQuestions];
+  document.getElementById("result").style.display="none";
 
-document.getElementById("quizTitle")
-.textContent="✏️ Chia động từ";
+  document.getElementById("question").style.display="block";
+  document.getElementById("questionNumber").style.display="block";
+  document.getElementById("feedback").style.display="block";
 
-}
-
-if(mode==="join"){
-
-data=[...joinQuestions];
-
-document.getElementById("quizTitle")
-.textContent="🔗 Nối câu";
-
-}
-
-document.getElementById("start").style.display="none";
-
-document.getElementById("quiz").style.display="block";
-
-document.getElementById("result").style.display="none";
-
-document.getElementById("question").style.display="block";
-
-document.getElementById("qnum").style.display="block";
-
-document.getElementById("feedback").style.display="block";
-
-render();
-
+  renderQuestion();
 }
 
 
@@ -972,274 +1102,245 @@ render();
    RENDER
 ===================================================== */
 
-function render(){
+function renderQuestion(){
 
-let q=data[index];
+  const total=gameData.length;
 
-document.getElementById("qnum")
-.textContent=
-"Câu "+(index+1)+" / "+data.length;
+  document.getElementById("questionNumber").textContent=
+    `Câu ${current+1} / ${total}`;
 
-document.getElementById("bar")
-.style.width=(index/data.length*100)+"%";
+  document.getElementById("progressBar").style.width=
+    `${current/total*100}%`;
 
-document.getElementById("feedback").textContent="";
+  document.getElementById("feedback").textContent="";
+  document.getElementById("nextButton").style.display="none";
 
-document.getElementById("next").style.display="none";
-
-
-if(mode==="mc"){
-
-document.getElementById("question")
-.textContent=q[0];
-
-document.getElementById("answers").style.display="grid";
-
-document.getElementById("verbBox").style.display="none";
-
-document.getElementById("joinBox").style.display="none";
-
-let box=document.getElementById("answers");
-
-box.innerHTML="";
-
-q[1].forEach((x,i)=>{
-
-let b=document.createElement("button");
-
-b.className="answer";
-
-b.textContent=
-String.fromCharCode(65+i)+". "+x;
-
-b.onclick=()=>answerMC(i,b);
-
-box.appendChild(b);
-
-});
-
-}
+  document.getElementById("answers").style.display="none";
+  document.getElementById("verbBox").style.display="none";
+  document.getElementById("joinBox").style.display="none";
 
 
-if(mode==="verb"){
+  /* MC */
 
-document.getElementById("question")
-.textContent=q[0];
+  if(mode==="quiz"){
 
-document.getElementById("answers").style.display="none";
+    const q=gameData[current];
 
-document.getElementById("verbBox").style.display="block";
+    document.getElementById("question").textContent=q.question;
 
-document.getElementById("joinBox").style.display="none";
+    document.getElementById("answers").style.display="grid";
 
-document.getElementById("verbInput").value="";
+    const box=document.getElementById("answers");
 
-document.getElementById("verbInput").disabled=false;
+    box.innerHTML="";
 
-}
+    q.options.forEach((option,i)=>{
+
+      const button=document.createElement("button");
+
+      button.className="answer";
+
+      button.textContent=
+        `${String.fromCharCode(65+i)}. ${option}`;
+
+      button.onclick=()=>answerMC(option,button);
+
+      box.appendChild(button);
+
+    });
+  }
 
 
-if(mode==="join"){
+  /* VERB */
 
-document.getElementById("question")
-.textContent="Sắp xếp các từ thành câu đúng:";
+  if(mode==="verb"){
 
-document.getElementById("answers").style.display="none";
+    document.getElementById("question").textContent=
+      gameData[current][0];
 
-document.getElementById("verbBox").style.display="none";
+    document.getElementById("verbBox").style.display="block";
 
-document.getElementById("joinBox").style.display="block";
+    document.getElementById("verbInput").value="";
+    document.getElementById("verbInput").disabled=false;
+  }
 
-setupDrag(q[0]);
 
-}
+  /* JOIN */
+
+  if(mode==="join"){
+
+    document.getElementById("question").textContent=
+      "Sắp xếp các từ thành câu đúng:";
+
+    document.getElementById("joinBox").style.display="block";
+
+    setupJoin(gameData[current]);
+
+  }
 
 }
 
 
 /* =====================================================
-   TRẮC NGHIỆM
+   MC
 ===================================================== */
 
 function answerMC(selected,button){
 
-let correct=data[index][2];
+  const q=gameData[current];
 
-document.querySelectorAll(".answer")
-.forEach(x=>x.disabled=true);
+  document
+    .querySelectorAll(".answer")
+    .forEach(b=>b.disabled=true);
 
-if(selected===correct){
+  if(selected===q.answer){
 
-points++;
+    score++;
 
-button.classList.add("correct");
+    button.classList.add("correct");
 
-document.getElementById("feedback")
-.textContent="🎉 Chính xác!";
+    document.getElementById("feedback").textContent=
+      "🎉 Chính xác!";
+  }
+  else{
 
-}else{
+    button.classList.add("wrong");
 
-button.classList.add("wrong");
+    document
+      .querySelectorAll(".answer")
+      .forEach(b=>{
+        if(b.textContent.includes(q.answer)){
+          b.classList.add("correct");
+        }
+      });
 
-document.querySelectorAll(".answer")
-[correct].classList.add("correct");
+    document.getElementById("feedback").textContent=
+      "❌ Sai! Đáp án đúng: "+q.answer;
+  }
 
-document.getElementById("feedback")
-.textContent="❌ Sai rồi!";
+  document.getElementById("score").textContent=score;
 
-}
-
-document.getElementById("score")
-.textContent=points;
-
-document.getElementById("next")
-.style.display="inline-block";
-
+  document.getElementById("nextButton").style.display="inline-block";
 }
 
 
 /* =====================================================
-   CHIA ĐỘNG TỪ
+   VERB
 ===================================================== */
 
 function checkVerb(){
 
-let input=
-document.getElementById("verbInput")
-.value
-.trim()
-.toLowerCase();
+  const input=
+    document.getElementById("verbInput")
+    .value
+    .trim()
+    .toLowerCase();
 
-let correct=
-data[index][1]
-.toLowerCase();
+  const correct=
+    gameData[current][1]
+    .toLowerCase();
 
-if(input===correct){
+  document.getElementById("verbInput").disabled=true;
 
-points++;
+  if(input===correct){
 
-document.getElementById("feedback")
-.textContent="🎉 Chính xác!";
+    score++;
 
-}else{
+    document.getElementById("feedback").textContent=
+      "🎉 Chính xác!";
+  }
+  else{
 
-document.getElementById("feedback")
-.textContent=
-"❌ Đáp án đúng: "+data[index][1];
+    document.getElementById("feedback").textContent=
+      "❌ Đáp án đúng: "+gameData[current][1];
+  }
 
-}
+  document.getElementById("score").textContent=score;
 
-document.getElementById("verbInput")
-.disabled=true;
-
-document.getElementById("score")
-.textContent=points;
-
-document.getElementById("next")
-.style.display="inline-block";
-
+  document.getElementById("nextButton").style.display="inline-block";
 }
 
 
 /* =====================================================
-   KÉO THẢ
+   JOIN SETUP
 ===================================================== */
 
-function setupDrag(sentence){
+function setupJoin(sentence){
 
-let words=
-sentence
-.split(" / ")
-.sort(()=>Math.random()-.5);
+  const words=sentence
+    .split(" / ")
+    .sort(()=>Math.random()-.5);
 
-let area=
-document.getElementById("words");
+  const wordArea=document.getElementById("wordArea");
+  const dropArea=document.getElementById("dropArea");
 
-let drop=
-document.getElementById("drop");
+  wordArea.innerHTML="";
+  dropArea.innerHTML="";
 
-area.innerHTML="";
-drop.innerHTML="";
+  words.forEach(word=>{
 
-words.forEach(word=>{
+    const el=document.createElement("div");
 
-let el=document.createElement("div");
+    el.className="word";
+    el.textContent=word;
+    el.draggable=true;
 
-el.className="word";
+    el.addEventListener("dragstart",()=>{
+      draggedWord=el;
+    });
 
-el.textContent=word;
+    el.addEventListener("click",()=>{
+      dropArea.appendChild(el);
+    });
 
-el.draggable=true;
+    wordArea.appendChild(el);
 
-el.addEventListener("dragstart",()=>{
-dragged=el;
-});
+  });
 
-el.addEventListener("click",()=>{
+  dropArea.ondragover=e=>{
+    e.preventDefault();
+  };
 
-drop.appendChild(el);
+  dropArea.ondrop=e=>{
 
-});
+    e.preventDefault();
 
-area.appendChild(el);
-
-});
-
-drop.addEventListener("dragover",e=>{
-e.preventDefault();
-});
-
-drop.addEventListener("drop",e=>{
-
-e.preventDefault();
-
-if(dragged){
-drop.appendChild(dragged);
-}
-
-});
-
+    if(draggedWord){
+      dropArea.appendChild(draggedWord);
+    }
+  };
 }
 
 
 /* =====================================================
-   KIỂM TRA NỐI CÂU
+   CHECK JOIN
 ===================================================== */
 
 function checkJoin(){
 
-let drop=
-document.getElementById("drop");
+  const answer=
+    [...document.getElementById("dropArea").children]
+      .map(x=>x.textContent)
+      .join(" ");
 
-let answer=
-[...drop.children]
-.map(x=>x.textContent)
-.join(" ");
+  const correct=gameData[current];
 
-let correct=
-data[index][1];
+  if(answer.toLowerCase()===correct.toLowerCase()){
 
-if(answer.toLowerCase()===correct.toLowerCase()){
+    score++;
 
-points++;
+    document.getElementById("feedback").textContent=
+      "🎉 Chính xác!";
+  }
+  else{
 
-document.getElementById("feedback")
-.textContent="🎉 Chính xác!";
+    document.getElementById("feedback").textContent=
+      "❌ Chưa đúng! Đáp án: "+correct;
+  }
 
-}else{
+  document.getElementById("score").textContent=score;
 
-document.getElementById("feedback")
-.textContent=
-"❌ Chưa đúng. Đáp án: "+correct;
-
-}
-
-document.getElementById("score")
-.textContent=points;
-
-document.getElementById("next")
-.style.display="inline-block";
-
+  document.getElementById("nextButton").style.display="inline-block";
 }
 
 
@@ -1247,20 +1348,18 @@ document.getElementById("next")
    NEXT
 ===================================================== */
 
-function nextGame(){
+function nextQuestion(){
 
-index++;
+  current++;
 
-if(index>=data.length){
+  if(current>=gameData.length){
 
-finish();
+    finishGame();
 
-return;
+    return;
+  }
 
-}
-
-render();
-
+  renderQuestion();
 }
 
 
@@ -1268,51 +1367,44 @@ render();
    FINISH
 ===================================================== */
 
-function finish(){
+function finishGame(){
 
-document.getElementById("question").style.display="none";
+  document.getElementById("question").style.display="none";
+  document.getElementById("questionNumber").style.display="none";
+  document.getElementById("answers").style.display="none";
+  document.getElementById("verbBox").style.display="none";
+  document.getElementById("joinBox").style.display="none";
+  document.getElementById("feedback").style.display="none";
+  document.getElementById("nextButton").style.display="none";
 
-document.getElementById("answers").style.display="none";
+  document.getElementById("progressBar").style.width="100%";
 
-document.getElementById("verbBox").style.display="none";
+  document.getElementById("result").style.display="block";
 
-document.getElementById("joinBox").style.display="none";
+  document.getElementById("finalScore").textContent=
+    `${score} / ${gameData.length}`;
 
-document.getElementById("qnum").style.display="none";
+  const percent=
+    score/gameData.length*100;
 
-document.getElementById("feedback").style.display="none";
+  let text;
 
-document.getElementById("next").style.display="none";
+  if(percent>=90)
+    text="🏆 Xuất sắc!";
 
-document.getElementById("bar").style.width="100%";
+  else if(percent>=80)
+    text="🔥 Rất tốt!";
 
-document.getElementById("result").style.display="block";
+  else if(percent>=60)
+    text="👍 Khá tốt!";
 
-document.getElementById("final")
-.textContent=points+" / "+data.length;
+  else if(percent>=40)
+    text="💪 Hãy luyện tập thêm!";
 
-let percent=points/data.length*100;
+  else
+    text="📚 Ôn lại bài rồi thử lại nhé!";
 
-let text="";
-
-if(percent>=90)
-text="🏆 Xuất sắc!";
-
-else if(percent>=80)
-text="🔥 Rất tốt!";
-
-else if(percent>=60)
-text="👍 Khá tốt!";
-
-else if(percent>=40)
-text="💪 Hãy luyện tập thêm!";
-
-else
-text="📚 Ôn lại kiến thức và thử lại nhé!";
-
-document.getElementById("resultText")
-.textContent=text;
-
+  document.getElementById("resultText").textContent=text;
 }
 
 
@@ -1320,10 +1412,13 @@ document.getElementById("resultText")
    KHỞI ĐỘNG
 ===================================================== */
 
-document.getElementById("lesson")
-.innerHTML=lessons.past;
+setTense(
+  "past",
+  document.querySelector(".grammar-tabs button")
+);
 
 </script>
 
 </body>
 </html>
+

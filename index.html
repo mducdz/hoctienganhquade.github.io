@@ -1,625 +1,492 @@
-
-<!DOCTYPE html>
+<!doctype html>
 <html lang="vi">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
-
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>HOC ENGLISH</title>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <style>
-*{
-    box-sizing:border-box;
-}
+*{box-sizing:border-box}
 
 :root{
-    --bg:#070b16;
-    --panel:#10182b;
-    --panel2:#0c1324;
-    --line:#263555;
-    --text:#eef4ff;
-    --muted:#91a0bf;
-    --cyan:#20dcff;
-    --purple:#795cff;
-    --pink:#ff4eae;
-    --green:#36e69a;
-    --red:#ff6678;
-    --yellow:#ffd84d;
+ --bg:#070b16;
+ --panel:#10182b;
+ --panel2:#0c1324;
+ --line:#263555;
+ --text:#eef4ff;
+ --muted:#91a0bd;
+ --cyan:#20dcff;
+ --purple:#795cff;
+ --pink:#ff4eae;
+ --green:#35e69a;
+ --red:#ff6478;
 }
 
 body{
-    margin:0;
-    background:
-        radial-gradient(circle at 10% 0%,#182856 0,#070b16 35%),
-        var(--bg);
-    color:var(--text);
-    font-family:Inter,Arial,sans-serif;
+ margin:0;
+ background:var(--bg);
+ color:var(--text);
+ font-family:Inter,Arial,sans-serif
 }
 
-button,
-input{
-    font:inherit;
+button,input{
+ font:inherit
 }
 
 button{
-    cursor:pointer;
-}
-
-button:disabled{
-    cursor:not-allowed;
-    opacity:.6;
+ cursor:pointer
 }
 
 .hide{
-    display:none!important;
+ display:none!important
 }
 
 .center{
-    text-align:center;
+ text-align:center
 }
 
 .muted{
-    color:var(--muted);
-    line-height:1.6;
+ color:var(--muted);
+ line-height:1.6
 }
 
-.logo{
-    font-size:28px;
-    font-weight:900;
-    background:linear-gradient(
-        90deg,
-        var(--cyan),
-        var(--purple),
-        var(--pink)
-    );
-    color:transparent;
-    background-clip:text;
-    -webkit-background-clip:text;
+.card{
+ background:var(--panel);
+ border:1px solid var(--line);
+ border-radius:18px;
+ padding:20px;
+ margin-bottom:15px
+}
+
+.btn{
+ border:0;
+ color:white;
+ padding:11px 17px;
+ border-radius:11px;
+ background:linear-gradient(135deg,var(--cyan),var(--purple),var(--pink));
+ margin:4px
+}
+
+.btn2{
+ border:1px solid var(--line);
+ color:white;
+ background:#ffffff08;
+ padding:11px 17px;
+ border-radius:11px;
+ margin:4px
+}
+
+.full{
+ width:100%
+}
+
+.inp{
+ width:100%;
+ padding:13px;
+ border-radius:11px;
+ border:1px solid var(--line);
+ background:#080d1b;
+ color:white;
+ outline:none;
+ margin:5px 0
+}
+
+.inp:focus{
+ border-color:var(--cyan)
 }
 
 /* AUTH */
 
 #auth{
-    min-height:100vh;
-    display:grid;
-    place-items:center;
-    padding:20px;
+ min-height:100vh;
+ display:grid;
+ place-items:center;
+ padding:20px;
+ background:
+ radial-gradient(circle at 20% 0,#263b7a 0,#070b16 48%)
 }
 
-.auth-box{
-    width:min(440px,100%);
-    background:rgba(16,24,43,.96);
-    border:1px solid var(--line);
-    border-radius:24px;
-    padding:30px;
-    box-shadow:0 30px 100px #0009;
+.authBox{
+ width:min(430px,100%);
+ padding:30px;
+ background:var(--panel);
+ border:1px solid var(--line);
+ border-radius:24px;
+ box-shadow:0 25px 80px #0009
 }
 
-.auth-icon{
-    font-size:65px;
-}
-
-.input{
-    width:100%;
-    border:1px solid var(--line);
-    background:#080d1b;
-    color:white;
-    padding:13px;
-    border-radius:11px;
-    margin:6px 0;
-    outline:none;
-}
-
-.input:focus{
-    border-color:var(--cyan);
-}
-
-.btn{
-    border:0;
-    border-radius:11px;
-    padding:11px 16px;
-    color:white;
-    background:linear-gradient(
-        135deg,
-        var(--cyan),
-        var(--purple),
-        var(--pink)
-    );
-    margin:4px 0;
-}
-
-.btn2{
-    border:1px solid var(--line);
-    background:#ffffff08;
-    color:white;
-    border-radius:11px;
-    padding:11px 16px;
-    margin:4px 0;
-}
-
-.full{
-    width:100%;
-}
-
-.error{
-    color:#ff8996;
-    font-size:13px;
-    min-height:20px;
-    margin:5px 0;
+.logo{
+ font-size:28px;
+ font-weight:900;
+ background:linear-gradient(90deg,var(--cyan),var(--purple),var(--pink));
+ color:transparent;
+ background-clip:text
 }
 
 /* APP */
 
-#app{
-    min-height:100vh;
-}
-
-.sidebar{
-    position:fixed;
-    left:0;
-    top:0;
-    bottom:0;
-    width:255px;
-    padding:15px;
-    background:#0d1426;
-    border-right:1px solid var(--line);
-    overflow:auto;
-    z-index:20;
+.side{
+ position:fixed;
+ left:0;
+ top:0;
+ bottom:0;
+ width:255px;
+ background:#0d1426;
+ border-right:1px solid var(--line);
+ padding:15px;
+ overflow:auto;
+ z-index:20
 }
 
 .brand{
-    padding:12px 8px 16px;
-    border-bottom:1px solid var(--line);
+ padding:10px;
+ border-bottom:1px solid var(--line);
+ margin-bottom:15px
 }
 
-.group-title{
-    color:#697796;
-    font-size:10px;
-    font-weight:900;
-    margin:18px 7px 7px;
+.group{
+ color:#687797;
+ font-size:10px;
+ font-weight:900;
+ margin:17px 7px 7px
 }
 
 .nav{
-    width:100%;
-    border:0;
-    background:transparent;
-    color:#aab7d0;
-    text-align:left;
-    padding:11px;
-    border-radius:10px;
-    margin:2px 0;
+ width:100%;
+ border:0;
+ background:transparent;
+ color:#aab7d0;
+ text-align:left;
+ padding:11px;
+ border-radius:10px;
+ margin:2px 0
 }
 
 .nav:hover,
-.nav.active{
-    background:#ffffff09;
-    color:white;
+.nav.on{
+ background:#ffffff09;
+ color:white
 }
 
-.nav.active{
-    border-left:3px solid var(--cyan);
+.nav.on{
+ border-left:3px solid var(--cyan)
 }
 
 .main{
-    margin-left:255px;
-    padding:22px;
-}
-
-.topbar{
-    max-width:1150px;
-    margin:0 auto 18px;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    gap:10px;
-}
-
-.topbar h2{
-    margin:0;
-}
-
-.score-box{
-    background:#111b31;
-    border:1px solid var(--line);
-    border-radius:20px;
-    padding:9px 15px;
-}
-
-.mobile-menu{
-    display:none;
-    border:1px solid var(--line);
-    background:#ffffff08;
-    color:white;
-    border-radius:9px;
-    padding:8px 11px;
+ margin-left:255px;
+ padding:22px
 }
 
 .page{
-    max-width:1150px;
-    margin:auto;
+ max-width:1100px;
+ margin:auto
 }
 
-.card{
-    background:rgba(16,24,43,.94);
-    border:1px solid var(--line);
-    border-radius:17px;
-    padding:20px;
-    margin-bottom:14px;
+.top{
+ max-width:1100px;
+ margin:auto auto 18px;
+ display:flex;
+ align-items:center;
+ justify-content:space-between;
+ gap:10px
 }
+
+.score{
+ background:#111b31;
+ border:1px solid var(--line);
+ padding:9px 15px;
+ border-radius:20px
+}
+
+.mobile{
+ display:none
+}
+
+/* HOME */
 
 .hero{
-    text-align:center;
-    padding:55px 20px;
+ text-align:center;
+ padding:50px 20px
 }
 
-.hero-icon{
-    font-size:70px;
+.heroIcon{
+ font-size:65px
 }
 
 .grid{
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:12px;
+ display:grid;
+ grid-template-columns:repeat(4,1fr);
+ gap:11px
 }
 
 .tile{
-    border:1px solid var(--line);
-    border-radius:14px;
-    background:#ffffff06;
-    padding:17px;
-    cursor:pointer;
-    transition:.18s;
+ background:#ffffff06;
+ border:1px solid var(--line);
+ border-radius:14px;
+ padding:16px;
+ cursor:pointer;
+ transition:.15s
 }
 
 .tile:hover{
-    border-color:var(--cyan);
-    transform:translateY(-2px);
+ border-color:var(--cyan);
+ transform:translateY(-2px)
 }
 
 .tile h3{
-    margin:8px 0;
+ margin:9px 0
 }
 
 .tile p{
-    margin:0;
-    color:var(--muted);
-    font-size:13px;
-}
-
-.tag{
-    display:inline-block;
-    padding:6px 9px;
-    margin:3px;
-    border-radius:8px;
-    background:#ffffff09;
-    color:#ccd6eb;
-    font-size:12px;
-}
-
-/* PROGRESS */
-
-.progress{
-    width:100%;
-    height:8px;
-    background:#050914;
-    border-radius:99px;
-    overflow:hidden;
-    margin:12px 0 22px;
-}
-
-.progress-bar{
-    height:100%;
-    background:linear-gradient(
-        90deg,
-        var(--cyan),
-        var(--purple),
-        var(--pink)
-    );
-    transition:.25s;
-}
-
-/* EXERCISE */
-
-.question{
-    font-size:24px;
-    line-height:1.5;
-    margin:22px 0;
-}
-
-.option{
-    width:100%;
-    text-align:left;
-    border:1px solid var(--line);
-    background:#ffffff06;
-    color:white;
-    padding:14px;
-    border-radius:11px;
-    margin:6px 0;
-}
-
-.option:hover{
-    border-color:var(--cyan);
-}
-
-.option.correct{
-    border-color:var(--green);
-    background:#36e69a18;
-}
-
-.option.wrong{
-    border-color:var(--red);
-    background:#ff667818;
-}
-
-.feedback{
-    min-height:28px;
-    color:var(--muted);
-    margin-top:10px;
-}
-
-.result{
-    text-align:center;
-    padding:45px 20px;
-}
-
-.result-score{
-    font-size:50px;
-    font-weight:900;
+ color:var(--muted);
+ font-size:12px;
+ margin:0
 }
 
 /* VOCAB */
 
-.level-grid{
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:12px;
+.topicImg{
+ width:100%;
+ height:150px;
+ object-fit:cover;
+ border-radius:12px;
+ margin-bottom:10px
 }
 
-.level-card{
-    border:1px solid var(--line);
-    border-radius:16px;
-    padding:18px;
-    background:#ffffff06;
-    cursor:pointer;
-    transition:.18s;
+.wordImg{
+ width:min(500px,100%);
+ height:300px;
+ object-fit:cover;
+ border-radius:16px;
+ display:block;
+ margin:15px auto
 }
 
-.level-card:hover{
-    border-color:var(--cyan);
-    transform:translateY(-2px);
+.word{
+ font-size:32px;
+ font-weight:900
 }
 
-.level-icon{
-    font-size:45px;
+.meaning{
+ color:var(--muted);
+ font-size:18px
 }
 
-.vocab-grid{
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:12px;
+.level{
+ display:inline-block;
+ padding:7px 11px;
+ background:#ffffff09;
+ border:1px solid var(--line);
+ border-radius:9px;
+ margin:3px
 }
 
-.vocab-card{
-    overflow:hidden;
-    border:1px solid var(--line);
-    border-radius:15px;
-    background:#ffffff06;
+/* EXERCISE */
+
+.progress{
+ height:8px;
+ background:#050914;
+ border-radius:99px;
+ overflow:hidden;
+ margin:12px 0
 }
 
-.vocab-card img{
-    width:100%;
-    aspect-ratio:16/10;
-    object-fit:cover;
-    display:block;
+.progress i{
+ display:block;
+ height:100%;
+ width:0;
+ background:linear-gradient(90deg,var(--cyan),var(--purple),var(--pink))
 }
 
-.vocab-content{
-    padding:13px;
+.questionImg{
+ width:min(520px,100%);
+ height:290px;
+ object-fit:cover;
+ border-radius:15px;
+ display:block;
+ margin:20px auto
 }
 
-.vocab-word{
-    font-size:22px;
-    font-weight:900;
+.option{
+ width:100%;
+ display:block;
+ text-align:left;
+ padding:14px;
+ margin:8px 0;
+ color:white;
+ background:#ffffff06;
+ border:1px solid var(--line);
+ border-radius:11px
 }
 
-.vocab-vi{
-    color:var(--muted);
-    margin-top:4px;
+.option:hover{
+ border-color:var(--cyan)
 }
 
-.vocab-tools{
-    display:flex;
-    gap:6px;
-    margin-top:10px;
+.good{
+ border-color:var(--green)!important;
+ background:#35e69a18!important
 }
 
-.vocab-tools button{
-    flex:1;
-}
-
-.big-vocab-image{
-    width:min(500px,100%);
-    aspect-ratio:16/10;
-    object-fit:cover;
-    border-radius:16px;
-    display:block;
-    margin:0 auto 18px;
-}
-
-.answer-grid{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:10px;
-}
-
-.answer{
-    min-height:55px;
-    border:1px solid var(--line);
-    border-radius:12px;
-    background:#ffffff06;
-    color:white;
-    padding:12px;
-    font-weight:700;
-}
-
-.answer:hover{
-    border-color:var(--cyan);
+.bad{
+ border-color:var(--red)!important;
+ background:#ff647818!important
 }
 
 /* MATCH */
 
-.match-grid{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:20px;
+.matchGrid{
+ display:grid;
+ grid-template-columns:1fr 1fr;
+ gap:18px
 }
 
-.match-item{
-    border:1px solid var(--line);
-    border-radius:11px;
-    background:#ffffff06;
-    padding:9px;
-    margin:7px 0;
-    cursor:pointer;
+.matchItem{
+ padding:11px;
+ margin:7px 0;
+ border:1px solid var(--line);
+ border-radius:10px;
+ background:#ffffff06;
+ cursor:pointer
 }
 
-.match-item:hover{
-    border-color:var(--cyan);
+.matchItem img{
+ width:100%;
+ height:130px;
+ object-fit:cover;
+ border-radius:8px;
+ margin-bottom:7px
 }
 
-.match-item.selected{
-    border-color:var(--cyan);
-    background:#20dcff12;
+.matchItem.selected{
+ border-color:var(--cyan);
+ background:#20dcff12
 }
 
-.match-item.done{
-    opacity:.25;
-    pointer-events:none;
-}
-
-.match-item img{
-    width:70px;
-    height:52px;
-    object-fit:cover;
-    border-radius:8px;
-    vertical-align:middle;
-    margin-right:8px;
+.matchItem.done{
+ opacity:.2;
+ pointer-events:none
 }
 
 /* TABLE */
 
-.table-scroll{
-    overflow:auto;
+.scroll{
+ overflow:auto
 }
 
 table{
-    width:100%;
-    border-collapse:collapse;
+ width:100%;
+ border-collapse:collapse
 }
 
-th,
-td{
-    padding:10px;
-    border-bottom:1px solid var(--line);
-    text-align:left;
+th,td{
+ padding:11px;
+ border-bottom:1px solid var(--line);
+ text-align:left
 }
 
 th{
-    color:#8c9ab8;
-    font-size:12px;
+ color:var(--muted);
+ font-size:12px
 }
 
-/* MOBILE */
-
-@media(max-width:900px){
-
-    .sidebar{
-        transform:translateX(-100%);
-        transition:.2s;
-    }
-
-    .sidebar.open{
-        transform:translateX(0);
-    }
-
-    .main{
-        margin-left:0;
-        padding:14px;
-    }
-
-    .mobile-menu{
-        display:block;
-    }
-
-    .grid,
-    .level-grid,
-    .vocab-grid{
-        grid-template-columns:1fr 1fr;
-    }
+.badge{
+ padding:5px 8px;
+ border-radius:7px;
+ background:#ffffff0b
 }
 
-@media(max-width:560px){
+/* RESPONSIVE */
 
-    .grid,
-    .level-grid,
-    .vocab-grid,
-    .answer-grid,
-    .match-grid{
-        grid-template-columns:1fr;
-    }
+@media(max-width:850px){
 
-    .card{
-        padding:15px;
-    }
+ .side{
+  transform:translateX(-100%);
+  transition:.2s
+ }
 
-    .question{
-        font-size:20px;
-    }
+ .side.open{
+  transform:none
+ }
+
+ .main{
+  margin-left:0;
+  padding:14px
+ }
+
+ .mobile{
+  display:block;
+  border:1px solid var(--line);
+  background:#ffffff09;
+  color:white;
+  padding:8px 11px;
+  border-radius:9px
+ }
+
+ .grid{
+  grid-template-columns:1fr 1fr
+ }
+}
+
+@media(max-width:520px){
+
+ .grid{
+  grid-template-columns:1fr
+ }
+
+ .matchGrid{
+  grid-template-columns:1fr
+ }
+
+ .card{
+  padding:15px
+ }
+
+ .questionImg,
+ .wordImg{
+  height:230px
+ }
 }
 </style>
 </head>
 
 <body>
 
-<!-- ======================================================
-     AUTH
-====================================================== -->
+<!-- AUTH -->
 
-<section id="auth">
+<div id="auth">
 
-    <div class="auth-box">
+ <div class="authBox">
 
-        <div class="center auth-icon">📚</div>
+  <div class="center" style="font-size:55px">📚</div>
 
-        <div class="center logo">
-            HOC ENGLISH
-        </div>
+  <div class="center logo">
+   HOC ENGLISH
+  </div>
 
-        <p class="center muted">
-            Học tiếng Anh thông minh
-        </p>
+  <p class="center muted">
+   Học từ vựng • ngữ pháp • luyện tập
+  </p>
 
-        <div id="auth-form"></div>
+  <div id="authForm"></div>
 
-    </div>
+ </div>
 
-</section>
+</div>
 
 
-<!-- ======================================================
-     APP
-====================================================== -->
+<!-- APP -->
 
 <div id="app" class="hide"></div>
 
 
 <script>
 
-/* ======================================================
+/* =========================================================
    SUPABASE
-====================================================== */
+========================================================= */
 
 const SUPABASE_URL =
 "https://bfrdyblmhxftenhipeft.supabase.co";
@@ -629,4278 +496,3075 @@ const SUPABASE_KEY =
 
 const db =
 window.supabase.createClient(
-    SUPABASE_URL,
-    SUPABASE_KEY
+ SUPABASE_URL,
+ SUPABASE_KEY
 );
 
 
-/* ======================================================
-   GLOBAL STATE
-====================================================== */
+/* =========================================================
+   STATE
+========================================================= */
 
 let profile = null;
-let totalScore = 0;
+let score = 0;
 
-const state = {
+let current = {
+ type:"",
+ topic:"",
+ level:"",
+ index:0,
+ items:[],
+ correct:0,
+ locked:false
+};
 
-    type:null,
-    tense:null,
+const $ = id => document.getElementById(id);
 
-    items:[],
-    index:0,
-    correct:0,
+const esc = x =>
+String(x ?? "")
+.replace(/[&<>"']/g,m=>({
+ "&":"&amp;",
+ "<":"&lt;",
+ ">":"&gt;",
+ '"':"&quot;",
+ "'":"&#39;"
+}[m]));
 
-    vocabLevel:null,
-    vocabMode:null,
 
-    locked:false,
+/* =========================================================
+   IMAGE
+   100% ảnh thật
+========================================================= */
 
-    matchLeft:null,
-    matchRight:null,
-    matchDone:0
+function realImage(word){
+
+ return "https://loremflickr.com/800/500/" +
+ encodeURIComponent(word) +
+ "?lock=" +
+ Math.floor(Math.random()*999999);
+
+}
+
+
+/* =========================================================
+   10 TOPICS
+   20 WORDS / TOPIC
+========================================================= */
+
+const TOPICS = {
+
+ animals:{
+  name:"Động vật",
+  icon:"🐾",
+  level:"Cơ bản",
+  words:[
+   ["dog","Chó"],
+   ["cat","Mèo"],
+   ["bird","Chim"],
+   ["fish","Cá"],
+   ["horse","Ngựa"],
+   ["cow","Bò"],
+   ["pig","Lợn"],
+   ["chicken","Gà"],
+   ["duck","Vịt"],
+   ["rabbit","Thỏ"],
+   ["lion","Sư tử"],
+   ["tiger","Hổ"],
+   ["elephant","Voi"],
+   ["monkey","Khỉ"],
+   ["bear","Gấu"],
+   ["snake","Rắn"],
+   ["frog","Ếch"],
+   ["giraffe","Hươu cao cổ"],
+   ["zebra","Ngựa vằn"],
+   ["wolf","Sói"]
+  ]
+ },
+
+ food:{
+  name:"Đồ ăn",
+  icon:"🍔",
+  level:"Cơ bản",
+  words:[
+   ["rice","Cơm"],
+   ["bread","Bánh mì"],
+   ["egg","Trứng"],
+   ["chicken","Thịt gà"],
+   ["beef","Thịt bò"],
+   ["fish","Cá"],
+   ["apple","Táo"],
+   ["banana","Chuối"],
+   ["orange","Cam"],
+   ["grape","Nho"],
+   ["cake","Bánh"],
+   ["pizza","Pizza"],
+   ["cheese","Phô mai"],
+   ["milk","Sữa"],
+   ["water","Nước"],
+   ["coffee","Cà phê"],
+   ["tea","Trà"],
+   ["soup","Súp"],
+   ["noodle","Mì"],
+   ["potato","Khoai tây"]
+  ]
+ },
+
+ clothes:{
+  name:"Quần áo",
+  icon:"👕",
+  level:"Cơ bản",
+  words:[
+   ["shirt","Áo sơ mi"],
+   ["t-shirt","Áo phông"],
+   ["pants","Quần dài"],
+   ["shorts","Quần short"],
+   ["dress","Váy"],
+   ["skirt","Chân váy"],
+   ["jacket","Áo khoác"],
+   ["coat","Áo choàng"],
+   ["hat","Mũ"],
+   ["cap","Mũ lưỡi trai"],
+   ["shoes","Giày"],
+   ["socks","Tất"],
+   ["belt","Thắt lưng"],
+   ["tie","Cà vạt"],
+   ["gloves","Găng tay"],
+   ["scarf","Khăn quàng"],
+   ["boots","Ủng"],
+   ["jeans","Quần jean"],
+   ["sweater","Áo len"],
+   ["uniform","Đồng phục"]
+  ]
+ },
+
+ school:{
+  name:"Trường học",
+  icon:"🏫",
+  level:"Cơ bản",
+  words:[
+   ["teacher","Giáo viên"],
+   ["student","Học sinh"],
+   ["classroom","Lớp học"],
+   ["school","Trường học"],
+   ["book","Sách"],
+   ["notebook","Vở"],
+   ["pen","Bút"],
+   ["pencil","Bút chì"],
+   ["eraser","Cục tẩy"],
+   ["ruler","Thước"],
+   ["desk","Bàn học"],
+   ["chair","Ghế"],
+   ["board","Bảng"],
+   ["lesson","Bài học"],
+   ["homework","Bài tập về nhà"],
+   ["exam","Kỳ thi"],
+   ["library","Thư viện"],
+   ["computer","Máy tính"],
+   ["uniform","Đồng phục"],
+   ["subject","Môn học"]
+  ]
+ },
+
+ family:{
+  name:"Gia đình",
+  icon:"👨‍👩‍👧",
+  level:"Cơ bản",
+  words:[
+   ["father","Bố"],
+   ["mother","Mẹ"],
+   ["parents","Bố mẹ"],
+   ["son","Con trai"],
+   ["daughter","Con gái"],
+   ["brother","Anh/em trai"],
+   ["sister","Chị/em gái"],
+   ["grandfather","Ông"],
+   ["grandmother","Bà"],
+   ["uncle","Chú/cậu/bác"],
+   ["aunt","Cô/dì/bác"],
+   ["cousin","Anh chị em họ"],
+   ["husband","Chồng"],
+   ["wife","Vợ"],
+   ["baby","Em bé"],
+   ["child","Đứa trẻ"],
+   ["family","Gia đình"],
+   ["parents","Cha mẹ"],
+   ["nephew","Cháu trai"],
+   ["niece","Cháu gái"]
+  ]
+ },
+
+ house:{
+  name:"Ngôi nhà",
+  icon:"🏠",
+  level:"Cơ bản",
+  words:[
+   ["house","Ngôi nhà"],
+   ["room","Phòng"],
+   ["bedroom","Phòng ngủ"],
+   ["bathroom","Phòng tắm"],
+   ["kitchen","Nhà bếp"],
+   ["garden","Vườn"],
+   ["door","Cửa"],
+   ["window","Cửa sổ"],
+   ["table","Bàn"],
+   ["chair","Ghế"],
+   ["bed","Giường"],
+   ["sofa","Ghế sofa"],
+   ["lamp","Đèn"],
+   ["television","Tivi"],
+   ["fridge","Tủ lạnh"],
+   ["mirror","Gương"],
+   ["floor","Sàn nhà"],
+   ["wall","Tường"],
+   ["roof","Mái nhà"],
+   ["stairs","Cầu thang"]
+  ]
+ },
+
+ jobs:{
+  name:"Nghề nghiệp",
+  icon:"💼",
+  level:"Trung bình",
+  words:[
+   ["teacher","Giáo viên"],
+   ["doctor","Bác sĩ"],
+   ["nurse","Y tá"],
+   ["engineer","Kỹ sư"],
+   ["farmer","Nông dân"],
+   ["driver","Tài xế"],
+   ["pilot","Phi công"],
+   ["chef","Đầu bếp"],
+   ["police","Cảnh sát"],
+   ["firefighter","Lính cứu hỏa"],
+   ["lawyer","Luật sư"],
+   ["artist","Họa sĩ"],
+   ["singer","Ca sĩ"],
+   ["actor","Diễn viên"],
+   ["writer","Nhà văn"],
+   ["dentist","Nha sĩ"],
+   ["architect","Kiến trúc sư"],
+   ["manager","Quản lý"],
+   ["scientist","Nhà khoa học"],
+   ["photographer","Nhiếp ảnh gia"]
+  ]
+ },
+
+ travel:{
+  name:"Du lịch",
+  icon:"✈️",
+  level:"Trung bình",
+  words:[
+   ["airport","Sân bay"],
+   ["station","Nhà ga"],
+   ["hotel","Khách sạn"],
+   ["ticket","Vé"],
+   ["passport","Hộ chiếu"],
+   ["luggage","Hành lý"],
+   ["map","Bản đồ"],
+   ["tourist","Khách du lịch"],
+   ["beach","Bãi biển"],
+   ["mountain","Núi"],
+   ["island","Đảo"],
+   ["city","Thành phố"],
+   ["country","Đất nước"],
+   ["journey","Hành trình"],
+   ["trip","Chuyến đi"],
+   ["bus","Xe buýt"],
+   ["train","Tàu hỏa"],
+   ["plane","Máy bay"],
+   ["boat","Thuyền"],
+   ["camera","Máy ảnh"]
+  ]
+ },
+
+ nature:{
+  name:"Thiên nhiên",
+  icon:"🌳",
+  level:"Trung bình",
+  words:[
+   ["tree","Cây"],
+   ["flower","Hoa"],
+   ["grass","Cỏ"],
+   ["forest","Rừng"],
+   ["river","Sông"],
+   ["lake","Hồ"],
+   ["sea","Biển"],
+   ["mountain","Núi"],
+   ["sky","Bầu trời"],
+   ["cloud","Mây"],
+   ["rain","Mưa"],
+   ["snow","Tuyết"],
+   ["wind","Gió"],
+   ["sun","Mặt trời"],
+   ["moon","Mặt trăng"],
+   ["star","Ngôi sao"],
+   ["fire","Lửa"],
+   ["stone","Đá"],
+   ["island","Hòn đảo"],
+   ["beach","Bãi biển"]
+  ]
+ },
+
+ technology:{
+  name:"Công nghệ",
+  icon:"💻",
+  level:"Nâng cao",
+  words:[
+   ["computer","Máy tính"],
+   ["phone","Điện thoại"],
+   ["keyboard","Bàn phím"],
+   ["mouse","Chuột máy tính"],
+   ["screen","Màn hình"],
+   ["internet","Internet"],
+   ["website","Trang web"],
+   ["software","Phần mềm"],
+   ["hardware","Phần cứng"],
+   ["camera","Máy ảnh"],
+   ["robot","Robot"],
+   ["battery","Pin"],
+   ["charger","Bộ sạc"],
+   ["printer","Máy in"],
+   ["network","Mạng"],
+   ["password","Mật khẩu"],
+   ["email","Email"],
+   ["file","Tệp"],
+   ["program","Chương trình"],
+   ["keyboard","Bàn phím"]
+  ]
+ }
 
 };
 
 
-/* ======================================================
-   HELPERS
-====================================================== */
+/* =========================================================
+   4 LEVELS
+========================================================= */
 
-const $ = id =>
-document.getElementById(id);
-
-function esc(value){
-
-    return String(value ?? "")
-    .replace(/[&<>"']/g, char => ({
-        "&":"&amp;",
-        "<":"&lt;",
-        ">":"&gt;",
-        '"':"&quot;",
-        "'":"&#39;"
-    }[char]));
-
-}
-
-function shuffle(array){
-
-    const result = [...array];
-
-    for(let i=result.length-1;i>0;i--){
-
-        const j =
-        Math.floor(Math.random()*(i+1));
-
-        [result[i],result[j]] =
-        [result[j],result[i]];
-
-    }
-
-    return result;
-}
-
-function unique(array){
-
-    return [...new Set(array)];
-
-}
-
-function speak(text){
-
-    if(!("speechSynthesis" in window)){
-
-        alert("Trình duyệt không hỗ trợ đọc tiếng Anh.");
-
-        return;
-    }
-
-    speechSynthesis.cancel();
-
-    const utterance =
-    new SpeechSynthesisUtterance(text);
-
-    utterance.lang="en-US";
-    utterance.rate=.85;
-
-    speechSynthesis.speak(utterance);
-
-}
-
-
-/* ======================================================
-   TENSE DATA
-====================================================== */
-
-const TENSES = {
-
-    past:{
-        name:"Quá khứ đơn",
-        icon:"⏪",
-        formula:"S + V2/V-ed",
-        signs:["yesterday","last week","last month","ago","in 2020"],
-
-        verbs:[
-            ["go","went","đi"],
-            ["visit","visited","thăm"],
-            ["play","played","chơi"],
-            ["watch","watched","xem"],
-            ["eat","ate","ăn"],
-            ["see","saw","nhìn thấy"],
-            ["buy","bought","mua"],
-            ["write","wrote","viết"],
-            ["make","made","làm"],
-            ["take","took","lấy"],
-            ["have","had","có"],
-            ["come","came","đến"]
-        ]
-    },
-
-    present:{
-        name:"Hiện tại đơn",
-        icon:"☀️",
-        formula:"S + V(s/es)",
-        signs:["every day","usually","often","always","sometimes"],
-
-        verbs:[
-            ["play","plays","chơi"],
-            ["work","works","làm việc"],
-            ["study","studies","học"],
-            ["watch","watches","xem"],
-            ["go","goes","đi"],
-            ["read","reads","đọc"],
-            ["eat","eats","ăn"],
-            ["like","likes","thích"],
-            ["wash","washes","rửa"],
-            ["teach","teaches","dạy"],
-            ["have","has","có"],
-            ["do","does","làm"]
-        ]
-    },
-
-    continuous:{
-        name:"Hiện tại tiếp diễn",
-        icon:"🔄",
-        formula:"S + am/is/are + V-ing",
-        signs:["now","right now","at the moment","Look!","Listen!"],
-
-        verbs:[
-            ["play","playing","chơi"],
-            ["work","working","làm việc"],
-            ["study","studying","học"],
-            ["watch","watching","xem"],
-            ["run","running","chạy"],
-            ["read","reading","đọc"],
-            ["eat","eating","ăn"],
-            ["write","writing","viết"],
-            ["swim","swimming","bơi"],
-            ["cook","cooking","nấu"],
-            ["sleep","sleeping","ngủ"],
-            ["dance","dancing","nhảy"]
-        ]
-    },
-
-    perfect:{
-        name:"Hiện tại hoàn thành",
-        icon:"🚀",
-        formula:"S + have/has + V3",
-        signs:["already","just","ever","never","yet","since","for"],
-
-        verbs:[
-            ["finish","finished","hoàn thành"],
-            ["visit","visited","thăm"],
-            ["clean","cleaned","dọn"],
-            ["watch","watched","xem"],
-            ["play","played","chơi"],
-            ["study","studied","học"],
-            ["write","written","viết"],
-            ["eat","eaten","ăn"],
-            ["see","seen","nhìn thấy"],
-            ["go","gone","đi"],
-            ["make","made","làm"],
-            ["take","taken","lấy"]
-        ]
-    },
-
-    future:{
-        name:"Tương lai đơn",
-        icon:"🔮",
-        formula:"S + will + V",
-        signs:["tomorrow","next week","next month","soon","in the future"],
-
-        verbs:[
-            ["go","go","đi"],
-            ["visit","visit","thăm"],
-            ["play","play","chơi"],
-            ["watch","watch","xem"],
-            ["eat","eat","ăn"],
-            ["see","see","nhìn thấy"],
-            ["buy","buy","mua"],
-            ["write","write","viết"],
-            ["make","make","làm"],
-            ["take","take","lấy"],
-            ["have","have","có"],
-            ["come","come","đến"]
-        ]
-    }
-
-};
-
-
-/* ======================================================
-   VOCABULARY
-====================================================== */
-
-const VOCAB_LEVELS = {
-
-    basic:{
-        name:"Cấp 1 — Cơ bản",
-        icon:"🌱",
-        topic:"Đồ dùng hằng ngày",
-
-        words:[
-            ["book","quyển sách","https://images.unsplash.com/photo-1544947950-fa07a98d237f?w=800"],
-            ["phone","điện thoại","https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=800"],
-            ["computer","máy tính","https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=800"],
-            ["bag","cái túi","https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=800"],
-            ["pen","cây bút","https://images.unsplash.com/photo-1583485088034-697b5bc54ccd?w=800"],
-            ["clock","đồng hồ","https://images.unsplash.com/photo-1508057198894-247b23fe5ade?w=800"],
-            ["door","cánh cửa","https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?w=800"],
-            ["window","cửa sổ","https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=800"]
-        ]
-    },
-
-    easy:{
-        name:"Cấp 2 — Dễ",
-        icon:"⭐",
-        topic:"Đồ ăn",
-
-        words:[
-            ["apple","quả táo","https://images.unsplash.com/photo-1560806887-1e4cd0b6cbd6?w=800"],
-            ["banana","quả chuối","https://images.unsplash.com/photo-1571771894821-ce9b6c11b08e?w=800"],
-            ["bread","bánh mì","https://images.unsplash.com/photo-1509440159596-0249088772ff?w=800"],
-            ["pizza","pizza","https://images.unsplash.com/photo-1574071318508-1cdbab80d002?w=800"],
-            ["cake","bánh ngọt","https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=800"],
-            ["egg","trứng","https://images.unsplash.com/photo-1582722872445-44dc5f7e3c8f?w=800"],
-            ["rice","cơm","https://images.unsplash.com/photo-1536304993881-ff6e9eefa2a6?w=800"],
-            ["cheese","phô mai","https://images.unsplash.com/photo-1486297678162-eb2a19b0a32d?w=800"]
-        ]
-    },
-
-    medium:{
-        name:"Cấp 3 — Trung bình",
-        icon:"🔥",
-        topic:"Nghề nghiệp",
-
-        words:[
-            ["teacher","giáo viên","https://images.unsplash.com/photo-1509062522246-3755977927d7?w=800"],
-            ["doctor","bác sĩ","https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=800"],
-            ["chef","đầu bếp","https://images.unsplash.com/photo-1577219491135-ce391730fb2c?w=800"],
-            ["farmer","nông dân","https://images.unsplash.com/photo-1500937386664-56d1dfef3854?w=800"],
-            ["driver","tài xế","https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?w=800"],
-            ["pilot","phi công","https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=800"],
-            ["artist","họa sĩ","https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=800"],
-            ["engineer","kỹ sư","https://images.unsplash.com/photo-1581092921461-eab62e97a780?w=800"]
-        ]
-    },
-
-    advanced:{
-        name:"Cấp 4 — Nâng cao",
-        icon:"👑",
-        topic:"Thiên nhiên & môi trường",
-
-        words:[
-            ["environment","môi trường","https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=800"],
-            ["forest","rừng","https://images.unsplash.com/photo-1448375240586-882707db888b?w=800"],
-            ["mountain","núi","https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=800"],
-            ["ocean","đại dương","https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800"],
-            ["river","sông","https://images.unsplash.com/photo-1437482078695-73f5ca6c96e2?w=800"],
-            ["wildlife","động vật hoang dã","https://images.unsplash.com/photo-1564349683136-77e08dba1ef7?w=800"],
-            ["pollution","ô nhiễm","https://images.unsplash.com/photo-1530587191325-3db32d826c18?w=800"],
-            ["recycle","tái chế","https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?w=800"]
-        ]
-    }
-
-};
-
-
-/* ======================================================
-   COMPARATIVES
-====================================================== */
-
-const COMPARATIVES = [
-
-    ["tall","taller","cao"],
-    ["short","shorter","thấp"],
-    ["fast","faster","nhanh"],
-    ["slow","slower","chậm"],
-    ["small","smaller","nhỏ"],
-    ["big","bigger","to"],
-    ["hot","hotter","nóng"],
-    ["cold","colder","lạnh"],
-    ["happy","happier","hạnh phúc"],
-    ["easy","easier","dễ"],
-    ["busy","busier","bận"],
-    ["pretty","prettier","xinh"],
-    ["heavy","heavier","nặng"],
-    ["early","earlier","sớm"],
-    ["beautiful","more beautiful","đẹp"],
-    ["expensive","more expensive","đắt"],
-    ["interesting","more interesting","thú vị"],
-    ["careful","more careful","cẩn thận"],
-    ["difficult","more difficult","khó"],
-    ["important","more important","quan trọng"],
-    ["good","better","tốt"],
-    ["bad","worse","tệ"],
-    ["far","farther","xa"],
-    ["little","less","ít"],
-    ["many","more","nhiều"],
-    ["much","more","nhiều"]
+const LEVELS = [
+ "Cơ bản",
+ "Trung bình",
+ "Khá",
+ "Nâng cao"
 ];
 
 
-/* ======================================================
-   AUTH UI
-====================================================== */
+/* =========================================================
+   AUTH
+========================================================= */
 
-function showLogin(){
+function authLogin(){
 
-    $("auth-form").innerHTML = `
+ $("authForm").innerHTML = `
 
-        <input
-            id="auth-email"
-            class="input"
-            type="email"
-            placeholder="Email"
-        >
+ <input id="email"
+  class="inp"
+  type="email"
+  placeholder="Email">
 
-        <input
-            id="auth-password"
-            class="input"
-            type="password"
-            placeholder="Mật khẩu"
-        >
+ <input id="pass"
+  class="inp"
+  type="password"
+  placeholder="Mật khẩu">
 
-        <div id="auth-error" class="error"></div>
+ <div id="authError"
+  class="muted"></div>
 
-        <button
-            class="btn full"
-            onclick="login()"
-        >
-            🔐 Đăng nhập
-        </button>
+ <button class="btn full"
+  onclick="login()">
+  🔐 Đăng nhập
+ </button>
 
-        <button
-            class="btn2 full"
-            onclick="showRegister()"
-        >
-            📝 Tạo tài khoản
-        </button>
-
-    `;
+ <button class="btn2 full"
+  onclick="authRegister()">
+  📝 Tạo tài khoản
+ </button>
+ `;
 
 }
 
 
-function showRegister(){
+function authRegister(){
 
-    $("auth-form").innerHTML = `
+ $("authForm").innerHTML = `
 
-        <input
-            id="reg-username"
-            class="input"
-            placeholder="Tên người dùng"
-            maxlength="30"
-        >
+ <input id="username"
+  class="inp"
+  placeholder="Tên người dùng">
 
-        <input
-            id="reg-email"
-            class="input"
-            type="email"
-            placeholder="Email"
-        >
+ <input id="email"
+  class="inp"
+  type="email"
+  placeholder="Email">
 
-        <input
-            id="reg-password"
-            class="input"
-            type="password"
-            placeholder="Mật khẩu — tối thiểu 6 ký tự"
-        >
+ <input id="pass"
+  class="inp"
+  type="password"
+  placeholder="Mật khẩu ≥ 6 ký tự">
 
-        <div id="auth-error" class="error"></div>
+ <div id="authError"
+  class="muted"></div>
 
-        <button
-            class="btn full"
-            onclick="register()"
-        >
-            📝 Đăng ký
-        </button>
+ <button class="btn full"
+  onclick="register()">
+  📝 Đăng ký
+ </button>
 
-        <button
-            class="btn2 full"
-            onclick="showLogin()"
-        >
-            ← Quay lại đăng nhập
-        </button>
-
-    `;
+ <button class="btn2 full"
+  onclick="authLogin()">
+  ← Quay lại
+ </button>
+ `;
 
 }
 
-
-/* ======================================================
-   REGISTER
-====================================================== */
 
 async function register(){
 
-    const username =
-    $("reg-username").value.trim();
+ const username =
+ $("username").value.trim();
 
-    const email =
-    $("reg-email").value.trim();
+ const email =
+ $("email").value.trim();
 
-    const password =
-    $("reg-password").value;
+ const password =
+ $("pass").value;
 
-    const errorBox =
-    $("auth-error");
+ const errorBox =
+ $("authError");
 
-    errorBox.textContent="";
+ errorBox.textContent="";
 
-    if(username.length<3){
+ if(username.length<3){
+  errorBox.textContent=
+  "Tên người dùng phải có ít nhất 3 ký tự.";
+  return;
+ }
 
-        errorBox.textContent =
-        "Tên người dùng phải có ít nhất 3 ký tự.";
+ if(password.length<6){
+  errorBox.textContent=
+  "Mật khẩu phải có ít nhất 6 ký tự.";
+  return;
+ }
 
-        return;
-    }
+ if(!email.includes("@")){
+  errorBox.textContent=
+  "Email không hợp lệ.";
+  return;
+ }
 
-    if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){
+ const {
+  data,
+  error
+ } =
+ await db.auth.signUp({
+  email,
+  password
+ });
 
-        errorBox.textContent =
-        "Email không hợp lệ.";
+ if(error){
 
-        return;
-    }
+  if(
+   error.message
+   .toLowerCase()
+   .includes("signups are disabled")
+  ){
 
-    if(password.length<6){
+   errorBox.innerHTML=
+   "❌ Supabase đang tắt đăng ký tài khoản.<br><br>"+
+   "Vào Supabase → Authentication → "+
+   "Sign In / Providers → Email → bật cho phép đăng ký.";
 
-        errorBox.textContent =
-        "Mật khẩu phải có ít nhất 6 ký tự.";
+  }else{
 
-        return;
-    }
+   errorBox.textContent=
+   error.message;
 
+  }
 
-    const {data,error} =
-    await db.auth.signUp({
-        email,
-        password
-    });
+  return;
+ }
 
+ if(!data.user){
 
-    if(error){
+  errorBox.textContent=
+  "Không tạo được tài khoản.";
 
-        if(
-            error.message
-            .toLowerCase()
-            .includes("email signups are disabled")
-        ){
-
-            errorBox.innerHTML =
-            "Supabase đang <b>tắt đăng ký Email</b>. " +
-            "Hãy bật Email provider/Signups trong Authentication của Supabase.";
-
-        }else{
-
-            errorBox.textContent =
-            error.message;
-
-        }
-
-        return;
-    }
-
-
-    if(!data.user){
-
-        errorBox.textContent =
-        "Không tạo được tài khoản.";
-
-        return;
-    }
+  return;
+ }
 
 
-    /*
-       Profile được tạo sau khi Auth thành công.
-
-       Nếu project của bạn có RLS chặn INSERT,
-       hãy dùng SQL policy ở phần hướng dẫn bên dưới.
-    */
-
-    const {error:profileError} =
-    await db
-    .from("profiles")
-    .insert({
-
-        id:data.user.id,
-        username,
-        role:"user",
-        score:0,
-        banned:false
-
-    });
+ const {
+  error:profileError
+ } =
+ await db
+ .from("profiles")
+ .insert({
+  id:data.user.id,
+  username,
+  role:"user",
+  score:0
+ });
 
 
-    if(profileError){
+ if(profileError){
 
-        errorBox.innerHTML =
-        "Tài khoản Auth đã được tạo nhưng profile chưa tạo được.<br>" +
-        esc(profileError.message);
+  errorBox.textContent=
+  "Tài khoản Auth đã tạo nhưng profiles lỗi: "+
+  profileError.message;
 
-        return;
-    }
+  return;
+ }
 
 
-    if(data.session){
+ if(data.session){
 
-        await loadProfile();
+  loadProfile();
 
-    }else{
+ }else{
 
-        errorBox.innerHTML =
-        "🎉 Đăng ký thành công!<br>" +
-        "Hãy xác nhận email nếu Supabase yêu cầu.";
+  errorBox.textContent=
+  "Đăng ký thành công! Hãy kiểm tra email để xác nhận tài khoản.";
 
-    }
+ }
 
 }
 
-
-/* ======================================================
-   LOGIN
-====================================================== */
 
 async function login(){
 
-    const email =
-    $("auth-email").value.trim();
+ const email =
+ $("email").value.trim();
 
-    const password =
-    $("auth-password").value;
+ const password =
+ $("pass").value;
 
-    const errorBox =
-    $("auth-error");
+ const {
+  error
+ } =
+ await db.auth.signInWithPassword({
+  email,
+  password
+ });
 
-    errorBox.textContent="";
+ if(error){
 
+  $("authError").textContent=
+  error.message;
 
-    const {data,error} =
-    await db.auth.signInWithPassword({
+  return;
+ }
 
-        email,
-        password
-
-    });
-
-
-    if(error){
-
-        errorBox.textContent =
-        error.message;
-
-        return;
-    }
-
-
-    await loadProfile();
+ loadProfile();
 
 }
 
-
-/* ======================================================
-   PROFILE
-====================================================== */
-
-async function loadProfile(){
-
-    const {
-        data:{user}
-    } =
-    await db.auth.getUser();
-
-
-    if(!user){
-
-        showLogin();
-
-        return;
-    }
-
-
-    const {
-        data,
-        error
-    } =
-    await db
-    .from("profiles")
-    .select("*")
-    .eq("id",user.id)
-    .maybeSingle();
-
-
-    if(error){
-
-        alert(
-            "Không đọc được profile: "+
-            error.message
-        );
-
-        return;
-    }
-
-
-    if(!data){
-
-        alert(
-            "Tài khoản chưa có profile."
-        );
-
-        return;
-    }
-
-
-    /*
-       BANNED EMAIL / ACCOUNT
-    */
-
-    if(data.banned === true){
-
-        await db.auth.signOut();
-
-        $("auth-form").innerHTML = `
-
-            <div class="error center">
-                🚫 Tài khoản này đã bị khóa.
-                <br><br>
-                Email của tài khoản không được phép đăng nhập.
-            </div>
-
-            <button
-                class="btn2 full"
-                onclick="showLogin()"
-            >
-                ← Quay lại
-            </button>
-
-        `;
-
-        return;
-    }
-
-
-    profile=data;
-
-    totalScore=
-    Number(data.score || 0);
-
-    renderApp();
-
-}
-
-
-/* ======================================================
-   SCORE
-====================================================== */
-
-async function changeScore(amount){
-
-    totalScore += amount;
-
-    if(totalScore<0)
-        totalScore=0;
-
-    const scoreElement =
-    $("global-score");
-
-    if(scoreElement)
-        scoreElement.textContent =
-        totalScore;
-
-
-    const {error} =
-    await db
-    .from("profiles")
-    .update({
-        score:totalScore
-    })
-    .eq("id",profile.id);
-
-
-    if(error){
-
-        console.error(
-            "Không lưu điểm:",
-            error
-        );
-
-    }
-
-}
-
-
-/* ======================================================
-   APP RENDER
-====================================================== */
-
-function renderApp(){
-
-    $("auth")
-    .classList
-    .add("hide");
-
-    $("app")
-    .classList
-    .remove("hide");
-
-
-    $("app").innerHTML = `
-
-        <aside id="sidebar" class="sidebar">
-
-            <div class="brand">
-
-                <div class="logo">
-                    📚 HOC ENGLISH
-                </div>
-
-                <div class="muted">
-                    Learning Hub
-                </div>
-
-            </div>
-
-
-            <div class="group-title">
-                HỌC TẬP
-            </div>
-
-            <button
-                class="nav active"
-                onclick="goHome(this)"
-            >
-                🏠 Trang chủ
-            </button>
-
-            <button
-                class="nav"
-                onclick="grammarMenu(this)"
-            >
-                📚 Ngữ pháp
-            </button>
-
-            <button
-                class="nav"
-                onclick="vocabMenu(this)"
-            >
-                🧠 Từ vựng
-            </button>
-
-
-            <div class="group-title">
-                LUYỆN TẬP
-            </div>
-
-            <button
-                class="nav"
-                onclick="quizMenu(this)"
-            >
-                📝 Quiz
-            </button>
-
-            <button
-                class="nav"
-                onclick="matchMenu(this)"
-            >
-                🔗 Nối từ
-            </button>
-
-            <button
-                class="nav"
-                onclick="verbMenu(this)"
-            >
-                ✏️ Chia động từ
-            </button>
-
-            <button
-                class="nav"
-                onclick="negativeMenu(this)"
-            >
-                ❌ Phủ định
-            </button>
-
-            <button
-                class="nav"
-                onclick="comparativeMenu(this)"
-            >
-                📈 So sánh hơn
-            </button>
-
-
-            ${
-                profile.role==="admin"
-                ?
-                `
-                <div class="group-title">
-                    QUẢN TRỊ
-                </div>
-
-                <button
-                    class="nav"
-                    onclick="adminPage(this)"
-                >
-                    🛡️ Quản lý user
-                </button>
-                `
-                :
-                ""
-            }
-
-
-            <div class="group-title">
-                TÀI KHOẢN
-            </div>
-
-            <button
-                class="nav"
-                onclick="accountPage(this)"
-            >
-                👤 Tài khoản
-            </button>
-
-            <button
-                class="nav"
-                onclick="logout()"
-            >
-                🚪 Đăng xuất
-            </button>
-
-        </aside>
-
-
-        <main class="main">
-
-            <div class="topbar">
-
-                <button
-                    class="mobile-menu"
-                    onclick="
-                    $('sidebar')
-                    .classList
-                    .toggle('open')
-                    "
-                >
-                    ☰
-                </button>
-
-                <h2 id="page-title">
-                    Trang chủ
-                </h2>
-
-                <div class="score-box">
-                    ⭐
-                    <b id="global-score">
-                        ${totalScore}
-                    </b>
-                </div>
-
-            </div>
-
-
-            <div id="page" class="page"></div>
-
-        </main>
-
-    `;
-
-
-    goHome(
-        document.querySelector(".nav")
-    );
-
-}
-
-
-/* ======================================================
-   NAV
-====================================================== */
-
-function nav(button,title){
-
-    document
-    .querySelectorAll(".nav")
-    .forEach(x =>
-        x.classList.remove("active")
-    );
-
-
-    if(button)
-        button.classList.add("active");
-
-
-    $("page-title")
-    .textContent=title;
-
-}
-
-
-/* ======================================================
-   HOME
-====================================================== */
-
-function goHome(button){
-
-    nav(button,"Trang chủ");
-
-
-    $("page").innerHTML = `
-
-        <div class="card hero">
-
-            <div class="hero-icon">
-                📚✨
-            </div>
-
-            <h1>
-                HOC ENGLISH
-            </h1>
-
-            <p class="muted">
-                Xin chào
-                <b>${esc(profile.username)}</b>!
-                <br>
-                Học ngữ pháp, từ vựng và luyện tập.
-            </p>
-
-            <button
-                class="btn"
-                onclick="quizMenu()"
-            >
-                📝 Bắt đầu luyện tập
-            </button>
-
-        </div>
-
-
-        <div class="card">
-
-            <h2>
-                🎯 Hệ thống học
-            </h2>
-
-            <div class="grid">
-
-                ${Object.entries(TENSES)
-                .map(([key,t]) => `
-
-                    <div
-                        class="tile"
-                        onclick="tenseHub('${key}')"
-                    >
-
-                        <div style="font-size:35px">
-                            ${t.icon}
-                        </div>
-
-                        <h3>
-                            ${t.name}
-                        </h3>
-
-                        <p>
-                            ${t.formula}
-                        </p>
-
-                    </div>
-
-                `).join("")}
-
-            </div>
-
-        </div>
-
-    `;
-
-}
-
-
-/* ======================================================
-   GRAMMAR
-====================================================== */
-
-function grammarMenu(button){
-
-    nav(button,"📚 Ngữ pháp");
-
-    $("page").innerHTML = `
-
-        <div class="card">
-
-            <h2>
-                📚 5 thì tiếng Anh
-            </h2>
-
-            <div class="grid">
-
-                ${Object.entries(TENSES)
-                .map(([key,t]) => `
-
-                    <div
-                        class="tile"
-                        onclick="grammar('${key}')"
-                    >
-
-                        <div style="font-size:35px">
-                            ${t.icon}
-                        </div>
-
-                        <h3>
-                            ${t.name}
-                        </h3>
-
-                        <p>
-                            ${t.formula}
-                        </p>
-
-                        <p>
-                            Dấu hiệu:
-                            ${t.signs.join(", ")}
-                        </p>
-
-                    </div>
-
-                `).join("")}
-
-            </div>
-
-        </div>
-
-    `;
-
-}
-
-
-function grammar(key){
-
-    const t=TENSES[key];
-
-    $("page-title").textContent =
-    `${t.icon} ${t.name}`;
-
-
-    $("page").innerHTML = `
-
-        <div class="card">
-
-            <h2>
-                ${t.icon} ${t.name}
-            </h2>
-
-            <h3>
-                Công thức
-            </h3>
-
-            <div class="card"
-                 style="background:#080d1b">
-
-                <b>
-                    ${t.formula}
-                </b>
-
-            </div>
-
-            <h3>
-                Dấu hiệu nhận biết
-            </h3>
-
-            <p>
-                ${t.signs
-                .map(x =>
-                    `<span class="tag">${x}</span>`
-                ).join("")}
-            </p>
-
-            <button
-                class="btn"
-                onclick="tenseHub('${key}')"
-            >
-                🎯 Luyện tập thì này
-            </button>
-
-        </div>
-
-    `;
-
-}
-
-
-/* ======================================================
-   TENSE HUB
-====================================================== */
-
-function tenseHub(key){
-
-    const t=TENSES[key];
-
-    $("page-title").textContent=
-    t.name;
-
-
-    $("page").innerHTML = `
-
-        <div class="card">
-
-            <h2>
-                ${t.icon}
-                ${t.name}
-            </h2>
-
-            <p class="muted">
-                ${t.formula}
-            </p>
-
-
-            <div class="grid">
-
-                <div
-                    class="tile"
-                    onclick="startExercise('quiz','${key}')"
-                >
-                    📝
-                    <h3>Quiz</h3>
-                    <p>100 câu</p>
-                </div>
-
-
-                <div
-                    class="tile"
-                    onclick="startExercise('match','${key}')"
-                >
-                    🔗
-                    <h3>Nối từ</h3>
-                    <p>60 câu</p>
-                </div>
-
-
-                <div
-                    class="tile"
-                    onclick="startExercise('verb','${key}')"
-                >
-                    ✏️
-                    <h3>Chia động từ</h3>
-                    <p>50 câu</p>
-                </div>
-
-
-                <div
-                    class="tile"
-                    onclick="startExercise('negative','${key}')"
-                >
-                    ❌
-                    <h3>Phủ định</h3>
-                    <p>50 câu</p>
-                </div>
-
-            </div>
-
-        </div>
-
-    `;
-
-}
-
-
-/* ======================================================
-   QUIZ MENU
-====================================================== */
-
-function quizMenu(button){
-
-    nav(button,"📝 Quiz");
-
-    $("page").innerHTML = `
-
-        <div class="card">
-
-            <h2>
-                📝 Quiz — 100 câu / thì
-            </h2>
-
-            <div class="grid">
-
-                ${Object.entries(TENSES)
-                .map(([key,t]) => `
-
-                    <div
-                        class="tile"
-                        onclick="startExercise('quiz','${key}')"
-                    >
-
-                        <div style="font-size:35px">
-                            ${t.icon}
-                        </div>
-
-                        <h3>
-                            ${t.name}
-                        </h3>
-
-                        <p>
-                            100 câu
-                        </p>
-
-                    </div>
-
-                `).join("")}
-
-            </div>
-
-        </div>
-
-    `;
-
-}
-
-
-/* ======================================================
-   CREATE QUIZ QUESTIONS
-====================================================== */
-
-function createQuizItems(tenseKey){
-
-    const t=TENSES[tenseKey];
-
-    const subjects=[
-        "I",
-        "You",
-        "We",
-        "They",
-        "He",
-        "She"
-    ];
-
-    const result=[];
-
-    for(let round=0;round<9;round++){
-
-        for(let i=0;i<t.verbs.length;i++){
-
-            const v=t.verbs[i];
-
-            const subject=
-            subjects[
-                (i+round)%subjects.length
-            ];
-
-            const sign=
-            t.signs[
-                (i+round)%t.signs.length
-            ];
-
-
-            let question="";
-            let answer="";
-
-
-            if(tenseKey==="past"){
-
-                question=
-                `${subject} ___ ${sign}. (${v[0]})`;
-
-                answer=v[1];
-
-            }
-
-
-            else if(tenseKey==="present"){
-
-                const third=
-                subject==="He" ||
-                subject==="She";
-
-                answer=
-                third?v[1]:v[0];
-
-                question=
-                `${subject} ___ ${sign}. (${v[0]})`;
-
-            }
-
-
-            else if(tenseKey==="continuous"){
-
-                const be =
-                subject==="I"
-                ?"am"
-                :
-                (
-                    subject==="He" ||
-                    subject==="She"
-                )
-                ?"is"
-                :"are";
-
-                answer=
-                `${be} ${v[1]}`;
-
-                question=
-                `${subject} ___ ${sign}. (${v[0]})`;
-
-            }
-
-
-            else if(tenseKey==="perfect"){
-
-                const third=
-                subject==="He" ||
-                subject==="She";
-
-                const have=
-                third?"has":"have";
-
-                answer=
-                `${have} ${v[1]}`;
-
-                question=
-                `${subject} ___ ${sign}. (${v[0]})`;
-
-            }
-
-
-            else if(tenseKey==="future"){
-
-                answer=
-                `will ${v[0]}`;
-
-                question=
-                `${subject} ___ ${sign}. (${v[0]})`;
-
-            }
-
-
-            const candidates=[];
-
-            candidates.push(answer);
-
-            candidates.push(v[0]);
-            candidates.push(v[1]);
-
-            if(tenseKey==="continuous")
-                candidates.push(
-                    "is "+v[1]
-                );
-
-            else if(tenseKey==="future")
-                candidates.push(
-                    "will "+v[1]
-                );
-
-            else if(tenseKey==="perfect")
-                candidates.push(
-                    "have "+v[0]
-                );
-
-            else
-                candidates.push(
-                    "does "+v[0]
-                );
-
-
-            const options=
-            unique(candidates)
-            .filter(x =>
-                x.toLowerCase() !==
-                answer.toLowerCase()
-                ||
-                x===answer
-            );
-
-
-            const finalOptions =
-            unique([
-                answer,
-                ...shuffle(
-                    options.filter(
-                        x =>
-                        x.toLowerCase() !==
-                        answer.toLowerCase()
-                    )
-                )
-            ]).slice(0,4);
-
-
-            while(finalOptions.length<4){
-
-                finalOptions.push(
-                    answer+"?"
-                );
-
-            }
-
-
-            result.push({
-
-                question,
-                answer,
-                options:
-                shuffle(unique(finalOptions))
-
-            });
-
-        }
-
-    }
-
-
-    return result.slice(0,100);
-
-}
-
-
-/* ======================================================
-   VERB QUESTIONS
-====================================================== */
-
-function createVerbItems(tenseKey){
-
-    const t=TENSES[tenseKey];
-
-    const subjects=[
-        "I","You","We",
-        "They","He","She"
-    ];
-
-    const result=[];
-
-
-    for(let round=0;round<5;round++){
-
-        for(let i=0;i<t.verbs.length;i++){
-
-            const v=t.verbs[i];
-
-            const subject=
-            subjects[
-                (i+round)%subjects.length
-            ];
-
-            const sign=
-            t.signs[
-                (i+round)%t.signs.length
-            ];
-
-
-            let answer;
-
-
-            if(tenseKey==="past"){
-
-                answer=v[1];
-
-            }else if(tenseKey==="present"){
-
-                answer=
-                subject==="He" ||
-                subject==="She"
-                ?v[1]
-                :v[0];
-
-            }else if(tenseKey==="continuous"){
-
-                const be=
-                subject==="I"
-                ?"am"
-                :
-                (
-                    subject==="He" ||
-                    subject==="She"
-                )
-                ?"is"
-                :"are";
-
-                answer=
-                `${be} ${v[1]}`;
-
-            }else if(tenseKey==="perfect"){
-
-                const have=
-                subject==="He" ||
-                subject==="She"
-                ?"has"
-                :"have";
-
-                answer=
-                `${have} ${v[1]}`;
-
-            }else{
-
-                answer=
-                `will ${v[0]}`;
-
-            }
-
-
-            result.push({
-
-                question:
-                `${subject} ___ (${v[0]}) ${sign}.`,
-
-                answer
-
-            });
-
-        }
-
-    }
-
-
-    return result.slice(0,50);
-
-}
-
-
-/* ======================================================
-   NEGATIVE QUESTIONS
-====================================================== */
-
-function createNegativeItems(tenseKey){
-
-    const t=TENSES[tenseKey];
-
-    const subjects=[
-        "I","You","We",
-        "They","He","She"
-    ];
-
-    const result=[];
-
-
-    for(let round=0;round<5;round++){
-
-        for(let i=0;i<t.verbs.length;i++){
-
-            const v=t.verbs[i];
-
-            const subject=
-            subjects[
-                (i+round)%subjects.length
-            ];
-
-            const sign=
-            t.signs[
-                (i+round)%t.signs.length
-            ];
-
-
-            let answer;
-
-
-            if(tenseKey==="past"){
-
-                answer=
-                `did not ${v[0]}`;
-
-            }
-
-
-            else if(tenseKey==="present"){
-
-                answer=
-                (
-                    subject==="He" ||
-                    subject==="She"
-                )
-                ?
-                `does not ${v[0]}`
-                :
-                `do not ${v[0]}`;
-
-            }
-
-
-            else if(tenseKey==="continuous"){
-
-                const be=
-                subject==="I"
-                ?"am"
-                :
-                (
-                    subject==="He" ||
-                    subject==="She"
-                )
-                ?"is"
-                :"are";
-
-                answer=
-                `${be} not ${v[1]}`;
-
-            }
-
-
-            else if(tenseKey==="perfect"){
-
-                answer=
-                (
-                    subject==="He" ||
-                    subject==="She"
-                )
-                ?
-                `has not ${v[1]}`
-                :
-                `have not ${v[1]}`;
-
-            }
-
-
-            else{
-
-                answer=
-                `will not ${v[0]}`;
-
-            }
-
-
-            result.push({
-
-                question:
-                `${subject} ___ ${v[0]} ${sign}.`,
-
-                answer
-
-            });
-
-        }
-
-    }
-
-
-    return result.slice(0,50);
-
-}
-
-
-/* ======================================================
-   MATCH QUESTIONS
-====================================================== */
-
-function createMatchItems(tenseKey){
-
-    const t=TENSES[tenseKey];
-
-    const subjects=[
-        "I","You","We",
-        "They","He","She"
-    ];
-
-    const result=[];
-
-
-    for(let round=0;round<5;round++){
-
-        for(let i=0;i<t.verbs.length;i++){
-
-            const v=t.verbs[i];
-
-            const subject=
-            subjects[
-                (i+round)%subjects.length
-            ];
-
-            const sign=
-            t.signs[
-                (i+round)%t.signs.length
-            ];
-
-
-            let sentence;
-
-
-            if(tenseKey==="past"){
-
-                sentence=
-                `${subject} ${v[1]} ${sign}`;
-
-            }
-
-            else if(tenseKey==="present"){
-
-                sentence=
-                `${subject} ${
-                    subject==="He" ||
-                    subject==="She"
-                    ?v[1]
-                    :v[0]
-                } ${sign}`;
-
-            }
-
-            else if(tenseKey==="continuous"){
-
-                const be=
-                subject==="I"
-                ?"am"
-                :
-                (
-                    subject==="He" ||
-                    subject==="She"
-                )
-                ?"is"
-                :"are";
-
-                sentence=
-                `${subject} ${be} ${v[1]} ${sign}`;
-
-            }
-
-            else if(tenseKey==="perfect"){
-
-                const have=
-                subject==="He" ||
-                subject==="She"
-                ?"has"
-                :"have";
-
-                sentence=
-                `${subject} ${have} ${v[1]} ${sign}`;
-
-            }
-
-            else{
-
-                sentence=
-                `${subject} will ${v[0]} ${sign}`;
-
-            }
-
-
-            result.push({
-
-                id:
-                `${round}-${i}`,
-
-                left:sentence,
-
-                right:
-                `${v[2]} • ${sign}`
-
-            });
-
-        }
-
-    }
-
-
-    return result.slice(0,60);
-
-}
-
-
-/* ======================================================
-   START EXERCISE
-====================================================== */
-
-function startExercise(type,tenseKey){
-
-    state.type=type;
-    state.tense=tenseKey;
-    state.index=0;
-    state.correct=0;
-    state.locked=false;
-
-
-    if(type==="quiz"){
-
-        state.items=
-        createQuizItems(tenseKey);
-
-        renderQuestion();
-
-    }
-
-    else if(type==="verb"){
-
-        state.items=
-        createVerbItems(tenseKey);
-
-        renderQuestion();
-
-    }
-
-    else if(type==="negative"){
-
-        state.items=
-        createNegativeItems(tenseKey);
-
-        renderQuestion();
-
-    }
-
-    else if(type==="match"){
-
-        state.items=
-        createMatchItems(tenseKey);
-
-        renderMatch();
-
-    }
-
-}
-
-
-/* ======================================================
-   RENDER NORMAL QUESTION
-====================================================== */
-
-function renderQuestion(){
-
-    const item=
-    state.items[state.index];
-
-    const total=
-    state.items.length;
-
-    const t=
-    TENSES[state.tense];
-
-
-    $("page-title").textContent=
-    `${t.icon} ${t.name}`;
-
-
-    const percent=
-    Math.round(
-        state.index/total*100
-    );
-
-
-    let answerArea="";
-
-
-    if(state.type==="quiz"){
-
-        answerArea=
-        item.options
-        .map((option,index) => `
-
-            <button
-                class="option"
-                data-option-index="${index}"
-                onclick="answerQuiz(${index})"
-            >
-                ${esc(option)}
-            </button>
-
-        `).join("");
-
-    }
-
-    else{
-
-        answerArea=`
-
-            <input
-                id="text-answer"
-                class="input"
-                placeholder="Nhập đáp án..."
-                autocomplete="off"
-                onkeydown="
-                if(event.key==='Enter')
-                    answerText()
-                "
-            >
-
-            <button
-                class="btn"
-                onclick="answerText()"
-            >
-                ✓ Kiểm tra
-            </button>
-
-        `;
-
-    }
-
-
-    $("page").innerHTML=`
-
-        <div class="card">
-
-            <div style="
-                display:flex;
-                justify-content:space-between;
-                gap:10px;
-            ">
-
-                <span>
-                    ${
-                        state.type==="quiz"
-                        ?"📝 Quiz"
-                        :
-                        state.type==="verb"
-                        ?"✏️ Chia động từ"
-                        :
-                        "❌ Phủ định"
-                    }
-                </span>
-
-                <b>
-                    ${state.index+1}/${total}
-                </b>
-
-            </div>
-
-
-            <div class="progress">
-
-                <div
-                    class="progress-bar"
-                    style="width:${percent}%"
-                ></div>
-
-            </div>
-
-
-            <div class="question">
-                ${esc(item.question)}
-            </div>
-
-
-            ${answerArea}
-
-
-            <div
-                id="feedback"
-                class="feedback"
-            ></div>
-
-        </div>
-
-    `;
-
-}
-
-
-/* ======================================================
-   QUIZ ANSWER
-====================================================== */
-
-async function answerQuiz(index){
-
-    if(state.locked)
-        return;
-
-    state.locked=true;
-
-
-    const item=
-    state.items[state.index];
-
-    const selected=
-    item.options[index];
-
-    const buttons=
-    document.querySelectorAll(".option");
-
-
-    buttons.forEach(
-        button =>
-        button.disabled=true
-    );
-
-
-    const ok=
-    selected.toLowerCase() ===
-    item.answer.toLowerCase();
-
-
-    buttons[index]
-    .classList
-    .add(ok?"correct":"wrong");
-
-
-    if(ok){
-
-        state.correct++;
-
-        await changeScore(10);
-
-        $("feedback").innerHTML=
-        "🎉 Chính xác! <b>+10 điểm</b>";
-
-    }else{
-
-        const correctIndex=
-        item.options.findIndex(
-            x =>
-            x.toLowerCase() ===
-            item.answer.toLowerCase()
-        );
-
-        if(correctIndex>=0)
-            buttons[correctIndex]
-            .classList
-            .add("correct");
-
-
-        await changeScore(-5);
-
-        $("feedback").innerHTML=
-        `❌ Sai! Đáp án đúng:
-        <b>${esc(item.answer)}</b>
-        <br>−5 điểm`;
-
-    }
-
-
-    setTimeout(nextQuestion,800);
-
-}
-
-
-/* ======================================================
-   TEXT ANSWER
-====================================================== */
-
-async function answerText(){
-
-    if(state.locked)
-        return;
-
-
-    const input=
-    $("text-answer");
-
-    if(!input)
-        return;
-
-
-    const value=
-    input.value
-    .trim()
-    .toLowerCase();
-
-
-    if(!value){
-
-        $("feedback").textContent=
-        "⚠️ Hãy nhập đáp án.";
-
-        return;
-    }
-
-
-    state.locked=true;
-
-    input.disabled=true;
-
-
-    const answer=
-    state.items[state.index]
-    .answer
-    .toLowerCase();
-
-
-    const ok=
-    value===answer;
-
-
-    if(ok){
-
-        state.correct++;
-
-        await changeScore(10);
-
-        $("feedback").innerHTML=
-        "🎉 Chính xác! <b>+10 điểm</b>";
-
-    }else{
-
-        await changeScore(-5);
-
-        $("feedback").innerHTML=
-        `❌ Sai! Đáp án đúng:
-        <b>${esc(state.items[state.index].answer)}</b>
-        <br>−5 điểm`;
-
-    }
-
-
-    setTimeout(nextQuestion,900);
-
-}
-
-
-/* ======================================================
-   NEXT
-====================================================== */
-
-function nextQuestion(){
-
-    state.index++;
-
-    state.locked=false;
-
-
-    if(state.index>=state.items.length){
-
-        showExerciseResult();
-
-        return;
-    }
-
-
-    renderQuestion();
-
-}
-
-
-/* ======================================================
-   RESULT
-====================================================== */
-
-function showExerciseResult(){
-
-    const total=
-    state.items.length;
-
-    const percent=
-    Math.round(
-        state.correct/total*100
-    );
-
-
-    $("page").innerHTML=`
-
-        <div class="card result">
-
-            <div style="font-size:65px">
-                🏆
-            </div>
-
-            <h2>
-                Hoàn thành!
-            </h2>
-
-            <div class="result-score">
-                ${state.correct}/${total}
-            </div>
-
-            <p class="muted">
-                Đúng ${percent}% câu.
-                <br>
-                Điểm đã được cập nhật vào tài khoản.
-            </p>
-
-            <button
-                class="btn"
-                onclick="
-                startExercise(
-                    '${state.type}',
-                    '${state.tense}'
-                )
-                "
-            >
-                🔄 Làm lại
-            </button>
-
-            <button
-                class="btn2"
-                onclick="goHome()"
-            >
-                🏠 Trang chủ
-            </button>
-
-        </div>
-
-    `;
-
-}
-
-
-/* ======================================================
-   MATCH MENU
-====================================================== */
-
-function matchMenu(button){
-
-    nav(button,"🔗 Nối từ");
-
-    $("page").innerHTML=`
-
-        <div class="card">
-
-            <h2>
-                🔗 Nối từ — 60 câu / thì
-            </h2>
-
-            <div class="grid">
-
-                ${Object.entries(TENSES)
-                .map(([key,t]) => `
-
-                    <div
-                        class="tile"
-                        onclick="startExercise('match','${key}')"
-                    >
-
-                        <div style="font-size:35px">
-                            ${t.icon}
-                        </div>
-
-                        <h3>
-                            ${t.name}
-                        </h3>
-
-                        <p>
-                            60 cặp
-                        </p>
-
-                    </div>
-
-                `).join("")}
-
-            </div>
-
-        </div>
-
-    `;
-
-}
-
-
-/* ======================================================
-   MATCH RENDER
-====================================================== */
-
-function renderMatch(){
-
-    const total=
-    state.items.length;
-
-    state.matchLeft=null;
-    state.matchRight=null;
-    state.matchDone=0;
-
-
-    const left=
-    shuffle(state.items);
-
-    const right=
-    shuffle(state.items);
-
-
-    $("page").innerHTML=`
-
-        <div class="card">
-
-            <div style="
-                display:flex;
-                justify-content:space-between;
-            ">
-
-                <b>🔗 Nối từ</b>
-
-                <b id="match-count">
-                    0/${total}
-                </b>
-
-            </div>
-
-
-            <div class="progress">
-
-                <div
-                    id="match-progress"
-                    class="progress-bar"
-                    style="width:0%"
-                ></div>
-
-            </div>
-
-
-            <div class="match-grid">
-
-                <div>
-
-                    <h3>
-                        🇬🇧 Câu tiếng Anh
-                    </h3>
-
-                    <div id="match-left">
-
-                        ${left.map(item => `
-
-                            <div
-                                class="match-item"
-                                data-id="${item.id}"
-                                onclick="
-                                selectMatch(
-                                    this,
-                                    'left',
-                                    '${item.id}'
-                                )
-                                "
-                            >
-                                ${esc(item.left)}
-                            </div>
-
-                        `).join("")}
-
-                    </div>
-
-                </div>
-
-
-                <div>
-
-                    <h3>
-                        🇻🇳 Nghĩa
-                    </h3>
-
-                    <div id="match-right">
-
-                        ${right.map(item => `
-
-                            <div
-                                class="match-item"
-                                data-id="${item.id}"
-                                onclick="
-                                selectMatch(
-                                    this,
-                                    'right',
-                                    '${item.id}'
-                                )
-                                "
-                            >
-                                ${esc(item.right)}
-                            </div>
-
-                        `).join("")}
-
-                    </div>
-
-                </div>
-
-            </div>
-
-
-            <div
-                id="match-feedback"
-                class="feedback"
-            ></div>
-
-        </div>
-
-    `;
-
-}
-
-
-/* ======================================================
-   MATCH SELECT
-====================================================== */
-
-async function selectMatch(element,side,id){
-
-    if(
-        element.classList.contains("done")
-    )
-        return;
-
-
-    const containerId=
-    side==="left"
-    ?"match-left"
-    :"match-right";
-
-
-    document
-    .querySelectorAll(
-        `#${containerId} .match-item`
-    )
-    .forEach(x =>
-        x.classList.remove("selected")
-    );
-
-
-    element.classList.add("selected");
-
-
-    if(side==="left"){
-
-        state.matchLeft={
-            element,
-            id
-        };
-
-    }else{
-
-        state.matchRight={
-            element,
-            id
-        };
-
-    }
-
-
-    if(
-        !state.matchLeft ||
-        !state.matchRight
-    )
-        return;
-
-
-    const left=
-    state.matchLeft;
-
-    const right=
-    state.matchRight;
-
-
-    if(left.id===right.id){
-
-        left.element
-        .classList
-        .add("done");
-
-        right.element
-        .classList
-        .add("done");
-
-
-        state.matchDone++;
-
-
-        await changeScore(10);
-
-
-        $("match-feedback").innerHTML=
-        "🎉 Chính xác! <b>+10 điểm</b>";
-
-    }else{
-
-        await changeScore(-5);
-
-
-        $("match-feedback").innerHTML=
-        "❌ Sai cặp! <b>−5 điểm</b>";
-
-    }
-
-
-    $("match-count").textContent=
-    `${state.matchDone}/${state.items.length}`;
-
-
-    $("match-progress")
-    .style.width=
-    `${state.matchDone/state.items.length*100}%`;
-
-
-    state.matchLeft=null;
-    state.matchRight=null;
-
-
-    if(
-        state.matchDone ===
-        state.items.length
-    ){
-
-        setTimeout(
-            showExerciseResult,
-            700
-        );
-
-    }
-
-}
-
-
-/* ======================================================
-   VERB MENU
-====================================================== */
-
-function verbMenu(button){
-
-    nav(button,"✏️ Chia động từ");
-
-    $("page").innerHTML=`
-
-        <div class="card">
-
-            <h2>
-                ✏️ Chia động từ — 50 câu / thì
-            </h2>
-
-            <div class="grid">
-
-                ${Object.entries(TENSES)
-                .map(([key,t]) => `
-
-                    <div
-                        class="tile"
-                        onclick="
-                        startExercise(
-                            'verb',
-                            '${key}'
-                        )
-                        "
-                    >
-
-                        <div style="font-size:35px">
-                            ${t.icon}
-                        </div>
-
-                        <h3>
-                            ${t.name}
-                        </h3>
-
-                        <p>
-                            50 câu
-                        </p>
-
-                    </div>
-
-                `).join("")}
-
-            </div>
-
-        </div>
-
-    `;
-
-}
-
-
-/* ======================================================
-   NEGATIVE MENU
-====================================================== */
-
-function negativeMenu(button){
-
-    nav(button,"❌ Câu phủ định");
-
-    $("page").innerHTML=`
-
-        <div class="card">
-
-            <h2>
-                ❌ Câu phủ định — 50 câu / thì
-            </h2>
-
-            <div class="grid">
-
-                ${Object.entries(TENSES)
-                .map(([key,t]) => `
-
-                    <div
-                        class="tile"
-                        onclick="
-                        startExercise(
-                            'negative',
-                            '${key}'
-                        )
-                        "
-                    >
-
-                        <div style="font-size:35px">
-                            ${t.icon}
-                        </div>
-
-                        <h3>
-                            ${t.name}
-                        </h3>
-
-                        <p>
-                            50 câu
-                        </p>
-
-                    </div>
-
-                `).join("")}
-
-            </div>
-
-        </div>
-
-    `;
-
-}
-
-
-/* ======================================================
-   VOCAB MENU
-====================================================== */
-
-function vocabMenu(button){
-
-    nav(button,"🧠 Từ vựng");
-
-    $("page").innerHTML=`
-
-        <div class="card">
-
-            <h2>
-                🧠 Từ vựng — 4 cấp độ
-            </h2>
-
-            <p class="muted">
-                Học sinh chọn cấp độ → chủ đề →
-                xem ảnh, từ, nghĩa và nghe phát âm.
-            </p>
-
-
-            <div class="level-grid">
-
-                ${Object.entries(VOCAB_LEVELS)
-                .map(([key,l]) => `
-
-                    <div
-                        class="level-card"
-                        onclick="openVocabLevel('${key}')"
-                    >
-
-                        <div class="level-icon">
-                            ${l.icon}
-                        </div>
-
-                        <h3>
-                            ${l.name}
-                        </h3>
-
-                        <p class="muted">
-                            Chủ đề: ${l.topic}
-                        </p>
-
-                        <p class="muted">
-                            ${l.words.length} từ
-                        </p>
-
-                    </div>
-
-                `).join("")}
-
-            </div>
-
-        </div>
-
-    `;
-
-}
-
-
-/* ======================================================
-   VOCAB LEVEL
-====================================================== */
-
-function openVocabLevel(level){
-
-    state.vocabLevel=level;
-
-    const data=
-    VOCAB_LEVELS[level];
-
-
-    $("page-title").textContent=
-    data.name;
-
-
-    $("page").innerHTML=`
-
-        <div class="card">
-
-            <button
-                class="btn2"
-                onclick="vocabMenu()"
-            >
-                ← Chọn cấp độ
-            </button>
-
-            <h2>
-                ${data.icon}
-                ${data.name}
-            </h2>
-
-            <p class="muted">
-                Chủ đề: <b>${data.topic}</b>
-            </p>
-
-
-            <div class="vocab-grid">
-
-                ${data.words.map(word => `
-
-                    <div class="vocab-card">
-
-                        <img
-                            src="${word[2]}"
-                            alt="${esc(word[0])}"
-                            loading="lazy"
-                        >
-
-                        <div class="vocab-content">
-
-                            <div class="vocab-word">
-                                ${esc(word[0])}
-                            </div>
-
-                            <div class="vocab-vi">
-                                ${esc(word[1])}
-                            </div>
-
-                            <div class="vocab-tools">
-
-                                <button
-                                    class="btn2"
-                                    onclick="
-                                    speak('${word[0]}')
-                                    "
-                                >
-                                    🔊 Nghe
-                                </button>
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                `).join("")}
-
-            </div>
-
-        </div>
-
-
-        <div class="card">
-
-            <h2>
-                🎯 Ôn tập
-            </h2>
-
-            <p class="muted">
-                Mỗi câu đúng +10 điểm,
-                mỗi câu sai −5 điểm.
-            </p>
-
-
-            <div class="grid">
-
-                <div
-                    class="tile"
-                    onclick="
-                    startVocab(
-                        '${level}',
-                        'match'
-                    )
-                    "
-                >
-                    🔗
-                    <h3>
-                        Nối từ với ảnh
-                    </h3>
-                    <p>
-                        Nhớ từ qua hình ảnh
-                    </p>
-                </div>
-
-
-                <div
-                    class="tile"
-                    onclick="
-                    startVocab(
-                        '${level}',
-                        'choice'
-                    )
-                    "
-                >
-                    🖼️
-                    <h3>
-                        Ảnh → 4 từ
-                    </h3>
-                    <p>
-                        Chọn đáp án đúng
-                    </p>
-                </div>
-
-
-                <div
-                    class="tile"
-                    onclick="
-                    startVocab(
-                        '${level}',
-                        'fill'
-                    )
-                    "
-                >
-                    ✍️
-                    <h3>
-                        Ảnh → điền từ
-                    </h3>
-                    <p>
-                        Tự nhập từ
-                    </p>
-                </div>
-
-            </div>
-
-        </div>
-
-    `;
-
-}
-
-
-/* ======================================================
-   VOCAB START
-====================================================== */
-
-function startVocab(level,mode){
-
-    state.vocabLevel=level;
-    state.vocabMode=mode;
-    state.index=0;
-    state.correct=0;
-    state.locked=false;
-
-
-    const words=
-    VOCAB_LEVELS[level].words;
-
-
-    /*
-       Mỗi từ được lặp lại để tạo bộ
-       luyện ổn định.
-    */
-
-    state.items=[];
-
-
-    for(let r=0;r<5;r++){
-
-        for(const word of words){
-
-            state.items.push({
-
-                word:word[0],
-                meaning:word[1],
-                image:word[2]
-
-            });
-
-        }
-
-    }
-
-
-    state.items=
-    shuffle(state.items);
-
-
-    if(mode==="match"){
-
-        renderVocabMatch();
-
-    }else{
-
-        renderVocabQuestion();
-
-    }
-
-}
-
-
-/* ======================================================
-   VOCAB QUESTION
-====================================================== */
-
-function renderVocabQuestion(){
-
-    const item=
-    state.items[state.index];
-
-    const total=
-    state.items.length;
-
-
-    const percent=
-    state.index/total*100;
-
-
-    let content="";
-
-
-    if(state.vocabMode==="choice"){
-
-        const words=
-        VOCAB_LEVELS[
-            state.vocabLevel
-        ].words;
-
-
-        const wrong=
-        shuffle(
-            words.filter(
-                x=>x[0]!==item.word
-            )
-        ).slice(0,3);
-
-
-        const options=
-        shuffle([
-            item,
-            ...wrong
-        ]);
-
-
-        content=`
-
-            <img
-                class="big-vocab-image"
-                src="${item.image}"
-                alt="${esc(item.word)}"
-            >
-
-
-            <div class="center">
-
-                <button
-                    class="btn2"
-                    onclick="
-                    speak('${item.word}')
-                    "
-                >
-                    🔊 Nghe
-                </button>
-
-            </div>
-
-
-            <div class="answer-grid">
-
-                ${options.map((x,i)=>`
-
-                    <button
-                        class="answer"
-                        onclick="
-                        vocabChoice(
-                            ${i}
-                        )
-                        "
-                        data-vocab-index="${i}"
-                    >
-                        ${esc(x[0])}
-                    </button>
-
-                `).join("")}
-
-            </div>
-
-        `;
-
-    }
-
-
-    else{
-
-        content=`
-
-            <img
-                class="big-vocab-image"
-                src="${item.image}"
-                alt="Vocabulary"
-            >
-
-
-            <div class="center">
-
-                <button
-                    class="btn2"
-                    onclick="
-                    speak('${item.word}')
-                    "
-                >
-                    🔊 Nghe
-                </button>
-
-            </div>
-
-
-            <p class="center muted">
-                Nhập từ tiếng Anh tương ứng với ảnh.
-            </p>
-
-
-            <input
-                id="vocab-input"
-                class="input"
-                placeholder="Nhập từ..."
-                autocomplete="off"
-                onkeydown="
-                if(event.key==='Enter')
-                    vocabFill()
-                "
-            >
-
-
-            <button
-                class="btn full"
-                onclick="vocabFill()"
-            >
-                ✓ Kiểm tra
-            </button>
-
-        `;
-
-    }
-
-
-    $("page").innerHTML=`
-
-        <div class="card">
-
-            <div style="
-                display:flex;
-                justify-content:space-between;
-            ">
-
-                <b>
-                    ${
-                        state.vocabMode==="choice"
-                        ?"🖼️ Ảnh → 4 từ"
-                        :"✍️ Ảnh → điền từ"
-                    }
-                </b>
-
-                <b>
-                    ${state.index+1}/${total}
-                </b>
-
-            </div>
-
-
-            <div class="progress">
-
-                <div
-                    class="progress-bar"
-                    style="width:${percent}%"
-                ></div>
-
-            </div>
-
-
-            ${content}
-
-
-            <div
-                id="vocab-feedback"
-                class="feedback"
-            ></div>
-
-        </div>
-
-    `;
-
-}
-
-
-/* ======================================================
-   VOCAB CHOICE
-====================================================== */
-
-async function vocabChoice(index){
-
-    if(state.locked)
-        return;
-
-    state.locked=true;
-
-
-    const item=
-    state.items[state.index];
-
-
-    const buttons=
-    document.querySelectorAll(
-        ".answer"
-    );
-
-
-    buttons.forEach(
-        x=>x.disabled=true
-    );
-
-
-    const selected=
-    buttons[index].textContent.trim();
-
-
-    const ok=
-    selected.toLowerCase()===
-    item.word.toLowerCase();
-
-
-    if(ok){
-
-        buttons[index]
-        .classList
-        .add("correct");
-
-
-        state.correct++;
-
-        await changeScore(10);
-
-
-        $("vocab-feedback").innerHTML=
-        "🎉 Chính xác! <b>+10 điểm</b>";
-
-    }else{
-
-        buttons[index]
-        .classList
-        .add("wrong");
-
-
-        await changeScore(-5);
-
-
-        $("vocab-feedback").innerHTML=
-        `❌ Sai! Đáp án:
-        <b>${esc(item.word)}</b>
-        <br>−5 điểm`;
-
-    }
-
-
-    setTimeout(nextVocab,800);
-
-}
-
-
-/* ======================================================
-   VOCAB FILL
-====================================================== */
-
-async function vocabFill(){
-
-    if(state.locked)
-        return;
-
-
-    const input=
-    $("vocab-input");
-
-
-    const value=
-    input.value
-    .trim()
-    .toLowerCase();
-
-
-    if(!value){
-
-        $("vocab-feedback")
-        .textContent=
-        "⚠️ Hãy nhập đáp án.";
-
-        return;
-    }
-
-
-    state.locked=true;
-
-    input.disabled=true;
-
-
-    const item=
-    state.items[state.index];
-
-
-    const ok=
-    value===item.word.toLowerCase();
-
-
-    if(ok){
-
-        state.correct++;
-
-        await changeScore(10);
-
-
-        $("vocab-feedback").innerHTML=
-        "🎉 Chính xác! <b>+10 điểm</b>";
-
-    }else{
-
-        await changeScore(-5);
-
-
-        $("vocab-feedback").innerHTML=
-        `❌ Sai! Đáp án:
-        <b>${esc(item.word)}</b>
-        <br>−5 điểm`;
-
-    }
-
-
-    setTimeout(nextVocab,900);
-
-}
-
-
-/* ======================================================
-   NEXT VOCAB
-====================================================== */
-
-function nextVocab(){
-
-    state.index++;
-    state.locked=false;
-
-
-    if(
-        state.index>=
-        state.items.length
-    ){
-
-        showVocabResult();
-
-        return;
-    }
-
-
-    renderVocabQuestion();
-
-}
-
-
-/* ======================================================
-   VOCAB MATCH
-====================================================== */
-
-function renderVocabMatch(){
-
-    const words=
-    VOCAB_LEVELS[
-        state.vocabLevel
-    ].words;
-
-
-    /*
-       Nối toàn bộ từ của cấp độ.
-       Mỗi cặp đúng +10, sai −5.
-    */
-
-    state.matchDone=0;
-    state.matchLeft=null;
-    state.matchRight=null;
-
-
-    const left=
-    shuffle(words);
-
-    const right=
-    shuffle(words);
-
-
-    $("page").innerHTML=`
-
-        <div class="card">
-
-            <div style="
-                display:flex;
-                justify-content:space-between;
-            ">
-
-                <b>
-                    🔗 Nối từ với ảnh
-                </b>
-
-                <b id="vocab-match-count">
-                    0/${words.length}
-                </b>
-
-            </div>
-
-
-            <div class="progress">
-
-                <div
-                    id="vocab-match-progress"
-                    class="progress-bar"
-                    style="width:0%"
-                ></div>
-
-            </div>
-
-
-            <div class="match-grid">
-
-                <div>
-
-                    <h3>
-                        🇬🇧 Từ
-                    </h3>
-
-                    <div id="vocab-match-left">
-
-                        ${left.map(x=>`
-
-                            <div
-                                class="match-item"
-                                onclick="
-                                selectVocabMatch(
-                                    this,
-                                    'left',
-                                    '${esc(x[0])}'
-                                )
-                                "
-                            >
-                                <b>
-                                    ${esc(x[0])}
-                                </b>
-                            </div>
-
-                        `).join("")}
-
-                    </div>
-
-                </div>
-
-
-                <div>
-
-                    <h3>
-                        🖼️ Ảnh
-                    </h3>
-
-                    <div id="vocab-match-right">
-
-                        ${right.map(x=>`
-
-                            <div
-                                class="match-item"
-                                onclick="
-                                selectVocabMatch(
-                                    this,
-                                    'right',
-                                    '${esc(x[0])}'
-                                )
-                                "
-                            >
-
-                                <img
-                                    src="${x[2]}"
-                                    alt="${esc(x[0])}"
-                                >
-
-                            </div>
-
-                        `).join("")}
-
-                    </div>
-
-                </div>
-
-            </div>
-
-
-            <div
-                id="vocab-match-feedback"
-                class="feedback"
-            ></div>
-
-        </div>
-
-    `;
-
-}
-
-
-/* ======================================================
-   VOCAB MATCH SELECT
-====================================================== */
-
-async function selectVocabMatch(
-    element,
-    side,
-    word
-){
-
-    if(
-        element.classList.contains("done")
-    )
-        return;
-
-
-    const container=
-    side==="left"
-    ?"vocab-match-left"
-    :"vocab-match-right";
-
-
-    document
-    .querySelectorAll(
-        `#${container} .match-item`
-    )
-    .forEach(
-        x=>x.classList.remove("selected")
-    );
-
-
-    element.classList.add("selected");
-
-
-    if(side==="left"){
-
-        state.matchLeft={
-            element,
-            word
-        };
-
-    }else{
-
-        state.matchRight={
-            element,
-            word
-        };
-
-    }
-
-
-    if(
-        !state.matchLeft ||
-        !state.matchRight
-    )
-        return;
-
-
-    const left=
-    state.matchLeft;
-
-    const right=
-    state.matchRight;
-
-
-    if(
-        left.word===right.word
-    ){
-
-        left.element
-        .classList
-        .add("done");
-
-        right.element
-        .classList
-        .add("done");
-
-
-        state.matchDone++;
-
-
-        await changeScore(10);
-
-
-        $("vocab-match-feedback")
-        .innerHTML=
-        "🎉 Chính xác! <b>+10 điểm</b>";
-
-    }else{
-
-        await changeScore(-5);
-
-
-        $("vocab-match-feedback")
-        .innerHTML=
-        "❌ Sai cặp! <b>−5 điểm</b>";
-
-    }
-
-
-    $("vocab-match-count")
-    .textContent=
-    `${state.matchDone}/${VOCAB_LEVELS[state.vocabLevel].words.length}`;
-
-
-    $("vocab-match-progress")
-    .style.width=
-    `${
-        state.matchDone/
-        VOCAB_LEVELS[state.vocabLevel].words.length*
-        100
-    }%`;
-
-
-    state.matchLeft=null;
-    state.matchRight=null;
-
-
-    if(
-        state.matchDone===
-        VOCAB_LEVELS[
-            state.vocabLevel
-        ].words.length
-    ){
-
-        setTimeout(
-            showVocabResult,
-            700
-        );
-
-    }
-
-}
-
-
-/* ======================================================
-   VOCAB RESULT
-====================================================== */
-
-function showVocabResult(){
-
-    const total=
-    state.vocabMode==="match"
-    ?
-    VOCAB_LEVELS[
-        state.vocabLevel
-    ].words.length
-    :
-    state.items.length;
-
-
-    $("page").innerHTML=`
-
-        <div class="card result">
-
-            <div style="font-size:65px">
-                🏆
-            </div>
-
-            <h2>
-                Hoàn thành phần từ vựng!
-            </h2>
-
-            <div class="result-score">
-                ${state.correct}/${total}
-            </div>
-
-            <p class="muted">
-                Câu đúng +10 điểm.
-                <br>
-                Câu sai −5 điểm.
-            </p>
-
-            <button
-                class="btn"
-                onclick="
-                startVocab(
-                    '${state.vocabLevel}',
-                    '${state.vocabMode}'
-                )
-                "
-            >
-                🔄 Làm lại
-            </button>
-
-            <button
-                class="btn2"
-                onclick="
-                openVocabLevel(
-                    '${state.vocabLevel}'
-                )
-                "
-            >
-                ← Về từ vựng
-            </button>
-
-        </div>
-
-    `;
-
-}
-
-
-/* ======================================================
-   COMPARATIVE MENU
-====================================================== */
-
-function comparativeMenu(button){
-
-    nav(button,"📈 So sánh hơn");
-
-
-    $("page").innerHTML=`
-
-        <div class="card">
-
-            <h2>
-                📈 So sánh hơn
-            </h2>
-
-            <div class="card"
-                 style="background:#080d1b">
-
-                <h3>
-                    Công thức
-                </h3>
-
-                <p>
-                    Tính từ ngắn:
-                    <b>adjective + er + than</b>
-                </p>
-
-                <p>
-                    Tính từ dài:
-                    <b>more + adjective + than</b>
-                </p>
-
-                <p>
-                    good → better
-                    <br>
-                    bad → worse
-                    <br>
-                    little → less
-                    <br>
-                    much/many → more
-                </p>
-
-            </div>
-
-
-            <h3>
-                Một số ví dụ
-            </h3>
-
-            <div class="grid">
-
-                ${COMPARATIVES.map(x=>`
-
-                    <div class="tile">
-
-                        <b>
-                            ${x[0]}
-                        </b>
-
-                        →
-                        
-                        <b>
-                            ${x[1]}
-                        </b>
-
-                        <p>
-                            ${x[2]}
-                        </p>
-
-                    </div>
-
-                `).join("")}
-
-            </div>
-
-
-            <button
-                class="btn"
-                onclick="startComparative()"
-            >
-                📝 Làm 100 câu
-            </button>
-
-        </div>
-
-    `;
-
-}
-
-
-/* ======================================================
-   COMPARATIVE QUESTIONS
-====================================================== */
-
-function createComparativeItems(){
-
-    const result=[];
-
-
-    for(let round=0;round<4;round++){
-
-        for(const x of COMPARATIVES){
-
-            result.push({
-
-                question:
-                `This car is ___ than that one. (${x[0]})`,
-
-                answer:x[1],
-
-                options:
-                shuffle(
-                    unique([
-                        x[1],
-                        x[0],
-                        x[0]+"er",
-                        "more "+x[0]
-                    ])
-                ).slice(0,4)
-
-            });
-
-        }
-
-    }
-
-
-    return result.slice(0,100);
-
-}
-
-
-function startComparative(){
-
-    state.type="comparative";
-    state.tense=null;
-    state.index=0;
-    state.correct=0;
-    state.locked=false;
-
-    state.items=
-    createComparativeItems();
-
-
-    renderComparative();
-
-}
-
-
-function renderComparative(){
-
-    const item=
-    state.items[state.index];
-
-
-    const total=
-    state.items.length;
-
-
-    $("page-title").textContent=
-    "📈 So sánh hơn";
-
-
-    $("page").innerHTML=`
-
-        <div class="card">
-
-            <div style="
-                display:flex;
-                justify-content:space-between;
-            ">
-
-                <b>
-                    📈 So sánh hơn
-                </b>
-
-                <b>
-                    ${state.index+1}/${total}
-                </b>
-
-            </div>
-
-
-            <div class="progress">
-
-                <div
-                    class="progress-bar"
-                    style="
-                    width:${state.index/total*100}%
-                    "
-                ></div>
-
-            </div>
-
-
-            <div class="question">
-                ${esc(item.question)}
-            </div>
-
-
-            ${item.options.map((x,i)=>`
-
-                <button
-                    class="option"
-                    onclick="
-                    comparativeAnswer(
-                        ${i}
-                    )
-                    "
-                >
-                    ${esc(x)}
-                </button>
-
-            `).join("")}
-
-
-            <div
-                id="comparative-feedback"
-                class="feedback"
-            ></div>
-
-        </div>
-
-    `;
-
-}
-
-
-async function comparativeAnswer(index){
-
-    if(state.locked)
-        return;
-
-    state.locked=true;
-
-
-    const item=
-    state.items[state.index];
-
-
-    const buttons=
-    document.querySelectorAll(".option");
-
-
-    buttons.forEach(
-        x=>x.disabled=true
-    );
-
-
-    const selected=
-    item.options[index];
-
-
-    const ok=
-    selected.toLowerCase()===
-    item.answer.toLowerCase();
-
-
-    if(ok){
-
-        buttons[index]
-        .classList
-        .add("correct");
-
-
-        state.correct++;
-
-        await changeScore(10);
-
-
-        $("comparative-feedback")
-        .innerHTML=
-        "🎉 Chính xác! <b>+10 điểm</b>";
-
-    }else{
-
-        buttons[index]
-        .classList
-        .add("wrong");
-
-
-        const correctIndex=
-        item.options.findIndex(
-            x =>
-            x.toLowerCase()===
-            item.answer.toLowerCase()
-        );
-
-
-        if(correctIndex>=0)
-            buttons[correctIndex]
-            .classList
-            .add("correct");
-
-
-        await changeScore(-5);
-
-
-        $("comparative-feedback")
-        .innerHTML=
-        `❌ Sai! Đáp án:
-        <b>${esc(item.answer)}</b>
-        <br>−5 điểm`;
-
-    }
-
-
-    setTimeout(()=>{
-
-        state.index++;
-        state.locked=false;
-
-
-        if(
-            state.index>=
-            state.items.length
-        ){
-
-            showExerciseResult();
-
-        }else{
-
-            renderComparative();
-
-        }
-
-    },800);
-
-}
-
-
-/* ======================================================
-   ACCOUNT
-====================================================== */
-
-function accountPage(button){
-
-    nav(button,"👤 Tài khoản");
-
-
-    $("page").innerHTML=`
-
-        <div class="card">
-
-            <h2>
-                👤 Tài khoản
-            </h2>
-
-            <p class="muted">
-
-                Username:
-                <b>${esc(profile.username)}</b>
-
-                <br>
-
-                Role:
-                <b>${esc(profile.role)}</b>
-
-                <br>
-
-                Điểm:
-                <b>${totalScore}</b>
-
-                <br>
-
-                Trạng thái:
-                <b>
-                    ${profile.banned ? "Bị khóa":"Hoạt động"}
-                </b>
-
-            </p>
-
-        </div>
-
-    `;
-
-}
-
-
-/* ======================================================
-   ADMIN
-====================================================== */
-
-async function adminPage(button){
-
-    if(profile.role!=="admin"){
-
-        alert(
-            "Bạn không có quyền admin."
-        );
-
-        return;
-    }
-
-
-    nav(button,"🛡️ Quản lý user");
-
-
-    const {
-        data,
-        error
-    } =
-    await db
-    .from("profiles")
-    .select("*")
-    .order(
-        "created_at",
-        {ascending:false}
-    );
-
-
-    if(error){
-
-        $("page").innerHTML=`
-
-            <div class="card">
-
-                ❌
-                ${esc(error.message)}
-
-            </div>
-
-        `;
-
-        return;
-    }
-
-
-    $("page").innerHTML=`
-
-        <div class="card">
-
-            <h2>
-                🛡️ Quản lý tài khoản
-            </h2>
-
-            <div class="table-scroll">
-
-                <table>
-
-                    <thead>
-
-                        <tr>
-
-                            <th>
-                                Username
-                            </th>
-
-                            <th>
-                                Role
-                            </th>
-
-                            <th>
-                                Điểm
-                            </th>
-
-                            <th>
-                                Trạng thái
-                            </th>
-
-                            <th>
-                                Thao tác
-                            </th>
-
-                        </tr>
-
-                    </thead>
-
-                    <tbody>
-
-                        ${data.map(u=>`
-
-                            <tr>
-
-                                <td>
-                                    ${esc(u.username)}
-                                </td>
-
-                                <td>
-                                    ${esc(u.role)}
-                                </td>
-
-                                <td>
-                                    ${Number(u.score||0)}
-                                </td>
-
-                                <td>
-                                    ${
-                                        u.banned
-                                        ?"🚫 Bị khóa"
-                                        :"🟢 Hoạt động"
-                                    }
-                                </td>
-
-                                <td>
-
-                                    ${
-                                        u.id===profile.id
-                                        ?
-                                        "<span class='muted'>Tài khoản hiện tại</span>"
-                                        :
-                                        `
-                                        <button
-                                            class="btn2"
-                                            onclick="
-                                            toggleBan(
-                                                '${u.id}',
-                                                ${!u.banned}
-                                            )
-                                            "
-                                        >
-                                            ${
-                                                u.banned
-                                                ?"🔓 Mở khóa"
-                                                :"🚫 Khóa"
-                                            }
-                                        </button>
-
-
-                                        <button
-                                            class="btn2"
-                                            onclick="
-                                            changeRole(
-                                                '${u.id}',
-                                                '${u.role==="admin"?"user":"admin"}'
-                                            )
-                                            "
-                                        >
-                                            ${
-                                                u.role==="admin"
-                                                ?"Hạ user"
-                                                :"Cấp admin"
-                                            }
-                                        </button>
-                                        `
-                                    }
-
-                                </td>
-
-                            </tr>
-
-                        `).join("")}
-
-                    </tbody>
-
-                </table>
-
-            </div>
-
-        </div>
-
-    `;
-
-}
-
-
-/* ======================================================
-   BAN ACCOUNT / EMAIL
-====================================================== */
-
-async function toggleBan(id,banned){
-
-    const action=
-    banned
-    ?"khóa"
-    :"mở khóa";
-
-
-    if(
-        !confirm(
-            `Bạn có chắc muốn ${action} tài khoản này?`
-        )
-    )
-        return;
-
-
-    const {error}=
-    await db
-    .from("profiles")
-    .update({
-        banned
-    })
-    .eq("id",id);
-
-
-    if(error){
-
-        alert(error.message);
-
-        return;
-    }
-
-
-    adminPage();
-
-}
-
-
-/* ======================================================
-   ROLE
-====================================================== */
-
-async function changeRole(id,role){
-
-    if(
-        !confirm(
-            "Đổi quyền thành "+role+"?"
-        )
-    )
-        return;
-
-
-    const {error}=
-    await db
-    .from("profiles")
-    .update({
-        role
-    })
-    .eq("id",id);
-
-
-    if(error){
-
-        alert(error.message);
-
-        return;
-    }
-
-
-    adminPage();
-
-}
-
-
-/* ======================================================
-   LOGOUT
-====================================================== */
 
 async function logout(){
 
-    await db.auth.signOut();
+ await db.auth.signOut();
 
-    location.reload();
+ location.reload();
 
 }
 
 
-/* ======================================================
-   STARTUP
-====================================================== */
+/* =========================================================
+   PROFILE
+========================================================= */
 
-async function startup(){
+async function loadProfile(){
 
-    showLogin();
+ const {
+  data:{user}
+ } =
+ await db.auth.getUser();
+
+ if(!user){
+
+  authLogin();
+
+  return;
+ }
 
 
-    const {
-        data:{session}
-    } =
-    await db.auth.getSession();
+ const {
+  data,
+  error
+ } =
+ await db
+ .from("profiles")
+ .select("*")
+ .eq("id",user.id)
+ .maybeSingle();
 
 
-    if(session){
+ if(error || !data){
 
-        await loadProfile();
+  alert(
+   error?.message ||
+   "Không tìm thấy profile."
+  );
+
+  return;
+ }
+
+
+ profile=data;
+
+ score=Number(data.score||0);
+
+ renderApp();
+
+}
+
+
+async function changeScore(value){
+
+ score += value;
+
+ if(score<0)
+  score=0;
+
+ $("score").textContent=score;
+
+ await db
+ .from("profiles")
+ .update({
+  score
+ })
+ .eq("id",profile.id);
+
+}
+
+
+/* =========================================================
+   APP
+========================================================= */
+
+function renderApp(){
+
+ $("auth").classList.add("hide");
+
+ $("app").classList.remove("hide");
+
+ $("app").innerHTML=`
+
+ <aside id="side" class="side">
+
+  <div class="brand">
+
+   <div class="logo">
+    📚 HOC ENGLISH
+   </div>
+
+   <div class="muted">
+    Learning Hub
+   </div>
+
+  </div>
+
+
+  <div class="group">
+   HỌC TẬP
+  </div>
+
+  <button class="nav on"
+   onclick="home(this)">
+   🏠 Trang chủ
+  </button>
+
+  <button class="nav"
+   onclick="vocabPage(this)">
+   🧠 Từ vựng
+  </button>
+
+  <button class="nav"
+   onclick="grammarPage(this)">
+   📚 Ngữ pháp
+  </button>
+
+
+  <div class="group">
+   LUYỆN TỪ VỰNG
+  </div>
+
+  <button class="nav"
+   onclick="vocabPracticeMenu(this)">
+   🔗 Nối từ với ảnh
+  </button>
+
+  <button class="nav"
+   onclick="imageChoiceMenu(this)">
+   🖼️ Chọn từ
+  </button>
+
+  <button class="nav"
+   onclick="imageFillMenu(this)">
+   ✏️ Điền từ
+  </button>
+
+
+  <div class="group">
+   LUYỆN NGỮ PHÁP
+  </div>
+
+  <button class="nav"
+   onclick="quizMenu(this)">
+   📝 Quiz
+  </button>
+
+  <button class="nav"
+   onclick="verbMenu(this)">
+   ✏️ Chia động từ
+  </button>
+
+  <button class="nav"
+   onclick="negativeMenu(this)">
+   ❌ Phủ định
+  </button>
+
+  <button class="nav"
+   onclick="comparePage(this)">
+   📈 So sánh hơn
+  </button>
+
+
+  ${
+   profile.role==="admin"
+   ?
+   `
+   <div class="group">
+    QUẢN TRỊ
+   </div>
+
+   <button class="nav"
+    onclick="adminPage(this)">
+    🛡️ Quản lý người dùng
+   </button>
+   `
+   :
+   ""
+  }
+
+
+  <div class="group">
+   TÀI KHOẢN
+  </div>
+
+  <button class="nav"
+   onclick="accountPage(this)">
+   👤 Tài khoản
+  </button>
+
+  <button class="nav"
+   onclick="logout()">
+   🚪 Đăng xuất
+  </button>
+
+ </aside>
+
+
+ <main class="main">
+
+  <div class="top">
+
+   <button
+    class="mobile"
+    onclick="$('side').classList.toggle('open')">
+    ☰
+   </button>
+
+   <h2 id="title">
+    Trang chủ
+   </h2>
+
+   <div class="score">
+    ⭐ <b id="score">${score}</b>
+   </div>
+
+  </div>
+
+  <div id="page"
+   class="page">
+  </div>
+
+ </main>
+ `;
+
+ home(document.querySelector(".nav"));
+
+}
+
+
+function nav(btn,title){
+
+ document
+ .querySelectorAll(".nav")
+ .forEach(x=>x.classList.remove("on"));
+
+ if(btn)
+  btn.classList.add("on");
+
+ $("title").textContent=title;
+
+}
+
+
+/* =========================================================
+   HOME
+========================================================= */
+
+function home(btn){
+
+ nav(btn,"Trang chủ");
+
+ $("page").innerHTML=`
+
+ <div class="card hero">
+
+  <div class="heroIcon">
+   📚
+  </div>
+
+  <h1>
+   HOC ENGLISH
+  </h1>
+
+  <p class="muted">
+   Xin chào <b>${esc(profile.username)}</b>!
+   <br>
+   Mỗi câu đúng <b>+10 điểm</b>.
+   Mỗi câu sai <b>-5 điểm</b>.
+  </p>
+
+  <button class="btn"
+   onclick="vocabPage()">
+   🧠 Học từ vựng
+  </button>
+
+ </div>
+
+
+ <div class="card">
+
+  <h2>
+   🧠 10 chủ đề từ vựng
+  </h2>
+
+  <div class="grid">
+
+   ${Object.entries(TOPICS).map(
+   ([key,t])=>`
+
+   <div class="tile"
+    onclick="topicPage('${key}')">
+
+    <div style="font-size:40px">
+     ${t.icon}
+    </div>
+
+    <h3>
+     ${t.name}
+    </h3>
+
+    <p>
+     20 từ • ${t.level}
+    </p>
+
+   </div>
+
+   `).join("")}
+
+  </div>
+
+ </div>
+
+ `;
+
+}
+
+
+/* =========================================================
+   VOCAB MAIN
+========================================================= */
+
+function vocabPage(btn){
+
+ if(btn)
+  nav(btn,"🧠 Từ vựng");
+
+ $("page").innerHTML=`
+
+ <div class="card">
+
+  <h2>
+   🧠 Từ vựng
+  </h2>
+
+  <p class="muted">
+   Mỗi chủ đề có 20 từ và ảnh thật.
+   Có 4 cấp độ:
+   Cơ bản → Trung bình → Khá → Nâng cao.
+  </p>
+
+  <div class="grid">
+
+  ${Object.entries(TOPICS).map(
+  ([key,t])=>`
+
+   <div class="tile"
+    onclick="topicPage('${key}')">
+
+    <img
+     class="topicImg"
+     src="${realImage(t.words[0][0])}"
+     loading="lazy">
+
+    <h3>
+     ${t.icon} ${t.name}
+    </h3>
+
+    <p>
+     20 từ • ${t.level}
+    </p>
+
+   </div>
+
+  `).join("")}
+
+  </div>
+
+ </div>
+
+ `;
+
+}
+
+
+/* =========================================================
+   TOPIC
+========================================================= */
+
+function topicPage(key){
+
+ const t=TOPICS[key];
+
+ $("title").textContent=
+ t.icon+" "+t.name;
+
+ $("page").innerHTML=`
+
+ <div class="card">
+
+  <h2>
+   ${t.icon} ${t.name}
+  </h2>
+
+  <p class="muted">
+   Cấp độ:
+   <span class="level">
+    ${t.level}
+   </span>
+  </p>
+
+  <div class="grid">
+
+   ${t.words.map(
+   (w,i)=>`
+
+   <div class="tile"
+    onclick="learnWord('${key}',${i})">
+
+    <img
+     class="topicImg"
+     src="${realImage(w[0])}"
+     loading="lazy">
+
+    <h3>
+     ${esc(w[0])}
+    </h3>
+
+    <p>
+     ${esc(w[1])}
+    </p>
+
+   </div>
+
+   `).join("")}
+
+  </div>
+
+ </div>
+
+ `;
+
+}
+
+
+/* =========================================================
+   LEARN WORD
+========================================================= */
+
+function learnWord(key,index){
+
+ const w=
+ TOPICS[key].words[index];
+
+ $("page").innerHTML=`
+
+ <div class="card center">
+
+  <img
+   class="wordImg"
+   src="${realImage(w[0])}">
+
+  <div class="word">
+   ${esc(w[0])}
+  </div>
+
+  <div class="meaning">
+   ${esc(w[1])}
+  </div>
+
+  <br>
+
+  <button
+   class="btn"
+   onclick="speak('${w[0]}')">
+   🔊 Nghe
+  </button>
+
+  <button
+   class="btn2"
+   onclick="topicPage('${key}')">
+   ← Quay lại
+  </button>
+
+ </div>
+
+ `;
+
+}
+
+
+function speak(text){
+
+ if("speechSynthesis" in window){
+
+  speechSynthesis.cancel();
+
+  const u=
+  new SpeechSynthesisUtterance(text);
+
+  u.lang="en-US";
+
+  u.rate=.8;
+
+  speechSynthesis.speak(u);
+
+ }
+
+}
+
+
+/* =========================================================
+   VOCAB PRACTICE MENUS
+========================================================= */
+
+function vocabPracticeMenu(btn){
+
+ nav(btn,"🔗 Nối từ với ảnh");
+
+ practiceTopicCards("match");
+
+}
+
+
+function imageChoiceMenu(btn){
+
+ nav(btn,"🖼️ Chọn từ");
+
+ practiceTopicCards("choice");
+
+}
+
+
+function imageFillMenu(btn){
+
+ nav(btn,"✏️ Điền từ");
+
+ practiceTopicCards("fill");
+
+}
+
+
+function practiceTopicCards(type){
+
+ $("page").innerHTML=`
+
+ <div class="card">
+
+  <h2>
+   ${
+    type==="match"
+    ?"🔗 Nối từ với ảnh"
+    :
+    type==="choice"
+    ?"🖼️ Nhìn ảnh chọn từ"
+    :
+    "✏️ Nhìn ảnh điền từ"
+   }
+  </h2>
+
+  <p class="muted">
+   Mỗi câu đúng +10 điểm,
+   sai -5 điểm.
+  </p>
+
+  <div class="grid">
+
+   ${Object.entries(TOPICS).map(
+   ([key,t])=>`
+
+   <div class="tile"
+    onclick="startVocabExercise('${type}','${key}')">
+
+    <img
+     class="topicImg"
+     src="${realImage(t.words[0][0])}">
+
+    <h3>
+     ${t.icon} ${t.name}
+    </h3>
+
+    <p>
+     20 câu
+    </p>
+
+   </div>
+
+   `).join("")}
+
+  </div>
+
+ </div>
+
+ `;
+
+}
+
+
+/* =========================================================
+   VOCAB DATA
+========================================================= */
+
+function makeVocabItems(type,key){
+
+ const words=
+ TOPICS[key].words;
+
+ return words.map(
+ (w,index)=>{
+
+  if(type==="match"){
+
+   return {
+    word:w[0],
+    meaning:w[1],
+    image:realImage(w[0]),
+    id:index
+   };
+
+  }
+
+  if(type==="choice"){
+
+   let others=
+   words
+   .filter((_,i)=>i!==index)
+   .sort(()=>Math.random()-.5)
+   .slice(0,3);
+
+   let opts=[
+    w[0],
+    ...others.map(x=>x[0])
+   ];
+
+   opts=
+   [...new Set(opts)]
+   .sort(()=>Math.random()-.5);
+
+   return {
+    word:w[0],
+    meaning:w[1],
+    image:realImage(w[0]),
+    answer:w[0],
+    opts
+   };
+
+  }
+
+  return {
+   word:w[0],
+   meaning:w[1],
+   image:realImage(w[0]),
+   answer:w[0]
+  };
+
+ });
+
+}
+
+
+/* =========================================================
+   START VOCAB EXERCISE
+========================================================= */
+
+function startVocabExercise(type,key){
+
+ current={
+  type,
+  topic:key,
+  index:0,
+  correct:0,
+  items:makeVocabItems(type,key),
+  locked:false
+ };
+
+ if(type==="match")
+  renderMatch();
+
+ else
+  renderVocabQuestion();
+
+}
+
+
+/* =========================================================
+   CHOICE / FILL
+========================================================= */
+
+function renderVocabQuestion(){
+
+ const x=
+ current.items[current.index];
+
+ const total=
+ current.items.length;
+
+ const title=
+ current.type==="choice"
+ ?"🖼️ Nhìn ảnh chọn từ"
+ :"✏️ Nhìn ảnh điền từ";
+
+ $("title").textContent=title;
+
+ let html=`
+
+ <div class="card">
+
+  <div style="
+   display:flex;
+   justify-content:space-between">
+
+   <span>${title}</span>
+
+   <span>
+    ${current.index+1}/${total}
+   </span>
+
+  </div>
+
+  <div class="progress">
+   <i style="
+    width:${current.index/total*100}%">
+   </i>
+  </div>
+
+  <img
+   class="questionImg"
+   src="${x.image}">
+
+  <h2 class="center">
+   ${esc(x.meaning)}
+  </h2>
+ `;
+
+
+ if(current.type==="choice"){
+
+  html+=`
+
+  ${x.opts.map(
+  o=>`
+
+  <button
+   class="option"
+   onclick="choiceAnswer(this,${JSON.stringify(o)})">
+
+   ${esc(o)}
+
+  </button>
+
+  `).join("")}
+
+  `;
+
+ }else{
+
+  html+=`
+
+  <input
+   id="answerInput"
+   class="inp"
+   placeholder="Nhập từ tiếng Anh">
+
+  <button
+   class="btn"
+   onclick="fillAnswer()">
+
+   ✓ Kiểm tra
+
+  </button>
+
+  `;
+
+ }
+
+ html+=`
+
+ <div
+  id="feedback"
+  class="muted">
+ </div>
+
+ </div>
+ `;
+
+ $("page").innerHTML=html;
+
+}
+
+
+async function choiceAnswer(el,value){
+
+ if(current.locked)
+  return;
+
+ current.locked=true;
+
+ const answer=
+ current.items[current.index].answer;
+
+ const ok=
+ value.toLowerCase()===
+ answer.toLowerCase();
+
+ if(ok){
+
+  el.classList.add("good");
+
+  current.correct++;
+
+  await changeScore(10);
+
+  $("feedback").innerHTML=
+  "🎉 Chính xác! <b>+10 điểm</b>";
+
+ }else{
+
+  el.classList.add("bad");
+
+  await changeScore(-5);
+
+  $("feedback").innerHTML=
+  "❌ Sai! Đáp án đúng: <b>"+
+  esc(answer)+
+  "</b> <br>-5 điểm";
+
+ }
+
+ setTimeout(nextVocab,800);
+
+}
+
+
+async function fillAnswer(){
+
+ if(current.locked)
+  return;
+
+ current.locked=true;
+
+ const value=
+ $("answerInput")
+ .value
+ .trim()
+ .toLowerCase();
+
+ const answer=
+ current.items[current.index].answer
+ .toLowerCase();
+
+ if(value===answer){
+
+  current.correct++;
+
+  await changeScore(10);
+
+  $("feedback").innerHTML=
+  "🎉 Chính xác! <b>+10 điểm</b>";
+
+ }else{
+
+  await changeScore(-5);
+
+  $("feedback").innerHTML=
+  "❌ Sai! Đáp án: <b>"+
+  esc(current.items[current.index].answer)+
+  "</b> <br>-5 điểm";
+
+ }
+
+ setTimeout(nextVocab,800);
+
+}
+
+
+function nextVocab(){
+
+ current.index++;
+
+ current.locked=false;
+
+ if(current.index>=current.items.length){
+
+  vocabResult();
+
+  return;
+
+ }
+
+ renderVocabQuestion();
+
+}
+
+
+function vocabResult(){
+
+ $("page").innerHTML=`
+
+ <div class="card center"
+  style="padding:45px">
+
+  <div style="font-size:65px">
+   🏆
+  </div>
+
+  <h2>
+   Hoàn thành!
+  </h2>
+
+  <h1>
+   ${current.correct}/${current.items.length}
+  </h1>
+
+  <p class="muted">
+   Điểm được cập nhật vào tài khoản.
+  </p>
+
+  <button
+   class="btn"
+   onclick="startVocabExercise(
+    '${current.type}',
+    '${current.topic}'
+   )">
+
+   🔄 Làm lại
+
+  </button>
+
+ </div>
+
+ `;
+
+}
+
+
+/* =========================================================
+   MATCH
+========================================================= */
+
+let selectedWord=null;
+let selectedMeaning=null;
+let matchDone=0;
+
+
+function renderMatch(){
+
+ const items=
+ current.items;
+
+ selectedWord=null;
+ selectedMeaning=null;
+ matchDone=0;
+
+ $("title").textContent=
+ "🔗 Nối từ với ảnh";
+
+
+ const left=
+ [...items]
+ .sort(()=>Math.random()-.5);
+
+ const right=
+ [...items]
+ .sort(()=>Math.random()-.5);
+
+
+ $("page").innerHTML=`
+
+ <div class="card">
+
+  <div style="
+   display:flex;
+   justify-content:space-between">
+
+   <b>
+    🔗 Nối từ với ảnh
+   </b>
+
+   <span id="matchCount">
+    0/${items.length}
+   </span>
+
+  </div>
+
+  <div class="progress">
+   <i id="matchProgress"
+    style="width:0%">
+   </i>
+  </div>
+
+
+  <div class="matchGrid">
+
+   <div>
+
+    <h3>
+     🇬🇧 Từ
+    </h3>
+
+    <div id="wordColumn">
+
+    ${left.map(
+    x=>`
+
+    <div
+     class="matchItem"
+     data-id="${x.id}"
+     onclick="selectMatchWord(this,${x.id})">
+
+     <b>
+      ${esc(x.word)}
+     </b>
+
+     <br>
+
+     <small>
+      ${esc(x.meaning)}
+     </small>
+
+    </div>
+
+    `).join("")}
+
+    </div>
+
+   </div>
+
+
+   <div>
+
+    <h3>
+     🖼️ Ảnh
+    </h3>
+
+    <div id="imageColumn">
+
+    ${right.map(
+    x=>`
+
+    <div
+     class="matchItem"
+     data-id="${x.id}"
+     onclick="selectMatchImage(this,${x.id})">
+
+     <img
+      src="${x.image}"
+      loading="lazy">
+
+    </div>
+
+    `).join("")}
+
+    </div>
+
+   </div>
+
+  </div>
+
+  <div id="matchFeedback"
+   class="muted">
+  </div>
+
+ </div>
+
+ `;
+
+}
+
+
+function selectMatchWord(el,id){
+
+ document
+ .querySelectorAll("#wordColumn .matchItem")
+ .forEach(x=>x.classList.remove("selected"));
+
+ el.classList.add("selected");
+
+ selectedWord={
+  el,
+  id
+ };
+
+ checkMatch();
+
+}
+
+
+function selectMatchImage(el,id){
+
+ document
+ .querySelectorAll("#imageColumn .matchItem")
+ .forEach(x=>x.classList.remove("selected"));
+
+ el.classList.add("selected");
+
+ selectedMeaning={
+  el,
+  id
+ };
+
+ checkMatch();
+
+}
+
+
+async function checkMatch(){
+
+ if(!selectedWord || !selectedMeaning)
+  return;
+
+
+ if(selectedWord.id===
+ selectedMeaning.id){
+
+  selectedWord.el.classList.add("done");
+
+  selectedMeaning.el.classList.add("done");
+
+  matchDone++;
+
+  await changeScore(10);
+
+  $("matchFeedback").innerHTML=
+  "🎉 Chính xác! <b>+10 điểm</b>";
+
+ }else{
+
+  await changeScore(-5);
+
+  $("matchFeedback").innerHTML=
+  "❌ Không khớp! <b>-5 điểm</b>";
+
+ }
+
+
+ $("matchCount").textContent=
+ `${matchDone}/${current.items.length}`;
+
+ $("matchProgress").style.width=
+ `${matchDone/current.items.length*100}%`;
+
+
+ selectedWord=null;
+ selectedMeaning=null;
+
+
+ if(matchDone===current.items.length){
+
+  setTimeout(vocabResult,600);
+
+ }
+
+}
+
+
+/* =========================================================
+   GRAMMAR
+========================================================= */
+
+const TENSES={
+
+ past:{
+  name:"Quá khứ đơn",
+  form:"S + V2/V-ed",
+  signs:"yesterday, last..., ago"
+ },
+
+ present:{
+  name:"Hiện tại đơn",
+  form:"S + V(s/es)",
+  signs:"every day, usually, often, always"
+ },
+
+ continuous:{
+  name:"Hiện tại tiếp diễn",
+  form:"S + am/is/are + V-ing",
+  signs:"now, right now, at the moment"
+ },
+
+ perfect:{
+  name:"Hiện tại hoàn thành",
+  form:"S + have/has + V3",
+  signs:"already, just, ever, never, yet, since, for"
+ },
+
+ future:{
+  name:"Tương lai đơn",
+  form:"S + will + V",
+  signs:"tomorrow, next..., soon"
+ }
+
+};
+
+
+function grammarPage(btn){
+
+ nav(btn,"📚 Ngữ pháp");
+
+ $("page").innerHTML=`
+
+ <div class="card">
+
+  <h2>
+   📚 5 thì tiếng Anh
+  </h2>
+
+  <div class="grid">
+
+  ${Object.entries(TENSES).map(
+  ([k,t])=>`
+
+   <div
+    class="tile"
+    onclick="grammar('${k}')">
+
+    <h3>
+     ${t.name}
+    </h3>
+
+    <p>
+     ${t.form}
+     <br>
+     ${t.signs}
+    </p>
+
+   </div>
+
+  `).join("")}
+
+  </div>
+
+ </div>
+
+ `;
+
+}
+
+
+function grammar(k){
+
+ const t=TENSES[k];
+
+ $("title").textContent=
+ t.name;
+
+ $("page").innerHTML=`
+
+ <div class="card">
+
+  <h2>
+   ${t.name}
+  </h2>
+
+  <h3>
+   Công thức
+  </h3>
+
+  <div class="card"
+   style="background:#080d1b">
+
+   <b>
+    ${t.form}
+   </b>
+
+  </div>
+
+  <p class="muted">
+   Dấu hiệu nhận biết:
+   <br>
+   ${t.signs}
+  </p>
+
+  ${
+   k==="continuous"
+   ?
+   `
+   <div class="card">
+    <b>⚠️ Lưu ý:</b>
+    <br><br>
+    I am working.
+    <br>
+    He/She is working.
+    <br>
+    You/We/They are working.
+   </div>
+   `
+   :
+   ""
+  }
+
+ </div>
+
+ `;
+
+}
+
+
+/* =========================================================
+   GRAMMAR QUESTION DATA
+========================================================= */
+
+const VERBS=[
+
+ ["go","went","gone"],
+ ["play","played","played"],
+ ["watch","watched","watched"],
+ ["visit","visited","visited"],
+ ["eat","ate","eaten"],
+ ["see","saw","seen"],
+ ["buy","bought","bought"],
+ ["write","wrote","written"],
+ ["make","made","made"],
+ ["take","took","taken"],
+ ["come","came","come"],
+ ["have","had","had"],
+ ["study","studied","studied"],
+ ["work","worked","worked"],
+ ["read","read","read"],
+ ["do","did","done"],
+ ["run","ran","run"],
+ ["swim","swam","swum"],
+ ["speak","spoke","spoken"],
+ ["drink","drank","drunk"]
+];
+
+
+function grammarItems(type){
+
+ let arr=[];
+
+ for(let r=0;r<5;r++){
+
+  for(const v of VERBS){
+
+   const subjects=
+   ["I","You","We","They","He","She"];
+
+   const sub=
+   subjects[
+    Math.floor(Math.random()*subjects.length)
+   ];
+
+   let q="";
+   let a="";
+
+   if(type==="quiz"){
+
+    if(r%5===0){
+
+     a=v[1];
+
+     q=
+     `Yesterday, ${sub} ___ to school. (${v[0]})`;
 
     }
 
+    else if(r%5===1){
+
+     a=
+     ["He","She"].includes(sub)
+     ?v[0]+(v[0]==="go"?"es":"s")
+     :v[0];
+
+     q=
+     `${sub} ___ English every day. (${v[0]})`;
+
+    }
+
+    else if(r%5===2){
+
+     a=v[0]+"ing";
+
+     if(v[0]==="run")
+      a="running";
+
+     if(v[0]==="swim")
+      a="swimming";
+
+     q=
+     `${sub} is/are ___ now. (${v[0]})`;
+
+    }
+
+    else if(r%5===3){
+
+     a=v[2];
+
+     q=
+     `${sub} has/have ___ this before. (${v[0]})`;
+
+    }
+
+    else{
+
+     a=v[0];
+
+     q=
+     `${sub} will ___ tomorrow. (${v[0]})`;
+
+    }
+
+    arr.push({
+     q,
+     a
+    });
+
+   }
+
+   else if(type==="verb"){
+
+    let ans;
+
+    if(r%5===0)
+     ans=v[1];
+
+    else if(r%5===1)
+     ans=
+     ["He","She"].includes(sub)
+     ?v[0]+(v[0]==="go"?"es":"s")
+     :v[0];
+
+    else if(r%5===2){
+
+     ans=v[0]+"ing";
+
+     if(v[0]==="run")
+      ans="running";
+
+     if(v[0]==="swim")
+      ans="swimming";
+
+    }
+
+    else if(r%5===3)
+     ans=v[2];
+
+    else
+     ans=v[0];
+
+    arr.push({
+     q:`${sub} ___ (${v[0]})`,
+     a:ans
+    });
+
+   }
+
+   else{
+
+    let ans;
+
+    if(r%5===0)
+     ans=`did not ${v[0]}`;
+
+    else if(r%5===1)
+     ans=
+     ["He","She"].includes(sub)
+     ?`does not ${v[0]}`
+     :`do not ${v[0]}`;
+
+    else if(r%5===2){
+
+     let aux=
+     ["He","She"].includes(sub)
+     ?"is not"
+     :"are not";
+
+     let ing=v[0]+"ing";
+
+     if(v[0]==="run")
+      ing="running";
+
+     if(v[0]==="swim")
+      ing="swimming";
+
+     ans=`${aux} ${ing}`;
+
+    }
+
+    else if(r%5===3){
+
+     ans=
+     ["He","She"].includes(sub)
+     ?`has not ${v[2]}`
+     :`have not ${v[2]}`;
+
+    }
+
+    else
+     ans=`will not ${v[0]}`;
+
+    arr.push({
+     q:`${sub} ___`,
+     a:ans
+    });
+
+   }
+
+  }
+
+ }
+
+ return arr;
+
 }
 
+
+/* =========================================================
+   GRAMMAR MENUS
+========================================================= */
+
+function quizMenu(btn){
+
+ nav(btn,"📝 Quiz");
+
+ $("page").innerHTML=`
+
+ <div class="card">
+
+  <h2>
+   📝 Quiz
+  </h2>
+
+  <p class="muted">
+   100 câu cho mỗi thì.
+   Mỗi câu đúng +10, sai -5.
+  </p>
+
+  <div class="grid">
+
+  ${Object.entries(TENSES).map(
+  ([k,t])=>`
+
+   <div class="tile"
+    onclick="startGrammar('quiz','${k}')">
+
+    <h3>
+     ${t.name}
+    </h3>
+
+    <p>
+     100 câu
+    </p>
+
+   </div>
+
+  `).join("")}
+
+  </div>
+
+ </div>
+
+ `;
+
+}
+
+
+function verbMenu(btn){
+
+ nav(btn,"✏️ Chia động từ");
+
+ $("page").innerHTML=`
+
+ <div class="card">
+
+  <h2>
+   ✏️ Chia động từ
+  </h2>
+
+  <div class="grid">
+
+  ${Object.entries(TENSES).map(
+  ([k,t])=>`
+
+   <div class="tile"
+    onclick="startGrammar('verb','${k}')">
+
+    <h3>
+     ${t.name}
+    </h3>
+
+    <p>
+     50 câu
+    </p>
+
+   </div>
+
+  `).join("")}
+
+  </div>
+
+ </div>
+
+ `;
+
+}
+
+
+function negativeMenu(btn){
+
+ nav(btn,"❌ Phủ định");
+
+ $("page").innerHTML=`
+
+ <div class="card">
+
+  <h2>
+   ❌ Câu phủ định
+  </h2>
+
+  <div class="grid">
+
+  ${Object.entries(TENSES).map(
+  ([k,t])=>`
+
+   <div class="tile"
+    onclick="startGrammar('negative','${k}')">
+
+    <h3>
+     ${t.name}
+    </h3>
+
+    <p>
+     50 câu
+    </p>
+
+   </div>
+
+  `).join("")}
+
+  </div>
+
+ </div>
+
+ `;
+
+}
+
+
+/* =========================================================
+   START GRAMMAR
+========================================================= */
+
+function startGrammar(type,tense){
+
+ let items=
+ grammarItems(type);
+
+ current={
+  type,
+  tense,
+  index:0,
+  correct:0,
+  items:
+   items.slice(
+    0,
+    type==="quiz"?100:50
+   ),
+  locked:false
+ };
+
+ renderGrammarQuestion();
+
+}
+
+
+function renderGrammarQuestion(){
+
+ const x=
+ current.items[current.index];
+
+ const total=
+ current.items.length;
+
+ $("title").textContent=
+ TENSES[current.tense].name;
+
+ let options=[];
+
+ if(current.type==="quiz"){
+
+  const pool=
+  current.items
+  .map(x=>x.a)
+  .filter(a=>a!==x.a);
+
+  options=[
+   x.a,
+   ...pool
+   .sort(()=>Math.random()-.5)
+   .slice(0,3)
+  ];
+
+  options=
+  [...new Set(options)]
+  .sort(()=>Math.random()-.5);
+
+ }
+
+
+ $("page").innerHTML=`
+
+ <div class="card">
+
+  <div style="
+   display:flex;
+   justify-content:space-between">
+
+   <span>
+    ${
+     current.type==="quiz"
+     ?"📝 Quiz"
+     :
+     current.type==="verb"
+     ?"✏️ Chia động từ"
+     :
+     "❌ Phủ định"
+    }
+   </span>
+
+   <span>
+    ${current.index+1}/${total}
+   </span>
+
+  </div>
+
+
+  <div class="progress">
+
+   <i style="
+    width:${current.index/total*100}%">
+   </i>
+
+  </div>
+
+
+  <h2>
+   ${esc(x.q)}
+  </h2>
+
+
+  ${
+   current.type==="quiz"
+
+   ?
+
+   options.map(
+   o=>`
+
+   <button
+    class="option"
+    onclick="grammarAnswer(this,${JSON.stringify(o)})">
+
+    ${esc(o)}
+
+   </button>
+
+   `).join("")
+
+   :
+
+   `
+   <input
+    id="grammarInput"
+    class="inp"
+    placeholder="Nhập đáp án">
+
+   <button
+    class="btn"
+    onclick="grammarTextAnswer()">
+
+    ✓ Kiểm tra
+
+   </button>
+   `
+  }
+
+
+  <div
+   id="feedback"
+   class="muted">
+  </div>
+
+ </div>
+
+ `;
+
+}
+
+
+async function grammarAnswer(el,value){
+
+ if(current.locked)
+  return;
+
+ current.locked=true;
+
+ const answer=
+ current.items[current.index].a;
+
+ const ok=
+ value.toLowerCase()===
+ answer.toLowerCase();
+
+ if(ok){
+
+  el.classList.add("good");
+
+  current.correct++;
+
+  await changeScore(10);
+
+  $("feedback").innerHTML=
+  "🎉 Chính xác! +10 điểm";
+
+ }else{
+
+  el.classList.add("bad");
+
+  await changeScore(-5);
+
+  $("feedback").innerHTML=
+  "❌ Sai! Đáp án: <b>"+
+  esc(answer)+
+  "</b><br>-5 điểm";
+
+ }
+
+ setTimeout(nextGrammar,750);
+
+}
+
+
+async function grammarTextAnswer(){
+
+ if(current.locked)
+  return;
+
+ current.locked=true;
+
+ const value=
+ $("grammarInput")
+ .value
+ .trim()
+ .toLowerCase();
+
+ const answer=
+ current.items[current.index].a
+ .toLowerCase();
+
+ if(value===answer){
+
+  current.correct++;
+
+  await changeScore(10);
+
+  $("feedback").innerHTML=
+  "🎉 Chính xác! +10 điểm";
+
+ }else{
+
+  await changeScore(-5);
+
+  $("feedback").innerHTML=
+  "❌ Sai! Đáp án: <b>"+
+  esc(current.items[current.index].a)+
+  "</b><br>-5 điểm";
+
+ }
+
+ setTimeout(nextGrammar,750);
+
+}
+
+
+function nextGrammar(){
+
+ current.index++;
+
+ current.locked=false;
+
+ if(current.index>=current.items.length){
+
+  exerciseResult();
+
+  return;
+
+ }
+
+ renderGrammarQuestion();
+
+}
+
+
+function exerciseResult(){
+
+ $("page").innerHTML=`
+
+ <div class="card center"
+  style="padding:45px">
+
+  <div style="font-size:65px">
+   🏆
+  </div>
+
+  <h2>
+   Hoàn thành bài!
+  </h2>
+
+  <h1>
+   ${current.correct}/${current.items.length}
+  </h1>
+
+  <p class="muted">
+   Bạn có thể làm lại bài để luyện thêm.
+  </p>
+
+  <button
+   class="btn"
+   onclick="startGrammar(
+    '${current.type}',
+    '${current.tense}'
+   )">
+
+   🔄 Làm lại
+
+  </button>
+
+ </div>
+
+ `;
+
+}
+
+
+/* =========================================================
+   SO SÁNH HƠN
+   100 CÂU
+========================================================= */
+
+const COMPARATIVES=[
+
+ ["tall","taller","cao"],
+ ["short","shorter","thấp"],
+ ["fast","faster","nhanh"],
+ ["slow","slower","chậm"],
+ ["small","smaller","nhỏ"],
+ ["big","bigger","to"],
+ ["hot","hotter","nóng"],
+ ["cold","colder","lạnh"],
+ ["long","longer","dài"],
+ ["young","younger","trẻ"],
+ ["old","older","già"],
+ ["easy","easier","dễ"],
+ ["happy","happier","vui"],
+ ["busy","busier","bận"],
+ ["pretty","prettier","xinh"],
+ ["heavy","heavier","nặng"],
+ ["funny","funnier","buồn cười"],
+ ["early","earlier","sớm"],
+ ["late","later","muộn"],
+ ["good","better","tốt"],
+ ["bad","worse","tệ"],
+ ["far","farther","xa"],
+ ["little","less","ít"],
+ ["many","more","nhiều"],
+ ["much","more","nhiều"],
+ ["beautiful","more beautiful","đẹp"],
+ ["expensive","more expensive","đắt"],
+ ["interesting","more interesting","thú vị"],
+ ["important","more important","quan trọng"],
+ ["careful","more careful","cẩn thận"]
+];
+
+
+function comparePage(btn){
+
+ nav(btn,"📈 So sánh hơn");
+
+ $("page").innerHTML=`
+
+ <div class="card">
+
+  <h2>
+   📈 So sánh hơn
+  </h2>
+
+  <h3>
+   Cấu trúc
+  </h3>
+
+  <div class="card"
+   style="background:#080d1b">
+
+   <b>
+    S + be + adjective-er + than + ...
+   </b>
+
+   <br><br>
+
+   <b>
+    S + be + more + adjective + than + ...
+   </b>
+
+  </div>
+
+
+  <p class="muted">
+
+   • Tính từ ngắn:
+   tall → taller
+
+   <br>
+
+   • Tận cùng bằng y:
+   happy → happier
+
+   <br>
+
+   • Một số từ gấp đôi phụ âm:
+   big → bigger
+
+   <br>
+
+   • Tính từ dài:
+   beautiful → more beautiful
+
+   <br>
+
+   • Bất quy tắc:
+   good → better,
+   bad → worse,
+   little → less,
+   many/much → more
+
+  </p>
+
+
+  <button
+   class="btn"
+   onclick="startCompare()">
+
+   📝 Làm 100 câu
+
+  </button>
+
+
+  <div class="grid"
+   style="margin-top:15px">
+
+   ${COMPARATIVES.map(
+   x=>`
+
+   <div class="tile">
+
+    <b>
+     ${x[0]}
+    </b>
+
+    →
+    
+    <b>
+     ${x[1]}
+    </b>
+
+    <p>
+     ${x[2]}
+    </p>
+
+   </div>
+
+   `).join("")}
+
+  </div>
+
+ </div>
+
+ `;
+
+}
+
+
+function startCompare(){
+
+ let items=[];
+
+ for(let i=0;i<100;i++){
+
+  const x=
+  COMPARATIVES[
+   i%COMPARATIVES.length
+  ];
+
+  let options=[
+   x[1],
+   x[0],
+   x[0]+"er",
+   "more "+x[0]
+  ];
+
+  options=
+  [...new Set(options)]
+  .sort(()=>Math.random()-.5);
+
+  items.push({
+   q:
+   `${x[2]}: This car is ___ than that one. (${x[0]})`,
+   a:x[1],
+   opts:options
+  });
+
+ }
+
+ current={
+  type:"compare",
+  index:0,
+  correct:0,
+  items,
+  locked:false
+ };
+
+ renderCompare();
+
+}
+
+
+function renderCompare(){
+
+ const x=
+ current.items[current.index];
+
+ $("title").textContent=
+ "📈 So sánh hơn";
+
+ $("page").innerHTML=`
+
+ <div class="card">
+
+  <div>
+   ${current.index+1}/100
+  </div>
+
+  <div class="progress">
+
+   <i style="
+    width:${current.index}%">
+   </i>
+
+  </div>
+
+  <h2>
+   ${esc(x.q)}
+  </h2>
+
+  ${x.opts.map(
+  o=>`
+
+   <button
+    class="option"
+    onclick="compareAnswer(this,${JSON.stringify(o)})">
+
+    ${esc(o)}
+
+   </button>
+
+  `).join("")}
+
+  <div
+   id="feedback"
+   class="muted">
+  </div>
+
+ </div>
+
+ `;
+
+}
+
+
+async function compareAnswer(el,value){
+
+ if(current.locked)
+  return;
+
+ current.locked=true;
+
+ const answer=
+ current.items[current.index].a;
+
+ const ok=
+ value.toLowerCase()===
+ answer.toLowerCase();
+
+ if(ok){
+
+  el.classList.add("good");
+
+  current.correct++;
+
+  await changeScore(10);
+
+  $("feedback").innerHTML=
+  "🎉 Chính xác! +10 điểm";
+
+ }else{
+
+  el.classList.add("bad");
+
+  await changeScore(-5);
+
+  $("feedback").innerHTML=
+  "❌ Sai! Đáp án: <b>"+
+  esc(answer)+
+  "</b><br>-5 điểm";
+
+ }
+
+ setTimeout(()=>{
+
+  current.index++;
+
+  current.locked=false;
+
+  if(current.index>=100)
+   exerciseResult();
+  else
+   renderCompare();
+
+ },750);
+
+}
+
+
+/* =========================================================
+   ACCOUNT
+========================================================= */
+
+function accountPage(btn){
+
+ nav(btn,"👤 Tài khoản");
+
+ $("page").innerHTML=`
+
+ <div class="card">
+
+  <h2>
+   👤 Tài khoản
+  </h2>
+
+  <p class="muted">
+
+   Username:
+   <b>${esc(profile.username)}</b>
+
+   <br>
+
+   Role:
+   <b>${esc(profile.role)}</b>
+
+   <br>
+
+   Điểm:
+   <b>${score}</b>
+
+  </p>
+
+ </div>
+
+ `;
+
+}
+
+
+/* =========================================================
+   ADMIN
+========================================================= */
+
+async function adminPage(btn){
+
+ if(profile.role!=="admin"){
+
+  alert("Bạn không có quyền admin.");
+
+  return;
+
+ }
+
+ nav(btn,"🛡️ Quản lý người dùng");
+
+ const {
+  data,
+  error
+ } =
+ await db
+ .from("profiles")
+ .select("*")
+ .order("created_at",{ascending:false});
+
+
+ if(error){
+
+  $("page").innerHTML=`
+
+  <div class="card">
+   ❌ ${esc(error.message)}
+  </div>
+
+  `;
+
+  return;
+
+ }
+
+
+ $("page").innerHTML=`
+
+ <div class="card">
+
+  <h2>
+   👥 Người dùng
+   (${data.length})
+  </h2>
+
+  <div class="scroll">
+
+  <table>
+
+   <thead>
+
+    <tr>
+     <th>Username</th>
+     <th>Role</th>
+     <th>Điểm</th>
+     <th>Thao tác</th>
+    </tr>
+
+   </thead>
+
+   <tbody>
+
+   ${data.map(
+   u=>`
+
+   <tr>
+
+    <td>
+     ${esc(u.username)}
+    </td>
+
+    <td>
+     <span class="badge">
+      ${esc(u.role)}
+     </span>
+    </td>
+
+    <td>
+     ${Number(u.score||0)}
+    </td>
+
+    <td>
+
+    ${
+     u.id===profile.id
+
+     ?
+
+     "<small>Tài khoản hiện tại</small>"
+
+     :
+
+     `
+
+     ${
+      u.role==="admin"
+
+      ?
+
+      `
+      <button
+       class="btn2"
+       onclick="changeRole('${u.id}','user')">
+
+       ⬇️ Hạ cấp
+
+      </button>
+      `
+
+      :
+
+      `
+      <button
+       class="btn"
+       onclick="changeRole('${u.id}','admin')">
+
+       ⬆️ Cấp admin
+
+      </button>
+      `
+     }
+
+
+     <button
+      class="btn2"
+      onclick="resetUserScore('${u.id}')">
+
+      🔄 Reset điểm
+
+     </button>
+
+     `
+
+    }
+
+    </td>
+
+   </tr>
+
+   `).join("")}
+
+   </tbody>
+
+  </table>
+
+  </div>
+
+ </div>
+
+ `;
+
+}
+
+
+async function changeRole(id,role){
+
+ if(!confirm(
+  "Bạn có chắc muốn đổi role thành "+
+  role+"?"
+ ))
+ return;
+
+
+ const {
+  error
+ } =
+ await db
+ .from("profiles")
+ .update({role})
+ .eq("id",id);
+
+
+ if(error){
+
+  alert(error.message);
+
+  return;
+
+ }
+
+ adminPage();
+
+}
+
+
+async function resetUserScore(id){
+
+ if(!confirm(
+  "Reset điểm người dùng này về 0?"
+ ))
+ return;
+
+
+ const {
+  error
+ } =
+ await db
+ .from("profiles")
+ .update({score:0})
+ .eq("id",id);
+
+
+ if(error){
+
+  alert(error.message);
+
+  return;
+
+ }
+
+ adminPage();
+
+}
+
+
+/* =========================================================
+   STARTUP
+========================================================= */
+
+async function startup(){
+
+ authLogin();
+
+ const {
+  data:{session}
+ } =
+ await db.auth.getSession();
+
+ if(session)
+  loadProfile();
+
+}
 
 startup();
 
@@ -4908,4 +3572,3 @@ startup();
 
 </body>
 </html>
-

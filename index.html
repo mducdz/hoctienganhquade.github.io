@@ -1,4 +1,4 @@
-
+```html
 <!DOCTYPE html>
 <html lang="vi">
 <head>
@@ -8,12 +8,14 @@
 
 <style>
 *{box-sizing:border-box}
+
 body{
     margin:0;
     font-family:Arial,sans-serif;
     background:#070b18;
     color:#fff;
 }
+
 button,input{font:inherit}
 
 .app{display:flex;min-height:100vh}
@@ -21,7 +23,9 @@ button,input{font:inherit}
 .sidebar{
     width:235px;
     position:fixed;
-    left:0;top:0;bottom:0;
+    left:0;
+    top:0;
+    bottom:0;
     overflow:auto;
     padding:16px 12px;
     background:#0d1328;
@@ -33,6 +37,7 @@ button,input{font:inherit}
     margin-bottom:12px;
     border-bottom:1px solid #263252;
 }
+
 .logo h1{
     margin:0;
     font-size:23px;
@@ -40,6 +45,7 @@ button,input{font:inherit}
     -webkit-background-clip:text;
     color:transparent;
 }
+
 .logo small{color:#8794b5}
 
 .title{
@@ -60,7 +66,12 @@ button,input{font:inherit}
     margin:2px 0;
     cursor:pointer;
 }
-.nav:hover{background:#ffffff0a;color:white}
+
+.nav:hover{
+    background:#ffffff0a;
+    color:white
+}
+
 .nav.active{
     color:white;
     background:linear-gradient(90deg,#20dcff20,#875cff20);
@@ -80,7 +91,11 @@ button,input{font:inherit}
     justify-content:space-between;
     align-items:center;
 }
-.top h2{margin:0;font-size:24px}
+
+.top h2{
+    margin:0;
+    font-size:24px;
+}
 
 .score{
     background:#111a32;
@@ -89,7 +104,10 @@ button,input{font:inherit}
     border-radius:20px;
 }
 
-.page{max-width:1050px;margin:auto}
+.page{
+    max-width:1050px;
+    margin:auto
+}
 
 .card{
     background:#10172d;
@@ -103,25 +121,38 @@ button,input{font:inherit}
     text-align:center;
     padding:40px 20px;
 }
+
 .hero .emoji{font-size:55px}
+
 .hero h1{font-size:30px}
-.hero p{color:#9ca9c7;line-height:1.6}
+
+.hero p{
+    color:#9ca9c7;
+    line-height:1.6
+}
 
 .primary,.secondary{
-    border:0;
     border-radius:20px;
     padding:10px 17px;
     cursor:pointer;
     margin:3px;
 }
+
 .primary{
     color:white;
+    border:0;
     background:linear-gradient(135deg,#17d8ff,#765bff,#ff3fae);
 }
+
 .secondary{
     color:white;
     background:#ffffff0b;
     border:1px solid #34405e;
+}
+
+.primary:disabled{
+    opacity:.5;
+    cursor:not-allowed;
 }
 
 .formula{
@@ -138,13 +169,18 @@ button,input{font:inherit}
     font-size:14px;
     margin-top:18px;
 }
-.lesson p{color:#bdc8df;line-height:1.6}
+
+.lesson p{
+    color:#bdc8df;
+    line-height:1.6
+}
 
 .tags{
     display:flex;
     flex-wrap:wrap;
     gap:6px;
 }
+
 .tag{
     background:#ffffff0b;
     padding:7px 10px;
@@ -167,6 +203,7 @@ button,input{font:inherit}
     overflow:hidden;
     margin:9px 0 18px;
 }
+
 .progress div{
     height:100%;
     background:linear-gradient(90deg,#20dcff,#765bff,#ff3fae);
@@ -184,6 +221,7 @@ button,input{font:inherit}
     grid-template-columns:1fr 1fr;
     gap:8px;
 }
+
 .answer{
     border:1px solid #293654;
     background:#ffffff07;
@@ -193,9 +231,20 @@ button,input{font:inherit}
     cursor:pointer;
     text-align:left;
 }
-.answer:hover{background:#ffffff12}
-.correct{border-color:#39e58c!important;background:#39e58c18!important}
-.wrong{border-color:#ff5268!important;background:#ff526818!important}
+
+.answer:hover{
+    background:#ffffff12
+}
+
+.correct{
+    border-color:#39e58c!important;
+    background:#39e58c18!important
+}
+
+.wrong{
+    border-color:#ff5268!important;
+    background:#ff526818!important
+}
 
 .feedback{
     min-height:22px;
@@ -211,8 +260,12 @@ button,input{font:inherit}
     border:1px solid #293654;
     border-radius:9px;
     outline:none;
+    margin-bottom:9px;
 }
-.input:focus{border-color:#20dcff}
+
+.input:focus{
+    border-color:#20dcff
+}
 
 .vocab-grid{
     display:grid;
@@ -227,10 +280,24 @@ button,input{font:inherit}
     border-radius:12px;
     cursor:pointer;
 }
-.vocab-card:hover{border-color:#20dcff}
-.vocab-card .icon{font-size:35px}
-.vocab-card h3{font-size:14px;margin:7px 0}
-.vocab-card p{font-size:11px;color:#8794b5}
+
+.vocab-card:hover{
+    border-color:#20dcff
+}
+
+.vocab-card .icon{
+    font-size:35px
+}
+
+.vocab-card h3{
+    font-size:14px;
+    margin:7px 0
+}
+
+.vocab-card p{
+    font-size:11px;
+    color:#8794b5
+}
 
 .level-grid{
     display:grid;
@@ -247,11 +314,16 @@ button,input{font:inherit}
     cursor:pointer;
     transition:.15s;
 }
+
 .level-card:hover{
     transform:translateY(-2px);
     border-color:#20dcff;
 }
-.level-card h3{margin:5px 0}
+
+.level-card h3{
+    margin:5px 0
+}
+
 .level-card p{
     color:#8d9ab8;
     font-size:12px;
@@ -267,6 +339,7 @@ button,input{font:inherit}
     overflow:hidden;
     margin-bottom:14px;
 }
+
 .vocab-image img{
     width:190px;
     height:190px;
@@ -278,6 +351,7 @@ button,input{font:inherit}
     grid-template-columns:1fr 1fr;
     gap:15px;
 }
+
 .match-item{
     border:1px solid #293654;
     background:#ffffff06;
@@ -286,6 +360,7 @@ button,input{font:inherit}
     margin-bottom:7px;
     cursor:pointer;
 }
+
 .match-item.selected{
     border-color:#20dcff;
     background:#20dcff15;
@@ -302,6 +377,7 @@ button,input{font:inherit}
     text-align:center;
     padding:35px;
 }
+
 .result-score{
     font-size:55px;
     color:#ffe66d;
@@ -322,14 +398,19 @@ button,input{font:inherit}
     margin:50px auto;
 }
 
-.auth h1{text-align:center}
-
-.auth input{
-    margin-bottom:9px;
+.auth h1{
+    text-align:center
 }
 
 .auth-error{
     color:#ff6678;
+    min-height:20px;
+    font-size:13px;
+    margin:4px 0;
+}
+
+.auth-success{
+    color:#39e58c;
     min-height:20px;
     font-size:13px;
 }
@@ -337,17 +418,23 @@ button,input{font:inherit}
 .mobile{display:none}
 
 @media(max-width:800px){
+
     .sidebar{
         transform:translateX(-100%);
         transition:.2s;
         z-index:10;
     }
-    .sidebar.open{transform:translateX(0)}
+
+    .sidebar.open{
+        transform:translateX(0)
+    }
+
     .main{
         margin-left:0;
         width:100%;
         padding:15px;
     }
+
     .mobile{
         display:block;
         background:#ffffff08;
@@ -356,9 +443,33 @@ button,input{font:inherit}
         border-radius:8px;
         padding:7px 10px;
     }
-    .answers{grid-template-columns:1fr}
-    .vocab-grid{grid-template-columns:1fr 1fr}
-    .level-grid{grid-template-columns:1fr 1fr}
+
+    .answers{
+        grid-template-columns:1fr
+    }
+
+    .vocab-grid{
+        grid-template-columns:1fr 1fr
+    }
+
+    .level-grid{
+        grid-template-columns:1fr 1fr
+    }
+}
+
+@media(max-width:500px){
+
+    .vocab-grid{
+        grid-template-columns:1fr
+    }
+
+    .level-grid{
+        grid-template-columns:1fr
+    }
+
+    .match-grid{
+        grid-template-columns:1fr
+    }
 }
 </style>
 </head>
@@ -370,115 +481,306 @@ button,input{font:inherit}
 <script>
 
 /* =====================================================
-   TÀI KHOẢN
+   TÀI KHOẢN - FIX
 ===================================================== */
 
-const USERS_KEY="hocenglish_users";
-const LOGIN_KEY="hocenglish_current";
+const USERS_KEY = "hocenglish_users";
+const LOGIN_KEY = "hocenglish_current";
 
+/* Đọc tài khoản an toàn */
 function getUsers(){
-    return JSON.parse(localStorage.getItem(USERS_KEY)||"[]");
+
+    try{
+
+        const raw =
+            localStorage.getItem(USERS_KEY);
+
+        if(!raw){
+            return [];
+        }
+
+        const users =
+            JSON.parse(raw);
+
+        if(!Array.isArray(users)){
+            localStorage.removeItem(USERS_KEY);
+            return [];
+        }
+
+        return users;
+
+    }catch(error){
+
+        console.error(
+            "Lỗi dữ liệu tài khoản:",
+            error
+        );
+
+        localStorage.removeItem(USERS_KEY);
+
+        return [];
+    }
 }
 
+/* Lưu tài khoản */
 function saveUsers(users){
-    localStorage.setItem(USERS_KEY,JSON.stringify(users));
+
+    try{
+
+        localStorage.setItem(
+            USERS_KEY,
+            JSON.stringify(users)
+        );
+
+        return true;
+
+    }catch(error){
+
+        console.error(
+            "Không thể lưu tài khoản:",
+            error
+        );
+
+        return false;
+    }
 }
 
+/* User đang đăng nhập */
 function currentUser(){
-    return localStorage.getItem(LOGIN_KEY);
+
+    try{
+        return localStorage.getItem(LOGIN_KEY);
+    }catch{
+        return null;
+    }
 }
+
+/* =====================================================
+   ĐĂNG KÝ
+===================================================== */
 
 function register(){
-    const username=document.getElementById("regUser").value.trim();
-    const password=document.getElementById("regPass").value;
 
-    if(username.length<3){
-        document.getElementById("authError").textContent=
-        "Tên tài khoản phải có ít nhất 3 ký tự.";
+    const userInput =
+        document.getElementById("regUser");
+
+    const passInput =
+        document.getElementById("regPass");
+
+    const error =
+        document.getElementById("authError");
+
+    if(!userInput || !passInput || !error){
         return;
     }
 
-    if(password.length<4){
-        document.getElementById("authError").textContent=
-        "Mật khẩu phải có ít nhất 4 ký tự.";
+    const username =
+        userInput.value.trim();
+
+    const password =
+        passInput.value;
+
+    error.textContent = "";
+
+    if(username.length < 3){
+
+        error.textContent =
+            "Tên tài khoản phải có ít nhất 3 ký tự.";
+
         return;
     }
 
-    let users=getUsers();
+    if(username.length > 30){
 
-    if(users.some(x=>x.username.toLowerCase()===username.toLowerCase())){
-        document.getElementById("authError").textContent=
-        "Tài khoản đã tồn tại.";
+        error.textContent =
+            "Tên tài khoản tối đa 30 ký tự.";
+
         return;
     }
 
-    users.push({
-        username:username,
-        password:password,
-        score:0
-    });
+    if(password.length < 4){
 
-    saveUsers(users);
+        error.textContent =
+            "Mật khẩu phải có ít nhất 4 ký tự.";
 
-    localStorage.setItem(LOGIN_KEY,username);
+        return;
+    }
 
-    renderApp();
-}
+    const users = getUsers();
 
-function login(){
-    const username=document.getElementById("loginUser").value.trim();
-    const password=document.getElementById("loginPass").value;
+    const exists =
+        users.some(x =>
+            String(x.username).toLowerCase() ===
+            username.toLowerCase()
+        );
 
-    const user=getUsers().find(x=>
-        x.username.toLowerCase()===username.toLowerCase() &&
-        x.password===password
+    if(exists){
+
+        error.textContent =
+            "Tài khoản đã tồn tại.";
+
+        return;
+    }
+
+    const newUser = {
+
+        username: username,
+
+        password: password,
+
+        score: 0,
+
+        createdAt: Date.now()
+    };
+
+    users.push(newUser);
+
+    if(!saveUsers(users)){
+
+        error.textContent =
+            "Không thể lưu tài khoản.";
+
+        return;
+    }
+
+    localStorage.setItem(
+        LOGIN_KEY,
+        username
     );
 
-    if(!user){
-        document.getElementById("authError").textContent=
-        "Sai tài khoản hoặc mật khẩu.";
-        return;
-    }
-
-    localStorage.setItem(LOGIN_KEY,user.username);
     renderApp();
 }
 
+
+/* =====================================================
+   ĐĂNG NHẬP
+===================================================== */
+
+function login(){
+
+    const userInput =
+        document.getElementById("loginUser");
+
+    const passInput =
+        document.getElementById("loginPass");
+
+    const error =
+        document.getElementById("authError");
+
+    if(!userInput || !passInput || !error){
+        return;
+    }
+
+    const username =
+        userInput.value.trim();
+
+    const password =
+        passInput.value;
+
+    error.textContent = "";
+
+    const users = getUsers();
+
+    const user =
+        users.find(x =>
+
+            String(x.username).toLowerCase() ===
+            username.toLowerCase() &&
+
+            String(x.password) === password
+        );
+
+    if(!user){
+
+        error.textContent =
+            "Sai tài khoản hoặc mật khẩu.";
+
+        return;
+    }
+
+    localStorage.setItem(
+        LOGIN_KEY,
+        user.username
+    );
+
+    renderApp();
+}
+
+
+/* =====================================================
+   ĐĂNG XUẤT
+===================================================== */
+
 function logout(){
-    localStorage.removeItem(LOGIN_KEY);
+
+    try{
+        localStorage.removeItem(LOGIN_KEY);
+    }catch(error){
+        console.error(error);
+    }
+
+    globalScore = 0;
+
     renderAuth();
 }
 
+
+/* =====================================================
+   GIAO DIỆN AUTH
+===================================================== */
+
 function renderAuth(){
 
-    document.getElementById("app").innerHTML=`
+    const app =
+        document.getElementById("app");
 
-    <div class="main" style="margin-left:0;width:100%">
+    if(!app)return;
+
+    app.innerHTML = `
+
+    <div class="main"
+         style="margin-left:0;width:100%">
 
         <div class="card auth">
 
-            <div style="text-align:center;font-size:50px">
+            <div style="
+                text-align:center;
+                font-size:50px">
+
                 📚
+
             </div>
 
             <h1>HOC ENGLISH</h1>
 
-            <p style="text-align:center;color:#8f9bb7">
+            <p style="
+                text-align:center;
+                color:#8f9bb7">
+
                 Đăng nhập hoặc tạo tài khoản
+
             </p>
 
             <div class="exercise-tabs">
-                <button id="loginTab"
-                class="primary"
-                onclick="showLogin()">
-                🔐 Đăng nhập
+
+                <button
+                    id="loginTab"
+                    class="primary"
+                    onclick="showLogin()">
+
+                    🔐 Đăng nhập
+
                 </button>
 
-                <button id="registerTab"
-                class="secondary"
-                onclick="showRegister()">
-                📝 Đăng ký
+                <button
+                    id="registerTab"
+                    class="secondary"
+                    onclick="showRegister()">
+
+                    📝 Đăng ký
+
                 </button>
+
             </div>
 
             <div id="authForm"></div>
@@ -491,48 +793,88 @@ function renderAuth(){
     showLogin();
 }
 
+
+/* =====================================================
+   FORM LOGIN
+===================================================== */
+
 function showLogin(){
 
-    document.getElementById("authForm").innerHTML=`
+    const form =
+        document.getElementById("authForm");
 
-        <input id="loginUser"
-        class="input"
-        placeholder="Tên tài khoản">
+    if(!form)return;
 
-        <input id="loginPass"
-        class="input"
-        type="password"
-        placeholder="Mật khẩu">
+    form.innerHTML = `
 
-        <div id="authError" class="auth-error"></div>
+        <input
+            id="loginUser"
+            class="input"
+            placeholder="Tên tài khoản"
+            autocomplete="username">
 
-        <button class="primary"
-        style="width:100%"
-        onclick="login()">
-        🔐 Đăng nhập
+        <input
+            id="loginPass"
+            class="input"
+            type="password"
+            placeholder="Mật khẩu"
+            autocomplete="current-password">
+
+        <div
+            id="authError"
+            class="auth-error">
+        </div>
+
+        <button
+            class="primary"
+            style="width:100%"
+            onclick="login()">
+
+            🔐 Đăng nhập
+
         </button>
     `;
 }
 
+
+/* =====================================================
+   FORM REGISTER
+===================================================== */
+
 function showRegister(){
 
-    document.getElementById("authForm").innerHTML=`
+    const form =
+        document.getElementById("authForm");
 
-        <input id="regUser"
-        class="input"
-        placeholder="Tên tài khoản">
+    if(!form)return;
 
-        <input id="regPass"
-        class="input"
-        type="password"
-        placeholder="Mật khẩu">
+    form.innerHTML = `
 
-        <div id="authError" class="auth-error"></div>
+        <input
+            id="regUser"
+            class="input"
+            placeholder="Tên tài khoản"
+            autocomplete="username">
 
-        <button class="primary"
-        style="width:100%"
-        onclick="register()">
-        📝 Tạo tài khoản
+        <input
+            id="regPass"
+            class="input"
+            type="password"
+            placeholder="Mật khẩu"
+            autocomplete="new-password">
+
+        <div
+            id="authError"
+            class="auth-error">
+        </div>
+
+        <button
+            class="primary"
+            style="width:100%"
+            onclick="register()">
+
+            📝 Tạo tài khoản
+
         </button>
     `;
 }
@@ -544,68 +886,113 @@ function showRegister(){
 
 function renderApp(){
 
-    document.getElementById("app").innerHTML=`
+    const app =
+        document.getElementById("app");
+
+    if(!app)return;
+
+    app.innerHTML = `
 
     <div class="app">
 
         <aside class="sidebar" id="sidebar">
 
             <div class="logo">
+
                 <h1>📚 HOC ENGLISH</h1>
-                <small>English Learning Website</small>
+
+                <small>
+                    English Learning Website
+                </small>
+
             </div>
 
-            <div class="title">TRANG CHỦ</div>
+            <div class="title">
+                TRANG CHỦ
+            </div>
 
-            <button class="nav active"
-            onclick="home(this)">
-            🏠 Trang chủ
+            <button
+                class="nav active"
+                onclick="home(this)">
+
+                🏠 Trang chủ
+
             </button>
 
-            <div class="title">NGỮ PHÁP</div>
+            <div class="title">
+                NGỮ PHÁP
+            </div>
 
-            <button class="nav"
-            onclick="grammar('past',this)">
-            ⏪ Quá khứ đơn
+            <button
+                class="nav"
+                onclick="grammar('past',this)">
+
+                ⏪ Quá khứ đơn
+
             </button>
 
-            <button class="nav"
-            onclick="grammar('present',this)">
-            ☀️ Hiện tại đơn
+            <button
+                class="nav"
+                onclick="grammar('present',this)">
+
+                ☀️ Hiện tại đơn
+
             </button>
 
-            <button class="nav"
-            onclick="grammar('continuous',this)">
-            🔄 Hiện tại tiếp diễn
+            <button
+                class="nav"
+                onclick="grammar('continuous',this)">
+
+                🔄 Hiện tại tiếp diễn
+
             </button>
 
-            <button class="nav"
-            onclick="grammar('perfect',this)">
-            🚀 Hiện tại hoàn thành
+            <button
+                class="nav"
+                onclick="grammar('perfect',this)">
+
+                🚀 Hiện tại hoàn thành
+
             </button>
 
-            <button class="nav"
-            onclick="grammar('future',this)">
-            🔮 Tương lai đơn
+            <button
+                class="nav"
+                onclick="grammar('future',this)">
+
+                🔮 Tương lai đơn
+
             </button>
 
-            <div class="title">TỪ VỰNG</div>
+            <div class="title">
+                TỪ VỰNG
+            </div>
 
-            <button class="nav"
-            onclick="vocabList(this)">
-            🧠 Từ vựng
+            <button
+                class="nav"
+                onclick="vocabList(this)">
+
+                🧠 Từ vựng
+
             </button>
 
-            <div class="title">TÀI KHOẢN</div>
+            <div class="title">
+                TÀI KHOẢN
+            </div>
 
-            <button class="nav"
-            onclick="accountPage()">
-            👤 Tài khoản
+            <button
+                class="nav"
+                onclick="accountPage()">
+
+                👤 Tài khoản
+
             </button>
 
-            <button class="nav"
-            onclick="logout()">
-            🚪 Đăng xuất
+            <button
+                class="nav"
+                onclick="logout()">
+
+                🚪 Đăng xuất
+
             </button>
 
         </aside>
@@ -614,20 +1001,31 @@ function renderApp(){
 
             <div class="top">
 
-                <button class="mobile"
-                onclick="toggleMenu()">
-                ☰
+                <button
+                    class="mobile"
+                    onclick="toggleMenu()">
+
+                    ☰
+
                 </button>
 
-                <h2 id="pageTitle">Trang chủ</h2>
+                <h2 id="pageTitle">
+                    Trang chủ
+                </h2>
 
                 <div class="score">
-                    ⭐ <b id="globalScore">0</b>
+
+                    ⭐
+                    <b id="globalScore">0</b>
+
                 </div>
 
             </div>
 
-            <div class="page" id="page"></div>
+            <div
+                class="page"
+                id="page">
+            </div>
 
         </main>
 
@@ -635,15 +1033,18 @@ function renderApp(){
     `;
 
     loadUserScore();
-    home(document.querySelector(".nav"));
+
+    home(
+        document.querySelector(".nav")
+    );
 }
 
 
 /* =====================================================
-   DỮ LIỆU NGỮ PHÁP
+   NGỮ PHÁP
 ===================================================== */
 
-const lessons={
+const lessons = {
 
 past:{
 name:"Quá khứ đơn",
@@ -655,8 +1056,12 @@ formula:[
 "Did + S + V nguyên mẫu?"
 ],
 signs:[
-"yesterday","last night","last week",
-"last year","ago","in 2020"
+"yesterday",
+"last night",
+"last week",
+"last year",
+"ago",
+"in 2020"
 ],
 example:"I visited my grandmother yesterday."
 },
@@ -672,8 +1077,12 @@ formula:[
 "Do/Does + S + V?"
 ],
 signs:[
-"always","usually","often",
-"sometimes","never","every day"
+"always",
+"usually",
+"often",
+"sometimes",
+"never",
+"every day"
 ],
 example:"She goes to school every day."
 },
@@ -688,8 +1097,12 @@ formula:[
 "Am/Is/Are + S + V-ing?"
 ],
 signs:[
-"now","right now","at the moment",
-"at present","Look!","Listen!"
+"now",
+"right now",
+"at the moment",
+"at present",
+"Look!",
+"Listen!"
 ],
 example:"They are playing football now."
 },
@@ -704,8 +1117,14 @@ formula:[
 "Have/Has + S + V3?"
 ],
 signs:[
-"already","just","ever","never",
-"yet","since","for","so far"
+"already",
+"just",
+"ever",
+"never",
+"yet",
+"since",
+"for",
+"so far"
 ],
 example:"I have finished my homework."
 },
@@ -720,8 +1139,11 @@ formula:[
 "Will + S + V?"
 ],
 signs:[
-"tomorrow","next week",
-"next year","soon","in the future"
+"tomorrow",
+"next week",
+"next year",
+"soon",
+"in the future"
 ],
 example:"I will visit you tomorrow."
 }
@@ -731,10 +1153,9 @@ example:"I will visit you tomorrow."
 
 /* =====================================================
    40 TỪ / CHỦ ĐỀ
-   4 CẤP ĐỘ
 ===================================================== */
 
-const vocab={
+const vocab = {
 
 clothes:{
 name:"Quần áo",
@@ -1043,76 +1464,129 @@ expert:[
    BIẾN
 ===================================================== */
 
-let globalScore=0;
+let globalScore = 0;
 
-let vocabTopic="";
-let vocabLevel="";
-let vocabData=[];
+let vocabTopic = "";
+let vocabLevel = "";
+let vocabData = [];
 
-let vocabIndex=0;
-let vocabRound=1;
-let vocabScore=0;
+let vocabIndex = 0;
+let vocabRound = 1;
+let vocabScore = 0;
 
-let selectedImage=null;
-let selectedWord=null;
+let selectedImage = null;
+let selectedWord = null;
 
 
 /* =====================================================
-   CHUNG
+   HÀM CHUNG
 ===================================================== */
 
 function shuffle(arr){
-    return [...arr].sort(()=>Math.random()-.5);
+
+    return [...arr].sort(
+        () => Math.random() - .5
+    );
 }
 
 function toggleMenu(){
-    document.getElementById("sidebar").classList.toggle("open");
+
+    const sidebar =
+        document.getElementById("sidebar");
+
+    if(sidebar){
+        sidebar.classList.toggle("open");
+    }
 }
 
 function activeNone(){
-    document.querySelectorAll(".nav")
-    .forEach(x=>x.classList.remove("active"));
+
+    document
+        .querySelectorAll(".nav")
+        .forEach(x =>
+            x.classList.remove("active")
+        );
 }
 
 function setTitle(x){
-    document.getElementById("pageTitle").textContent=x;
+
+    const title =
+        document.getElementById("pageTitle");
+
+    if(title){
+        title.textContent = x;
+    }
 }
+
+
+/* =====================================================
+   ĐIỂM
+===================================================== */
 
 function addGlobal(n){
 
-    globalScore+=n;
+    globalScore += Number(n) || 0;
 
-    document.getElementById("globalScore").textContent=
-    globalScore;
+    const score =
+        document.getElementById("globalScore");
+
+    if(score){
+        score.textContent =
+            globalScore;
+    }
 
     saveUserScore();
 }
 
 function loadUserScore(){
 
-    const name=currentUser();
-    const user=getUsers().find(x=>x.username===name);
+    const name = currentUser();
 
-    globalScore=user?.score||0;
+    if(!name){
 
-    document.getElementById("globalScore").textContent=
-    globalScore;
+        globalScore = 0;
+
+        return;
+    }
+
+    const users = getUsers();
+
+    const user =
+        users.find(x =>
+            x.username === name
+        );
+
+    globalScore =
+        Number(user?.score) || 0;
+
+    const score =
+        document.getElementById("globalScore");
+
+    if(score){
+        score.textContent =
+            globalScore;
+    }
 }
 
 function saveUserScore(){
 
-    const name=currentUser();
+    const name = currentUser();
 
     if(!name)return;
 
-    let users=getUsers();
+    const users = getUsers();
 
-    let user=users.find(x=>x.username===name);
+    const user =
+        users.find(x =>
+            x.username === name
+        );
 
-    if(user){
-        user.score=globalScore;
-        saveUsers(users);
-    }
+    if(!user)return;
+
+    user.score =
+        Number(globalScore) || 0;
+
+    saveUsers(users);
 }
 
 
@@ -1124,60 +1598,95 @@ function home(btn){
 
     activeNone();
 
-    if(btn)btn.classList.add("active");
+    if(btn){
+        btn.classList.add("active");
+    }
 
     setTitle("Trang chủ");
 
-    const name=currentUser();
+    const name = currentUser();
 
-    document.getElementById("page").innerHTML=`
+    document.getElementById("page").innerHTML = `
 
     <div class="card hero">
 
-        <div class="emoji">📚✨</div>
+        <div class="emoji">
+            📚✨
+        </div>
 
-        <h1>HOC ENGLISH</h1>
+        <h1>
+            HOC ENGLISH
+        </h1>
 
         <p>
-        Xin chào <b>${name}</b>!<br>
-        Học ngữ pháp và từ vựng theo cấp độ.
+            Xin chào <b>${escapeHTML(name)}</b>!<br>
+            Học ngữ pháp và từ vựng theo cấp độ.
         </p>
 
-        <button class="primary"
-        onclick="vocabList(null)">
-        🧠 Học từ vựng
+        <button
+            class="primary"
+            onclick="vocabList(null)">
+
+            🧠 Học từ vựng
+
         </button>
 
     </div>
 
     <div class="card">
 
-        <h2>📊 Hệ thống cấp độ</h2>
+        <h2>
+            📊 Hệ thống cấp độ
+        </h2>
 
         <div class="level-grid">
 
             <div class="level-card">
-                <div style="font-size:30px">🟢</div>
+                <div style="font-size:30px">
+                    🟢
+                </div>
+
                 <h3>Dễ</h3>
-                <p>Từ cơ bản, quen thuộc.</p>
+
+                <p>
+                    Từ cơ bản, quen thuộc.
+                </p>
             </div>
 
             <div class="level-card">
-                <div style="font-size:30px">🔵</div>
+                <div style="font-size:30px">
+                    🔵
+                </div>
+
                 <h3>Trung bình</h3>
-                <p>Từ vựng phổ biến nâng cao.</p>
+
+                <p>
+                    Từ vựng phổ biến nâng cao.
+                </p>
             </div>
 
             <div class="level-card">
-                <div style="font-size:30px">🟠</div>
+                <div style="font-size:30px">
+                    🟠
+                </div>
+
                 <h3>Khó</h3>
-                <p>Từ ít gặp và khó hơn.</p>
+
+                <p>
+                    Từ ít gặp và khó hơn.
+                </p>
             </div>
 
             <div class="level-card">
-                <div style="font-size:30px">🔴</div>
+                <div style="font-size:30px">
+                    🔴
+                </div>
+
                 <h3>Siêu khó</h3>
-                <p>Từ nâng cao và học thuật.</p>
+
+                <p>
+                    Từ nâng cao và học thuật.
+                </p>
             </div>
 
         </div>
@@ -1186,11 +1695,19 @@ function home(btn){
 
     <div class="card">
 
-        <h2>🧠 Từ vựng</h2>
+        <h2>
+            🧠 Từ vựng
+        </h2>
 
         <p style="color:#9ca9c7">
-        Mỗi chủ đề có <b>40 từ</b>: 10 từ Dễ,
-        10 từ Trung bình, 10 từ Khó và 10 từ Siêu khó.
+
+            Mỗi chủ đề có
+            <b>40 từ</b>:
+            10 Dễ,
+            10 Trung bình,
+            10 Khó,
+            10 Siêu khó.
+
         </p>
 
     </div>
@@ -1206,81 +1723,117 @@ function grammar(type,btn){
 
     activeNone();
 
-    if(btn)btn.classList.add("active");
+    if(btn){
+        btn.classList.add("active");
+    }
 
-    const l=lessons[type];
+    const l = lessons[type];
 
-    setTitle(l.icon+" "+l.name);
+    if(!l)return;
 
-    document.getElementById("page").innerHTML=`
+    setTitle(
+        l.icon + " " + l.name
+    );
+
+    document.getElementById("page").innerHTML = `
 
     <div class="card lesson">
 
-        <h2>${l.icon} ${l.name}</h2>
+        <h2>
+            ${l.icon} ${l.name}
+        </h2>
 
-        <p>${l.desc}</p>
+        <p>
+            ${l.desc}
+        </p>
 
-        <h3>📌 Công thức</h3>
+        <h3>
+            📌 Công thức
+        </h3>
 
-        ${l.formula.map(x=>
-        `<div class="formula">${x}</div>`
-        ).join("")}
+        ${l.formula.map(x => `
+            <div class="formula">
+                ${x}
+            </div>
+        `).join("")}
 
-        <h3>🔎 Dấu hiệu nhận biết</h3>
+        <h3>
+            🔎 Dấu hiệu nhận biết
+        </h3>
 
         <div class="tags">
-        ${l.signs.map(x=>
-        `<span class="tag">${x}</span>`
-        ).join("")}
+
+            ${l.signs.map(x => `
+                <span class="tag">
+                    ${x}
+                </span>
+            `).join("")}
+
         </div>
 
-        <h3>💡 Ví dụ</h3>
+        <h3>
+            💡 Ví dụ
+        </h3>
 
         <div class="formula">
             ${l.example}
         </div>
 
     </div>
-
     `;
 }
 
 
 /* =====================================================
-   TỪ VỰNG - CHỌN CHỦ ĐỀ
+   TỪ VỰNG
 ===================================================== */
 
 function vocabList(btn){
 
     activeNone();
 
-    if(btn)btn.classList.add("active");
+    if(btn){
+        btn.classList.add("active");
+    }
 
     setTitle("🧠 Từ vựng");
 
-    document.getElementById("page").innerHTML=`
+    document.getElementById("page").innerHTML = `
 
     <div class="card">
 
-        <h2>🧠 Chọn chủ đề</h2>
+        <h2>
+            🧠 Chọn chủ đề
+        </h2>
 
         <p style="color:#9ca9c7">
-        Mỗi chủ đề có 40 từ và chia thành 4 cấp độ.
+
+            Mỗi chủ đề có
+            <b>40 từ</b>
+            và chia thành
+            <b>4 cấp độ</b>.
+
         </p>
 
         <div class="vocab-grid">
 
-        ${Object.entries(vocab).map(([key,v])=>`
+        ${Object.entries(vocab).map(
+            ([key,v]) => `
 
-            <div class="vocab-card"
-            onclick="chooseLevel('${key}')">
+            <div
+                class="vocab-card"
+                onclick="chooseLevel('${key}')">
 
-                <div class="icon">${v.icon}</div>
+                <div class="icon">
+                    ${v.icon}
+                </div>
 
-                <h3>${v.name}</h3>
+                <h3>
+                    ${v.name}
+                </h3>
 
                 <p>
-                40 từ • 4 cấp độ
+                    40 từ • 4 cấp độ
                 </p>
 
             </div>
@@ -1295,72 +1848,97 @@ function vocabList(btn){
 
 
 /* =====================================================
-   CHỌN CẤP ĐỘ
+   CHỌN LEVEL
 ===================================================== */
 
 function chooseLevel(topic){
 
-    vocabTopic=topic;
+    if(!vocab[topic])return;
 
-    const data=vocab[topic];
+    vocabTopic = topic;
 
-    setTitle(data.icon+" "+data.name);
+    const data =
+        vocab[topic];
 
-    document.getElementById("page").innerHTML=`
+    setTitle(
+        data.icon + " " + data.name
+    );
+
+    document.getElementById("page").innerHTML = `
 
     <div class="card">
 
         <h2>
-        ${data.icon} ${data.name}
+            ${data.icon} ${data.name}
         </h2>
 
         <p style="color:#9ca9c7">
-        Chọn cấp độ muốn học.
+            Chọn cấp độ muốn học.
         </p>
 
         <div class="level-grid">
 
-            <div class="level-card"
-            onclick="startVocab('${topic}','easy')">
+            <div
+                class="level-card"
+                onclick="startVocab('${topic}','easy')">
 
-                <div style="font-size:35px">🟢</div>
+                <div style="font-size:35px">
+                    🟢
+                </div>
 
                 <h3>Dễ</h3>
 
-                <p>10 từ cơ bản</p>
+                <p>
+                    10 từ cơ bản
+                </p>
 
             </div>
 
-            <div class="level-card"
-            onclick="startVocab('${topic}','medium')">
+            <div
+                class="level-card"
+                onclick="startVocab('${topic}','medium')">
 
-                <div style="font-size:35px">🔵</div>
+                <div style="font-size:35px">
+                    🔵
+                </div>
 
                 <h3>Trung bình</h3>
 
-                <p>10 từ</p>
+                <p>
+                    10 từ
+                </p>
 
             </div>
 
-            <div class="level-card"
-            onclick="startVocab('${topic}','hard')">
+            <div
+                class="level-card"
+                onclick="startVocab('${topic}','hard')">
 
-                <div style="font-size:35px">🟠</div>
+                <div style="font-size:35px">
+                    🟠
+                </div>
 
                 <h3>Khó</h3>
 
-                <p>10 từ nâng cao</p>
+                <p>
+                    10 từ nâng cao
+                </p>
 
             </div>
 
-            <div class="level-card"
-            onclick="startVocab('${topic}','expert')">
+            <div
+                class="level-card"
+                onclick="startVocab('${topic}','expert')">
 
-                <div style="font-size:35px">🔴</div>
+                <div style="font-size:35px">
+                    🔴
+                </div>
 
                 <h3>Siêu khó</h3>
 
-                <p>10 từ học thuật</p>
+                <p>
+                    10 từ học thuật
+                </p>
 
             </div>
 
@@ -1372,20 +1950,41 @@ function chooseLevel(topic){
 
 
 /* =====================================================
+   ESCAPE HTML
+===================================================== */
+
+function escapeHTML(value){
+
+    return String(value ?? "")
+        .replace(/&/g,"&amp;")
+        .replace(/</g,"&lt;")
+        .replace(/>/g,"&gt;")
+        .replace(/"/g,"&quot;")
+        .replace(/'/g,"&#039;");
+}
+
+
+/* =====================================================
    EMOJI IMAGE
 ===================================================== */
 
 function codePoints(str){
 
     return [...str]
-    .map(c=>c.codePointAt(0).toString(16))
-    .join("-");
+        .map(c =>
+            c.codePointAt(0)
+             .toString(16)
+        )
+        .join("-");
 }
 
 function emojiImage(emoji){
 
-    return "https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/72x72/"
-    +codePoints(emoji)+".png";
+    return (
+        "https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/72x72/" +
+        codePoints(emoji) +
+        ".png"
+    );
 }
 
 
@@ -1395,14 +1994,25 @@ function emojiImage(emoji){
 
 function startVocab(topic,level){
 
-    vocabTopic=topic;
-    vocabLevel=level;
+    if(
+        !vocab[topic] ||
+        !vocab[topic].levels[level]
+    ){
+        return;
+    }
 
-    vocabData=vocab[topic].levels[level];
+    vocabTopic = topic;
 
-    vocabIndex=0;
-    vocabRound=1;
-    vocabScore=0;
+    vocabLevel = level;
+
+    vocabData =
+        vocab[topic].levels[level];
+
+    vocabIndex = 0;
+
+    vocabRound = 1;
+
+    vocabScore = 0;
 
     showVocabLearn();
 }
@@ -1414,55 +2024,70 @@ function startVocab(topic,level){
 
 function showVocabLearn(){
 
-    const data=vocab[vocabTopic];
+    const data =
+        vocab[vocabTopic];
 
-    const levelNames={
+    const levelNames = {
+
         easy:"🟢 Dễ",
+
         medium:"🔵 Trung bình",
+
         hard:"🟠 Khó",
+
         expert:"🔴 Siêu khó"
     };
 
     setTitle(
-        data.icon+" "+
-        data.name+" - "+
+        data.icon + " " +
+        data.name + " - " +
         levelNames[vocabLevel]
     );
 
-    document.getElementById("page").innerHTML=`
+    document.getElementById("page").innerHTML = `
 
     <div class="card">
 
-        <h2>📖 Học từ vựng</h2>
+        <h2>
+            📖 Học từ vựng
+        </h2>
 
         <p style="color:#9ca9c7">
-        ${levelNames[vocabLevel]} • 10 từ
+
+            ${levelNames[vocabLevel]}
+            • 10 từ
+
         </p>
 
         <div class="vocab-grid">
 
-        ${vocabData.map(item=>`
+        ${vocabData.map(item => `
 
             <div class="vocab-card">
 
                 <div style="
-                height:80px;
-                display:flex;
-                justify-content:center">
+                    height:80px;
+                    display:flex;
+                    justify-content:center">
 
                     <img
-                    src="${emojiImage(item[2])}"
-                    style="
-                    width:75px;
-                    height:75px;
-                    object-fit:contain"
-                    onerror="this.style.display='none'">
+                        src="${emojiImage(item[2])}"
+                        style="
+                        width:75px;
+                        height:75px;
+                        object-fit:contain"
+                        onerror="
+                        this.style.display='none'">
 
                 </div>
 
-                <h3>${item[0]}</h3>
+                <h3>
+                    ${escapeHTML(item[0])}
+                </h3>
 
-                <p>${item[1]}</p>
+                <p>
+                    ${escapeHTML(item[1])}
+                </p>
 
             </div>
 
@@ -1472,10 +2097,11 @@ function showVocabLearn(){
 
         <br>
 
-        <button class="primary"
-        onclick="startVocabRound1()">
+        <button
+            class="primary"
+            onclick="startVocabRound1()">
 
-        📝 Lượt 1 — Ghi từ
+            📝 Lượt 1 — Ghi từ
 
         </button>
 
@@ -1490,34 +2116,42 @@ function showVocabLearn(){
 
 function startVocabRound1(){
 
-    vocabIndex=0;
-    vocabRound=1;
-    vocabScore=0;
+    vocabIndex = 0;
+
+    vocabRound = 1;
+
+    vocabScore = 0;
 
     renderVocabWrite();
 }
 
 function renderVocabWrite(){
 
-    const item=vocabData[vocabIndex];
+    const item =
+        vocabData[vocabIndex];
+
+    if(!item){
+        showRound2Intro();
+        return;
+    }
 
     setTitle("📝 Ghi từ");
 
-    document.getElementById("page").innerHTML=`
+    document.getElementById("page").innerHTML = `
 
     <div class="card">
 
         <div style="
-        display:flex;
-        justify-content:space-between;
-        color:#9ca9c7">
+            display:flex;
+            justify-content:space-between;
+            color:#9ca9c7">
 
             <span>
-            📝 Lượt 1 — Ghi từ
+                📝 Lượt 1 — Ghi từ
             </span>
 
             <span>
-            ${vocabIndex+1}/10
+                ${vocabIndex+1}/10
             </span>
 
         </div>
@@ -1525,7 +2159,7 @@ function renderVocabWrite(){
         <div class="progress">
 
             <div style="
-            width:${vocabIndex/10*100}%">
+                width:${vocabIndex/10*100}%">
             </div>
 
         </div>
@@ -1533,56 +2167,58 @@ function renderVocabWrite(){
         <div class="vocab-image">
 
             <img
-            src="${emojiImage(item[2])}"
-            onerror="this.style.display='none'">
+                src="${emojiImage(item[2])}"
+                onerror="
+                this.style.display='none'">
 
         </div>
 
         <div style="
-        text-align:center;
-        margin-bottom:15px">
+            text-align:center;
+            margin-bottom:15px">
 
             <strong style="font-size:22px">
-            ?
+                ?
             </strong>
 
             <span style="
-            display:block;
-            color:#9ca9c7;
-            margin-top:5px">
+                display:block;
+                color:#9ca9c7;
+                margin-top:5px">
 
-            ${item[1]}
+                ${escapeHTML(item[1])}
 
             </span>
 
         </div>
 
         <input
-        id="vocabInput"
-        class="input"
-        placeholder="Nhập từ tiếng Anh..."
-        autocomplete="off">
+            id="vocabInput"
+            class="input"
+            placeholder="Nhập từ tiếng Anh..."
+            autocomplete="off">
 
-        <div id="feedback"
-        class="feedback">
+        <div
+            id="feedback"
+            class="feedback">
         </div>
 
         <button
-        id="check"
-        class="primary"
-        onclick="checkVocabWrite()">
+            id="check"
+            class="primary"
+            onclick="checkVocabWrite()">
 
-        ✓ Kiểm tra
+            ✓ Kiểm tra
 
         </button>
 
         <button
-        id="next"
-        class="primary"
-        style="display:none"
-        onclick="nextVocabWrite()">
+            id="next"
+            class="primary"
+            style="display:none"
+            onclick="nextVocabWrite()">
 
-        Tiếp theo →
+            Tiếp theo →
 
         </button>
 
@@ -1590,45 +2226,72 @@ function renderVocabWrite(){
     `;
 }
 
+
+/* =====================================================
+   KIỂM TRA TỪ
+===================================================== */
+
 function checkVocabWrite(){
 
-    const item=vocabData[vocabIndex];
+    const item =
+        vocabData[vocabIndex];
 
-    const input=document.getElementById("vocabInput");
+    const input =
+        document.getElementById("vocabInput");
 
-    const value=input.value
-    .trim()
-    .toLowerCase();
+    const check =
+        document.getElementById("check");
 
-    input.disabled=true;
+    const next =
+        document.getElementById("next");
 
-    document.getElementById("check").disabled=true;
+    const feedback =
+        document.getElementById("feedback");
 
-    if(value===item[0].toLowerCase()){
+    if(!item || !input)return;
 
-        vocabScore+=10;
+    const value =
+        input.value
+            .trim()
+            .toLowerCase();
+
+    input.disabled = true;
+
+    if(check){
+        check.disabled = true;
+    }
+
+    if(
+        value ===
+        item[0].toLowerCase()
+    ){
+
+        vocabScore += 10;
 
         addGlobal(10);
 
-        document.getElementById("feedback").innerHTML=
-        "🎉 Chính xác! +10 điểm";
+        feedback.innerHTML =
+            "🎉 Chính xác! +10 điểm";
 
     }else{
 
-        document.getElementById("feedback").innerHTML=
-        "❌ Đáp án đúng: <b>"+item[0]+"</b>";
-
+        feedback.innerHTML =
+            "❌ Đáp án đúng: <b>" +
+            escapeHTML(item[0]) +
+            "</b>";
     }
 
-    document.getElementById("next").style.display=
-    "inline-block";
+    if(next){
+        next.style.display =
+            "inline-block";
+    }
 }
 
 function nextVocabWrite(){
 
     vocabIndex++;
 
-    if(vocabIndex>=10){
+    if(vocabIndex >= vocabData.length){
 
         showRound2Intro();
 
@@ -1647,31 +2310,34 @@ function showRound2Intro(){
 
     setTitle("🔗 Lượt 2");
 
-    document.getElementById("page").innerHTML=`
+    document.getElementById("page").innerHTML = `
 
     <div class="card result">
 
         <div style="font-size:60px">
-        🧠
+            🧠
         </div>
 
         <h2>
-        Hoàn thành lượt 1!
+            Hoàn thành lượt 1!
         </h2>
 
         <div class="result-score">
-        ${vocabScore}/100
+            ${vocabScore}/100
         </div>
 
         <p style="color:#9ca9c7">
-        Lượt 2: nối hình ảnh với từ tiếng Anh.
+
+            Lượt 2:
+            nối hình ảnh với từ tiếng Anh.
+
         </p>
 
         <button
-        class="primary"
-        onclick="startMatching()">
+            class="primary"
+            onclick="startMatching()">
 
-        🔗 Bắt đầu
+            🔗 Bắt đầu
 
         </button>
 
@@ -1679,17 +2345,26 @@ function showRound2Intro(){
     `;
 }
 
+
+/* =====================================================
+   MATCHING
+===================================================== */
+
 function startMatching(){
 
-    const images=shuffle(vocabData);
-    const words=shuffle(vocabData);
+    const images =
+        shuffle(vocabData);
 
-    selectedImage=null;
-    selectedWord=null;
+    const words =
+        shuffle(vocabData);
+
+    selectedImage = null;
+
+    selectedWord = null;
 
     setTitle("🔗 Nối ảnh với từ");
 
-    document.getElementById("page").innerHTML=`
+    document.getElementById("page").innerHTML = `
 
     <div class="card">
 
@@ -1697,20 +2372,28 @@ function startMatching(){
 
             <div>
 
-                <h3>🖼️ Hình ảnh</h3>
+                <h3>
+                    🖼️ Hình ảnh
+                </h3>
 
                 <div id="imageList">
 
-                ${images.map(item=>`
+                ${images.map(item => `
 
                     <div
-                    class="match-item"
-                    data-id="${item[0]}"
-                    onclick="selectImage(this,'${item[0]}')">
+                        class="match-item"
+                        data-id="${escapeHTML(item[0])}"
+                        onclick="
+                        selectImage(
+                            this,
+                            '${item[0].replace(/'/g,"\\'")}'
+                        )">
 
                         <img
-                        class="match-img"
-                        src="${emojiImage(item[2])}">
+                            class="match-img"
+                            src="${emojiImage(item[2])}"
+                            onerror="
+                            this.style.display='none'">
 
                     </div>
 
@@ -1722,18 +2405,24 @@ function startMatching(){
 
             <div>
 
-                <h3>🇬🇧 Từ tiếng Anh</h3>
+                <h3>
+                    🇬🇧 Từ tiếng Anh
+                </h3>
 
                 <div id="wordList">
 
-                ${words.map(item=>`
+                ${words.map(item => `
 
                     <div
-                    class="match-item"
-                    data-id="${item[0]}"
-                    onclick="selectWord(this,'${item[0]}')">
+                        class="match-item"
+                        data-id="${escapeHTML(item[0])}"
+                        onclick="
+                        selectWord(
+                            this,
+                            '${item[0].replace(/'/g,"\\'")}'
+                        )">
 
-                    ${item[0]}
+                        ${escapeHTML(item[0])}
 
                     </div>
 
@@ -1745,8 +2434,9 @@ function startMatching(){
 
         </div>
 
-        <div id="matchFeedback"
-        class="feedback">
+        <div
+            id="matchFeedback"
+            class="feedback">
         </div>
 
     </div>
@@ -1755,12 +2445,17 @@ function startMatching(){
 
 function selectImage(el,id){
 
-    document.querySelectorAll("#imageList .match-item")
-    .forEach(x=>x.classList.remove("selected"));
+    document
+        .querySelectorAll(
+            "#imageList .match-item"
+        )
+        .forEach(x =>
+            x.classList.remove("selected")
+        );
 
     el.classList.add("selected");
 
-    selectedImage={
+    selectedImage = {
         el:el,
         id:id
     };
@@ -1770,12 +2465,17 @@ function selectImage(el,id){
 
 function selectWord(el,id){
 
-    document.querySelectorAll("#wordList .match-item")
-    .forEach(x=>x.classList.remove("selected"));
+    document
+        .querySelectorAll(
+            "#wordList .match-item"
+        )
+        .forEach(x =>
+            x.classList.remove("selected")
+        );
 
     el.classList.add("selected");
 
-    selectedWord={
+    selectedWord = {
         el:el,
         id:id
     };
@@ -1785,47 +2485,79 @@ function selectWord(el,id){
 
 function tryMatch(){
 
-    if(!selectedImage || !selectedWord)return;
+    if(
+        !selectedImage ||
+        !selectedWord
+    ){
+        return;
+    }
 
-    if(selectedImage.id===selectedWord.id){
+    const feedback =
+        document.getElementById(
+            "matchFeedback"
+        );
 
-        selectedImage.el.style.display="none";
+    if(
+        selectedImage.id ===
+        selectedWord.id
+    ){
 
-        selectedWord.el.style.display="none";
+        selectedImage.el.style.display =
+            "none";
 
-        vocabScore+=10;
+        selectedWord.el.style.display =
+            "none";
+
+        vocabScore += 10;
 
         addGlobal(10);
 
-        document.getElementById("matchFeedback").innerHTML=
-        "🎉 Đúng! +10 điểm";
+        if(feedback){
+
+            feedback.innerHTML =
+                "🎉 Đúng! +10 điểm";
+        }
 
     }else{
 
-        document.getElementById("matchFeedback").innerHTML=
-        "❌ Chưa đúng.";
+        if(feedback){
 
+            feedback.innerHTML =
+                "❌ Chưa đúng.";
+        }
     }
 
-    selectedImage=null;
-    selectedWord=null;
+    selectedImage = null;
 
-    document.querySelectorAll(".match-item")
-    .forEach(x=>x.classList.remove("selected"));
+    selectedWord = null;
+
+    document
+        .querySelectorAll(".match-item")
+        .forEach(x =>
+            x.classList.remove("selected")
+        );
 
     checkMatchingFinished();
 }
 
 function checkMatchingFinished(){
 
-    const remaining=[
-        ...document.querySelectorAll("#imageList .match-item")
-    ].filter(x=>x.style.display!=="none");
+    const remaining =
+        [
+            ...document.querySelectorAll(
+                "#imageList .match-item"
+            )
+        ].filter(
+            x =>
+            x.style.display !== "none"
+        );
 
-    if(remaining.length===0){
+    if(remaining.length === 0){
 
-        setTimeout(showVocabResult,500);
-
+        setTimeout(
+            showVocabResult,
+            500
+        );
     }
 }
 
@@ -1836,57 +2568,73 @@ function checkMatchingFinished(){
 
 function showVocabResult(){
 
-    const percent=
-    Math.round(vocabScore/200*100);
+    const percent =
+        Math.round(
+            vocabScore / 200 * 100
+        );
 
-    const levelNames={
+    const levelNames = {
+
         easy:"🟢 Dễ",
+
         medium:"🔵 Trung bình",
+
         hard:"🟠 Khó",
+
         expert:"🔴 Siêu khó"
     };
 
     setTitle("🏆 Kết quả");
 
-    document.getElementById("page").innerHTML=`
+    document.getElementById("page").innerHTML = `
 
     <div class="card result">
 
         <div style="font-size:60px">
-        🏆
+            🏆
         </div>
 
         <h2>
-        Hoàn thành!
+            Hoàn thành!
         </h2>
 
         <p>
-        ${vocab[vocabTopic].name}
-        -
-        ${levelNames[vocabLevel]}
+            ${vocab[vocabTopic].name}
+            -
+            ${levelNames[vocabLevel]}
         </p>
 
         <div class="result-score">
-        ${vocabScore}/200
+            ${vocabScore}/200
         </div>
 
         <p style="color:#9ca9c7">
-        Độ chính xác: ${percent}%
+
+            Độ chính xác:
+            ${percent}%
+
         </p>
 
         <button
-        class="primary"
-        onclick="startVocab('${vocabTopic}','${vocabLevel}')">
+            class="primary"
+            onclick="
+            startVocab(
+                '${vocabTopic}',
+                '${vocabLevel}'
+            )">
 
-        🔄 Làm lại
+            🔄 Làm lại
 
         </button>
 
         <button
-        class="secondary"
-        onclick="chooseLevel('${vocabTopic}')">
+            class="secondary"
+            onclick="
+            chooseLevel(
+                '${vocabTopic}'
+            )">
 
-        📊 Đổi cấp độ
+            📊 Đổi cấp độ
 
         </button>
 
@@ -1905,26 +2653,39 @@ function accountPage(){
 
     setTitle("👤 Tài khoản");
 
-    const name=currentUser();
+    const name =
+        currentUser();
 
-    const user=getUsers().find(x=>x.username===name);
+    const users =
+        getUsers();
 
-    document.getElementById("page").innerHTML=`
+    const user =
+        users.find(x =>
+            x.username === name
+        );
+
+    document.getElementById("page").innerHTML = `
 
     <div class="card">
 
-        <h2>👤 Tài khoản</h2>
+        <h2>
+            👤 Tài khoản
+        </h2>
 
         <div class="user-box">
 
             <p>
-            👤 Tên tài khoản:
-            <b>${name}</b>
+                👤 Tên tài khoản:
+                <b>
+                    ${escapeHTML(name)}
+                </b>
             </p>
 
             <p>
-            ⭐ Tổng điểm:
-            <b>${user?.score||0}</b>
+                ⭐ Tổng điểm:
+                <b>
+                    ${user?.score || 0}
+                </b>
             </p>
 
         </div>
@@ -1932,10 +2693,10 @@ function accountPage(){
         <br>
 
         <button
-        class="primary"
-        onclick="logout()">
+            class="primary"
+            onclick="logout()">
 
-        🚪 Đăng xuất
+            🚪 Đăng xuất
 
         </button>
 
@@ -1943,16 +2704,27 @@ function accountPage(){
 
     <div class="card">
 
-        <h3>💾 Dữ liệu tài khoản</h3>
+        <h3>
+            💾 Dữ liệu tài khoản
+        </h3>
 
-        <p style="color:#9ca9c7;line-height:1.7">
+        <p style="
+            color:#9ca9c7;
+            line-height:1.7">
 
-        Tài khoản và điểm được lưu trên trình duyệt
-        bằng <b>localStorage</b>.<br>
+            Tài khoản và điểm được lưu trên
+            trình duyệt bằng
+            <b>localStorage</b>.
 
-        Khi đăng xuất, tài khoản vẫn được giữ lại.
-        Bạn có thể đăng nhập lại bằng tài khoản và mật khẩu
-        đã đăng ký.
+            <br><br>
+
+            Khi đăng xuất,
+            tài khoản vẫn được giữ lại.
+
+            <br>
+
+            Bạn có thể đăng nhập lại bằng
+            tài khoản và mật khẩu đã đăng ký.
 
         </p>
 
@@ -1965,14 +2737,61 @@ function accountPage(){
    KHỞI ĐỘNG
 ===================================================== */
 
-if(currentUser()){
-    renderApp();
-}else{
-    renderAuth();
+function startApplication(){
+
+    try{
+
+        if(currentUser()){
+
+            renderApp();
+
+        }else{
+
+            renderAuth();
+        }
+
+    }catch(error){
+
+        console.error(
+            "HOC ENGLISH START ERROR:",
+            error
+        );
+
+        try{
+            localStorage.removeItem(
+                LOGIN_KEY
+            );
+        }catch{}
+
+        renderAuth();
+    }
 }
+
+
+/* =====================================================
+   XỬ LÝ LỖI JS
+===================================================== */
+
+window.addEventListener(
+    "error",
+    function(event){
+
+        console.error(
+            "HOC ENGLISH ERROR:",
+            event.error || event.message
+        );
+    }
+);
+
+
+/* =====================================================
+   CHẠY WEB
+===================================================== */
+
+startApplication();
 
 </script>
 
 </body>
 </html>
-
+```

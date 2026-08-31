@@ -536,13 +536,62 @@ String(x ?? "")
    100% ảnh thật
 ========================================================= */
 
-function realImage(word){
+/* =========================================================
+   REAL IMAGE LOADER
+   Lấy ảnh thật từ Wikimedia Commons/Wikipedia, không dùng
+   ảnh random theo từ khóa nên tránh ảnh sai chủ đề.
+========================================================= */
+const IMAGE_CACHE_KEY="hoc_english_real_images_v2";
+let IMAGE_CACHE={};
+try{ IMAGE_CACHE=JSON.parse(localStorage.getItem(IMAGE_CACHE_KEY)||"{}"); }catch(e){ IMAGE_CACHE={}; }
 
- return "https://loremflickr.com/800/500/" +
- encodeURIComponent(word) +
- "?lock=" +
- Math.floor(Math.random()*999999);
+function imagePlaceholder(word){
+ return "data:image/svg+xml;charset=UTF-8,"+encodeURIComponent(
+  `<svg xmlns="http://www.w3.org/2000/svg" width="800" height="500"><rect width="100%" height="100%" fill="#0c1324"/><text x="50%" y="50%" fill="#91a0bd" font-size="24" text-anchor="middle">Đang tải ảnh: ${String(word).replace(/[&<>]/g,"")}</text></svg>`
+ );
+}
+function realImage(word){ return imagePlaceholder(word); }
 
+async function findRealImage(word){
+ const key=String(word).trim().toLowerCase();
+ if(IMAGE_CACHE[key]) return IMAGE_CACHE[key];
+ try{
+  const q=encodeURIComponent(key);
+  const url=`https://commons.wikimedia.org/w/api.php?action=query&generator=search&gsrsearch=${q} filetype:bitmap&gsrnamespace=6&gsrlimit=5&prop=imageinfo&iiprop=url|mime&iiurlwidth=900&format=json&origin=*`;
+  const res=await fetch(url,{cache:"force-cache"});
+  const json=await res.json();
+  const pages=Object.values(json.query?.pages||{});
+  const img=pages.find(x=>x.imageinfo?.[0]?.thumburl||x.imageinfo?.[0]?.url);
+  if(img){
+   const src=img.imageinfo[0].thumburl||img.imageinfo[0].url;
+   IMAGE_CACHE[key]=src;
+   localStorage.setItem(IMAGE_CACHE_KEY,JSON.stringify(IMAGE_CACHE));
+   return src;
+  }
+ }catch(e){}
+ try{
+  const title=encodeURIComponent(key.replace(/\s+/g,"_"));
+  const res=await fetch(`https://en.wikipedia.org/api/rest_v1/page/summary/${title}`,{cache:"force-cache"});
+  const json=await res.json();
+  const src=json.thumbnail?.source||json.originalimage?.source;
+  if(src){
+   IMAGE_CACHE[key]=src;
+   localStorage.setItem(IMAGE_CACHE_KEY,JSON.stringify(IMAGE_CACHE));
+   return src;
+  }
+ }catch(e){}
+ return "";
+}
+async function hydrateImages(root=document){
+ const nodes=[...root.querySelectorAll("img[data-word]")];
+ const unique=[...new Set(nodes.map(n=>n.dataset.word).filter(Boolean))];
+ await Promise.all(unique.map(async word=>{
+  const src=await findRealImage(word);
+  nodes.filter(n=>n.dataset.word===word).forEach(n=>{
+   if(src) n.src=src;
+   else n.alt=`Không tìm thấy ảnh cho ${word}`;
+  });
+ }));
 }
 
 
@@ -998,12 +1047,12 @@ async function register(){
  } =
  await db
  .from("profiles")
- .insert({
+ .upsert({
   id:data.user.id,
   username,
   role:"user",
   score:0
- });
+ },{onConflict:"id"});
 
 
  if(profileError){
@@ -1098,16 +1147,27 @@ async function loadProfile(){
  .maybeSingle();
 
 
- if(error || !data){
-
-  alert(
-   error?.message ||
-   "Không tìm thấy profile."
-  );
-
+ if(error){
+  alert(error.message);
   return;
  }
 
+ if(!data){
+  const fallbackUsername=(user.user_metadata?.username||user.email?.split("@")[0]||"user").slice(0,40);
+  const {error:createError}=await db.from("profiles").upsert({
+   id:user.id,
+   username:fallbackUsername,
+   role:"user",
+   score:0
+  },{onConflict:"id"});
+  if(createError){
+   alert("Không tạo được hồ sơ: "+createError.message);
+   return;
+  }
+  const retry=await db.from("profiles").select("*").eq("id",user.id).maybeSingle();
+  if(retry.error||!retry.data){ alert(retry.error?.message||"Không tìm thấy profile."); return; }
+  data=retry.data;
+ }
 
  profile=data;
 
@@ -1149,9 +1209,10 @@ function renderApp(){
 
  $("app").innerHTML=`
 
- <aside id="side" class="side">
+ <aside id="side" class="side"><button class="sideClose" onclick="closeSide()">×</button>
 
-  <div class="brand">
+  <button class="sideClose" onclick="closeSide()" aria-label="Đóng menu">×</button>
+   <div class="brand">
 
    <div class="logo">
     📚 HOC ENGLISH
@@ -1270,7 +1331,7 @@ function renderApp(){
 
    <button
     class="mobile"
-    onclick="$('side').classList.toggle('open')">
+    onclick="toggleSide()">
     ☰
    </button>
 
@@ -1296,7 +1357,21 @@ function renderApp(){
 }
 
 
-function nav(btn,title){
+function toggleSide(){
+ const side=$("side");
+ if(side) side.classList.toggle("open");
+}
+function closeSide(){
+ const side=$("side");
+ if(side) side.classList.remove("open");
+}
+
+// Đóng menu tự động sau khi chọn mục trên điện thoại
+document.addEventListener("click",e=>{
+ if(window.innerWidth<=850 && e.target.closest(".nav")) closeSide();
+});
+
+function closeSide(){const side=$("side");if(side)side.classList.remove("open");}\nfunction nav(btn,title){
 
  document
  .querySelectorAll(".nav")
@@ -1417,7 +1492,7 @@ function vocabPage(btn){
 
     <img
      class="topicImg"
-     src="${realImage(t.words[0][0])}"
+     src="${realImage(t.words[0][0])}" data-word="${esc(t.words[0][0])}"
      loading="lazy">
 
     <h3>
@@ -1437,6 +1512,8 @@ function vocabPage(btn){
  </div>
 
  `;
+
+ hydrateImages($("page"));
 
 }
 
@@ -1477,7 +1554,7 @@ function topicPage(key){
 
     <img
      class="topicImg"
-     src="${realImage(w[0])}"
+     src="${realImage(w[0])}" data-word="${esc(w[0])}"
      loading="lazy">
 
     <h3>
@@ -1498,6 +1575,8 @@ function topicPage(key){
 
  `;
 
+ hydrateImages($("page"));
+
 }
 
 
@@ -1516,7 +1595,7 @@ function learnWord(key,index){
 
   <img
    class="wordImg"
-   src="${realImage(w[0])}">
+   src="${realImage(w[0])}" data-word="${esc(w[0])}">
 
   <div class="word">
    ${esc(w[0])}
@@ -1543,6 +1622,8 @@ function learnWord(key,index){
  </div>
 
  `;
+
+ hydrateImages($("page"));
 
 }
 
@@ -1631,7 +1712,7 @@ function practiceTopicCards(type){
 
     <img
      class="topicImg"
-     src="${realImage(t.words[0][0])}">
+     src="${realImage(t.words[0][0])}" data-word="${esc(t.words[0][0])}">
 
     <h3>
      ${t.icon} ${t.name}
@@ -1650,6 +1731,8 @@ function practiceTopicCards(type){
  </div>
 
  `;
+
+ hydrateImages($("page"));
 
 }
 
@@ -1783,7 +1866,7 @@ function renderVocabQuestion(){
 
   <img
    class="questionImg"
-   src="${x.image}">
+   src="${x.image}" data-word="${esc(x.word)}">
 
   <h2 class="center">
    ${esc(x.meaning)}
@@ -1842,6 +1925,8 @@ function renderVocabQuestion(){
  `;
 
  $("page").innerHTML=html;
+
+ hydrateImages($("page"));
 
 }
 
@@ -2101,7 +2186,7 @@ function renderMatch(){
      onclick="selectMatchImage(this,${x.id})">
 
      <img
-      src="${x.image}"
+      src="${x.image}" data-word="${esc(x.word)}"
       loading="lazy">
 
     </div>
@@ -2121,6 +2206,8 @@ function renderMatch(){
  </div>
 
  `;
+
+ hydrateImages($("page"));
 
 }
 
@@ -2736,21 +2823,18 @@ function renderGrammarQuestion(){
 
  if(current.type==="quiz"){
 
-  const pool=
-  current.items
-  .map(x=>x.a)
-  .filter(a=>a!==x.a);
+  const pool=[...new Set(
+   current.items
+   .map(item=>item.a)
+   .filter(a=>a!==x.a)
+  )];
 
   options=[
    x.a,
-   ...pool
-   .sort(()=>Math.random()-.5)
-   .slice(0,3)
+   ...pool.sort(()=>Math.random()-.5).slice(0,3)
   ];
 
-  options=
-  [...new Set(options)]
-  .sort(()=>Math.random()-.5);
+  options=[...new Set(options)].sort(()=>Math.random()-.5);
 
  }
 
@@ -3333,220 +3417,42 @@ function accountPage(btn){
 ========================================================= */
 
 async function adminPage(btn){
-
- if(profile.role!=="admin"){
-
-  alert("Bạn không có quyền admin.");
-
-  return;
-
- }
-
+ if(profile.role!=="admin"){ alert("Bạn không có quyền admin."); return; }
  nav(btn,"🛡️ Quản lý người dùng");
-
- const {
-  data,
-  error
- } =
- await db
- .from("profiles")
- .select("*")
- .order("created_at",{ascending:false});
-
-
+ $("page").innerHTML=`<div class="card"><h2>👥 Người dùng</h2><p class="muted">Đang tải danh sách...</p></div>`;
+ const {data,error}=await db.rpc("admin_list_users");
  if(error){
-
-  $("page").innerHTML=`
-
-  <div class="card">
-   ❌ ${esc(error.message)}
-  </div>
-
-  `;
-
-  return;
-
+   $("page").innerHTML=`<div class="card"><h2>👥 Người dùng</h2><p class="badmsg">❌ ${esc(error.message)}</p><p class="muted">Hãy chạy file SQL ADMIN_SYNC_USERS.sql trong Supabase SQL Editor.</p></div>`;
+   return;
  }
-
-
- $("page").innerHTML=`
-
- <div class="card">
-
-  <h2>
-   👥 Người dùng
-   (${data.length})
-  </h2>
-
-  <div class="scroll">
-
-  <table>
-
-   <thead>
-
-    <tr>
-     <th>Username</th>
-     <th>Role</th>
-     <th>Điểm</th>
-     <th>Thao tác</th>
-    </tr>
-
-   </thead>
-
-   <tbody>
-
-   ${data.map(
-   u=>`
-
-   <tr>
-
-    <td>
-     ${esc(u.username)}
-    </td>
-
-    <td>
-     <span class="badge">
-      ${esc(u.role)}
-     </span>
-    </td>
-
-    <td>
-     ${Number(u.score||0)}
-    </td>
-
-    <td>
-
-    ${
-     u.id===profile.id
-
-     ?
-
-     "<small>Tài khoản hiện tại</small>"
-
-     :
-
-     `
-
-     ${
-      u.role==="admin"
-
-      ?
-
-      `
-      <button
-       class="btn2"
-       onclick="changeRole('${u.id}','user')">
-
-       ⬇️ Hạ cấp
-
-      </button>
-      `
-
-      :
-
-      `
-      <button
-       class="btn"
-       onclick="changeRole('${u.id}','admin')">
-
-       ⬆️ Cấp admin
-
-      </button>
-      `
-     }
-
-
-     <button
-      class="btn2"
-      onclick="resetUserScore('${u.id}')">
-
-      🔄 Reset điểm
-
-     </button>
-
-     `
-
-    }
-
-    </td>
-
-   </tr>
-
-   `).join("")}
-
-   </tbody>
-
-  </table>
-
-  </div>
-
+ const users=data||[];
+ $("page").innerHTML=`<div class="card">
+ <div style="display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap">
+   <div><h2 style="margin:0">👥 Người dùng (${users.length})</h2><p class="muted" style="margin:5px 0 0">Danh sách lấy trực tiếp từ Supabase Auth và profiles.</p></div>
+   <button class="btn2" onclick="adminPage()">↻ Làm mới</button>
  </div>
-
- `;
-
+ <div class="scroll" style="margin-top:14px"><table><thead><tr><th>Email</th><th>Username</th><th>Role</th><th>Điểm</th><th>Thao tác</th></tr></thead><tbody>
+ ${users.map(u=>`<tr>
+ <td>${esc(u.email||"—")}</td><td>${esc(u.username||"—")}</td>
+ <td><span class="badge">${esc(u.role||"user")}</span></td><td>${Number(u.score||0)}</td>
+ <td>${u.id===profile.id?`<small>Tài khoản hiện tại</small>`:`<button class="btn ${u.role==="admin"?"btn2":""}" onclick="changeRole('${u.id}','${u.role==="admin"?"user":"admin"}')">${u.role==="admin"?"⬇️ Hạ cấp":"⬆️ Cấp admin"}</button><button class="btn2" onclick="resetUserScore('${u.id}')">🔄 Reset điểm</button>`}</td>
+ </tr>`).join("")}
+ </tbody></table></div></div>`;
 }
-
 
 async function changeRole(id,role){
-
- if(!confirm(
-  "Bạn có chắc muốn đổi role thành "+
-  role+"?"
- ))
- return;
-
-
- const {
-  error
- } =
- await db
- .from("profiles")
- .update({role})
- .eq("id",id);
-
-
- if(error){
-
-  alert(error.message);
-
-  return;
-
- }
-
+ if(!confirm("Bạn có chắc muốn đổi role thành "+role+"?")) return;
+ const {error}=await db.rpc("admin_set_user_role",{target_id:id,new_role:role});
+ if(error){ alert(error.message); return; }
  adminPage();
-
 }
-
 
 async function resetUserScore(id){
-
- if(!confirm(
-  "Reset điểm người dùng này về 0?"
- ))
- return;
-
-
- const {
-  error
- } =
- await db
- .from("profiles")
- .update({score:0})
- .eq("id",id);
-
-
- if(error){
-
-  alert(error.message);
-
-  return;
-
- }
-
+ if(!confirm("Reset điểm người dùng này về 0?")) return;
+ const {error}=await db.rpc("admin_reset_user_score",{target_id:id});
+ if(error){ alert(error.message); return; }
  adminPage();
-
 }
-
 
 /* =========================================================
    STARTUP
